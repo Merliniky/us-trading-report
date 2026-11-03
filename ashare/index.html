@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>A股模拟盘 · V7 / V10</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--fg:#1d2330;--mute:#6b7280;--line:#e5e7eb;--up:#d0342c;--dn:#0a8f4e;--acc:#2563eb;--chip:#eef2ff}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1218;--card:#171b23;--fg:#e6e9ef;--mute:#9aa3b2;--line:#2a303b;--up:#ff6b62;--dn:#34c77b;--acc:#6ea0ff;--chip:#1f2638}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.5 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",Segoe UI,Roboto,sans-serif}
+.wrap{max-width:1100px;margin:0 auto;padding:16px}
+h1{font-size:22px;margin:4px 0}h2{font-size:16px;margin:0 0 10px}h3{font-size:14px;margin:12px 0 6px}h4{font-size:13px;margin:10px 0 4px}
+.sub{color:var(--mute);font-size:12.5px}.badge{display:inline-block;background:#f59e0b;color:#fff;border-radius:6px;padding:1px 8px;font-size:12px;margin-left:6px;vertical-align:middle}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin:12px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px}.kpi .l{color:var(--mute);font-size:12px}.kpi .v{font-size:19px;font-weight:600;font-variant-numeric:tabular-nums}.kpi .s{font-size:12px;color:var(--mute)}
+.up{color:var(--up)}.dn{color:var(--dn)}
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch;max-height:560px;overflow-y:auto}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums;font-size:13px}
+th,td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}th{color:var(--mute);font-weight:500;position:sticky;top:0;background:var(--card)}
+th:first-child,td:first-child,.l{text-align:left}th.s{cursor:pointer;user-select:none}th.s:hover{color:var(--acc)}td.t{text-align:left}
+.chip{display:inline-block;background:var(--chip);border-radius:5px;padding:0 6px;font-size:12px}
+.bar{height:6px;background:var(--line);border-radius:3px;min-width:60px;position:relative}.bar i{position:absolute;top:0;height:6px;border-radius:3px}
+ul{margin:4px 0;padding-left:20px}li{margin:3px 0}li.sub2{margin-left:18px;list-style:circle}
+.seg button{border:1px solid var(--line);background:var(--card);color:var(--fg);padding:3px 10px;border-radius:6px;cursor:pointer;font-size:12px}.seg button.on{background:var(--acc);color:#fff;border-color:var(--acc)}
+.bar2{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+input,select{border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:6px;padding:3px 8px;font-size:12.5px}
+svg text{fill:var(--mute);font-size:11px}
+.foot{color:var(--mute);font-size:12px;text-align:center;margin:20px 0}
+details{border-top:1px solid var(--line);padding:6px 0}summary{cursor:pointer}.md table{font-size:12px}.md p{margin:6px 0}.md pre,.md code{font-size:12px;background:var(--chip);border-radius:4px;padding:0 3px}.md pre{padding:6px;overflow:auto}
+.lg{display:flex;gap:12px;flex-wrap:wrap;font-size:12px;color:var(--mute)}.lg i{display:inline-block;width:14px;height:3px;vertical-align:middle;margin-right:4px}
+.tag{border-radius:5px;padding:0 6px;font-size:12px;color:#fff}.tag.否决{background:#9ca3af}.tag.不晋升{background:#f59e0b}.tag.通过{background:#0a8f4e}.tag.—{background:#6b7280}.tag.部分通过{background:#0e7490}.tag.基线重置{background:#2563eb}
+</style>
+</head>
+<body><div class="wrap">
+<nav class="seg" id="sitetabs" style="margin:2px 0 10px"><a href="../" style="display:inline-block;padding:3px 12px;border-radius:6px;font-size:13px;text-decoration:none;background:var(--card);color:var(--fg);border:1px solid var(--line)">美股</a> <a href="./" style="display:inline-block;padding:3px 12px;border-radius:6px;font-size:13px;text-decoration:none;background:var(--acc);color:#fff;border:1px solid var(--acc)">A股</a></nav>
+<h1>A股模拟盘 <span class="badge">模拟盘</span></h1>
+<div class="sub" id="meta">加载中…</div>
+<div class="card" style="padding:10px 14px"><div class="bar2" style="margin:0"><div class="seg" id="acsw"></div><div class="sub" id="acdesc"></div></div></div>
+<div class="kpis" id="kpis"></div>
+<div class="card"><div class="bar2"><h2 style="margin:0">净值曲线（自 <span id="base"></span> 起，起点 = 100 万）</h2><div class="lg" id="lg"></div></div><div id="chart"></div><div class="sub" id="chartnote"></div></div>
+<div class="card"><div class="bar2"><h2 style="margin:0">当前持仓 <span class="sub" id="poscount"></span></h2><div><input id="posq" placeholder="搜索 代码/名称" size="14"> <select id="possl"><option value="">全部袖子</option></select></div></div><div class="sub" id="posnote" style="margin-bottom:6px"></div><div class="tw"><table id="pos"></table></div></div>
+<div class="card"><div class="bar2"><h2 style="margin:0">待成交订单（下一交易日开盘） <span class="sub" id="pendcount"></span></h2></div><div class="tw"><table id="pend"></table></div><div id="recentw"><h3>最近一个执行日的订单结果 <span class="sub" id="recentd"></span></h3><div class="tw"><table id="recent"></table></div></div></div>
+<div class="card"><div class="bar2"><h2 style="margin:0">成交记录 <span class="sub" id="trcount"></span></h2><div><select id="trd"><option value="">全部日期</option></select> <input id="trq" placeholder="代码/名称" size="10"> <select id="trs"><option value="">买+卖</option><option value="BUY">买入</option><option value="SELL">卖出</option></select> <select id="trr"><option value="">全部原因</option></select></div></div><div class="tw"><table id="trades"></table></div></div>
+<div class="card"><div class="bar2"><h2 style="margin:0">每日日报</h2><select id="rpd"></select></div><div class="md" id="rp"></div></div>
+<div class="card"><h2>策略研究</h2><div class="sub">回测口径：年化 / 最大回撤 / 夏普；严格时点、样本内外分开报告。研究结果为回测，不代表未来。</div><div class="tw" style="margin-top:8px"><table id="rm"></table></div><div class="sub" id="watch" style="margin-top:6px"></div><h3>研究迭代</h3><div class="tw"><table id="ri"></table></div><div id="rdet" class="md"></div></div>
+<div class="foot">仅为模拟盘记录，不构成投资建议。<br><span id="gen"></span><br>A股配色：红涨绿跌。成本：佣金 0.03% + 卖出印花税 0.05% + 滑点 0.15%；100 股整手；涨停不买 / 跌停不卖；停牌不交易；T+1。</div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const f0=x=>x==null?'—':Math.round(x).toLocaleString('en-US');
+const f2=x=>x==null?'—':Number(x).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+const f3=x=>x==null?'—':Number(x).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:3});
+const sg=(x,fn=f0)=>x==null?'—':(x>0?'+':'')+fn(x);
+const pc=(x,d=2)=>x==null?'—':(x>0?'+':'')+(x*100).toFixed(d)+'%';
+const pp=(x,d=1)=>x==null?'—':(x*100).toFixed(d)+'%';
+const cl=x=>x>0?'up':x<0?'dn':'';
+const pn=(x,fn=f0)=>`<span class="${cl(x)}">${sg(x,fn)}</span>`;
+const pcn=(x,d=2)=>`<span class="${cl(x)}">${pc(x,d)}</span>`;
+let D,ac='V7';
+// sortable/filterable table helper
+function table(id,cols,rows,st){const T=$(id);st=st||{k:null,d:-1};
+ const draw=()=>{let r=rows.slice();if(st.k!=null){const c=cols[st.k];r.sort((a,b)=>{let u=c.v(a),v=c.v(b);if(u==null)return 1;if(v==null)return -1;return (typeof u==='string'?u.localeCompare(v):(u-v))*st.d})}
+  T.innerHTML='<tr>'+cols.map((c,i)=>`<th class="s${c.t?' l':''}" data-i="${i}">${c.h}${st.k===i?(st.d>0?' ▲':' ▼'):''}</th>`).join('')+'</tr>'+
+  (r.length?r.map(x=>'<tr>'+cols.map(c=>`<td class="${c.t?'t':''}">${c.f?c.f(x):esc(c.v(x))}</td>`).join('')+'</tr>').join(''):`<tr><td class="t sub" colspan="${cols.length}">无记录</td></tr>`);
+  T.querySelectorAll('th.s').forEach(th=>th.onclick=()=>{const i=+th.dataset.i;if(st.k===i)st.d=-st.d;else{st.k=i;st.d=cols[i].t?1:-1}draw()})};
+ draw();return st}
+const SIDE=s=>s==='BUY'?'<span class="up">买入</span>':'<span class="dn">卖出</span>';
+const ST_DESC={V7:'V7（当前最佳）：每袖子 150 只；崩盘退出 ≥5 日且站上 MA20',V10:'V10（候选）：每袖子 50 只；崩盘退出 ≥2 日或自低点反弹 ≥8%'};
+function chart(){const W=Math.max(320,$('chart').clientWidth||600),H=240,P={l:52,r:12,t:12,b:26};
+ const ser=[['V7',D.accounts.V7.nav,'#2563eb'],['V10',D.accounts.V10.nav,'#f59e0b']];
+ const base=D.base;const norm=(arr)=>{const b=arr.filter(p=>p[0]<=base).pop()||arr[0];return arr.filter(p=>p[0]>=base).map(p=>[p[0],p[1]/b[1]*1e6])};
+ ser.push(['沪深300',norm(D.bench.csi300),'#9ca3af'],['基金 004685',norm(D.bench.fund),'#10b981']);
+ const S=ser.map(s=>[s[0],s[1].filter(p=>p[0]>=base),s[2]]);
+ const dates=[...new Set(S.flatMap(s=>s[1].map(p=>p[0])))].sort();if(dates.length<2){$('chart').innerHTML='<div class="sub">暂无数据</div>';return}
+ const ys=S.flatMap(s=>s[1].map(p=>p[1]));let lo=Math.min(...ys,1e6),hi=Math.max(...ys,1e6);const pad=(hi-lo)*.1||2000;lo-=pad;hi+=pad;
+ const X=d=>P.l+dates.indexOf(d)*(W-P.l-P.r)/(dates.length-1),Y=v=>P.t+(hi-v)*(H-P.t-P.b)/(hi-lo);
+ let s=`<svg width="100%" viewBox="0 0 ${W} ${H}">`;for(let k=0;k<=4;k++){const v=lo+(hi-lo)*k/4;s+=`<line x1="${P.l}" x2="${W-P.r}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--line)"/><text x="${P.l-6}" y="${Y(v)+4}" text-anchor="end">${(v/1e4).toFixed(1)}万</text>`}
+ s+=`<line x1="${P.l}" x2="${W-P.r}" y1="${Y(1e6)}" y2="${Y(1e6)}" stroke="var(--mute)" stroke-dasharray="4 4"/>`;
+ S.forEach(([n,pts,c])=>{const w=n===ac?3:1.6;s+=`<polyline fill="none" stroke="${c}" stroke-width="${w}" points="${pts.map(p=>X(p[0])+','+Y(p[1])).join(' ')}"/>`;
+  pts.forEach(p=>s+=`<circle cx="${X(p[0])}" cy="${Y(p[1])}" r="${n===ac?3.5:2.5}" fill="${c}"><title>${n} ${p[0]}  ${f0(p[1])}（${pc(p[1]/1e6-1)}）</title></circle>`)});
+ const step=Math.max(1,Math.ceil(dates.length/8));dates.forEach((d,i)=>{if(i%step===0||i===dates.length-1)s+=`<text x="${X(d)}" y="${H-8}" text-anchor="middle">${d.slice(5)}</text>`});
+ $('chart').innerHTML=s+'</svg>';
+ $('lg').innerHTML=S.map(([n,pts,c])=>{const l=pts[pts.length-1];return `<span><i style="background:${c}"></i>${n} ${l?pcn(l[1]/1e6-1)+' <span class="sub">('+l[0].slice(5)+')</span>':''}</span>`}).join('');
+ $('chartnote').textContent=`基准按 ${base} 收盘归一到 100 万；基金净值通常 T+1 公布，可能比账户少一天。悬停圆点看数值。`}
+function drawAcct(){const A=D.accounts[ac],S=A.summary;
+ document.querySelectorAll('#acsw button').forEach(b=>b.classList.toggle('on',b.dataset.a===ac));$('acdesc').textContent=ST_DESC[ac]||'';
+ const K=[['净值','¥'+f0(S.nav),`截至 ${S.asof} · 起始 ¥1,000,000`],['当日',pcn(S.day),pn(S.nav-S.nav/(1+S.day))+' 元'],['累计（建仓以来）',pcn(S.cum),pn(S.nav-1e6)+' 元'],['峰值回撤',pc(S.peak_dd),''],
+ ['股票仓位',pp(S.w_stock),'¥'+f0(S.equity_mv)],['红利 ETF 512890',pp(S.w_etf),'¥'+f0(S.etf_mv)],['现金',pp(S.w_cash),'¥'+f0(S.cash)],['持仓数',S.n_pos,''],
+ ['仓位状态',`<span style="font-size:16px">${S.state}</span>`,`目标：微盘 ${pp(S.wm,0)} · ETF ${pp(S.wd,0)}`]];
+ $('kpis').innerHTML=K.map(k=>`<div class="kpi"><div class="l">${k[0]}</div><div class="v">${k[1]}</div><div class="s">${k[2]}</div></div>`).join('');
+ chart();
+ // positions
+ const sl=$('possl'),sls=[...new Set(A.positions.map(p=>p[2]))].sort();sl.innerHTML='<option value="">全部袖子</option>'+sls.map(x=>`<option>${esc(x)}</option>`).join('');
+ const mw=Math.max(...A.positions.map(p=>p[7]||0));
+ const PC=[{h:'代码',v:p=>p[0],t:1},{h:'名称',v:p=>p[1],t:1},{h:'袖子',v:p=>p[2],t:1,f:p=>`<span class="chip">${esc(p[2])}</span>`},{h:'股数',v:p=>p[3],f:p=>f0(p[3])},{h:'成本价',v:p=>p[4],f:p=>f3(p[4])},{h:'现价',v:p=>p[5],f:p=>f3(p[5])},
+ {h:'当日',v:p=>p[10],f:p=>pcn(p[10])},{h:'市值',v:p=>p[6],f:p=>f0(p[6])},{h:'占比',v:p=>p[7],f:p=>`<div style="display:flex;gap:6px;align-items:center;justify-content:flex-end">${pp(p[7],2)}<div class="bar" style="width:50px"><i style="width:${(p[7]||0)/mw*100}%;background:var(--acc)"></i></div></div>`},
+ {h:'浮动盈亏',v:p=>p[8],f:p=>pn(p[8])},{h:'盈亏%',v:p=>p[9],f:p=>pcn(p[9])},{h:'买入日',v:p=>p[11],t:1}];
+ const pst={k:8,d:-1};const dp=()=>{const q=$('posq').value.trim(),s=sl.value;const r=A.positions.filter(p=>(!q||p[0].includes(q)||(p[1]||'').includes(q))&&(!s||p[2]===s));
+  const pl=r.reduce((a,p)=>a+(p[8]||0),0);$('poscount').innerHTML=`${r.length} / ${A.positions.length} 只 · 浮动盈亏合计 ${pn(pl)}`;table('pos',PC,r,pst)};
+ $('posq').oninput=dp;sl.onchange=dp;dp();
+ $('posnote').textContent=`现价口径：${S.price_basis||'—'}。成本价为成交均价（不含手续费）；占比 = 市值 / 按此价格的净值 ¥${f0(S.nav_mark)}。袖子：A 事件袖、B LightGBM 袖、A+B 两袖都选中。`;
+ // pending
+ const OC=[{h:'信号日',v:o=>o[0],t:1},{h:'执行日',v:o=>o[1],t:1},{h:'代码',v:o=>o[2],t:1},{h:'名称',v:o=>o[3],t:1},{h:'方向',v:o=>o[4],f:o=>SIDE(o[4])},{h:'下单股数',v:o=>o[5],f:o=>f0(o[5])},{h:'目标持股',v:o=>o[6],f:o=>f0(o[6])},{h:'原因',v:o=>o[7],t:1},{h:'状态',v:o=>o[8],t:1}];
+ $('pendcount').textContent=A.pending.length?`${A.pending.length} 笔`:'暂无';table('pend',OC,A.pending,{k:4,d:1});
+ $('recentw').style.display=A.recent.length?'':'none';$('recentd').textContent=A.recent.length?`执行日 ${A.recent[0][1]} · ${A.recent.length} 笔`:'';table('recent',OC,A.recent,{k:8,d:-1});
+ // trades
+ const ds=[...new Set(A.trades.map(t=>t[0]))].sort().reverse();$('trd').innerHTML='<option value="">全部日期</option>'+ds.map(d=>`<option>${d}</option>`).join('');
+ const rs=[...new Set(A.trades.map(t=>t[9]))];$('trr').innerHTML='<option value="">全部原因</option>'+rs.map(d=>`<option>${esc(d)}</option>`).join('');
+ const TC=[{h:'日期',v:t=>t[0],t:1},{h:'代码',v:t=>t[1],t:1},{h:'名称',v:t=>t[2],t:1},{h:'方向',v:t=>t[3],f:t=>SIDE(t[3])},{h:'股数',v:t=>t[4],f:t=>f0(t[4])},{h:'成交价',v:t=>t[5],f:t=>f3(t[5])},{h:'成交额',v:t=>t[6],f:t=>f0(t[6])},{h:'费用',v:t=>t[7],f:t=>f2(t[7])},{h:'原因',v:t=>t[9],t:1,f:t=>`${esc(t[9])} <span class="sub">${esc(t[10])}</span>`}];
+ const tst={k:0,d:-1};const dt=()=>{const d=$('trd').value,q=$('trq').value.trim(),s=$('trs').value,rr=$('trr').value;
+  const r=A.trades.filter(t=>(!d||t[0]===d)&&(!q||t[1].includes(q)||(t[2]||'').includes(q))&&(!s||t[3]===s)&&(!rr||t[9]===rr));
+  const b=r.filter(t=>t[3]==='BUY').reduce((a,t)=>a+t[6],0),sl2=r.filter(t=>t[3]==='SELL').reduce((a,t)=>a+t[6],0),c=r.reduce((a,t)=>a+(t[7]||0),0);
+  $('trcount').textContent=`${r.length} 笔 · 买入 ¥${f0(b)} · 卖出 ¥${f0(sl2)} · 费用 ¥${f2(c)}`;table('trades',TC,r,tst)};
+ ['trd','trq','trs','trr'].forEach(i=>$(i)[i==='trq'?'oninput':'onchange']=dt);dt()}
+function research(){const R=D.research;if(!R){$('rm').innerHTML='<tr><td class="sub">暂无</td></tr>';return}
+ $('rm').innerHTML='<tr><th>策略</th><th class="l">角色</th><th>近5年 年化</th><th>近5年 最大回撤</th><th>近5年 夏普</th><th>全样本 年化</th><th>全样本 最大回撤</th><th>全样本 夏普</th></tr>'+
+  R.metrics.map(m=>`<tr><td>${esc(m[0])}</td><td class="t"><span class="chip">${m[1]}</span></td><td>${m[2]}%</td><td>${m[3]}%</td><td>${m[4]}</td><td>${m[5]}%</td><td>${m[6]}%</td><td>${m[7]}</td></tr>`).join('');
+ $('watch').textContent=R.watch?('当前'+R.watch.replace(/^观察名单/,'观察名单')):'';
+ $('ri').innerHTML='<tr><th>#</th><th class="l">时间（北京时间）</th><th class="l">假设</th><th class="l">结论</th><th class="l">判决</th></tr>'+
+  R.iterations.map((it,i)=>`<tr><td class="t">${it.n}</td><td class="t">${esc(it.date)}${it.title?'<br><span class="sub">'+esc(it.title)+'</span>':''}</td><td class="t" style="white-space:normal;min-width:180px">${it.hyp.map(esc).join('<br>')||'—'}</td><td class="t"><span class="tag ${it.tag}">${it.tag}</span></td><td class="t" style="white-space:normal;min-width:280px;font-size:12px">${it.verdict} <a href="#" data-i="${i}">详情</a></td></tr>`).join('');
+ $('ri').querySelectorAll('a[data-i]').forEach(a=>a.onclick=e=>{e.preventDefault();const it=R.iterations[+a.dataset.i];$('rdet').innerHTML=`<details open><summary>迭代 #${it.n} 全文</summary>${it.html}</details>`;$('rdet').scrollIntoView({behavior:'smooth'})})}
+function reports(){const s=$('rpd');s.innerHTML=D.reports.map((r,i)=>`<option value="${i}">${r.date}</option>`).join('');const dr=()=>$('rp').innerHTML=D.reports.length?D.reports[+s.value].html:'<div class="sub">暂无</div>';s.onchange=dr;dr()}
+fetch('data.json?t='+Date.now(),{cache:'no-store'}).then(r=>r.json()).then(d=>{D=d;
+ $('meta').textContent=`本地纸面交易账户（非真实资金）· 建仓 ${D.accounts.V7.summary.inception} · 数据更新于 ${D.gen}（北京时间）`;$('base').textContent=D.base;
+ $('acsw').innerHTML=Object.keys(D.accounts).map(a=>`<button data-a="${a}">${a}</button>`).join('');document.querySelectorAll('#acsw button').forEach(b=>b.onclick=()=>{ac=b.dataset.a;drawAcct()});
+ $('gen').textContent=`最后更新：${D.gen}（北京时间，Asia/Shanghai）`;
+ drawAcct();research();reports();addEventListener('resize',chart)}).catch(e=>{$('meta').textContent='数据加载失败：'+e});
+</script>
+</body></html>
