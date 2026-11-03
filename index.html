@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>美股盘后复盘 · 模拟盘</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--fg:#1d2330;--mute:#6b7280;--line:#e5e7eb;--up:#0a8f4e;--dn:#d0342c;--acc:#2563eb;--chip:#eef2ff}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1218;--card:#171b23;--fg:#e6e9ef;--mute:#9aa3b2;--line:#2a303b;--up:#34c77b;--dn:#ff6b62;--acc:#6ea0ff;--chip:#1f2638}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.5 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",Segoe UI,Roboto,sans-serif}
+.wrap{max-width:1100px;margin:0 auto;padding:16px}
+h1{font-size:22px;margin:4px 0}h2{font-size:16px;margin:0 0 10px}
+.sub{color:var(--mute);font-size:12.5px}.badge{display:inline-block;background:#f59e0b;color:#fff;border-radius:6px;padding:1px 8px;font-size:12px;margin-left:6px;vertical-align:middle}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin:12px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px}.kpi .l{color:var(--mute);font-size:12px}.kpi .v{font-size:19px;font-weight:600;font-variant-numeric:tabular-nums}.kpi .s{font-size:12px;color:var(--mute)}
+.up{color:var(--up)}.dn{color:var(--dn)}
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums;font-size:13px}
+th,td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}th{color:var(--mute);font-weight:500;position:sticky;top:0;background:var(--card)}
+th:first-child,td:first-child,.l{text-align:left}th.s{cursor:pointer;user-select:none}th.s:hover{color:var(--acc)}
+td.reason{text-align:left;color:var(--mute);font-size:12px;white-space:normal;min-width:180px}
+.chip{display:inline-block;background:var(--chip);border-radius:5px;padding:0 6px;font-size:12px}
+.bar{height:6px;background:var(--line);border-radius:3px;min-width:60px;position:relative}.bar i{position:absolute;top:0;height:6px;border-radius:3px}
+ul{margin:4px 0;padding-left:20px}li{margin:3px 0}
+.seg button{border:1px solid var(--line);background:var(--card);color:var(--fg);padding:3px 10px;border-radius:6px;cursor:pointer;font-size:12px}.seg button.on{background:var(--acc);color:#fff;border-color:var(--acc)}
+svg text{fill:var(--mute);font-size:11px}
+.foot{color:var(--mute);font-size:12px;text-align:center;margin:20px 0}
+</style>
+</head>
+<body><div class="wrap">
+<h1>美股盘后复盘 <span class="badge">模拟盘</span></h1>
+<div class="sub" id="meta"></div>
+<div class="kpis" id="kpis" style="margin-top:12px"></div>
+<div class="card"><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px"><h2 style="margin:0">净值曲线</h2><div class="seg" id="seg"><button data-k="d" class="on">日线</button><button data-k="i">当日盘中</button></div></div><div id="chart"></div></div>
+<div class="card"><h2>点评与策略状态</h2><ul id="notes"></ul><div id="flagsw"><div class="sub" style="margin-top:8px">需要留意</div><ul id="flags"></ul></div></div>
+<div class="card"><h2>板块敞口与盈亏</h2><div class="tw"><table id="groups"></table></div></div>
+<div class="card"><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px"><h2 style="margin:0">当前持仓 <span class="sub" id="poscount"></span></h2><div class="seg" id="gf"></div></div><div class="sub" style="margin:4px 0 8px">点表头排序</div><div class="tw"><table id="pos"></table></div></div>
+<div class="card"><h2>已平仓 / 减仓部分的已实现盈亏</h2><div class="sub" id="realsum"></div><div class="tw"><table id="real"></table></div></div>
+<div class="card"><h2>当日操作 <span class="sub" id="tsum"></span></h2><div class="tw"><table id="trades"></table></div></div>
+<div class="foot">数据来源：Alpaca 模拟交易账户（paper trading，非真实资金）。仅为个人记录，不构成任何投资建议。<br>时间均为北京时间。</div>
+</div>
+<script>
+const D={"gen":"2026-11-03 13:50","session":"2026-11-02","sessionBj":"11-02 22:30 – 11-03 05:00","acct":{"equity":998929.41,"last_equity":962667.55,"day_pl":36261.86,"day_pl_pct":0.0377,"cum_pl":-1070.59,"cum_pl_pct":-0.0011,"cash":1021223.16,"long_mv":565272.34,"short_mv":-587566.09,"gross":1152838.43,"net":-22293.75,"gross_pct":1.1541,"net_pct":-0.0223,"peak":1005065.31,"dd_from_peak":-0.0061,"dd_usd":-6135.9},"pos":[["MU","MU","short",-209.0,951.08,838.65,-175277.85,23497.65,0.1182,9233.6,-0.1755,"memory",false],["CRWV","CRWV","short",-1892.0,55.68,50.25,-95073.0,10278.82,0.0976,5987.84,-0.0952,"neocloud_credit",false],["ANET","ANET","long",566.0,182.73,165.3,93559.8,-9865.66,-0.0954,-1809.9,0.0937,"ai_compute",false],["VRT","VRT","long",398.0,233.42,222.01,88359.98,-4540.34,-0.0489,-3950.48,0.0885,"ai_compute",false],["ORCL","ORCL","short",-694.0,134.71,119.54,-82960.76,10528.36,0.1126,7992.41,-0.083,"neocloud_credit",false],["WDC","WDC","short",-202.0,371.18,337.9,-68255.8,6722.45,0.0897,6878.42,-0.0683,"memory",false],["AMD","AMD","long",116.0,499.98,471.0,54636.0,-3361.68,-0.058,-3967.2,0.0547,"ai_compute",false],["TSM","TSM","long",136.0,436.95,398.87,54246.32,-5179.28,-0.0872,-969.68,0.0543,"ai_compute",false],["STX","STX","short",-89.0,650.59,592.12,-52698.68,5203.68,0.0899,4321.97,-0.0528,"memory",false],["AVGO","AVGO","long",149.0,350.9,323.35,48179.15,-4104.95,-0.0785,-417.94,0.0482,"ai_compute",false],["NVDA","NVDA","long",195.0,219.33,203.33,39649.35,-3120.0,-0.073,-278.85,0.0397,"ai_compute",false],["WDC261204P00375000","WDC 12/04 375P","long",8.0,30.25,46.0,36800.0,12600.0,0.5207,10800.0,0.0368,"memory",true],["SNDK","SNDK","short",-31.0,1303.37,1080.0,-33480.0,6924.56,0.1714,2709.49,-0.0335,"memory",false],["CRWV261204P00055000","CRWV 12/04 55P","long",32.0,6.45,9.6,30720.0,10080.0,0.4884,7168.0,0.0308,"neocloud_credit",true],["WDC261204P00350000","WDC 12/04 350P","short",-8.0,15.75,37.45,-29960.0,-17360.0,-1.3778,-12176.0,-0.03,"memory",true],["CRWV261204P00051000","CRWV 12/04 51P","short",-32.0,4.25,7.5,-24000.0,-10400.0,-0.7647,-6368.0,-0.024,"neocloud_credit",true],["ARM","ARM","long",118.0,225.49,196.78,23220.04,-3388.34,-0.1273,-1080.88,0.0232,"ai_compute",false],["CRWV261106P00058000","CRWV 11/06 58P","long",23.0,4.3,8.35,19205.0,9315.0,0.9419,7590.0,0.0192,"neocloud_credit",true],["SNDK261204P01210000","SNDK 12/04 1210P","long",1.0,91.0,181.6,18160.0,9060.0,0.9956,5651.0,0.0182,"memory",true],["MU261204P00875000","MU 12/04 875P","long",2.0,41.2,80.2,16040.0,7800.0,0.9466,3300.0,0.0161,"memory",true],["STX261204P00645000","STX 12/04 645P","long",2.0,51.5,75.1,15020.0,4720.0,0.4582,3978.0,0.015,"memory",true],["ALAB","ALAB","long",62.0,233.31,230.35,14281.7,-183.4,-0.0127,-1629.71,0.0143,"ai_compute",false],["SNDK261204P01120000","SNDK 12/04 1120P","short",-1.0,46.8,132.6,-13260.0,-8580.0,-1.8333,-4533.0,-0.0133,"memory",true],["STX261204P00600000","STX 12/04 600P","short",-2.0,23.9,63.0,-12600.0,-7820.0,-1.636,-4720.0,-0.0126,"memory",true],["ORCL261204P00121000","ORCL 12/04 121P","long",13.0,6.3,8.95,11635.0,3445.0,0.4206,5135.0,0.0116,"neocloud_credit",true],["AVGO261106C00345000","AVGO 11/06 345C","long",10.0,9.0,1.56,1560.0,-7440.0,-0.8267,-600.0,0.0016,"ai_compute",true]],"groups":[["memory","存储",86020.0,-385532.33,-299512.33,-0.2998,42768.34,9913.58,28188.48,11],["ai_compute","AI 算力",417692.34,0.0,417692.34,0.4181,-41183.65,-25069.48,-14356.33,9],["neocloud_credit","新云/信用",61560.0,-202033.76,-140473.76,-0.1406,33247.18,-15319.66,27505.25,6],["other","其他",0.0,0.0,0.0,0.0,0.0,-29.95,0.0,0]],"real":[["AMD","ai_compute","部分减仓",451.0,-13084.34,0],["ORCL","neocloud_credit","部分减仓",2599.0,-11433.8,9526.33],["SMH","ai_compute","已清仓",262.0,-3706.1,789.4],["CRWV","neocloud_credit","部分减仓",1362.0,-3365.86,0],["TSM","ai_compute","部分减仓",312.0,-2633.52,0],["NVDA","ai_compute","部分减仓",585.0,-2631.97,0],["ALAB","ai_compute","部分减仓",72.0,-2322.64,-2447.9],["AVGO","ai_compute","部分减仓",662.0,-2024.0,0],["STX","memory","部分减仓",51.0,-985.76,0],["SNDK 12/04 1230P","memory","已清仓",1.0,-950.0,0],["SNDK 12/04 1140P","memory","已清仓",1.0,-860.0,0],["ORCL 12/04 123P","neocloud_credit","已清仓",13.0,-520.0,0],["VRT 10/30 200P","ai_compute","已清仓",1.0,-165.0,0],["SOXS","other","已清仓",688.0,-29.86,0],["ANET","ai_compute","部分减仓",31.0,-11.47,0],["SPY","other","已清仓",1.0,-0.09,0],["ARM","ai_compute","部分减仓",77.0,80.04,0],["MU","memory","部分减仓",26.0,1353.55,0],["VRT","ai_compute","部分减仓",42.0,1429.52,0],["MU 11/04 925P","memory","已清仓",3.0,2745.0,2745.0],["SNDK","memory","部分减仓",55.0,3960.75,2709.73],["WDC","memory","部分减仓",234.0,4650.04,2874.47]],"trades":[["22:30:09","MU 11/04 925P","卖出平仓",3.0,42.4,12720.0,2745.0,"backfill|close_position_or_external",1],["22:32:48","WDC","回补空头",41.0,362.3,14854.3,763.01,"存储空头 · 目标调仓 · 盘中/ladder0",1],["22:39:13","CRWV","卖空开仓",972.0,52.71,51234.12,null,"新云债务空头 · 目标调仓 · 盘中/ladder0",1],["22:42:05","ORCL","卖空开仓",276.0,124.92,34477.8,null,"举债资本开支空头 · 目标调仓 · 盘中/ladder0",2],["22:50:12","WDC","回补空头",25.0,355.9,8897.42,625.33,"存储空头 · 目标调仓 · 盘中/ladder0",5],["23:16:55","SMH","卖出平仓",65.0,528.24,34335.51,789.4,"SMH β 反弹多 · 目标调仓 · 盘中/ladder0",4],["00:21:51","WDC","回补空头",55.0,350.96,19302.99,1486.13,"存储空头 · 目标调仓 · 盘中/ladder0",2],["01:26:38","ALAB","买入开仓",5.0,244.6,1223.02,null,"投降式超跌多 · 目标调仓 · 盘中/ladder0",2],["01:50:04","MU","卖空开仓",10.0,848.2,8482.02,null,"存储空头 · 目标调仓 · 盘中/ladder0",3],["01:53:06","STX","卖空开仓",8.0,602.42,4819.39,null,"存储空头(财报) · 目标调仓 · 盘中/ladder0",4],["02:25:26","ANET","买入开仓",47.0,165.27,7767.69,null,"超跌反弹多 · 目标调仓 · 盘中/ladder0",1],["02:46:48","ORCL","回补空头",178.0,121.11,21557.58,4480.26,"backfill|submit_delta_unlogged",2],["02:48:19","SNDK","回补空头",10.0,1104.41,11044.15,2709.73,"存储空头 · 目标调仓 · 盘中/ladder0",2],["03:03:40","ORCL","卖空开仓",200.0,121.32,24264.0,null,"举债资本开支空头 · 目标调仓 · 盘中/ladder0",1],["03:13:56","ORCL","回补空头",194.0,120.27,23332.25,5046.07,"举债资本开支空头 · 目标调仓 · 盘中/ladder0",4],["03:21:45","ALAB","卖出平仓",59.0,233.01,13747.59,-2447.9,"backfill|close_position_or_external",2],["03:23:09","ALAB","买入开仓",62.0,233.31,14465.1,null,"投降式超跌多 · 目标调仓 · 盘中/ladder0",5],["03:27:15","VRT","买入开仓",32.0,225.14,7204.48,null,"投降式超跌多 · 目标调仓 · 盘中/ladder0",1],["03:51:27","CRWV","卖空开仓",156.0,50.19,7829.64,null,"新云债务空头 · 目标调仓 · 盘中/ladder0",1]],"tsum":{"n_fills":44,"n_orders":19,"turnover":321559.05,"buy_amt":129648.98,"sell_amt":191910.07,"realized_today":16197.03,"day_pl_attrib":41337.4,"closed_today_pl":{"MU261104P00925000":2745.0,"SMH":348.31},"prev_session":"2026-10-30"},"recon":{"realized_total":-30505.51,"unrealized_total":34831.87,"unrealized_fifo":29484.3,"gap_fifo":-0.07,"fees":-49.31,"deposits":1000000.0,"sum":4277.05,"cum_pl":-1070.59,"gap":-5347.64,"cash_calc":1021223.23,"cash_alpaca":1021223.16,"cash_gap":-0.07,"n_fills_all":586},"hist":[["10-23",1000000.0],["10-26",1000000.0],["10-27",991203.05],["10-28",941449.67],["10-29",954339.76],["10-30",962667.55],["11-02",998929.41]],"dayAttrib":41337.4,"notes":["存储：信号分 -40.8，逻辑破位 → 全面做空","新云/信用：信号分 -51.5，逻辑破位 → 全面做空","AI 算力：信号分 -31.3，估值压缩 → 只做超跌反弹、不加多","AI 多头中性减仓规则仍生效（粘性，自 2026-10-30 起）：AMD/TSM/AVGO/NVDA/SMH 持仓上限为触发时的 0.5 倍，不再加仓","策略书更新于 2026-11-03 08:40（北京时间）"],"flags":["ORCL 当日开仓 2 次、平仓 2 次，来回调仓（围绕目标仓位的阶梯单反复成交）","Alpaca 持仓浮盈口径（均价成本）与 FIFO 口径相差 +5,348；按 FIFO 剩余批次成本计算则 已实现+浮盈+费用 与 净值−100万 只差 -0.07","按标的归因的今日盈亏合计 +41,337，账户口径 +36,262，差额主要来自期权前收价口径与夜盘标价"],"intraday":[["17:02",953682.82],["17:09",954483.9],["17:12",954287.49],["17:28",953242.82],["17:30",953325.33],["17:44",954111.12],["17:47",953939.05],["18:03",954082.58],["18:14",952999.85],["18:18",953265.52],["18:34",953695.04],["18:39",953670.44],["18:42",953679.39],["18:54",953281.39],["18:58",953341.9],["19:05",953584.42],["19:14",954131.24],["19:18",954280.48],["19:29",953703.59],["19:34",953940.44],["19:44",953674.82],["19:47",953590.78],["19:53",953667.64],["19:59",953755.41],["20:00",953624.51],["20:08",954285.18],["20:11",953114.32],["20:33",943547.73],["20:39",942775.37],["20:43",943123.25],["20:48",943287.08],["21:03",943772.53],["21:09",942459.11],["21:13",943917.63],["21:18",945825.81],["21:23",950109.42],["21:25",950688.6],["21:33",949532.07],["21:37",948686.78],["21:49",947877.07],["21:52",948461.47],["22:04",949165.86],["22:06",948412.0],["22:15",949015.11],["22:24",950730.18],["22:29",951341.79],["22:34",962483.93],["22:39",965700.35],["22:42",967430.75],["22:49",970478.3],["22:54",973644.46],["22:59",976574.13],["23:04",971875.81],["23:09",974052.2],["23:19",973805.59],["23:24",970599.41],["23:29",969764.17],["23:34",971693.59],["23:39",971295.76],["23:44",968789.52],["23:49",972622.97],["23:54",974403.16],["23:57",974876.53],["00:04",977399.72],["00:09",978467.63],["00:14",981027.98],["00:19",978446.51],["00:24",979753.58],["00:28",980408.88],["00:33",978879.85],["00:38",979236.85],["00:53",980738.14],["00:58",983117.4],["01:04",982509.06],["01:09",983495.14],["01:13",983503.55],["01:29",982886.36],["01:34",983040.38],["01:38",983974.36],["01:44",984894.4],["01:49",985530.55],["01:54",985517.79],["01:59",983846.64],["02:04",982842.0],["02:09",984284.68],["02:19",988548.85],["02:24",990435.91],["02:29",991365.24],["02:34",993956.51],["02:38",992922.3],["02:49",992141.58],["02:54",992316.03],["02:59",992720.4],["03:04",993693.88],["03:09",994834.49],["03:19",996834.67],["03:24",997677.87],["03:29",994850.37],["03:33",996980.73],["03:39",997690.95],["03:44",999015.95],["03:49",1001712.1],["03:54",999994.25],["03:59",997514.93],["04:04",998483.18],["04:09",999128.8],["04:24",997023.87],["04:29",999066.46],["04:34",1001294.47],["04:39",1002438.8],["04:44",1003251.03],["04:49",1003410.02],["04:54",1002262.74],["04:59",1000156.57],["05:03",998678.97],["05:08",999660.5],["05:12",999214.27],["05:29",999017.61],["05:30",997346.77],["05:48",998000.03],["05:53",998475.24],["05:58",997557.75],["06:04",998779.55],["08:01",997761.64],["08:09",997973.61],["08:10",998195.25],["08:24",997688.5],["08:34",997171.97],["08:39",996940.08],["08:49",998300.56]]};
+const $=id=>document.getElementById(id);
+const f0=x=>x==null?'—':Math.round(x).toLocaleString('en-US');
+const f2=x=>x==null?'—':Number(x).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+const sg=(x,fn=f0)=>x==null?'—':(x>0?'+':'')+fn(x);
+const pc=(x,d=1)=>x==null?'—':(x>0?'+':'')+(x*100).toFixed(d)+'%';
+const cl=x=>x>0?'up':x<0?'dn':'';
+const pn=(x,fn=f0)=>`<span class="${cl(x)}">${sg(x,fn)}</span>`;
+const GZ={memory:'存储',ai_compute:'AI 算力',neocloud_credit:'新云/信用',other:'其他'};
+const a=D.acct;
+$('meta').innerHTML=`模拟账户 · 交易日 ${D.session}（美东）· 北京时间 ${D.sessionBj} · 数据更新于 ${D.gen}（北京时间）`;
+const K=[['净值','$'+f2(a.equity),`起始 $1,000,000`],['当日盈亏',pn(a.day_pl),pc(a.day_pl_pct,2)],['累计盈亏',pn(a.cum_pl),pc(a.cum_pl_pct,2)],
+['已实现（累计）',pn(D.recon.realized_total),`当日 ${sg(D.tsum.realized_today)}`],['浮动盈亏',pn(D.recon.unrealized_total),'均价成本口径'],
+['多头市值','$'+f0(a.long_mv),''],['空头市值','$'+f0(a.short_mv),''],['总敞口',pc(a.gross_pct,0).replace('+',''),'$'+f0(a.gross)],['净敞口',pc(a.net_pct,1),'$'+f0(a.net)],
+['峰值回撤',pc(a.dd_from_peak,2),`峰值 $${f0(a.peak)}`]];
+$('kpis').innerHTML=K.map(k=>`<div class="kpi"><div class="l">${k[0]}</div><div class="v">${k[1]}</div><div class="s">${k[2]}</div></div>`).join('');
+$('notes').innerHTML=(D.notes||[]).map(n=>`<li>${n}</li>`).join('');
+if(D.flags&&D.flags.length)$('flags').innerHTML=D.flags.map(n=>`<li>${n}</li>`).join('');else $('flagsw').style.display='none';
+// chart
+function chart(pts,lab){const W=Math.max(320,$('chart').clientWidth||600),H=220,P={l:62,r:12,t:12,b:26};
+ if(!pts||pts.length<2){$('chart').innerHTML='<div class="sub">暂无数据</div>';return}
+ const ys=pts.map(p=>p[1]);let lo=Math.min(...ys,lab==='d'?1e6:Infinity),hi=Math.max(...ys,lab==='d'?1e6:-Infinity);const pad=(hi-lo)*.08||1000;lo-=pad;hi+=pad;
+ const X=i=>P.l+i*(W-P.l-P.r)/(pts.length-1),Y=v=>P.t+(hi-v)*(H-P.t-P.b)/(hi-lo);
+ let s=`<svg width="100%" viewBox="0 0 ${W} ${H}">`;for(let k=0;k<=4;k++){const v=lo+(hi-lo)*k/4;s+=`<line x1="${P.l}" x2="${W-P.r}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--line)"/><text x="${P.l-6}" y="${Y(v)+4}" text-anchor="end">${(v/1000).toFixed(0)}k</text>`}
+ if(lab==='d'&&lo<1e6&&hi>1e6)s+=`<line x1="${P.l}" x2="${W-P.r}" y1="${Y(1e6)}" y2="${Y(1e6)}" stroke="var(--mute)" stroke-dasharray="4 4"/>`;
+ const last=ys[ys.length-1],col=last>=(lab==='d'?1e6:ys[0])?'var(--up)':'var(--dn)';
+ s+=`<polyline fill="none" stroke="${col}" stroke-width="2" points="${pts.map((p,i)=>X(i)+','+Y(p[1])).join(' ')}"/>`;
+ const step=Math.max(1,Math.ceil(pts.length/7));pts.forEach((p,i)=>{if(i%step===0||i===pts.length-1)s+=`<text x="${X(i)}" y="${H-8}" text-anchor="middle">${p[0]}</text>`});
+ if(lab==='d')pts.forEach((p,i)=>s+=`<circle cx="${X(i)}" cy="${Y(p[1])}" r="3" fill="${col}"><title>${p[0]}  $${f0(p[1])}</title></circle>`);
+ $('chart').innerHTML=s+'</svg>'}
+let ck='d';const drawC=()=>chart(ck==='d'?D.hist:D.intraday,ck);
+document.querySelectorAll('#seg button').forEach(b=>b.onclick=()=>{ck=b.dataset.k;document.querySelectorAll('#seg button').forEach(x=>x.classList.toggle('on',x===b));drawC()});
+if(!D.intraday||D.intraday.length<2)document.querySelector('#seg [data-k=i]').style.display='none';
+drawC();addEventListener('resize',drawC);
+// groups
+$('groups').innerHTML='<tr><th>板块</th><th>多头</th><th>空头</th><th>净敞口</th><th>净占比</th><th>浮动盈亏</th><th>已实现</th><th>当日盈亏</th><th>持仓数</th></tr>'+
+ D.groups.filter(g=>g[9]||g[7]).map(g=>`<tr><td>${g[1]}</td><td>${f0(g[2])}</td><td>${f0(g[3])}</td><td>${f0(g[4])}</td><td>${pc(g[5])}</td><td>${pn(g[6])}</td><td>${pn(g[7])}</td><td>${pn(g[8])}</td><td>${g[9]}</td></tr>`).join('');
+// positions
+const PC=[['标的',1,'s'],['方向',2,'s'],['数量',3],['均价',4],['现价',5],['市值',6],['占比',10],['浮动盈亏',7],['浮盈%',8],['当日盈亏',9],['板块',11,'s']];
+let sk=10,sd=-1,gsel='all';
+const gs=['all',...new Set(D.pos.map(p=>p[11]))];
+$('gf').innerHTML=gs.map(g=>`<button data-g="${g}" class="${g==='all'?'on':''}">${g==='all'?'全部':GZ[g]||g}</button>`).join('');
+document.querySelectorAll('#gf button').forEach(b=>b.onclick=()=>{gsel=b.dataset.g;document.querySelectorAll('#gf button').forEach(x=>x.classList.toggle('on',x===b));drawP()});
+function drawP(){let r=D.pos.filter(p=>gsel==='all'||p[11]===gsel);
+ r.sort((x,y)=>{let u=x[sk],v=y[sk];if(sk===10||sk===6){u=Math.abs(u);v=Math.abs(v)}return (typeof u==='string'?u.localeCompare(v):(u-v))*sd});
+ const mw=Math.max(...D.pos.map(p=>Math.abs(p[10])));
+ $('poscount').textContent=`共 ${D.pos.length} 个`;
+ $('pos').innerHTML='<tr>'+PC.map(c=>`<th class="s" data-k="${c[1]}">${c[0]}${sk===c[1]?(sd>0?' ▲':' ▼'):''}</th>`).join('')+'</tr>'+
+ r.map(p=>`<tr><td>${p[1]}${p[12]?' <span class="chip">期权</span>':''}</td><td class="${p[2]==='short'?'dn':'up'}">${p[2]==='short'?'空':'多'}</td><td>${f0(p[3])}</td><td>${f2(p[4])}</td><td>${f2(p[5])}</td><td>${f0(p[6])}</td>`+
+ `<td><div style="display:flex;gap:6px;align-items:center;justify-content:flex-end">${pc(Math.abs(p[10])).replace('+','')}<div class="bar" style="width:60px"><i style="width:${Math.abs(p[10])/mw*100}%;background:${p[10]<0?'var(--dn)':'var(--up)'}"></i></div></div></td>`+
+ `<td>${pn(p[7])}</td><td>${pn(p[8]==null?null:p[8]*100,x=>x.toFixed(1)+'%')}</td><td>${pn(p[9])}</td><td>${GZ[p[11]]||p[11]}</td></tr>`).join('');
+ document.querySelectorAll('#pos th.s').forEach(t=>t.onclick=()=>{const k=+t.dataset.k;if(k===sk)sd=-sd;else{sk=k;sd=(k===1||k===2||k===11)?1:-1}drawP()})}
+drawP();
+// realized
+const rt=D.real.reduce((s,r)=>s+r[4],0),rd=D.real.reduce((s,r)=>s+(r[5]||0),0);
+$('realsum').innerHTML=`合计 ${pn(rt)}，其中当日 ${pn(rd)}（FIFO 口径）`;
+$('real').innerHTML='<tr><th>标的</th><th>状态</th><th>板块</th><th>已平数量</th><th>已实现（累计）</th><th>当日已实现</th></tr>'+
+ D.real.slice().sort((x,y)=>x[4]-y[4]).map(r=>`<tr><td>${r[0]}</td><td><span class="chip">${r[2]}</span></td><td>${GZ[r[1]]||r[1]}</td><td>${f0(r[3])}</td><td>${pn(r[4])}</td><td>${r[5]?pn(r[5]):'—'}</td></tr>`).join('');
+// trades
+const t=D.tsum;$('tsum').textContent=`${t.n_orders} 笔委托 / ${t.n_fills} 次成交 · 成交额 $${f0(t.turnover)}`;
+$('trades').innerHTML='<tr><th>时间</th><th>标的</th><th>操作</th><th>数量</th><th>均价</th><th>金额</th><th>已实现</th><th class="l">原因</th></tr>'+
+ D.trades.map(o=>`<tr><td>${o[0]}</td><td>${o[1]}</td><td>${o[2]}</td><td>${f0(o[3])}</td><td>${f2(o[4])}</td><td>${f0(o[5])}</td><td>${o[6]==null?'—':pn(o[6])}</td><td class="reason">${o[7]||''}</td></tr>`).join('');
+</script>
+</body></html>
