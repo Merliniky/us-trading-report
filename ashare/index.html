@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>A股模拟盘 · V7 / V10</title>
+<title>A股模拟盘 · V7b / V10 / V11</title>
 <style>
 :root{--bg:#f6f7f9;--card:#fff;--fg:#1d2330;--mute:#6b7280;--line:#e5e7eb;--up:#d0342c;--dn:#0a8f4e;--acc:#2563eb;--chip:#eef2ff}
 @media (prefers-color-scheme:dark){:root{--bg:#0f1218;--card:#171b23;--fg:#e6e9ef;--mute:#9aa3b2;--line:#2a303b;--up:#ff6b62;--dn:#34c77b;--acc:#6ea0ff;--chip:#1f2638}}
@@ -67,9 +67,9 @@ function table(id,cols,rows,st){const T=$(id);st=st||{k:null,d:-1};
   T.querySelectorAll('th.s').forEach(th=>th.onclick=()=>{const i=+th.dataset.i;if(st.k===i)st.d=-st.d;else{st.k=i;st.d=cols[i].t?1:-1}draw()})};
  draw();return st}
 const SIDE=s=>s==='BUY'?'<span class="up">买入</span>':'<span class="dn">卖出</span>';
-const ST_DESC={V7:'V7（当前最佳）：每袖子 150 只；崩盘退出 ≥5 日且站上 MA20',V10:'V10（候选）：每袖子 50 只；崩盘退出 ≥2 日或自低点反弹 ≥8%'};
+const ST_DESC={V7:'V7b（当前最佳；2026-11-10 起由 V7 切换，净值连续）：每袖子 150 只；常态 80%微盘+20% ETF；崩盘退出 站上MA20≥2日或自低点反弹≥10%；崩盘中反弹≥5%先回补到 65%',V10:'V10（候选）：每袖子 50 只；崩盘退出 ≥2 日或自低点反弹 ≥8%',V11:'V11（新候选，2026-11-11 建仓）：V10 两袖各 50 只；常态 100%微盘、无 ETF；拥挤 60%；崩盘 45%+现金，反弹≥5%回补到 65%；退出 站上MA20≥2日或反弹≥10%'};
 function chart(){const W=Math.max(320,$('chart').clientWidth||600),H=240,P={l:52,r:12,t:12,b:26};
- const ser=[['V7',D.accounts.V7.nav,'#2563eb'],['V10',D.accounts.V10.nav,'#f59e0b']];
+ const _C=['#2563eb','#f59e0b','#7c3aed','#0891b2'];const ser=Object.keys(D.accounts).map((a,i)=>[D.accounts[a].summary.label||a,D.accounts[a].nav,_C[i%4]]);
  const base=D.base;const norm=(arr)=>{const b=arr.filter(p=>p[0]<=base).pop()||arr[0];return arr.filter(p=>p[0]>=base).map(p=>[p[0],p[1]/b[1]*1e6])};
  ser.push(['沪深300',norm(D.bench.csi300),'#9ca3af'],['基金 004685',norm(D.bench.fund),'#10b981']);
  const S=ser.map(s=>[s[0],s[1].filter(p=>p[0]>=base),s[2]]);
@@ -124,7 +124,7 @@ function research(){const R=D.research;if(!R){$('rm').innerHTML='<tr><td class="
 function reports(){const s=$('rpd');s.innerHTML=D.reports.map((r,i)=>`<option value="${i}">${r.date}</option>`).join('');const dr=()=>$('rp').innerHTML=D.reports.length?D.reports[+s.value].html:'<div class="sub">暂无</div>';s.onchange=dr;dr()}
 fetch('data.json?t='+Date.now(),{cache:'no-store'}).then(r=>r.json()).then(d=>{D=d;
  $('meta').textContent=`本地纸面交易账户（非真实资金）· 建仓 ${D.accounts.V7.summary.inception} · 数据更新于 ${D.gen}（北京时间）`;$('base').textContent=D.base;
- $('acsw').innerHTML=Object.keys(D.accounts).map(a=>`<button data-a="${a}">${a}</button>`).join('');document.querySelectorAll('#acsw button').forEach(b=>b.onclick=()=>{ac=b.dataset.a;drawAcct()});
+ $('acsw').innerHTML=Object.keys(D.accounts).map(a=>`<button data-a="${a}">${D.accounts[a].summary.label||a}</button>`).join('');document.querySelectorAll('#acsw button').forEach(b=>b.onclick=()=>{ac=b.dataset.a;drawAcct()});
  $('gen').textContent=`最后更新：${D.gen}（北京时间，Asia/Shanghai）`;
  drawAcct();research();reports();addEventListener('resize',chart)}).catch(e=>{$('meta').textContent='数据加载失败：'+e});
 </script>
