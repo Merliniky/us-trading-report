@@ -1,7 +1,7 @@
 {
- "gen": "2026-11-12 04:42",
- "session": "2026-11-10",
- "sessionBj": "11-10 22:30 – 11-11 05:00",
+ "gen": "2026-11-12 05:41",
+ "session": "2026-11-11",
+ "sessionBj": "11-11 22:30 – 11-12 05:00",
  "acct": {
   "equity": 960605.51,
   "last_equity": 1115653.87,
@@ -31,7 +31,7 @@
    0.0,
    0.0,
    61255.97,
-   1410.21,
+   -51908.9,
    0
   ],
   [
@@ -43,7 +43,7 @@
    0.0,
    0.0,
    -34590.51,
-   272.25,
+   -47940.95,
    0
   ],
   [
@@ -55,7 +55,7 @@
    0.0,
    0.0,
    -65923.77,
-   -256.06,
+   759.64,
    0
   ],
   [
@@ -78,7 +78,7 @@
    "已清仓",
    8.0,
    -22360.0,
-   0
+   -22360.0
   ],
   [
    "CRWV",
@@ -86,7 +86,7 @@
    "已清仓",
    6652.0,
    -16691.17,
-   2955.81
+   -25186.51
   ],
   [
    "ORCL",
@@ -94,7 +94,7 @@
    "已清仓",
    4489.0,
    -15869.34,
-   0
+   -8435.85
   ],
   [
    "AMD",
@@ -102,7 +102,7 @@
    "已清仓",
    683.0,
    -13824.68,
-   0
+   6735.9
   ],
   [
    "NVDA 11/16 175P",
@@ -110,7 +110,7 @@
    "已清仓",
    228.0,
    -12580.0,
-   0
+   -12580.0
   ],
   [
    "CRWV 12/04 55P",
@@ -118,7 +118,7 @@
    "已清仓",
    32.0,
    -12480.0,
-   0
+   -12480.0
   ],
   [
    "SNDK 12/04 1120P",
@@ -126,7 +126,7 @@
    "已清仓",
    1.0,
    -12060.0,
-   0
+   -12060.0
   ],
   [
    "NVDA 11/16 172.5P",
@@ -134,7 +134,7 @@
    "已清仓",
    72.0,
    -10140.0,
-   0
+   -10140.0
   ],
   [
    "STX 12/04 600P",
@@ -142,7 +142,7 @@
    "已清仓",
    2.0,
    -9140.0,
-   0
+   -9140.0
   ],
   [
    "AVGO 11/06 345C",
@@ -158,7 +158,7 @@
    "已清仓",
    830.0,
    -7577.06,
-   0
+   6.02
   ],
   [
    "VRT",
@@ -166,7 +166,7 @@
    "已清仓",
    838.0,
    -6643.47,
-   0
+   1178.28
   ],
   [
    "TSM",
@@ -174,7 +174,7 @@
    "已清仓",
    584.0,
    -4241.83,
-   0
+   4450.89
   ],
   [
    "ALAB",
@@ -190,7 +190,7 @@
    "已清仓",
    13.0,
    -3835.0,
-   0
+   -3835.0
   ],
   [
    "SMH",
@@ -198,7 +198,7 @@
    "已清仓",
    584.0,
    -3783.96,
-   0
+   2033.78
   ],
   [
    "AVGO",
@@ -206,7 +206,7 @@
    "已清仓",
    960.0,
    -2884.13,
-   0
+   5464.37
   ],
   [
    "NVDA 11/16 177.5P",
@@ -214,7 +214,7 @@
    "已清仓",
    26.0,
    -1070.0,
-   0
+   -1070.0
   ],
   [
    "SNDK 12/04 1230P",
@@ -238,7 +238,7 @@
    "已清仓",
    296.0,
    -628.3,
-   0
+   2912.02
   ],
   [
    "ORCL 12/04 123P",
@@ -286,7 +286,7 @@
    "已清仓",
    368.0,
    4505.12,
-   0
+   409.14
   ],
   [
    "CRWV 11/06 58P",
@@ -302,7 +302,7 @@
    "已清仓",
    2.0,
    7490.0,
-   0
+   7490.0
   ],
   [
    "STX 12/04 645P",
@@ -310,7 +310,7 @@
    "已清仓",
    2.0,
    7660.0,
-   0
+   7660.0
   ],
   [
    "CRWV 12/04 51P",
@@ -318,7 +318,7 @@
    "已清仓",
    32.0,
    8480.0,
-   0
+   8480.0
   ],
   [
    "ANET",
@@ -326,7 +326,7 @@
    "已清仓",
    1213.0,
    9563.65,
-   0
+   15828.05
   ],
   [
    "SNDK",
@@ -334,7 +334,7 @@
    "已清仓",
    233.0,
    10064.61,
-   0
+   -1190.65
   ],
   [
    "SNDK 12/04 1210P",
@@ -342,7 +342,7 @@
    "已清仓",
    1.0,
    13430.0,
-   0
+   13430.0
   ],
   [
    "WDC",
@@ -350,7 +350,7 @@
    "已清仓",
    1181.0,
    15807.92,
-   -12.02
+   -12284.6
   ],
   [
    "MU",
@@ -358,7 +358,7 @@
    "已清仓",
    611.0,
    21203.32,
-   -140.43
+   -23546.17
   ],
   [
    "WDC 12/04 375P",
@@ -366,92 +366,2326 @@
    "已清仓",
    8.0,
    23720.0,
-   0
+   23720.0
   ]
  ],
  "trades": [
   [
-   "00:20:25",
-   "MU",
-   "回补空头",
-   75.0,
-   715.33,
-   53649.75,
-   -140.43,
+   "23:03:09",
+   "STX",
+   "卖空开仓",
+   95.0,
+   544.74,
+   51750.14,
+   null,
+   "存储空头(财报) · 目标调仓 · 盘中/ladder0",
+   4
+  ],
+  [
+   "23:03:16",
+   "WDC",
+   "卖空开仓",
+   163.0,
+   307.61,
+   50140.94,
+   null,
+   "存储空头 · 目标调仓 · 盘中/ladder0",
+   5
+  ],
+  [
+   "23:03:11",
+   "SNDK",
+   "卖空开仓",
+   45.0,
+   962.0,
+   43290.0,
+   null,
    "存储空头 · 目标调仓 · 盘中/ladder0",
    1
   ],
   [
-   "00:21:03",
-   "ANET",
-   "买入开仓",
-   118.0,
-   188.43,
-   22234.74,
-   null,
+   "23:03:15",
+   "ORCL",
+   "回补空头",
+   77.0,
+   125.48,
+   9661.85,
+   -202.49,
+   "举债资本开支空头 · 目标调仓 · 盘中/ladder0",
+   2
+  ],
+  [
+   "23:03:20",
+   "AVGO",
+   "卖出平仓",
+   30.0,
+   352.84,
+   10585.2,
+   1032.3,
    "超跌反弹多 · 目标调仓 · 盘中/ladder0",
    1
   ],
   [
-   "00:21:37",
-   "WDC",
+   "23:03:27",
+   "ARM",
+   "卖出平仓",
+   7.0,
+   192.2,
+   1345.38,
+   128.5,
+   "投降式超跌多 · 目标调仓 · 盘中/ladder0",
+   3
+  ],
+  [
+   "23:03:29",
+   "NVDA 11/16 172.5P",
+   "买入开仓",
+   2.0,
+   3.9,
+   780.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:04:25",
+   "NVDA 11/16 172.5P",
+   "买入开仓",
+   2.0,
+   4.0,
+   800.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   2
+  ],
+  [
+   "23:04:39",
+   "AVGO",
+   "卖出平仓",
+   29.0,
+   353.05,
+   10238.5,
+   1004.03,
+   "超跌反弹多 · 目标调仓 · 盘中/ladder0",
+   3
+  ],
+  [
+   "23:06:59",
+   "CRWV",
    "回补空头",
-   133.0,
-   282.94,
-   37631.38,
-   -12.02,
+   2757.0,
+   58.79,
+   162093.51,
+   -25186.51,
+   "stop_loss_0.180|新云债务空头|rth|close_position",
+   3
+  ],
+  [
+   "23:07:08",
+   "NVDA 11/16 172.5P",
+   "买入开仓",
+   2.0,
+   3.95,
+   790.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:07:55",
+   "NVDA 11/16 172.5P",
+   "买入开仓",
+   2.0,
+   3.95,
+   790.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:08:51",
+   "NVDA 11/16 172.5P",
+   "买入开仓",
+   2.0,
+   3.95,
+   790.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:09:28",
+   "MU",
+   "回补空头",
+   19.0,
+   794.31,
+   15091.95,
+   -1536.4,
    "存储空头 · 目标调仓 · 盘中/ladder0",
+   3
+  ],
+  [
+   "23:09:31",
+   "NVDA 11/16 172.5P",
+   "买入开仓",
+   2.0,
+   4.25,
+   850.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:10:19",
+   "NVDA 11/16 172.5P",
+   "买入开仓",
+   2.0,
+   4.35,
+   870.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:11:14",
+   "NVDA 11/16 172.5P",
+   "买入开仓",
+   2.0,
+   4.2,
+   840.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:12:38",
+   "NVDA 11/16 172.5P",
+   "买入开仓",
+   2.0,
+   4.4,
+   880.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:13:31",
+   "NVDA 11/16 172.5P",
+   "买入开仓",
+   2.0,
+   4.6,
+   920.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:14:27",
+   "NVDA 11/16 172.5P",
+   "买入开仓",
+   2.0,
+   4.45,
+   890.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:15:15",
+   "NVDA 11/16 172.5P",
+   "买入开仓",
+   2.0,
+   4.35,
+   870.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   2
+  ],
+  [
+   "23:15:47",
+   "ANET",
+   "卖出平仓",
+   121.0,
+   195.38,
+   23640.98,
+   3295.31,
+   "超跌反弹多 · 目标调仓 · 盘中/ladder0",
+   6
+  ],
+  [
+   "23:15:44",
+   "NVDA 11/16 172.5P",
+   "买入开仓",
+   2.0,
+   4.2,
+   840.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:15:52",
+   "NVDA 11/16 172.5P",
+   "买入开仓",
+   2.0,
+   4.3,
+   860.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:16:39",
+   "NVDA 11/16 172.5P",
+   "买入开仓",
+   2.0,
+   4.2,
+   840.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:17:36",
+   "NVDA 11/16 172.5P",
+   "买入开仓",
+   2.0,
+   4.2,
+   840.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:18:11",
+   "NVDA 11/16 172.5P",
+   "买入开仓",
+   2.0,
+   4.2,
+   840.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:19:33",
+   "NVDA 11/16 172.5P",
+   "买入开仓",
+   2.0,
+   4.1,
+   820.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:20:06",
+   "NVDA 11/16 172.5P",
+   "买入开仓",
+   2.0,
+   4.05,
+   810.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:20:31",
+   "NVDA 11/16 172.5P",
+   "买入开仓",
+   2.0,
+   4.1,
+   820.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:21:17",
+   "NVDA 11/16 172.5P",
+   "买入开仓",
+   2.0,
+   4.0,
+   800.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:22:09",
+   "NVDA 11/16 172.5P",
+   "买入开仓",
+   2.0,
+   3.95,
+   790.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:22:50",
+   "NVDA 11/16 172.5P",
+   "买入开仓",
+   2.0,
+   4.0,
+   800.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:26:14",
+   "ANET",
+   "卖出平仓",
+   124.0,
+   196.03,
+   24308.18,
+   3383.18,
+   "超跌反弹多 · 目标调仓 · 盘中/ladder0",
    4
   ],
   [
-   "04:02:49",
-   "CRWV",
-   "回补空头",
-   507.0,
-   47.13,
-   23894.91,
-   2955.81,
-   "新云债务空头 · 目标调仓 · 盘中/ladder0",
+   "23:23:42",
+   "NVDA 11/16 172.5P",
+   "买入开仓",
+   2.0,
+   3.95,
+   790.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
    1
   ],
   [
-   "04:36:02",
-   "CRWV",
-   "卖空开仓",
-   512.0,
-   47.68,
-   24412.16,
+   "23:24:27",
+   "NVDA 11/16 172.5P",
+   "买入开仓",
+   2.0,
+   4.05,
+   810.0,
    null,
-   "新云债务空头 · 目标调仓 · 盘中/ladder0",
-   1
-  ],
-  [
-   "04:53:43",
-   "MU",
-   "卖空开仓",
-   83.0,
-   723.35,
-   60037.93,
-   null,
-   "存储空头 · 目标调仓 · 盘中/ladder0",
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
    2
+  ],
+  [
+   "23:25:14",
+   "NVDA 11/16 172.5P",
+   "买入开仓",
+   2.0,
+   3.9,
+   780.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:26:00",
+   "NVDA 11/16 172.5P",
+   "买入开仓",
+   2.0,
+   3.85,
+   770.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:27:29",
+   "NVDA 11/16 172.5P",
+   "买入开仓",
+   2.0,
+   3.55,
+   710.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:27:58",
+   "NVDA 11/16 172.5P",
+   "买入开仓",
+   2.0,
+   3.5,
+   700.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:28:51",
+   "NVDA 11/16 172.5P",
+   "买入开仓",
+   2.0,
+   3.35,
+   670.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:29:52",
+   "NVDA 11/16 172.5P",
+   "买入开仓",
+   2.0,
+   3.45,
+   690.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:30:33",
+   "NVDA 11/16 172.5P",
+   "买入开仓",
+   2.0,
+   3.5,
+   700.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:31:18",
+   "NVDA 11/16 172.5P",
+   "买入开仓",
+   2.0,
+   3.5,
+   700.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:32:06",
+   "NVDA 11/16 172.5P",
+   "买入开仓",
+   2.0,
+   3.5,
+   700.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:32:49",
+   "NVDA 11/16 172.5P",
+   "买入开仓",
+   2.0,
+   3.45,
+   690.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:33:42",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.7,
+   940.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:34:26",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.75,
+   950.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:35:23",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.65,
+   930.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:35:59",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.6,
+   920.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:37:00",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.5,
+   900.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:37:17",
+   "NVDA 11/16 172.5P",
+   "买入开仓",
+   2.0,
+   3.3,
+   660.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:37:33",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.3,
+   860.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:38:36",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.2,
+   840.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:39:07",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.1,
+   820.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:39:55",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.3,
+   860.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:40:38",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.2,
+   840.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:41:27",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.15,
+   830.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:42:11",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.2,
+   840.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   2
+  ],
+  [
+   "23:42:58",
+   "STX",
+   "回补空头",
+   16.0,
+   556.18,
+   8898.88,
+   1684.36,
+   "存储空头(财报) · 目标调仓 · 盘中/ladder0",
+   2
+  ],
+  [
+   "23:43:01",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.3,
+   860.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:43:48",
+   "MU",
+   "回补空头",
+   10.0,
+   810.17,
+   8101.74,
+   -967.24,
+   "存储空头 · 目标调仓 · 盘中/ladder0",
+   3
+  ],
+  [
+   "23:43:51",
+   "SNDK",
+   "回补空头",
+   8.0,
+   989.6,
+   7916.77,
+   1083.07,
+   "存储空头 · 目标调仓 · 盘中/ladder0",
+   3
+  ],
+  [
+   "23:43:53",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.35,
+   870.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:44:43",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.4,
+   880.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:45:28",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.4,
+   880.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:46:17",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.6,
+   920.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:47:03",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.4,
+   880.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:47:46",
+   "MU",
+   "回补空头",
+   242.0,
+   812.37,
+   196593.54,
+   -21042.53,
+   "stop_loss_0.120|存储空头|rth|close_position",
+   2
+  ],
+  [
+   "23:47:51",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.5,
+   900.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:48:51",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.25,
+   850.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:49:32",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.3,
+   860.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:50:29",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.1,
+   820.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:51:10",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.2,
+   840.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:51:55",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.05,
+   810.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:52:42",
+   "WDC",
+   "回补空头",
+   26.0,
+   314.44,
+   8175.44,
+   -821.08,
+   "存储空头 · 目标调仓 · 盘中/ladder0",
+   1
+  ],
+  [
+   "23:52:45",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.1,
+   820.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:53:32",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.0,
+   800.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:54:29",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.95,
+   790.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "23:54:51",
+   "AMD",
+   "卖出平仓",
+   21.0,
+   552.87,
+   11610.18,
+   1115.01,
+   "超跌反弹多 · 目标调仓 · 盘中/ladder0",
+   6
+  ],
+  [
+   "00:02:07",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.75,
+   750.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:02:56",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.75,
+   750.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:03:54",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.6,
+   720.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:05:27",
+   "ARM",
+   "卖出平仓",
+   7.0,
+   201.2,
+   1408.4,
+   191.52,
+   "投降式超跌多 · 目标调仓 · 盘中/ladder0",
+   3
+  ],
+  [
+   "00:05:28",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.85,
+   770.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:07:03",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.8,
+   760.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:07:47",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.8,
+   760.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:07:59",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.75,
+   750.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:08:34",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.9,
+   780.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:09:20",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.05,
+   810.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   2
+  ],
+  [
+   "00:10:09",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.15,
+   830.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:10:56",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.05,
+   810.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:11:42",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.05,
+   810.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:13:17",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.0,
+   800.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:14:09",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.05,
+   810.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:15:00",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.05,
+   810.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:15:48",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.2,
+   840.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:16:35",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.3,
+   860.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:17:21",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.45,
+   890.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   2
+  ],
+  [
+   "00:18:06",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.3,
+   860.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:18:54",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.35,
+   870.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:19:39",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.3,
+   860.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:20:31",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.15,
+   830.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:21:25",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.0,
+   800.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   2
+  ],
+  [
+   "00:22:06",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.0,
+   800.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:22:52",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.0,
+   800.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:24:24",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.05,
+   810.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:25:08",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.95,
+   790.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:25:16",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.9,
+   780.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:25:25",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.85,
+   770.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:26:03",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.9,
+   780.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:26:50",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.8,
+   760.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:27:35",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.85,
+   770.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:28:22",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.85,
+   770.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:29:16",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.65,
+   730.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:30:58",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.6,
+   720.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:33:32",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.9,
+   780.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:33:46",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.9,
+   780.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:34:03",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.8,
+   760.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:35:26",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.9,
+   780.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:35:27",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.85,
+   770.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:37:28",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.95,
+   790.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:37:42",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.9,
+   780.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:37:46",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.9,
+   780.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:38:33",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.9,
+   780.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:39:20",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.95,
+   790.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:40:07",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.0,
+   800.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   2
+  ],
+  [
+   "00:40:55",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.05,
+   810.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:41:54",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.95,
+   790.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:42:28",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.95,
+   790.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:44:00",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.15,
+   830.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:44:45",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.2,
+   840.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:45:43",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.05,
+   810.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:46:27",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.0,
+   800.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:47:14",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.1,
+   820.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:47:59",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.1,
+   820.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:49:07",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.05,
+   810.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:49:32",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   4.05,
+   810.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:49:43",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.95,
+   790.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:50:19",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.95,
+   790.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:51:07",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.95,
+   790.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:51:54",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.9,
+   780.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:52:40",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.95,
+   790.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "00:53:36",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.85,
+   770.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "01:08:55",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.85,
+   770.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "01:09:40",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.85,
+   770.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "01:09:59",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.75,
+   750.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "01:10:44",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.65,
+   730.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "01:11:16",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.75,
+   750.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "01:12:03",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.75,
+   750.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "01:12:49",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.8,
+   760.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "01:14:16",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.65,
+   730.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "01:14:22",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.65,
+   730.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "01:15:55",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.75,
+   750.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "01:16:42",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.7,
+   740.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "01:16:49",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.65,
+   730.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "01:18:20",
+   "NVDA 11/16 177.5P",
+   "买入开仓",
+   2.0,
+   4.85,
+   970.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "01:18:21",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.65,
+   730.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "01:19:57",
+   "NVDA 11/16 177.5P",
+   "买入开仓",
+   2.0,
+   4.85,
+   970.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "01:20:20",
+   "NVDA 11/16 177.5P",
+   "买入开仓",
+   2.0,
+   4.8,
+   960.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   2
+  ],
+  [
+   "01:20:45",
+   "NVDA 11/16 177.5P",
+   "买入开仓",
+   2.0,
+   4.85,
+   970.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "01:22:08",
+   "NVDA 11/16 177.5P",
+   "买入开仓",
+   2.0,
+   5.0,
+   1000.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "01:22:19",
+   "ORCL",
+   "回补空头",
+   39.0,
+   129.87,
+   5064.93,
+   -273.24,
+   "举债资本开支空头 · 目标调仓 · 盘中/ladder0",
+   1
+  ],
+  [
+   "01:22:23",
+   "NVDA 11/16 177.5P",
+   "买入开仓",
+   2.0,
+   4.9,
+   980.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "01:23:11",
+   "NVDA 11/16 177.5P",
+   "买入开仓",
+   2.0,
+   4.9,
+   980.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "01:23:56",
+   "NVDA 11/16 177.5P",
+   "买入开仓",
+   2.0,
+   5.05,
+   1010.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "01:25:16",
+   "NVDA 11/16 177.5P",
+   "买入开仓",
+   2.0,
+   5.1,
+   1020.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "01:25:32",
+   "NVDA 11/16 177.5P",
+   "买入开仓",
+   2.0,
+   5.1,
+   1020.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   2
+  ],
+  [
+   "01:26:18",
+   "NVDA 11/16 177.5P",
+   "买入开仓",
+   2.0,
+   5.05,
+   1010.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "01:27:04",
+   "NVDA 11/16 177.5P",
+   "买入开仓",
+   2.0,
+   5.0,
+   1000.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "01:27:51",
+   "NVDA 11/16 177.5P",
+   "买入开仓",
+   2.0,
+   5.05,
+   1010.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   2
+  ],
+  [
+   "01:28:47",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.85,
+   770.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "01:30:01",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.8,
+   760.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "01:30:15",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.8,
+   760.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "01:31:28",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.8,
+   760.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "01:31:48",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.75,
+   750.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "01:32:34",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.7,
+   740.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   2
+  ],
+  [
+   "01:33:20",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.75,
+   750.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "01:34:07",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.7,
+   740.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "01:34:51",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.65,
+   730.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "01:36:22",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.6,
+   720.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "01:36:24",
+   "NVDA 11/16 175P",
+   "买入开仓",
+   2.0,
+   3.6,
+   720.0,
+   null,
+   "put_sub|NVDA|thesis|short_idiosyncratic|[配对空腿] Removed from oversold-rebound lon",
+   1
+  ],
+  [
+   "01:37:06",
+   "AMD",
+   "卖出平仓",
+   95.0,
+   558.87,
+   53092.64,
+   5620.89,
+   "paused_daily_dd|rth|close_position",
+   3
+  ],
+  [
+   "01:37:07",
+   "AVGO",
+   "卖出平仓",
+   90.0,
+   356.52,
+   32086.74,
+   3428.04,
+   "paused_daily_dd|rth|close_position",
+   3
+  ],
+  [
+   "01:37:04",
+   "CRWV 12/04 51P",
+   "买入平仓",
+   32.0,
+   1.6,
+   5120.0,
+   8480.0,
+   "paused_daily_dd|rth|close_position",
+   1
+  ],
+  [
+   "01:37:05",
+   "CRWV 12/04 55P",
+   "卖出平仓",
+   32.0,
+   2.55,
+   8160.0,
+   -12480.0,
+   "paused_daily_dd|rth|close_position",
+   1
+  ],
+  [
+   "01:37:08",
+   "ARM",
+   "卖出平仓",
+   77.0,
+   206.8,
+   15923.6,
+   2592.0,
+   "paused_daily_dd|rth|close_position",
+   3
+  ],
+  [
+   "01:37:12",
+   "ANET",
+   "卖出平仓",
+   392.0,
+   198.32,
+   77739.56,
+   9149.56,
+   "paused_daily_dd|rth|close_position",
+   6
+  ],
+  [
+   "01:37:05",
+   "MU 12/04 875P",
+   "卖出平仓",
+   2.0,
+   78.65,
+   15730.0,
+   7490.0,
+   "paused_daily_dd|rth|close_position",
+   2
+  ],
+  [
+   "01:37:06",
+   "NVDA 11/16 172.5P",
+   "卖出平仓",
+   72.0,
+   2.55,
+   18360.0,
+   -10140.0,
+   "paused_daily_dd|rth|close_position",
+   1
+  ],
+  [
+   "01:37:07",
+   "NVDA 11/16 175P",
+   "卖出平仓",
+   228.0,
+   3.45,
+   78660.0,
+   -12580.0,
+   "paused_daily_dd|rth|close_position",
+   1
+  ],
+  [
+   "01:37:07",
+   "NVDA 11/16 177.5P",
+   "卖出平仓",
+   26.0,
+   4.55,
+   11830.0,
+   -1070.0,
+   "paused_daily_dd|rth|close_position",
+   1
+  ],
+  [
+   "01:37:08",
+   "NVDA",
+   "卖出平仓",
+   50.0,
+   177.0,
+   8850.0,
+   6.02,
+   "paused_daily_dd|rth|close_position",
+   1
+  ],
+  [
+   "01:37:08",
+   "ORCL 12/04 121P",
+   "卖出平仓",
+   13.0,
+   3.35,
+   4355.0,
+   -3835.0,
+   "paused_daily_dd|rth|close_position",
+   1
+  ],
+  [
+   "01:37:10",
+   "SMH",
+   "卖出平仓",
+   65.0,
+   516.43,
+   33567.75,
+   2033.78,
+   "paused_daily_dd|rth|close_position",
+   2
+  ],
+  [
+   "01:37:09",
+   "SNDK 12/04 1120P",
+   "买入平仓",
+   1.0,
+   167.4,
+   16740.0,
+   -12060.0,
+   "paused_daily_dd|rth|close_position",
+   1
+  ],
+  [
+   "01:37:14",
+   "ORCL",
+   "回补空头",
+   904.0,
+   130.51,
+   117981.04,
+   -7960.12,
+   "paused_daily_dd|rth|close_position",
+   5
+  ],
+  [
+   "01:37:10",
+   "SNDK 12/04 1210P",
+   "卖出平仓",
+   1.0,
+   225.3,
+   22530.0,
+   13430.0,
+   "paused_daily_dd|rth|close_position",
+   1
+  ],
+  [
+   "01:37:15",
+   "SNDK",
+   "回补空头",
+   123.0,
+   1004.66,
+   123573.09,
+   -2273.72,
+   "paused_daily_dd|rth|close_position",
+   5
+  ],
+  [
+   "01:37:11",
+   "STX 12/04 600P",
+   "买入平仓",
+   2.0,
+   69.6,
+   13920.0,
+   -9140.0,
+   "paused_daily_dd|rth|close_position",
+   1
+  ],
+  [
+   "01:37:11",
+   "STX 12/04 645P",
+   "卖出平仓",
+   2.0,
+   89.8,
+   17960.0,
+   7660.0,
+   "paused_daily_dd|rth|close_position",
+   1
+  ],
+  [
+   "01:37:14",
+   "STX",
+   "回补空头",
+   242.0,
+   567.13,
+   137244.37,
+   -1275.22,
+   "paused_daily_dd|rth|close_position",
+   3
+  ],
+  [
+   "01:37:15",
+   "TSM",
+   "卖出平仓",
+   136.0,
+   416.51,
+   56646.04,
+   4450.89,
+   "paused_daily_dd|rth|close_position",
+   3
+  ],
+  [
+   "01:37:18",
+   "VRT",
+   "卖出平仓",
+   54.0,
+   211.27,
+   11408.58,
+   1178.28,
+   "paused_daily_dd|rth|close_position",
+   5
+  ],
+  [
+   "01:37:13",
+   "WDC 12/04 350P",
+   "买入平仓",
+   8.0,
+   43.7,
+   34960.0,
+   -22360.0,
+   "paused_daily_dd|rth|close_position",
+   1
+  ],
+  [
+   "01:37:13",
+   "WDC 12/04 375P",
+   "卖出平仓",
+   8.0,
+   59.9,
+   47920.0,
+   23720.0,
+   "paused_daily_dd|rth|close_position",
+   1
+  ],
+  [
+   "01:37:22",
+   "WDC",
+   "回补空头",
+   432.0,
+   318.78,
+   137714.03,
+   -11463.52,
+   "paused_daily_dd|rth|close_position",
+   7
   ]
  ],
  "tsum": {
-  "n_fills": 10,
-  "n_orders": 6,
-  "turnover": 221860.87,
-  "buy_amt": 137410.78,
-  "sell_amt": 84450.09,
-  "realized_today": 2803.36,
-  "day_pl_attrib": 1426.4,
+  "n_fills": 291,
+  "n_orders": 207,
+  "turnover": 1884628.95,
+  "buy_amt": 1141491.14,
+  "sell_amt": 743137.81,
+  "realized_today": -54510.33,
+  "day_pl_attrib": -99090.21,
   "closed_today_pl": {
-   "MU": 521.46,
-   "ANET": -256.06,
-   "WDC": 888.75,
-   "CRWV": 272.25
+   "STX": -12658.39,
+   "WDC": -10396.18,
+   "SNDK": -14244.16,
+   "ORCL": -12388.62,
+   "AVGO": 3432.01,
+   "ARM": 2168.16,
+   "NVDA261116P00172500": -10140.0,
+   "CRWV": -27717.33,
+   "MU": -23350.17,
+   "ANET": 7824.61,
+   "NVDA261116P00175000": -12580.0,
+   "AMD": 4952.38,
+   "NVDA261116P00177500": -1070.0,
+   "CRWV261204P00051000": 8480.0,
+   "CRWV261204P00055000": -12480.0,
+   "MU261204P00875000": 7490.0,
+   "NVDA": 410.75,
+   "ORCL261204P00121000": -3835.0,
+   "SMH": 2123.35,
+   "SNDK261204P01120000": -12060.0,
+   "SNDK261204P01210000": 13430.0,
+   "STX261204P00600000": -9140.0,
+   "STX261204P00645000": 7660.0,
+   "TSM": 2716.6,
+   "VRT": 921.78,
+   "WDC261204P00350000": -22360.0,
+   "WDC261204P00375000": 23720.0
   },
-  "prev_session": "2026-11-09"
+  "prev_session": "2026-11-10"
  },
  "recon": {
   "realized_total": -39288.26,
@@ -520,9 +2754,13 @@
   [
    "11-10",
    1115653.87
+  ],
+  [
+   "11-11",
+   960605.51
   ]
  ],
- "dayAttrib": 1426.4,
+ "dayAttrib": -99090.21,
  "notes": [
   "存储：信号分 -37.4，broken (hysteresis)",
   "新云/信用：信号分 -49.3，逻辑破位 → 全面做空",
@@ -531,248 +2769,312 @@
   "策略书更新于 2026-11-10 08:40（北京时间）"
  ],
  "flags": [
-  "按标的归因的今日盈亏合计 +1,426，账户口径 -155,048，差额主要来自期权前收价口径与夜盘标价"
+  "按标的归因的今日盈亏合计 -99,090，账户口径 -155,048，差额主要来自期权前收价口径与夜盘标价"
  ],
  "intraday": [
   [
+   "17:03",
+   1055245.08
+  ],
+  [
+   "17:08",
+   1054921.68
+  ],
+  [
+   "17:13",
+   1055004.67
+  ],
+  [
+   "17:19",
+   1059821.56
+  ],
+  [
+   "17:24",
+   1055959.23
+  ],
+  [
+   "17:29",
+   1056240.19
+  ],
+  [
+   "19:22",
+   1054023.3
+  ],
+  [
+   "22:04",
+   1031943.55
+  ],
+  [
+   "22:06",
+   1033326.85
+  ],
+  [
+   "23:04",
+   1008643.74
+  ],
+  [
+   "23:08",
+   1001430.3
+  ],
+  [
+   "23:14",
+   1005006.87
+  ],
+  [
+   "23:19",
+   1001494.6
+  ],
+  [
+   "23:24",
+   1000641.08
+  ],
+  [
+   "23:28",
+   991215.24
+  ],
+  [
+   "23:33",
+   995380.06
+  ],
+  [
+   "23:39",
+   987341.07
+  ],
+  [
+   "23:44",
+   984347.57
+  ],
+  [
+   "23:49",
+   983807.88
+  ],
+  [
+   "23:54",
+   978275.89
+  ],
+  [
+   "00:03",
+   971265.53
+  ],
+  [
+   "00:09",
+   979188.08
+  ],
+  [
+   "00:14",
+   977578.12
+  ],
+  [
    "00:19",
-   1092562.47
+   981165.37
   ],
   [
-   "00:23",
-   1091617.69
+   "00:24",
+   977720.51
   ],
   [
-   "00:29",
-   1092260.84
+   "00:28",
+   971519.03
   ],
   [
-   "00:34",
-   1092520.25
+   "00:33",
+   974360.74
   ],
   [
    "00:39",
-   1096824.08
+   975416.29
   ],
   [
-   "00:43",
-   1096959.17
+   "00:44",
+   979106.89
   ],
   [
-   "00:48",
-   1098415.2
+   "00:49",
+   975582.65
   ],
   [
-   "00:54",
-   1099449.42
-  ],
-  [
-   "00:56",
-   1102362.53
+   "00:52",
+   971783.56
   ],
   [
    "01:09",
-   1100966.5
+   976873.43
   ],
   [
    "01:14",
-   1099916.19
+   971177.45
   ],
   [
    "01:18",
-   1100032.25
+   970594.32
   ],
   [
-   "01:24",
-   1102017.16
+   "01:23",
+   969649.97
   ],
   [
-   "01:29",
-   1102182.13
+   "01:28",
+   971764.4
   ],
   [
    "01:34",
-   1101732.1
+   965781.39
   ],
   [
-   "01:38",
-   1106051.33
+   "01:39",
+   960605.51
   ],
   [
    "01:44",
-   1108196.25
+   960605.51
   ],
   [
    "01:49",
-   1109019.93
+   960605.51
   ],
   [
    "01:54",
-   1106720.19
+   960605.51
   ],
   [
    "01:59",
-   1105321.69
+   960605.51
   ],
   [
    "02:04",
-   1106494.45
+   960605.51
   ],
   [
    "02:09",
-   1107269.16
+   960605.51
   ],
   [
-   "02:13",
-   1107040.3
+   "02:14",
+   960605.51
   ],
   [
-   "02:19",
-   1107610.74
+   "02:18",
+   960605.51
   ],
   [
    "02:24",
-   1107883.28
+   960605.51
   ],
   [
    "02:29",
-   1106703.73
+   960605.51
   ],
   [
    "02:34",
-   1103441.11
+   960605.51
   ],
   [
    "02:39",
-   1104049.63
+   960605.51
   ],
   [
-   "02:43",
-   1104821.05
+   "02:44",
+   960605.51
   ],
   [
    "02:49",
-   1104398.23
+   960605.51
   ],
   [
-   "02:54",
-   1102939.63
+   "02:53",
+   960605.51
   ],
   [
-   "03:04",
-   1100252.07
-  ],
-  [
-   "03:08",
-   1099697.32
+   "03:09",
+   960605.51
   ],
   [
    "03:14",
-   1098179.24
+   960605.51
   ],
   [
    "03:19",
-   1099670.92
+   960605.51
   ],
   [
    "03:24",
-   1100544.35
+   960605.51
   ],
   [
    "03:29",
-   1101224.57
+   960605.51
   ],
   [
    "03:34",
-   1099899.18
+   960605.51
   ],
   [
-   "03:38",
-   1102301.53
+   "03:39",
+   960605.51
   ],
   [
    "03:44",
-   1101374.02
+   960605.51
   ],
   [
    "03:49",
-   1101201.57
+   960605.51
   ],
   [
-   "03:51",
-   1100069.05
+   "03:54",
+   960605.51
+  ],
+  [
+   "03:59",
+   960605.51
   ],
   [
    "04:04",
-   1102516.9
+   960605.51
   ],
   [
-   "04:09",
-   1101670.76
+   "04:08",
+   960605.51
   ],
   [
-   "04:13",
-   1100741.05
+   "04:14",
+   960605.51
   ],
   [
    "04:19",
-   1099585.87
+   960605.51
   ],
   [
    "04:24",
-   1095992.14
+   960605.51
   ],
   [
    "04:29",
-   1094199.03
+   960605.51
   ],
   [
-   "04:33",
-   1094898.63
+   "04:34",
+   960605.51
   ],
   [
    "04:39",
-   1096128.0
+   960605.51
   ],
   [
-   "04:44",
-   1095275.98
+   "04:43",
+   960605.51
   ],
   [
    "04:49",
-   1094428.07
+   960605.51
   ],
   [
    "04:53",
-   1090312.19
+   960605.51
   ],
   [
-   "05:44",
-   1085534.44
-  ],
-  [
-   "05:49",
-   1085943.77
-  ],
-  [
-   "05:52",
-   1086772.58
-  ],
-  [
-   "05:56",
-   1086412.38
-  ],
-  [
-   "07:29",
-   1080933.18
-  ],
-  [
-   "07:33",
-   1080705.52
-  ],
-  [
-   "08:31",
-   1079684.44
+   "05:43",
+   960605.51
   ]
  ]
 }
