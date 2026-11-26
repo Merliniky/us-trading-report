@@ -1,49 +1,44 @@
 window.BUY_POINTS_REPORT = {
   "meta": {
-    "title": "投资买点周报",
-    "edition": "2026-W48（感恩节当周，非周五收盘终稿）",
-    "generatedAt": "2026-11-26 13:26:00",
+    "title": "投资买点周报（按各股自身均线看图）",
+    "edition": "2026-W48（感恩节当周，非周五收盘终稿；按各公司自身买点均线重做，不以统一的5月/5季线为买点）",
+    "generatedAt": "2026-11-26 15:11:47",
     "generatedAtTimeZone": "Asia/Shanghai",
-    "generatedAtNote": "报告生成时间为北京时间（Asia/Shanghai，UTC+8）2026-11-26 13:26。",
+    "generatedAtNote": "报告生成时间为北京时间（Asia/Shanghai，UTC+8）。价格与均线截止于2026-11-25（周三）收盘，对应北京时间2026-11-26 05:00。2026-11-26感恩节休市，2026-11-27周五仍将提前于美东13:00收盘，故本周周线、11月月线与2026年四季度季线均为暂定值。",
     "dataAsOfTradingDate": "2026-11-25",
-    "dataAsOfNote": "价格与均线一律采用截至当周已完成交易日的收盘价。2026-11-25（周三）是目前最后一个已完成的美股常规交易日，收盘为美东时间16:00，对应北京时间2026-11-26 05:00。2026-11-26（周四）为美国感恩节，纽约证交所与纳斯达克全天休市。2026-11-27（周五，感恩节次日）仍将交易，但提前于美东时间13:00收盘。因此本份报告不是周五收盘后的最终周报；本周周线、11月月线和2026年四季度季线均为暂定值，周五交易后均线、触发结论与排序可能发生变化。",
+    "dataAsOfNote": "2026-11-25是目前最后一个已完成的美股常规交易日。本报告不是周五收盘后的最终周报。",
     "currency": "USD",
+    "supersedes": "此前按统一26周/5月/5季/5年线或去掉5周线后的版本，仅作对照，不再作为终稿。对照文件：report-2026-11-26-with5w.json、report-2026-11-26-no5w.json。",
     "sources": [
-      "Yahoo Finance 日线行情（v8 chart，前复权收盘价计算均线，以消除分红与拆股影响；最新交易日的复权收盘价与未复权收盘价一致）",
-      "Yahoo Finance quoteSummary（季度利润、盈利摘要、财务指标与估值字段）",
-      "纽约证交所假期与早收日历（确认2026-11-26休市、2026-11-27提前收盘）",
-      "SpaceX 上市信息：2026-06-12 于 Nasdaq Global Select Market 及 Nasdaq Texas 上市，代码 SPCX，发行价 135 美元，2026-06-15 IPO 交割（公司投资者关系与纳斯达克公告）；Yahoo 行情的 firstTradeDate 亦为 2026-06-12，且 max 历史中无更早数据"
+      "Yahoo Finance 日线行情（period1=0 至 2026-11-25，前复权收盘价计算均线）",
+      "SpaceX 仅使用 2026-06-12 及之后的公开交易数据",
+      "纽约证交所假期与早收日历（2026-11-26 休市、2026-11-27 提前收盘）"
     ],
+    "berkshireCalibration": {
+      "symbol": "BRK-B",
+      "userRule": {
+        "monthly": "30月线下方为第一买点，60月线第二买点，125月线第三买点",
+        "weekly": "125周线是买点",
+        "quarterly": "SMA10第一买点，SMA30第三买点（未给出第二买点，本报告不自行发明）",
+        "annual": "SMA5第一买点，SMA10第二买点"
+      },
+      "operationalDefinition": "第几买点表示更深、更长周期的买点：第一买点是较常见的回踩支撑，第二、第三买点需要更深的调整才出现。操作上，当收盘价到达或跌破该均线±2%一带，或当周最低价进入该带/吞破后收盘站稳（收盘不低于均线下方2%），且该均线向上，即视为触发该买点。月线第一买点=价格到或跌破30月线一带，以此类推。",
+      "chartConfirmation": "1996年以来的复权周/月/季/年线图与上述分层一致。月线SMA30在2010、2011、2016、2018–19、2020、2022、2026年4月多次成为支撑；SMA60在2009、2011、2020年被触及；SMA125主要出现在2008–09年，2011年9月也曾接近。周线SMA125成功回踩次数多、识别度高。季线SMA20历史上也有支撑，但按用户只给出第一（MA10）与第三（MA30），不增设第二买点。",
+      "current": "2026-11-25收盘579.32美元，距离各层第一买点约16%–18%，本周没有触发。"
+    },
     "methodology": {
-      "priceSeries": "均线使用前复权收盘价的简单移动平均（SMA）。现价采用2026-11-25收盘价。周线按周五结束的自然周合成，本周未结束时用截至数据截止日的收盘作为该周暂定收盘，本周最低价、最高价取该周已交易日的极值。月线、季线、年线分别取公历月、公历季度（3/6/9/12月）和公历年的最后一个已交易日收盘；当前未结束的11月、2026年四季度与2026年，均用2026-11-25收盘作为暂定收盘。",
-      "averages": {
-        "sma5w": "5周线：最近5根周线收盘的SMA。",
-        "sma26w": "26周线（半年线）：最近26根周线收盘的SMA。",
-        "sma5m": "5月线：最近5根月线收盘的SMA。",
-        "sma5q": "5季线：最近5根季线收盘的SMA，约15个月。",
-        "sma60m": "5年线（主）：最近60根月线收盘的SMA（月线SMA60）。",
-        "sma5y": "年线SMA5（对照）：最近5个公历年收盘的SMA，仅作对照，不单独作为长期买点判定依据。"
-      },
-      "trendDefinitions": {
-        "sma5wRising": "当前5周线大于上一周的5周线。",
-        "sma26wRising": "当前26周线大于4周前的26周线。",
-        "sma5mRising": "当前5月线大于上一月的5月线。",
-        "sma5qRising": "当前5季线大于上一季的5季线。",
-        "sma60mRising": "当前月线SMA60大于3个月前的月线SMA60。",
-        "uptrendForSma5wBuy": "标准定义：收盘价在26周线之上，且26周线向上（相对4周前）。若26周线因上市时间不足无法计算，则退化为：收盘价在5月线之上且5月线向上，并在该标的中注明。"
-      },
+      "priceSeries": "用前复权收盘价做简单移动平均。周线按周五结束的自然周；本周未结束时用2026-11-25收盘作为暂定周收盘，本周最低价取已交易日极值。月、季、年线同样用截止日作为未结束周期的暂定收盘。",
+      "fiveWeekRule": "5周线不是买点，不用于触发、分层或排序。",
+      "perStockSelection": "先在伯克希尔图上校准用户给出的均线，再对其余公司分别看图。不把伯克希尔的组合自动套到其他公司；只有该股自己的图也能指出至少一次（尽量多次）历史价格在该线附近获得支撑时，才采用该均线。选出的均线必须能指出历史触碰依据。若历史不够（如SPCX，或Visa的125月线、年线SMA10），标为历史不足，暂不给出。",
       "triggerThresholds": {
         "bandPct": 2.0,
-        "closeWithinBand": "收盘价距目标均线在±2.0%以内。",
-        "weekTagAndHold": "或本周最低价曾进入该均线上方2.0%以内或跌破该均线，且本周收盘不低于该均线下方2.0%，视为接近或触及后站稳。收盘可能仍高于均线2%以上，报告中会写明是「周内接近后站稳」而非「收盘踩线」。",
-        "midTermA": "回调到26周线：满足上述阈值，且26周线向上。26周线向下时，即使踩线也不记为中期买点。",
-        "midTermB": "上升趋势中的5周线买点：满足上升趋势定义，且价格按上述阈值接近或触及5周线。",
-        "longTerm": "长期买点：5月线、5季线或5年线（月线SMA60）之一满足上述阈值，且该均线向上。均线向下时，即使接近也不记为长期买点。样本不足的均线标为「历史不足，暂不给出该长期买点」，不拼接、不编造。"
+        "thisWeek": "本周收盘距该股自己的买点均线在±2%以内，或本周最低价进入该带或吞破后收盘站稳（收盘不低于均线下方2%），且该均线向上，记为本周触发。",
+        "notCounted": "仅在本月/本季/本年更早时候回踩、本周收盘已离开±2%带的，只作为背景说明，不记为本周触发。均线向下时即使踩线也不记为买点。"
       },
-      "ranking": "用户名单与推荐名单分别排序。先按买点类型分档：中期与长期同时触发排在最前，其次仅长期，再次仅中期，最后是本周没有买点的标的。同一档内，按更接近有效目标均线的程度排序：距离为对触发均线（若未触发则为趋势向上的最近有效均线）的百分比；略低于向上均线优于略高于该均线。若价格远低于均线（中期均线超过5%，长期均线超过8%），即使均线尚未拐头也加罚，不排到前面。若均线向下且趋势转坏，再大幅加罚，排在最后。rankScore = 档位×1000 + proximityScore，越小越靠前。",
-      "spacexRule": "SPCX 仅使用 2026-06-12（含）起的公开交易数据。Yahoo 当前 max 历史的首根 K 线即为该日，本报告仍做硬过滤。上市不足半年，25根周线不足以计算26周线，3根季线不足以计算5季线，6根月线不足以计算5年线；5周线与5月线可以计算，但5月线样本偏短（仅6根月线）。"
+      "ranking": "用户名单与推荐名单分别排序。先排本周已触发的标的，触发了更深买点（第三优于第二优于第一）的更靠前；同一深度内，距该买点越近或略跌破越靠前。未触发的排在后面，按距离趋势向上的最近选定买点均线的远近排序；远低于且趋势转坏的加罚。历史不足、无法给出买点的排在最后。",
+      "spacexRule": "SPCX只使用2026-06-12（含）之后的公开行情，不混用旧代码，不用5周线或任何不足样本的均线硬算买点。"
     },
-    "disclaimer": "本报告仅基于公开行情与财务数据做均线与基本面整理，供研究参考，不构成投资建议、要约或对未来收益的保证。历史均线与财报不能预测未来价格。任何买入、持有或卖出决策应由读者自行判断并承担风险。"
+    "disclaimer": "本报告根据公开行情与复权均线做看图整理，供研究参考，不构成投资建议、要约或对未来收益的保证。历史支撑不能保证未来同样有效。买入、持有或卖出应由读者自行判断并承担风险。"
   },
   "userList": [
     {
@@ -55,123 +50,622 @@ window.BUY_POINTS_REPORT = {
       "lastCloseDate": "2026-11-25",
       "currency": "USD",
       "weekLow": 271.0,
-      "weekHigh": 286.66,
-      "weekBars": 3,
-      "uptrend": true,
-      "uptrendDefinition": "close_above_sma26w_and_sma26w_rising_vs_4w",
-      "uptrendNote": null,
-      "mas": {
-        "sma5w": {
-          "name": "5周线",
-          "value": 272.67,
-          "prevValue": 265.66,
-          "prevBasis": "1周前",
+      "monthLow": 259.75,
+      "quarterLow": 229.2,
+      "yearLow": 229.2,
+      "buyPointSelectionRationale": "麦当劳近年沿均线走得更平，周线除SMA125外，2020年和2026年的深回撤还明确触及SMA200，故把200周线列为该股自己的周线第二买点。月线仍以30/60/125为第一至第三买点：2020、2022年主要在30月线，2026年这轮调整的最低点已下探60月线一带。季线SMA10与年线SMA5目前也与价格交汇，和2003年、2020年的长周期买点结构一致。",
+      "sameLengthsAsBerkshireButIndependentlySupported": false,
+      "buyPoints": [
+        {
+          "timeframe": "weekly",
+          "timeframeZh": "周线",
+          "smaPeriod": 125,
+          "maName": "周线SMA125",
+          "depth": 1,
+          "depthLabel": "周线第一买点",
+          "value": 285.67,
           "rising": true,
-          "distancePct": 3.9718,
-          "sample": 987,
-          "required": 5,
+          "distancePct": -0.7603,
           "enoughHistory": true,
-          "note": null
+          "sample": 2970,
+          "required": 125,
+          "historicalTouches": 50,
+          "historicalSuccesses": 50,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2022-09-30",
+              "trough": 209.81,
+              "min_dist_pct": 2.0479,
+              "bounce_pct": 28.112
+            },
+            {
+              "trough_date": "2023-10-06",
+              "trough": 228.57,
+              "min_dist_pct": -2.9794,
+              "bounce_pct": 23.0337
+            },
+            {
+              "trough_date": "2024-07-12",
+              "trough": 230.67,
+              "min_dist_pct": -7.0712,
+              "bounce_pct": 30.7445
+            },
+            {
+              "trough_date": "2025-01-17",
+              "trough": 265.03,
+              "min_dist_pct": 2.166,
+              "bounce_pct": 16.8571
+            },
+            {
+              "trough_date": "2025-06-27",
+              "trough": 274.8,
+              "min_dist_pct": 1.9572,
+              "bounce_pct": 13.0382
+            },
+            {
+              "trough_date": "2026-10-09",
+              "trough": 229.2,
+              "min_dist_pct": -19.4059,
+              "bounce_pct": 23.6911
+            }
+          ],
+          "triggeredThisWeek": true,
+          "triggerType": "close_within_2pct",
+          "weekLowDistPct": -5.1353,
+          "periodLowDistPct": -5.1353,
+          "note": "收盘距该线 -0.76%，落在±2%以内，且均线向上",
+          "priorTagInPeriod": false
         },
-        "sma26w": {
-          "name": "26周线（半年线）",
-          "value": 263.25,
-          "prevValue": 262.98,
-          "prevBasis": "4周前",
+        {
+          "timeframe": "weekly",
+          "timeframeZh": "周线",
+          "smaPeriod": 200,
+          "maName": "周线SMA200",
+          "depth": 2,
+          "depthLabel": "周线第二买点",
+          "value": 275.88,
           "rising": true,
-          "distancePct": 7.694,
-          "sample": 987,
-          "required": 26,
+          "distancePct": 2.7622,
           "enoughHistory": true,
-          "note": null,
-          "prevValue1w": 262.93,
-          "risingVs1w": true
+          "sample": 2970,
+          "required": 200,
+          "historicalTouches": 29,
+          "historicalSuccesses": 29,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2015-08-28",
+              "trough": 66.75,
+              "min_dist_pct": -2.1106,
+              "bounce_pct": 42.5721
+            },
+            {
+              "trough_date": "2020-03-20",
+              "trough": 106.71,
+              "min_dist_pct": -21.2011,
+              "bounce_pct": 83.2513
+            },
+            {
+              "trough_date": "2024-05-31",
+              "trough": 234.48,
+              "min_dist_pct": 1.6329,
+              "bounce_pct": 28.6199
+            },
+            {
+              "trough_date": "2024-06-21",
+              "trough": 236.18,
+              "min_dist_pct": 1.9517,
+              "bounce_pct": 27.6928
+            },
+            {
+              "trough_date": "2024-07-12",
+              "trough": 230.67,
+              "min_dist_pct": -0.7708,
+              "bounce_pct": 30.7445
+            },
+            {
+              "trough_date": "2026-10-09",
+              "trough": 229.2,
+              "min_dist_pct": -16.7126,
+              "bounce_pct": 23.6911
+            }
+          ],
+          "triggeredThisWeek": true,
+          "triggerType": "week_tag_and_hold",
+          "weekLowDistPct": -1.7689,
+          "periodLowDistPct": -1.7689,
+          "note": "本周最低价距该线 -1.77%，进入或吞破±2%带后收盘站稳（收盘距该线 2.76%），且均线向上",
+          "priorTagInPeriod": false
         },
-        "sma5m": {
-          "name": "5月线",
-          "value": 260.59,
-          "prevValue": 257.57,
-          "prevBasis": "1月前",
+        {
+          "timeframe": "monthly",
+          "timeframeZh": "月线",
+          "smaPeriod": 30,
+          "maName": "月线SMA30",
+          "depth": 1,
+          "depthLabel": "月线第一买点",
+          "value": 284.46,
           "rising": true,
-          "distancePct": 8.7899,
-          "sample": 227,
-          "required": 5,
+          "distancePct": -0.3362,
           "enoughHistory": true,
-          "note": null
+          "sample": 683,
+          "required": 30,
+          "historicalTouches": 29,
+          "historicalSuccesses": 29,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2022-09-30",
+              "trough": 209.81,
+              "min_dist_pct": 1.9791,
+              "bounce_pct": 31.5922
+            },
+            {
+              "trough_date": "2023-10-31",
+              "trough": 228.57,
+              "min_dist_pct": -3.0557,
+              "bounce_pct": 21.388
+            },
+            {
+              "trough_date": "2024-07-31",
+              "trough": 230.67,
+              "min_dist_pct": -7.2413,
+              "bounce_pct": 33.5817
+            },
+            {
+              "trough_date": "2025-01-31",
+              "trough": 265.03,
+              "min_dist_pct": 2.1612,
+              "bounce_pct": 16.2607
+            },
+            {
+              "trough_date": "2025-06-30",
+              "trough": 274.8,
+              "min_dist_pct": 1.8422,
+              "bounce_pct": 21.7252
+            },
+            {
+              "trough_date": "2026-10-30",
+              "trough": 229.2,
+              "min_dist_pct": -19.0471,
+              "bounce_pct": 23.6911
+            }
+          ],
+          "triggeredThisWeek": true,
+          "triggerType": "close_within_2pct",
+          "weekLowDistPct": -4.7318,
+          "periodLowDistPct": -8.6866,
+          "note": "收盘距该线 -0.34%，落在±2%以内，且均线向上",
+          "priorTagInPeriod": false
         },
-        "sma5q": {
-          "name": "5季线",
-          "value": 277.82,
-          "prevValue": 280.38,
-          "prevBasis": "1季前",
-          "rising": false,
-          "distancePct": 2.0435,
-          "sample": 76,
-          "required": 5,
-          "enoughHistory": true,
-          "note": null
-        },
-        "sma60m": {
-          "name": "5年线（月线SMA60）",
+        {
+          "timeframe": "monthly",
+          "timeframeZh": "月线",
+          "smaPeriod": 60,
+          "maName": "月线SMA60",
+          "depth": 2,
+          "depthLabel": "月线第二买点",
           "value": 266.22,
-          "prevValue": 264.21,
-          "prevBasis": "3个月前",
           "rising": true,
           "distancePct": 6.4905,
-          "sample": 227,
+          "enoughHistory": true,
+          "sample": 683,
           "required": 60,
-          "enoughHistory": true,
-          "note": null
+          "historicalTouches": 10,
+          "historicalSuccesses": 10,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "1980-03-31",
+              "trough": 0.38,
+              "min_dist_pct": -25.5846,
+              "bounce_pct": 98.6687
+            },
+            {
+              "trough_date": "1987-10-30",
+              "trough": 1.85,
+              "min_dist_pct": 1.4111,
+              "bounce_pct": 51.3944
+            },
+            {
+              "trough_date": "1990-09-28",
+              "trough": 3.04,
+              "min_dist_pct": 1.4052,
+              "bounce_pct": 41.1599
+            },
+            {
+              "trough_date": "2003-03-31",
+              "trough": 6.5,
+              "min_dist_pct": -60.0274,
+              "bounce_pct": 182.3306
+            },
+            {
+              "trough_date": "2020-03-31",
+              "trough": 106.71,
+              "min_dist_pct": -13.8927,
+              "bounce_pct": 78.8989
+            },
+            {
+              "trough_date": "2026-10-30",
+              "trough": 229.2,
+              "min_dist_pct": -13.5565,
+              "bounce_pct": 23.6911
+            }
+          ],
+          "triggeredThisWeek": true,
+          "triggerType": "week_tag_and_hold",
+          "weekLowDistPct": 1.7955,
+          "periodLowDistPct": -2.4303,
+          "note": "本周最低价距该线 1.80%，进入或吞破±2%带后收盘站稳（收盘距该线 6.49%），且均线向上",
+          "priorTagInPeriod": false
         },
-        "sma5y": {
-          "name": "年线SMA5（对照）",
-          "value": 275.94,
-          "prevValue": 267.22,
-          "prevBasis": "上一年末的年线SMA5",
+        {
+          "timeframe": "monthly",
+          "timeframeZh": "月线",
+          "smaPeriod": 125,
+          "maName": "月线SMA125",
+          "depth": 3,
+          "depthLabel": "月线第三买点",
+          "value": 207.86,
           "rising": true,
-          "distancePct": 2.7408,
-          "sample": 19,
-          "required": 5,
+          "distancePct": 36.3874,
           "enoughHistory": true,
-          "note": null
+          "sample": 683,
+          "required": 125,
+          "historicalTouches": 6,
+          "historicalSuccesses": 6,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "1980-05-30",
+              "trough": 0.44,
+              "min_dist_pct": -3.2198,
+              "bounce_pct": 41.9269
+            },
+            {
+              "trough_date": "1980-07-31",
+              "trough": 0.47,
+              "min_dist_pct": 0.6355,
+              "bounce_pct": 53.5623
+            },
+            {
+              "trough_date": "1980-11-28",
+              "trough": 0.46,
+              "min_dist_pct": -3.9046,
+              "bounce_pct": 56.8329
+            },
+            {
+              "trough_date": "2003-03-31",
+              "trough": 6.5,
+              "min_dist_pct": -49.3789,
+              "bounce_pct": 144.2551
+            },
+            {
+              "trough_date": "2004-05-28",
+              "trough": 13.64,
+              "min_dist_pct": 0.4752,
+              "bounce_pct": 34.5071
+            },
+            {
+              "trough_date": "2004-08-31",
+              "trough": 13.96,
+              "min_dist_pct": 1.5568,
+              "bounce_pct": 31.412
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 30.3762,
+          "periodLowDistPct": 24.9639,
+          "note": "收盘距该线 +36.39%，本周最低价距该线 +30.38%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "quarterly",
+          "timeframeZh": "季线",
+          "smaPeriod": 10,
+          "maName": "季线SMA10",
+          "depth": 1,
+          "depthLabel": "季线第一买点",
+          "value": 283.77,
+          "rising": true,
+          "distancePct": -0.0941,
+          "enoughHistory": true,
+          "sample": 228,
+          "required": 10,
+          "historicalTouches": 21,
+          "historicalSuccesses": 21,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2022-03-31",
+              "trough": 195.9,
+              "min_dist_pct": 1.6232,
+              "bounce_pct": 41.6295
+            },
+            {
+              "trough_date": "2022-09-30",
+              "trough": 209.81,
+              "min_dist_pct": -0.5533,
+              "bounce_pct": 38.2725
+            },
+            {
+              "trough_date": "2023-12-29",
+              "trough": 229.94,
+              "min_dist_pct": -4.4892,
+              "bounce_pct": 30.9515
+            },
+            {
+              "trough_date": "2024-09-30",
+              "trough": 232.01,
+              "min_dist_pct": -8.1968,
+              "bounce_pct": 32.115
+            },
+            {
+              "trough_date": "2025-03-31",
+              "trough": 266.56,
+              "min_dist_pct": -0.2692,
+              "bounce_pct": 14.9892
+            },
+            {
+              "trough_date": "2026-11-25",
+              "trough": 229.2,
+              "min_dist_pct": -19.2295,
+              "bounce_pct": 23.6911
+            }
+          ],
+          "triggeredThisWeek": true,
+          "triggerType": "close_within_2pct",
+          "weekLowDistPct": -4.5001,
+          "periodLowDistPct": -19.2304,
+          "note": "收盘距该线 -0.10%，落在±2%以内，且均线向上",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "quarterly",
+          "timeframeZh": "季线",
+          "smaPeriod": 30,
+          "maName": "季线SMA30",
+          "depth": 3,
+          "depthLabel": "季线第三买点",
+          "value": 239.49,
+          "rising": true,
+          "distancePct": 18.3771,
+          "enoughHistory": true,
+          "sample": 228,
+          "required": 30,
+          "historicalTouches": 5,
+          "historicalSuccesses": 5,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "1980-03-31",
+              "trough": 0.38,
+              "min_dist_pct": -26.9932,
+              "bounce_pct": 161.2432
+            },
+            {
+              "trough_date": "2003-03-31",
+              "trough": 6.5,
+              "min_dist_pct": -56.4415,
+              "bounce_pct": 240.7301
+            },
+            {
+              "trough_date": "2005-09-30",
+              "trough": 15.17,
+              "min_dist_pct": -4.2684,
+              "bounce_pct": 93.9535
+            },
+            {
+              "trough_date": "2020-03-31",
+              "trough": 106.71,
+              "min_dist_pct": 0.7696,
+              "bounce_pct": 124.8258
+            },
+            {
+              "trough_date": "2026-11-25",
+              "trough": 229.2,
+              "min_dist_pct": -4.2962,
+              "bounce_pct": 23.6911
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 13.1571,
+          "periodLowDistPct": -4.2966,
+          "note": "本期（季线）最低价距该线 -4.30%，曾接近或触及，但本周收盘已离开±2%带，不记为本周触发",
+          "priorTagInPeriod": true
+        },
+        {
+          "timeframe": "annual",
+          "timeframeZh": "年线",
+          "smaPeriod": 5,
+          "maName": "年线SMA5",
+          "depth": 1,
+          "depthLabel": "年线第一买点",
+          "value": 275.94,
+          "rising": true,
+          "distancePct": 2.7409,
+          "enoughHistory": true,
+          "sample": 57,
+          "required": 5,
+          "historicalTouches": 10,
+          "historicalSuccesses": 10,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "1998-12-31",
+              "trough": 11.57,
+              "min_dist_pct": -7.7809,
+              "bounce_pct": 81.5145
+            },
+            {
+              "trough_date": "2003-12-31",
+              "trough": 6.6,
+              "min_dist_pct": -55.9841,
+              "bounce_pct": 476.7836
+            },
+            {
+              "trough_date": "2009-12-31",
+              "trough": 31.96,
+              "min_dist_pct": 1.4964,
+              "bounce_pct": 118.12
+            },
+            {
+              "trough_date": "2014-12-31",
+              "trough": 65.12,
+              "min_dist_pct": -6.3511,
+              "bounce_pct": 159.0448
+            },
+            {
+              "trough_date": "2020-12-31",
+              "trough": 108.7,
+              "min_dist_pct": -26.6405,
+              "bounce_pct": 175.7753
+            },
+            {
+              "trough_date": "2026-11-25",
+              "trough": 229.2,
+              "min_dist_pct": -16.9376,
+              "bounce_pct": 23.6911
+            }
+          ],
+          "triggeredThisWeek": true,
+          "triggerType": "week_tag_and_hold",
+          "weekLowDistPct": -1.7902,
+          "periodLowDistPct": -16.9385,
+          "note": "本周最低价距该线 -1.79%，进入或吞破±2%带后收盘站稳（收盘距该线 2.74%），且均线向上",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "annual",
+          "timeframeZh": "年线",
+          "smaPeriod": 10,
+          "maName": "年线SMA10",
+          "depth": 2,
+          "depthLabel": "年线第二买点",
+          "value": 226.4,
+          "rising": true,
+          "distancePct": 25.2222,
+          "enoughHistory": true,
+          "sample": 57,
+          "required": 10,
+          "historicalTouches": 4,
+          "historicalSuccesses": 4,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "1980-12-31",
+              "trough": 0.38,
+              "min_dist_pct": -25.4646,
+              "bounce_pct": 442.1898
+            },
+            {
+              "trough_date": "2003-12-31",
+              "trough": 6.6,
+              "min_dist_pct": -52.0719,
+              "bounce_pct": 499.6342
+            },
+            {
+              "trough_date": "2020-12-31",
+              "trough": 108.7,
+              "min_dist_pct": -1.1874,
+              "bounce_pct": 155.6108
+            },
+            {
+              "trough_date": "2026-11-25",
+              "trough": 229.2,
+              "min_dist_pct": 1.2379,
+              "bounce_pct": 23.6911
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 19.6996,
+          "periodLowDistPct": 1.2367,
+          "note": "本期（年线）最低价距该线 1.24%，曾接近或触及，但本周收盘已离开±2%带，不记为本周触发",
+          "priorTagInPeriod": true
         }
+      ],
+      "thisWeekTriggers": [
+        {
+          "maName": "周线SMA125",
+          "depth": 1,
+          "depthLabel": "周线第一买点",
+          "distancePct": -0.7603,
+          "triggerType": "close_within_2pct",
+          "note": "收盘距该线 -0.76%，落在±2%以内，且均线向上"
+        },
+        {
+          "maName": "周线SMA200",
+          "depth": 2,
+          "depthLabel": "周线第二买点",
+          "distancePct": 2.7622,
+          "triggerType": "week_tag_and_hold",
+          "note": "本周最低价距该线 -1.77%，进入或吞破±2%带后收盘站稳（收盘距该线 2.76%），且均线向上"
+        },
+        {
+          "maName": "月线SMA30",
+          "depth": 1,
+          "depthLabel": "月线第一买点",
+          "distancePct": -0.3362,
+          "triggerType": "close_within_2pct",
+          "note": "收盘距该线 -0.34%，落在±2%以内，且均线向上"
+        },
+        {
+          "maName": "月线SMA60",
+          "depth": 2,
+          "depthLabel": "月线第二买点",
+          "distancePct": 6.4905,
+          "triggerType": "week_tag_and_hold",
+          "note": "本周最低价距该线 1.80%，进入或吞破±2%带后收盘站稳（收盘距该线 6.49%），且均线向上"
+        },
+        {
+          "maName": "季线SMA10",
+          "depth": 1,
+          "depthLabel": "季线第一买点",
+          "distancePct": -0.0941,
+          "triggerType": "close_within_2pct",
+          "note": "收盘距该线 -0.10%，落在±2%以内，且均线向上"
+        },
+        {
+          "maName": "年线SMA5",
+          "depth": 1,
+          "depthLabel": "年线第一买点",
+          "distancePct": 2.7409,
+          "triggerType": "week_tag_and_hold",
+          "note": "本周最低价距该线 -1.79%，进入或吞破±2%带后收盘站稳（收盘距该线 2.74%），且均线向上"
+        }
+      ],
+      "triggeredThisWeek": true,
+      "nearestBuyPoint": {
+        "maName": "周线SMA200",
+        "depth": 2,
+        "depthLabel": "周线第二买点",
+        "distancePct": 2.7622,
+        "triggerType": "week_tag_and_hold",
+        "note": "本周最低价距该线 -1.77%，进入或吞破±2%带后收盘站稳（收盘距该线 2.76%），且均线向上"
       },
-      "distanceToMas": {
-        "sma5w": 3.9718,
-        "sma26w": 7.694,
-        "sma5m": 8.7899,
-        "sma5q": 2.0435,
-        "sma60m": 6.4905,
-        "sma5y": 2.7408
-      },
-      "midTerm": {
-        "triggered": true,
-        "type": "sma5w_in_uptrend",
-        "types": [
-          "sma5w_in_uptrend"
-        ],
-        "note": "26周线向上，但收盘距26周线 7.69%，本周未踩线；处于上升趋势中的5周线买点（判定方式：week_tag_and_hold；上升趋势定义：close_above_sma26w_and_sma26w_rising_vs_4w）"
-      },
-      "longTerm": {
-        "triggered": true,
-        "type": "sma60m",
-        "types": [
-          "sma60m"
-        ],
-        "note": "5月线向上，收盘距该线 8.79%，本周未踩线；价格已接近5季线（week_tag_and_hold），但该均线未向上，不记为长期买点；触及5年线（月线SMA60）且该均线向上（判定方式：week_tag_and_hold）；对照用年线SMA5为 275.94，距该线 2.74%（向上），买点判定以月线SMA60为准"
-      },
-      "rankTier": "mid_and_long",
-      "proximityScore": 3.9718,
-      "rankScore": 3.9718,
+      "rankTier": "triggered",
+      "proximityScore": 2.7622,
+      "maxTriggeredDepth": 2,
+      "rankScore": -197.2378,
       "rank": 1,
-      "summary": "中期与长期均触发。中期：价格在26周线之上且26周线向上，本周最低价271.00美元距5周线272.67美元约-0.61%，收盘283.50美元站稳，记为上升趋势中的5周线买点；收盘距5周线+3.97%，并非收盘踩线，而是周内接近后收高。长期：本周最低价271.00美元距向上的5年线（月线SMA60，266.22美元）约+1.80%，进入±2%接近带后收盘站在均线之上，记为5年线买点；5季线已经走平向下（收盘距其+2.04%），不记为5季线买点。截至2026-09-30的当季营收71.6亿美元、环比+0.8%，净利润24.9亿美元、环比+5.2%；同比营收仅+1.1%。52周高点为341.75美元，当前仍明显低于前高。",
+      "summary": "本周触发：周线第一买点（周线SMA125，收盘距该线 -0.76%）；周线第二买点（周线SMA200，收盘距该线 +2.76%）；月线第一买点（月线SMA30，收盘距该线 -0.34%）；月线第二买点（月线SMA60，收盘距该线 +6.49%）；季线第一买点（季线SMA10，收盘距该线 -0.09%）；年线第一买点（年线SMA5，收盘距该线 +2.74%）。这是用户名单里本周买点最完整的一只。收盘几乎踩在月线第一买点（30月线，-0.34%）和季线第一买点（SMA10，-0.10%）上，也低于周线第一买点（125周线，-0.76%）；本周最低价还触及年线第一买点（SMA5）和周线第二买点（200周线），本月最低价触及月线第二买点（60月线）后收盘站稳。",
+      "charts": [
+        "charts/MCD_selected.png",
+        "charts/MCD_composite.png",
+        "charts/MCD_monthly.png",
+        "charts/MCD_weekly.png"
+      ],
       "history": {
-        "firstDateUsed": "2008-01-02",
-        "nDaily": 4756,
-        "nWeekly": 987,
-        "nMonthly": 227,
-        "nQuarterly": 76,
-        "nYearly": 19
+        "firstDateUsed": "1970-01-02",
+        "nDaily": 14348,
+        "nWeekly": 2970,
+        "nMonthly": 683,
+        "nQuarterly": 228,
+        "nYearly": 57
       }
     },
     {
@@ -183,114 +677,499 @@ window.BUY_POINTS_REPORT = {
       "lastCloseDate": "2026-11-25",
       "currency": "USD",
       "weekLow": 639.26,
-      "weekHigh": 669.17,
-      "weekBars": 3,
-      "uptrend": false,
-      "uptrendDefinition": "close_above_sma26w_and_sma26w_rising_vs_4w",
-      "uptrendNote": null,
-      "mas": {
-        "sma5w": {
-          "name": "5周线",
-          "value": 671.72,
-          "prevValue": 679.66,
-          "prevBasis": "1周前",
-          "rising": false,
-          "distancePct": -1.9127,
-          "sample": 847,
-          "required": 5,
-          "enoughHistory": true,
-          "note": null
-        },
-        "sma26w": {
-          "name": "26周线（半年线）",
-          "value": 690.39,
-          "prevValue": 692.69,
-          "prevBasis": "4周前",
-          "rising": false,
-          "distancePct": -4.5653,
-          "sample": 847,
-          "required": 26,
-          "enoughHistory": true,
-          "note": null,
-          "prevValue1w": 691.65,
-          "risingVs1w": false
-        },
-        "sma5m": {
-          "name": "5月线",
-          "value": 688.5,
-          "prevValue": 693.74,
-          "prevBasis": "1月前",
-          "rising": false,
-          "distancePct": -4.3039,
-          "sample": 195,
-          "required": 5,
-          "enoughHistory": true,
-          "note": null
-        },
-        "sma5q": {
-          "name": "5季线",
-          "value": 652.16,
-          "prevValue": 641.47,
-          "prevBasis": "1季前",
+      "monthLow": 631.24,
+      "quarterLow": 631.24,
+      "yearLow": 578.46,
+      "buyPointSelectionRationale": "VOO只有2010年以来的行情，125月线尚未被价格触及，不能套用伯克希尔的125月线。图上2020、2022年的主要支撑在30月线和125周线；更浅的回撤常在20月线和52周线结束，故月线第一买点用SMA20、第二买点用SMA30、第三买点用SMA60（2020年接近）。季线SMA20作为第二买点，主要依据2020年那次深回撤，样本较少，已在图上标明。年线SMA5在2022年被明确回踩。",
+      "sameLengthsAsBerkshireButIndependentlySupported": false,
+      "buyPoints": [
+        {
+          "timeframe": "weekly",
+          "timeframeZh": "周线",
+          "smaPeriod": 52,
+          "maName": "周线SMA52",
+          "depth": 1,
+          "depthLabel": "周线第一买点",
+          "value": 661.32,
           "rising": true,
-          "distancePct": 1.0286,
-          "sample": 66,
-          "required": 5,
+          "distancePct": -0.3711,
           "enoughHistory": true,
-          "note": null
+          "sample": 847,
+          "required": 52,
+          "historicalTouches": 26,
+          "historicalSuccesses": 23,
+          "successRate": 88.4615,
+          "historicalExamples": [
+            {
+              "trough_date": "2020-03-27",
+              "trough": 182.58,
+              "min_dist_pct": -26.374,
+              "bounce_pct": 77.1079
+            },
+            {
+              "trough_date": "2022-10-14",
+              "trough": 302.86,
+              "min_dist_pct": -17.1638,
+              "bounce_pct": 32.9549
+            },
+            {
+              "trough_date": "2023-10-06",
+              "trough": 371.62,
+              "min_dist_pct": 2.384,
+              "bounce_pct": 25.44
+            },
+            {
+              "trough_date": "2023-10-27",
+              "trough": 361.92,
+              "min_dist_pct": -1.0354,
+              "bounce_pct": 28.8033
+            },
+            {
+              "trough_date": "2025-04-11",
+              "trough": 435.17,
+              "min_dist_pct": -13.9954,
+              "bounce_pct": 43.2329
+            },
+            {
+              "trough_date": "2026-04-02",
+              "trough": 575.3,
+              "min_dist_pct": -1.6528,
+              "bounce_pct": 24.3853
+            }
+          ],
+          "triggeredThisWeek": true,
+          "triggerType": "close_within_2pct",
+          "weekLowDistPct": -3.3358,
+          "periodLowDistPct": -3.3358,
+          "note": "收盘距该线 -0.37%，落在±2%以内，且均线向上",
+          "priorTagInPeriod": false
         },
-        "sma60m": {
-          "name": "5年线（月线SMA60）",
+        {
+          "timeframe": "weekly",
+          "timeframeZh": "周线",
+          "smaPeriod": 125,
+          "maName": "周线SMA125",
+          "depth": 2,
+          "depthLabel": "周线第二买点",
+          "value": 590.76,
+          "rising": true,
+          "distancePct": 11.5288,
+          "enoughHistory": true,
+          "sample": 847,
+          "required": 125,
+          "historicalTouches": 12,
+          "historicalSuccesses": 12,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2022-05-20",
+              "trough": 328.36,
+              "min_dist_pct": 0.67,
+              "bounce_pct": 12.7285
+            },
+            {
+              "trough_date": "2022-06-17",
+              "trough": 313.79,
+              "min_dist_pct": -4.4454,
+              "bounce_pct": 17.9629
+            },
+            {
+              "trough_date": "2022-10-14",
+              "trough": 302.86,
+              "min_dist_pct": -11.3539,
+              "bounce_pct": 34.4316
+            },
+            {
+              "trough_date": "2023-10-06",
+              "trough": 371.62,
+              "min_dist_pct": 1.5022,
+              "bounce_pct": 25.44
+            },
+            {
+              "trough_date": "2023-10-27",
+              "trough": 361.92,
+              "min_dist_pct": -1.2492,
+              "bounce_pct": 28.8033
+            },
+            {
+              "trough_date": "2025-04-11",
+              "trough": 435.17,
+              "min_dist_pct": -0.4675,
+              "bounce_pct": 39.7843
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 8.2098,
+          "periodLowDistPct": 8.2098,
+          "note": "收盘距该线 +11.53%，本周最低价距该线 +8.21%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "monthly",
+          "timeframeZh": "月线",
+          "smaPeriod": 20,
+          "maName": "月线SMA20",
+          "depth": 1,
+          "depthLabel": "月线第一买点",
+          "value": 627.3,
+          "rising": true,
+          "distancePct": 5.0332,
+          "enoughHistory": true,
+          "sample": 195,
+          "required": 20,
+          "historicalTouches": 11,
+          "historicalSuccesses": 10,
+          "successRate": 90.9091,
+          "historicalExamples": [
+            {
+              "trough_date": "2019-06-28",
+              "trough": 225.07,
+              "min_dist_pct": 0.8912,
+              "bounce_pct": 19.0925
+            },
+            {
+              "trough_date": "2020-03-31",
+              "trough": 182.58,
+              "min_dist_pct": -23.0736,
+              "bounce_pct": 76.6883
+            },
+            {
+              "trough_date": "2022-10-31",
+              "trough": 302.86,
+              "min_dist_pct": -16.7306,
+              "bounce_pct": 53.9219
+            },
+            {
+              "trough_date": "2023-10-31",
+              "trough": 361.92,
+              "min_dist_pct": 0.5995,
+              "bounce_pct": 39.3018
+            },
+            {
+              "trough_date": "2025-04-30",
+              "trough": 435.17,
+              "min_dist_pct": -8.3616,
+              "bounce_pct": 44.9459
+            },
+            {
+              "trough_date": "2026-03-31",
+              "trough": 575.3,
+              "min_dist_pct": 2.2825,
+              "bounce_pct": 22.2112
+            }
+          ],
+          "triggeredThisWeek": true,
+          "triggerType": "week_tag_and_hold",
+          "weekLowDistPct": 1.9066,
+          "periodLowDistPct": 0.6281,
+          "note": "本周最低价距该线 1.91%，进入或吞破±2%带后收盘站稳（收盘距该线 5.03%），且均线向上",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "monthly",
+          "timeframeZh": "月线",
+          "smaPeriod": 30,
+          "maName": "月线SMA30",
+          "depth": 2,
+          "depthLabel": "月线第二买点",
+          "value": 590.15,
+          "rising": true,
+          "distancePct": 11.6439,
+          "enoughHistory": true,
+          "sample": 195,
+          "required": 30,
+          "historicalTouches": 8,
+          "historicalSuccesses": 8,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2016-06-30",
+              "trough": 154.11,
+              "min_dist_pct": 1.6319,
+              "bounce_pct": 20.5315
+            },
+            {
+              "trough_date": "2018-12-31",
+              "trough": 190.74,
+              "min_dist_pct": -4.7636,
+              "bounce_pct": 31.6919
+            },
+            {
+              "trough_date": "2020-03-31",
+              "trough": 182.58,
+              "min_dist_pct": -20.7039,
+              "bounce_pct": 76.6883
+            },
+            {
+              "trough_date": "2022-10-31",
+              "trough": 302.86,
+              "min_dist_pct": -10.6997,
+              "bounce_pct": 53.9219
+            },
+            {
+              "trough_date": "2023-10-31",
+              "trough": 361.92,
+              "min_dist_pct": -1.3107,
+              "bounce_pct": 39.3018
+            },
+            {
+              "trough_date": "2025-04-30",
+              "trough": 435.17,
+              "min_dist_pct": -0.8716,
+              "bounce_pct": 44.9459
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 8.3216,
+          "periodLowDistPct": 6.9626,
+          "note": "收盘距该线 +11.64%，本周最低价距该线 +8.32%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "monthly",
+          "timeframeZh": "月线",
+          "smaPeriod": 60,
+          "maName": "月线SMA60",
+          "depth": 3,
+          "depthLabel": "月线第三买点",
           "value": 486.01,
-          "prevValue": 470.97,
-          "prevBasis": "3个月前",
           "rising": true,
           "distancePct": 35.5658,
+          "enoughHistory": true,
           "sample": 195,
           "required": 60,
-          "enoughHistory": true,
-          "note": null
+          "historicalTouches": 1,
+          "historicalSuccesses": 1,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2020-03-31",
+              "trough": 182.58,
+              "min_dist_pct": -8.555,
+              "bounce_pct": 73.7064
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 31.5323,
+          "periodLowDistPct": 29.8821,
+          "note": "收盘距该线 +35.57%，本周最低价距该线 +31.53%，未进入触发带",
+          "priorTagInPeriod": false
         },
-        "sma5y": {
-          "name": "年线SMA5（对照）",
+        {
+          "timeframe": "quarterly",
+          "timeframeZh": "季线",
+          "smaPeriod": 10,
+          "maName": "季线SMA10",
+          "depth": 1,
+          "depthLabel": "季线第一买点",
+          "value": 597.4,
+          "rising": true,
+          "distancePct": 10.2887,
+          "enoughHistory": true,
+          "sample": 66,
+          "required": 10,
+          "historicalTouches": 6,
+          "historicalSuccesses": 6,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2016-03-31",
+              "trough": 139.62,
+              "min_dist_pct": -6.783,
+              "bounce_pct": 53.0271
+            },
+            {
+              "trough_date": "2018-12-31",
+              "trough": 190.74,
+              "min_dist_pct": -4.9242,
+              "bounce_pct": 66.2754
+            },
+            {
+              "trough_date": "2020-03-31",
+              "trough": 182.58,
+              "min_dist_pct": -20.1818,
+              "bounce_pct": 123.7242
+            },
+            {
+              "trough_date": "2022-12-30",
+              "trough": 304.31,
+              "min_dist_pct": -11.5627,
+              "bounce_pct": 73.4068
+            },
+            {
+              "trough_date": "2023-12-29",
+              "trough": 363.41,
+              "min_dist_pct": -1.4642,
+              "bounce_pct": 66.5892
+            },
+            {
+              "trough_date": "2025-06-30",
+              "trough": 436.51,
+              "min_dist_pct": -5.3298,
+              "bounce_pct": 60.5603
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 7.007,
+          "periodLowDistPct": 5.6645,
+          "note": "收盘距该线 +10.29%，本周最低价距该线 +7.01%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "quarterly",
+          "timeframeZh": "季线",
+          "smaPeriod": 20,
+          "maName": "季线SMA20",
+          "depth": 2,
+          "depthLabel": "季线第二买点",
+          "value": 491.95,
+          "rising": true,
+          "distancePct": 33.9316,
+          "enoughHistory": true,
+          "sample": 66,
+          "required": 20,
+          "historicalTouches": 1,
+          "historicalSuccesses": 1,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2020-03-31",
+              "trough": 182.58,
+              "min_dist_pct": -8.4563,
+              "bounce_pct": 123.7242
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 29.9441,
+          "periodLowDistPct": 28.3139,
+          "note": "收盘距该线 +33.93%，本周最低价距该线 +29.94%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "annual",
+          "timeframeZh": "年线",
+          "smaPeriod": 5,
+          "maName": "年线SMA5",
+          "depth": 1,
+          "depthLabel": "年线第一买点",
           "value": 512.96,
-          "prevValue": 462.88,
-          "prevBasis": "上一年末的年线SMA5",
           "rising": true,
           "distancePct": 28.4455,
+          "enoughHistory": true,
           "sample": 17,
           "required": 5,
+          "historicalTouches": 4,
+          "historicalSuccesses": 4,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2016-12-30",
+              "trough": 141.83,
+              "min_dist_pct": -2.3529,
+              "bounce_pct": 123.6217
+            },
+            {
+              "trough_date": "2020-12-31",
+              "trough": 185.07,
+              "min_dist_pct": -21.472,
+              "bounce_pct": 185.1312
+            },
+            {
+              "trough_date": "2022-12-30",
+              "trough": 304.31,
+              "min_dist_pct": -4.1202,
+              "bounce_pct": 116.5143
+            },
+            {
+              "trough_date": "2025-12-31",
+              "trough": 439.0,
+              "min_dist_pct": -5.1598,
+              "bounce_pct": 50.0856
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 24.6218,
+          "periodLowDistPct": 12.769,
+          "note": "收盘距该线 +28.44%，本周最低价距该线 +24.62%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "annual",
+          "timeframeZh": "年线",
+          "smaPeriod": 10,
+          "maName": "年线SMA10",
+          "depth": 2,
+          "depthLabel": "年线第二买点",
+          "value": 397.62,
+          "rising": true,
+          "distancePct": 65.7044,
           "enoughHistory": true,
-          "note": null
+          "sample": 17,
+          "required": 10,
+          "historicalTouches": 1,
+          "historicalSuccesses": 1,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2020-12-31",
+              "trough": 185.07,
+              "min_dist_pct": 1.7891,
+              "bounce_pct": 185.1312
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 60.7716,
+          "periodLowDistPct": 45.4806,
+          "note": "收盘距该线 +65.70%，本周最低价距该线 +60.77%，未进入触发带",
+          "priorTagInPeriod": false
         }
+      ],
+      "thisWeekTriggers": [
+        {
+          "maName": "周线SMA52",
+          "depth": 1,
+          "depthLabel": "周线第一买点",
+          "distancePct": -0.3711,
+          "triggerType": "close_within_2pct",
+          "note": "收盘距该线 -0.37%，落在±2%以内，且均线向上"
+        },
+        {
+          "maName": "月线SMA20",
+          "depth": 1,
+          "depthLabel": "月线第一买点",
+          "distancePct": 5.0332,
+          "triggerType": "week_tag_and_hold",
+          "note": "本周最低价距该线 1.91%，进入或吞破±2%带后收盘站稳（收盘距该线 5.03%），且均线向上"
+        }
+      ],
+      "triggeredThisWeek": true,
+      "nearestBuyPoint": {
+        "maName": "周线SMA52",
+        "depth": 1,
+        "depthLabel": "周线第一买点",
+        "distancePct": -0.3711,
+        "triggerType": "close_within_2pct",
+        "note": "收盘距该线 -0.37%，落在±2%以内，且均线向上"
       },
-      "distanceToMas": {
-        "sma5w": -1.9127,
-        "sma26w": -4.5653,
-        "sma5m": -4.3039,
-        "sma5q": 1.0286,
-        "sma60m": 35.5658,
-        "sma5y": 28.4455
-      },
-      "midTerm": {
-        "triggered": false,
-        "type": null,
-        "types": [],
-        "note": "26周线向下，收盘距26周线 -4.57%，不记为半年线买点；价格已接近5周线（close_within_2pct），但未满足上升趋势定义，不记为5周线买点"
-      },
-      "longTerm": {
-        "triggered": true,
-        "type": "sma5q",
-        "types": [
-          "sma5q"
-        ],
-        "note": "5月线未向上，收盘距该线 -4.30%；触及5季线且该均线向上（判定方式：close_within_2pct）；5年线（月线SMA60）向上，收盘距该线 35.57%，本周未踩线；对照用年线SMA5为 512.96，距该线 28.45%（向上），买点判定以月线SMA60为准"
-      },
-      "rankTier": "long_only",
-      "proximityScore": 1.0286,
-      "rankScore": 1001.0286,
+      "rankTier": "triggered",
+      "proximityScore": -0.3711,
+      "maxTriggeredDepth": 1,
+      "rankScore": -100.3711,
       "rank": 2,
-      "summary": "中期没有买点：26周线向下，收盘658.87美元低于26周线4.57%，也不满足上升趋势中的5周线条件（价格虽距5周线仅-1.91%，但趋势定义不成立）。长期触发5季线买点：5季线652.16美元且向上，收盘距该线+1.03%，落在±2%以内。5月线已向下，不记为5月线买点；5年线向上但收盘仍高出35.57%。VOO是跟踪标普500的低成本宽基工具，用于超长期持有美股市场本身，不按单家公司财报评估。数据源显示追踪市盈率约22.3，股息率约1.07%，52周区间578.46–718.47美元。",
+      "summary": "本周触发：周线第一买点（周线SMA52，收盘距该线 -0.37%）；月线第一买点（月线SMA20，收盘距该线 +5.03%）。本周收盘几乎踩在该股自己的周线第一买点（52周线，-0.37%）上，且该线向上。月线第一买点采用20月线（因125月线历史不足、从未触及），本月最低价一度接近该线，收盘已高出约5.0%。更深的30月线、125周线尚未触及。",
+      "charts": [
+        "charts/VOO_selected.png",
+        "charts/VOO_composite.png",
+        "charts/VOO_monthly.png",
+        "charts/VOO_weekly.png"
+      ],
       "history": {
         "firstDateUsed": "2010-09-09",
         "nDaily": 4079,
@@ -298,384 +1177,6 @@ window.BUY_POINTS_REPORT = {
         "nMonthly": 195,
         "nQuarterly": 66,
         "nYearly": 17
-      }
-    },
-    {
-      "name": "可口可乐",
-      "ticker": "KO",
-      "yahooSymbol": "KO",
-      "isPrivate": false,
-      "lastClose": 97.59,
-      "lastCloseDate": "2026-11-25",
-      "currency": "USD",
-      "weekLow": 94.6,
-      "weekHigh": 98.78,
-      "weekBars": 3,
-      "uptrend": true,
-      "uptrendDefinition": "close_above_sma26w_and_sma26w_rising_vs_4w",
-      "uptrendNote": null,
-      "mas": {
-        "sma5w": {
-          "name": "5周线",
-          "value": 96.72,
-          "prevValue": 95.74,
-          "prevBasis": "1周前",
-          "rising": true,
-          "distancePct": 0.9037,
-          "sample": 987,
-          "required": 5,
-          "enoughHistory": true,
-          "note": null
-        },
-        "sma26w": {
-          "name": "26周线（半年线）",
-          "value": 87.94,
-          "prevValue": 85.1,
-          "prevBasis": "4周前",
-          "rising": true,
-          "distancePct": 10.9761,
-          "sample": 987,
-          "required": 26,
-          "enoughHistory": true,
-          "note": null,
-          "prevValue1w": 87.19,
-          "risingVs1w": true
-        },
-        "sma5m": {
-          "name": "5月线",
-          "value": 90.59,
-          "prevValue": 87.23,
-          "prevBasis": "1月前",
-          "rising": true,
-          "distancePct": 7.7237,
-          "sample": 227,
-          "required": 5,
-          "enoughHistory": true,
-          "note": null
-        },
-        "sma5q": {
-          "name": "5季线",
-          "value": 81.63,
-          "prevValue": 75.03,
-          "prevBasis": "1季前",
-          "rising": true,
-          "distancePct": 19.5517,
-          "sample": 76,
-          "required": 5,
-          "enoughHistory": true,
-          "note": null
-        },
-        "sma60m": {
-          "name": "5年线（月线SMA60）",
-          "value": 63.56,
-          "prevValue": 61.26,
-          "prevBasis": "3个月前",
-          "rising": true,
-          "distancePct": 53.5424,
-          "sample": 227,
-          "required": 60,
-          "enoughHistory": true,
-          "note": null
-        },
-        "sma5y": {
-          "name": "年线SMA5（对照）",
-          "value": 67.4,
-          "prevValue": 58.19,
-          "prevBasis": "上一年末的年线SMA5",
-          "rising": true,
-          "distancePct": 44.7954,
-          "sample": 19,
-          "required": 5,
-          "enoughHistory": true,
-          "note": null
-        }
-      },
-      "distanceToMas": {
-        "sma5w": 0.9037,
-        "sma26w": 10.9761,
-        "sma5m": 7.7237,
-        "sma5q": 19.5517,
-        "sma60m": 53.5424,
-        "sma5y": 44.7954
-      },
-      "midTerm": {
-        "triggered": true,
-        "type": "sma5w_in_uptrend",
-        "types": [
-          "sma5w_in_uptrend"
-        ],
-        "note": "26周线向上，但收盘距26周线 10.98%，本周未踩线；处于上升趋势中的5周线买点（判定方式：close_within_2pct；上升趋势定义：close_above_sma26w_and_sma26w_rising_vs_4w）"
-      },
-      "longTerm": {
-        "triggered": false,
-        "type": null,
-        "types": [],
-        "note": "5月线向上，收盘距该线 7.72%，本周未踩线；5季线向上，收盘距该线 19.55%，本周未踩线；5年线（月线SMA60）向上，收盘距该线 53.54%，本周未踩线；对照用年线SMA5为 67.40，距该线 44.80%（向上），买点判定以月线SMA60为准"
-      },
-      "rankTier": "mid_only",
-      "proximityScore": 0.9037,
-      "rankScore": 2000.9037,
-      "rank": 3,
-      "summary": "中期触发上升趋势中的5周线买点：收盘97.59美元，距向上的5周线96.72美元仅+0.90%，落在±2%以内；26周线向上，但收盘仍高出10.98%，未到半年线买点。长期均线全部向上，最近的5月线仍高7.72%，本周没有长期买点。截至2026-09-30的当季营收133.5亿美元、环比-0.1%，净利润40.1亿美元、环比-9.4%；同比营收+7.4%、利润+8.3%，毛利率62.3%。收盘接近52周高位100.56美元。",
-      "history": {
-        "firstDateUsed": "2008-01-02",
-        "nDaily": 4756,
-        "nWeekly": 987,
-        "nMonthly": 227,
-        "nQuarterly": 76,
-        "nYearly": 19
-      }
-    },
-    {
-      "name": "伯克希尔哈撒韦B股",
-      "ticker": "BRK.B",
-      "yahooSymbol": "BRK-B",
-      "isPrivate": false,
-      "lastClose": 579.32,
-      "lastCloseDate": "2026-11-25",
-      "currency": "USD",
-      "weekLow": 568.35,
-      "weekHigh": 581.47,
-      "weekBars": 3,
-      "uptrend": true,
-      "uptrendDefinition": "close_above_sma26w_and_sma26w_rising_vs_4w",
-      "uptrendNote": null,
-      "mas": {
-        "sma5w": {
-          "name": "5周线",
-          "value": 571.13,
-          "prevValue": 563.7,
-          "prevBasis": "1周前",
-          "rising": true,
-          "distancePct": 1.4344,
-          "sample": 987,
-          "required": 5,
-          "enoughHistory": true,
-          "note": null
-        },
-        "sma26w": {
-          "name": "26周线（半年线）",
-          "value": 518.11,
-          "prevValue": 502.97,
-          "prevBasis": "4周前",
-          "rising": true,
-          "distancePct": 11.8147,
-          "sample": 987,
-          "required": 26,
-          "enoughHistory": true,
-          "note": null,
-          "prevValue1w": 514.08,
-          "risingVs1w": true
-        },
-        "sma5m": {
-          "name": "5月线",
-          "value": 527.07,
-          "prevValue": 511.28,
-          "prevBasis": "1月前",
-          "rising": true,
-          "distancePct": 9.9141,
-          "sample": 227,
-          "required": 5,
-          "enoughHistory": true,
-          "note": null
-        },
-        "sma5q": {
-          "name": "5季线",
-          "value": 511.9,
-          "prevValue": 496.59,
-          "prevBasis": "1季前",
-          "rising": true,
-          "distancePct": 13.1701,
-          "sample": 76,
-          "required": 5,
-          "enoughHistory": true,
-          "note": null
-        },
-        "sma60m": {
-          "name": "5年线（月线SMA60）",
-          "value": 412.62,
-          "prevValue": 399.57,
-          "prevBasis": "3个月前",
-          "rising": true,
-          "distancePct": 40.3992,
-          "sample": 227,
-          "required": 60,
-          "enoughHistory": true,
-          "note": null
-        },
-        "sma5y": {
-          "name": "年线SMA5（对照）",
-          "value": 440.16,
-          "prevValue": 384.1,
-          "prevBasis": "上一年末的年线SMA5",
-          "rising": true,
-          "distancePct": 31.6152,
-          "sample": 19,
-          "required": 5,
-          "enoughHistory": true,
-          "note": null
-        }
-      },
-      "distanceToMas": {
-        "sma5w": 1.4344,
-        "sma26w": 11.8147,
-        "sma5m": 9.9141,
-        "sma5q": 13.1701,
-        "sma60m": 40.3992,
-        "sma5y": 31.6152
-      },
-      "midTerm": {
-        "triggered": true,
-        "type": "sma5w_in_uptrend",
-        "types": [
-          "sma5w_in_uptrend"
-        ],
-        "note": "26周线向上，但收盘距26周线 11.81%，本周未踩线；处于上升趋势中的5周线买点（判定方式：close_within_2pct；上升趋势定义：close_above_sma26w_and_sma26w_rising_vs_4w）"
-      },
-      "longTerm": {
-        "triggered": false,
-        "type": null,
-        "types": [],
-        "note": "5月线向上，收盘距该线 9.91%，本周未踩线；5季线向上，收盘距该线 13.17%，本周未踩线；5年线（月线SMA60）向上，收盘距该线 40.40%，本周未踩线；对照用年线SMA5为 440.16，距该线 31.62%（向上），买点判定以月线SMA60为准"
-      },
-      "rankTier": "mid_only",
-      "proximityScore": 1.4344,
-      "rankScore": 2001.4344,
-      "rank": 4,
-      "summary": "中期触发上升趋势中的5周线买点：收盘579.32美元，距向上的5周线571.13美元+1.43%。26周线向上，但收盘仍高出11.81%，未到半年线买点。长期均线全部向上，最近的5月线仍高9.91%，本周没有长期买点。数据源中部分季度的GAAP净利润缺失或为0，不能按这些空值做环比；改用经营每股收益，最近四个披露期分别为6.25、4.73、5.26和5.94美元。最近十二个月经营现金流约451亿美元，自由现金流约525亿美元。同比营收+11.2%，GAAP利润同比-27.6%，主要受投资资产公允价值波动影响，不宜直接外推。",
-      "history": {
-        "firstDateUsed": "2008-01-02",
-        "nDaily": 4756,
-        "nWeekly": 987,
-        "nMonthly": 227,
-        "nQuarterly": 76,
-        "nYearly": 19
-      }
-    },
-    {
-      "name": "苹果",
-      "ticker": "AAPL",
-      "yahooSymbol": "AAPL",
-      "isPrivate": false,
-      "lastClose": 355.58,
-      "lastCloseDate": "2026-11-25",
-      "currency": "USD",
-      "weekLow": 345.13,
-      "weekHigh": 356.75,
-      "weekBars": 3,
-      "uptrend": true,
-      "uptrendDefinition": "close_above_sma26w_and_sma26w_rising_vs_4w",
-      "uptrendNote": null,
-      "mas": {
-        "sma5w": {
-          "name": "5周线",
-          "value": 348.18,
-          "prevValue": 346.55,
-          "prevBasis": "1周前",
-          "rising": true,
-          "distancePct": 2.126,
-          "sample": 987,
-          "required": 5,
-          "enoughHistory": true,
-          "note": null
-        },
-        "sma26w": {
-          "name": "26周线（半年线）",
-          "value": 325.09,
-          "prevValue": 318.0,
-          "prevBasis": "4周前",
-          "rising": true,
-          "distancePct": 9.3798,
-          "sample": 987,
-          "required": 26,
-          "enoughHistory": true,
-          "note": null,
-          "prevValue1w": 323.39,
-          "risingVs1w": true
-        },
-        "sma5m": {
-          "name": "5月线",
-          "value": 331.55,
-          "prevValue": 318.21,
-          "prevBasis": "1月前",
-          "rising": true,
-          "distancePct": 7.2488,
-          "sample": 227,
-          "required": 5,
-          "enoughHistory": true,
-          "note": null
-        },
-        "sma5q": {
-          "name": "5季线",
-          "value": 300.26,
-          "prevValue": 279.84,
-          "prevBasis": "1季前",
-          "rising": true,
-          "distancePct": 18.424,
-          "sample": 76,
-          "required": 5,
-          "enoughHistory": true,
-          "note": null
-        },
-        "sma60m": {
-          "name": "5年线（月线SMA60）",
-          "value": 211.02,
-          "prevValue": 201.23,
-          "prevBasis": "3个月前",
-          "rising": true,
-          "distancePct": 68.5059,
-          "sample": 227,
-          "required": 60,
-          "enoughHistory": true,
-          "note": null
-        },
-        "sma5y": {
-          "name": "年线SMA5（对照）",
-          "value": 238.51,
-          "prevValue": 202.06,
-          "prevBasis": "上一年末的年线SMA5",
-          "rising": true,
-          "distancePct": 49.0846,
-          "sample": 19,
-          "required": 5,
-          "enoughHistory": true,
-          "note": null
-        }
-      },
-      "distanceToMas": {
-        "sma5w": 2.126,
-        "sma26w": 9.3798,
-        "sma5m": 7.2488,
-        "sma5q": 18.424,
-        "sma60m": 68.5059,
-        "sma5y": 49.0846
-      },
-      "midTerm": {
-        "triggered": true,
-        "type": "sma5w_in_uptrend",
-        "types": [
-          "sma5w_in_uptrend"
-        ],
-        "note": "26周线向上，但收盘距26周线 9.38%，本周未踩线；处于上升趋势中的5周线买点（判定方式：week_tag_and_hold；上升趋势定义：close_above_sma26w_and_sma26w_rising_vs_4w）"
-      },
-      "longTerm": {
-        "triggered": false,
-        "type": null,
-        "types": [],
-        "note": "5月线向上，收盘距该线 7.25%，本周未踩线；5季线向上，收盘距该线 18.42%，本周未踩线；5年线（月线SMA60）向上，收盘距该线 68.51%，本周未踩线；对照用年线SMA5为 238.51，距该线 49.08%（向上），买点判定以月线SMA60为准"
-      },
-      "rankTier": "mid_only",
-      "proximityScore": 2.126,
-      "rankScore": 2002.126,
-      "rank": 5,
-      "summary": "中期触发上升趋势中的5周线买点：本周最低价345.13美元一度略低于5周线348.18美元，收盘355.58美元重新站上并站稳；收盘距5周线+2.13%，略宽于±2%的收盘阈值，按「本周触及后站稳」判定。26周线向上，但收盘仍高出9.38%，未到半年线买点。长期各均线均向上，最近的5月线仍高7.25%，本周没有长期买点。基本面方面，截至2026-09-30的当季营收1144.8亿美元、环比+4.6%，净利润307.1亿美元、环比+3.1%；毛利率48.8%，最近十二个月自由现金流约1057亿美元。股价靠近52周高位（360.83美元）。",
-      "history": {
-        "firstDateUsed": "2008-01-02",
-        "nDaily": 4756,
-        "nWeekly": 987,
-        "nMonthly": 227,
-        "nQuarterly": 76,
-        "nYearly": 19
       }
     },
     {
@@ -687,112 +1188,474 @@ window.BUY_POINTS_REPORT = {
       "lastCloseDate": "2026-11-25",
       "currency": "USD",
       "weekLow": 357.64,
-      "weekHigh": 393.83,
-      "weekBars": 3,
-      "uptrend": false,
-      "uptrendDefinition": "close_above_sma26w_and_sma26w_rising_vs_4w",
-      "uptrendNote": null,
-      "mas": {
-        "sma5w": {
-          "name": "5周线",
-          "value": 374.84,
-          "prevValue": 373.26,
-          "prevBasis": "1周前",
+      "monthLow": 338.15,
+      "quarterLow": 338.15,
+      "yearLow": 297.38,
+      "buyPointSelectionRationale": "特斯拉波动远大于伯克希尔，125月线从未被触及，不能照搬第三买点。图上2019年、尤其是2022–2024年的调整，主要在30月线与60月线、125周线与200周线一带完成；2022–23年季线SMA20也提供过可辨认的支撑，故列为从图上读出的季线第二买点。年线SMA5在2022–23年被明显回踩。这类买点被击穿的情况多于消费品公司，使用时需要更宽的容错。",
+      "sameLengthsAsBerkshireButIndependentlySupported": false,
+      "buyPoints": [
+        {
+          "timeframe": "weekly",
+          "timeframeZh": "周线",
+          "smaPeriod": 125,
+          "maName": "周线SMA125",
+          "depth": 1,
+          "depthLabel": "周线第一买点",
+          "value": 352.01,
           "rising": true,
-          "distancePct": 1.4134,
-          "sample": 857,
-          "required": 5,
+          "distancePct": 7.9912,
           "enoughHistory": true,
-          "note": null
-        },
-        "sma26w": {
-          "name": "26周线（半年线）",
-          "value": 368.34,
-          "prevValue": 377.49,
-          "prevBasis": "4周前",
-          "rising": false,
-          "distancePct": 3.2049,
           "sample": 857,
-          "required": 26,
-          "enoughHistory": true,
-          "note": null,
-          "prevValue1w": 370.48,
-          "risingVs1w": false
+          "required": 125,
+          "historicalTouches": 25,
+          "historicalSuccesses": 25,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2025-03-14",
+              "trough": 217.02,
+              "min_dist_pct": -6.2646,
+              "bounce_pct": 102.9306
+            },
+            {
+              "trough_date": "2025-04-11",
+              "trough": 214.25,
+              "min_dist_pct": -8.0704,
+              "bounce_pct": 113.0968
+            },
+            {
+              "trough_date": "2026-07-31",
+              "trough": 297.38,
+              "min_dist_pct": -8.9853,
+              "bounce_pct": 34.4441
+            },
+            {
+              "trough_date": "2026-10-02",
+              "trough": 345.88,
+              "min_dist_pct": 1.6335,
+              "bounce_pct": 15.5921
+            },
+            {
+              "trough_date": "2026-10-16",
+              "trough": 349.33,
+              "min_dist_pct": 1.7367,
+              "bounce_pct": 14.4505
+            },
+            {
+              "trough_date": "2026-11-06",
+              "trough": 338.15,
+              "min_dist_pct": -2.8696,
+              "bounce_pct": 15.3985
+            }
+          ],
+          "triggeredThisWeek": true,
+          "triggerType": "week_tag_and_hold",
+          "weekLowDistPct": 1.5994,
+          "periodLowDistPct": 1.5994,
+          "note": "本周最低价距该线 1.60%，进入或吞破±2%带后收盘站稳（收盘距该线 7.99%），且均线向上",
+          "priorTagInPeriod": false
         },
-        "sma5m": {
-          "name": "5月线",
-          "value": 362.78,
-          "prevValue": 370.88,
-          "prevBasis": "1月前",
-          "rising": false,
-          "distancePct": 4.7841,
+        {
+          "timeframe": "weekly",
+          "timeframeZh": "周线",
+          "smaPeriod": 200,
+          "maName": "周线SMA200",
+          "depth": 2,
+          "depthLabel": "周线第二买点",
+          "value": 298.98,
+          "rising": true,
+          "distancePct": 27.1456,
+          "enoughHistory": true,
+          "sample": 857,
+          "required": 200,
+          "historicalTouches": 15,
+          "historicalSuccesses": 15,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2023-04-28",
+              "trough": 152.37,
+              "min_dist_pct": -14.6063,
+              "bounce_pct": 84.6689
+            },
+            {
+              "trough_date": "2023-11-03",
+              "trough": 194.07,
+              "min_dist_pct": -6.6191,
+              "bounce_pct": 30.623
+            },
+            {
+              "trough_date": "2024-04-26",
+              "trough": 138.8,
+              "min_dist_pct": -38.9419,
+              "bounce_pct": 214.2867
+            },
+            {
+              "trough_date": "2024-11-08",
+              "trough": 238.88,
+              "min_dist_pct": 0.9251,
+              "bounce_pct": 82.6147
+            },
+            {
+              "trough_date": "2025-03-14",
+              "trough": 217.02,
+              "min_dist_pct": -12.5384,
+              "bounce_pct": 102.9306
+            },
+            {
+              "trough_date": "2025-04-11",
+              "trough": 214.25,
+              "min_dist_pct": -13.9996,
+              "bounce_pct": 113.0968
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 19.62,
+          "periodLowDistPct": 19.62,
+          "note": "收盘距该线 +27.15%，本周最低价距该线 +19.62%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "monthly",
+          "timeframeZh": "月线",
+          "smaPeriod": 30,
+          "maName": "月线SMA30",
+          "depth": 1,
+          "depthLabel": "月线第一买点",
+          "value": 349.58,
+          "rising": true,
+          "distancePct": 8.7411,
+          "enoughHistory": true,
           "sample": 198,
-          "required": 5,
-          "enoughHistory": true,
-          "note": null
+          "required": 30,
+          "historicalTouches": 12,
+          "historicalSuccesses": 12,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2019-06-28",
+              "trough": 11.8,
+              "min_dist_pct": -41.6095,
+              "bounce_pct": 1307.7633
+            },
+            {
+              "trough_date": "2022-06-30",
+              "trough": 208.69,
+              "min_dist_pct": 0.302,
+              "bounce_pct": 42.386
+            },
+            {
+              "trough_date": "2023-01-31",
+              "trough": 101.81,
+              "min_dist_pct": -58.5596,
+              "bounce_pct": 297.407
+            },
+            {
+              "trough_date": "2025-04-30",
+              "trough": 214.25,
+              "min_dist_pct": -9.077,
+              "bounce_pct": 113.0968
+            },
+            {
+              "trough_date": "2026-07-31",
+              "trough": 297.38,
+              "min_dist_pct": -8.2519,
+              "bounce_pct": 34.4441
+            },
+            {
+              "trough_date": "2026-11-25",
+              "trough": 338.15,
+              "min_dist_pct": -3.2704,
+              "bounce_pct": 12.4176
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 2.3056,
+          "periodLowDistPct": -3.2696,
+          "note": "本期（月线）最低价距该线 -3.27%，曾接近或触及，但本周收盘已离开±2%带，不记为本周触发",
+          "priorTagInPeriod": true
         },
-        "sma5q": {
-          "name": "5季线",
-          "value": 395.4,
-          "prevValue": 408.32,
-          "prevBasis": "1季前",
-          "rising": false,
-          "distancePct": -3.8604,
-          "sample": 67,
-          "required": 5,
-          "enoughHistory": true,
-          "note": null
-        },
-        "sma60m": {
-          "name": "5年线（月线SMA60）",
+        {
+          "timeframe": "monthly",
+          "timeframeZh": "月线",
+          "smaPeriod": 60,
+          "maName": "月线SMA60",
+          "depth": 2,
+          "depthLabel": "月线第二买点",
           "value": 292.67,
-          "prevValue": 290.61,
-          "prevBasis": "3个月前",
-          "rising": true,
+          "rising": false,
           "distancePct": 29.8878,
+          "enoughHistory": true,
           "sample": 198,
           "required": 60,
-          "enoughHistory": true,
-          "note": null
+          "historicalTouches": 5,
+          "historicalSuccesses": 5,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2018-10-31",
+              "trough": 16.52,
+              "min_dist_pct": -2.1377,
+              "bounce_pct": 41.4538
+            },
+            {
+              "trough_date": "2019-06-28",
+              "trough": 11.8,
+              "min_dist_pct": -33.0437,
+              "bounce_pct": 708.3847
+            },
+            {
+              "trough_date": "2023-01-31",
+              "trough": 101.81,
+              "min_dist_pct": -25.6659,
+              "bounce_pct": 162.6756
+            },
+            {
+              "trough_date": "2024-04-30",
+              "trough": 138.8,
+              "min_dist_pct": -25.4446,
+              "bounce_pct": 191.4986
+            },
+            {
+              "trough_date": "2025-04-30",
+              "trough": 214.25,
+              "min_dist_pct": -9.2895,
+              "bounce_pct": 113.0968
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 22.1991,
+          "periodLowDistPct": 15.5397,
+          "note": "收盘距该线 +29.89%，本周最低价距该线 +22.20%，未进入触发带",
+          "priorTagInPeriod": false
         },
-        "sma5y": {
-          "name": "年线SMA5（对照）",
+        {
+          "timeframe": "quarterly",
+          "timeframeZh": "季线",
+          "smaPeriod": 10,
+          "maName": "季线SMA10",
+          "depth": 1,
+          "depthLabel": "季线第一买点",
+          "value": 366.4,
+          "rising": true,
+          "distancePct": 3.7492,
+          "enoughHistory": true,
+          "sample": 67,
+          "required": 10,
+          "historicalTouches": 5,
+          "historicalSuccesses": 5,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2012-09-28",
+              "trough": 1.7,
+              "min_dist_pct": -8.3696,
+              "bounce_pct": 850.9406
+            },
+            {
+              "trough_date": "2016-03-31",
+              "trough": 9.4,
+              "min_dist_pct": -37.0099,
+              "bounce_pct": 156.3701
+            },
+            {
+              "trough_date": "2019-06-28",
+              "trough": 11.8,
+              "min_dist_pct": -41.0491,
+              "bounce_pct": 2090.7455
+            },
+            {
+              "trough_date": "2023-03-31",
+              "trough": 101.81,
+              "min_dist_pct": -58.8605,
+              "bounce_pct": 341.7248
+            },
+            {
+              "trough_date": "2026-09-30",
+              "trough": 297.38,
+              "min_dist_pct": -14.5894,
+              "bounce_pct": 27.8297
+            }
+          ],
+          "triggeredThisWeek": true,
+          "triggerType": "week_tag_and_hold",
+          "weekLowDistPct": -2.3908,
+          "periodLowDistPct": -7.7102,
+          "note": "本周最低价距该线 -2.39%，进入或吞破±2%带后收盘站稳（收盘距该线 3.75%），且均线向上",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "quarterly",
+          "timeframeZh": "季线",
+          "smaPeriod": 20,
+          "maName": "季线SMA20",
+          "depth": 2,
+          "depthLabel": "季线第二买点",
+          "value": 298.89,
+          "rising": true,
+          "distancePct": 27.1853,
+          "enoughHistory": true,
+          "sample": 67,
+          "required": 20,
+          "historicalTouches": 5,
+          "historicalSuccesses": 5,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2016-03-31",
+              "trough": 9.4,
+              "min_dist_pct": 1.0524,
+              "bounce_pct": 156.3701
+            },
+            {
+              "trough_date": "2019-06-28",
+              "trough": 11.8,
+              "min_dist_pct": -32.8646,
+              "bounce_pct": 2090.7455
+            },
+            {
+              "trough_date": "2023-03-31",
+              "trough": 101.81,
+              "min_dist_pct": -28.9254,
+              "bounce_pct": 296.6605
+            },
+            {
+              "trough_date": "2024-06-28",
+              "trough": 138.8,
+              "min_dist_pct": -28.8709,
+              "bounce_pct": 224.0058
+            },
+            {
+              "trough_date": "2026-09-30",
+              "trough": 297.38,
+              "min_dist_pct": -0.0379,
+              "bounce_pct": 27.8297
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 19.6561,
+          "periodLowDistPct": 13.1353,
+          "note": "收盘距该线 +27.18%，本周最低价距该线 +19.66%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "annual",
+          "timeframeZh": "年线",
+          "smaPeriod": 5,
+          "maName": "年线SMA5",
+          "depth": 1,
+          "depthLabel": "年线第一买点",
           "value": 321.07,
-          "prevValue": 315.5,
-          "prevBasis": "上一年末的年线SMA5",
           "rising": true,
           "distancePct": 18.3971,
+          "enoughHistory": true,
           "sample": 17,
           "required": 5,
+          "historicalTouches": 2,
+          "historicalSuccesses": 2,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2016-12-30",
+              "trough": 9.4,
+              "min_dist_pct": -63.5229,
+              "bounce_pct": 4194.6475
+            },
+            {
+              "trough_date": "2023-12-29",
+              "trough": 101.81,
+              "min_dist_pct": -49.0823,
+              "bounce_pct": 341.7248
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 11.39,
+          "periodLowDistPct": -7.3785,
+          "note": "本期（年线）最低价距该线 -7.38%，曾接近或触及，但本周收盘已离开±2%带，不记为本周触发",
+          "priorTagInPeriod": true
+        },
+        {
+          "timeframe": "annual",
+          "timeframeZh": "年线",
+          "smaPeriod": 10,
+          "maName": "年线SMA10",
+          "depth": 2,
+          "depthLabel": "年线第二买点",
+          "value": 226.37,
+          "rising": true,
+          "distancePct": 67.9304,
           "enoughHistory": true,
-          "note": null
+          "sample": 17,
+          "required": 10,
+          "historicalTouches": 2,
+          "historicalSuccesses": 2,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2019-12-31",
+              "trough": 11.8,
+              "min_dist_pct": -36.036,
+              "bounce_pct": 3322.5664
+            },
+            {
+              "trough_date": "2023-12-29",
+              "trough": 101.81,
+              "min_dist_pct": -5.2974,
+              "bounce_pct": 341.7248
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 57.9891,
+          "periodLowDistPct": 31.369,
+          "note": "收盘距该线 +67.93%，本周最低价距该线 +57.99%，未进入触发带",
+          "priorTagInPeriod": false
         }
+      ],
+      "thisWeekTriggers": [
+        {
+          "maName": "周线SMA125",
+          "depth": 1,
+          "depthLabel": "周线第一买点",
+          "distancePct": 7.9912,
+          "triggerType": "week_tag_and_hold",
+          "note": "本周最低价距该线 1.60%，进入或吞破±2%带后收盘站稳（收盘距该线 7.99%），且均线向上"
+        },
+        {
+          "maName": "季线SMA10",
+          "depth": 1,
+          "depthLabel": "季线第一买点",
+          "distancePct": 3.7492,
+          "triggerType": "week_tag_and_hold",
+          "note": "本周最低价距该线 -2.39%，进入或吞破±2%带后收盘站稳（收盘距该线 3.75%），且均线向上"
+        }
+      ],
+      "triggeredThisWeek": true,
+      "nearestBuyPoint": {
+        "maName": "季线SMA10",
+        "depth": 1,
+        "depthLabel": "季线第一买点",
+        "distancePct": 3.7492,
+        "triggerType": "week_tag_and_hold",
+        "note": "本周最低价距该线 -2.39%，进入或吞破±2%带后收盘站稳（收盘距该线 3.75%），且均线向上"
       },
-      "distanceToMas": {
-        "sma5w": 1.4134,
-        "sma26w": 3.2049,
-        "sma5m": 4.7841,
-        "sma5q": -3.8604,
-        "sma60m": 29.8878,
-        "sma5y": 18.3971
-      },
-      "midTerm": {
-        "triggered": false,
-        "type": null,
-        "types": [],
-        "note": "价格已接近26周线（week_tag_and_hold），但26周线未向上，不记为中期买点；价格已接近5周线（close_within_2pct），但未满足上升趋势定义，不记为5周线买点"
-      },
-      "longTerm": {
-        "triggered": false,
-        "type": null,
-        "types": [],
-        "note": "价格已接近5月线（week_tag_and_hold），但该均线未向上，不记为长期买点；5季线未向上，收盘距该线 -3.86%；5年线（月线SMA60）向上，收盘距该线 29.89%，本周未踩线；对照用年线SMA5为 321.07，距该线 18.40%（向上），买点判定以月线SMA60为准"
-      },
-      "rankTier": "none",
-      "proximityScore": 1.4134,
-      "rankScore": 3001.4134,
-      "rank": 6,
-      "summary": "本周没有中期或长期买点。收盘380.14美元距5周线374.84美元+1.41%，且5周线向上，但26周线向下，不满足「上升趋势中的5周线买点」；本周也曾接近26周线与5月线，这两条均线同样未向上，不记为买点。5季线向下，收盘低于该线3.86%；5年线向上，但收盘仍高出29.89%。截至2026-09-30的当季营收280.5亿美元、环比-0.7%，净利润7.87亿美元、环比-29.4%；同比营收-0.2%、利润-43.6%。毛利率19.3%，净利率3.1%，最近十二个月自由现金流约50亿美元。滚动市盈率约418，利润波动较大。",
+      "rankTier": "triggered",
+      "proximityScore": 3.7492,
+      "maxTriggeredDepth": 1,
+      "rankScore": -96.2508,
+      "rank": 3,
+      "summary": "本周触发周线第一买点（125周线）和季线第一买点（SMA10）：本周最低价分别距这两条线约+1.60%和-2.39%，收盘站稳，但收盘已分别高出约8.0%和3.7%，属于周内接近后收高，不是收盘踩线。本月更早的最低价338.15美元曾下探月线第一买点（30月线349.58美元），但本周收盘已离开该带约8.7%，不记为本周月线触发。特斯拉均线被击穿的次数多于消费品公司，这类买点的可靠性低于伯克希尔。",
+      "charts": [
+        "charts/TSLA_selected.png",
+        "charts/TSLA_composite.png",
+        "charts/TSLA_monthly.png",
+        "charts/TSLA_weekly.png"
+      ],
       "history": {
         "firstDateUsed": "2010-06-29",
         "nDaily": 4129,
@@ -800,6 +1663,1468 @@ window.BUY_POINTS_REPORT = {
         "nMonthly": 198,
         "nQuarterly": 67,
         "nYearly": 17
+      }
+    },
+    {
+      "name": "伯克希尔哈撒韦B股",
+      "ticker": "BRK.B",
+      "yahooSymbol": "BRK-B",
+      "isPrivate": false,
+      "lastClose": 579.32,
+      "lastCloseDate": "2026-11-25",
+      "currency": "USD",
+      "weekLow": 568.35,
+      "monthLow": 544.44,
+      "quarterLow": 495.96,
+      "yearLow": 464.01,
+      "buyPointSelectionRationale": "以用户给出的伯克希尔分层做校准，并与1996年以来复权图核对：月线SMA30是常态回踩的第一买点（2010、2011、2016、2018–19、2020、2022、2026年4月等）；跌到SMA60为第二买点（2009、2011、2020）；只有大熊市才到SMA125第三买点（2008年11月、2009年2月，2011年9月也曾接近）。周线只采用SMA125，2000–2003、2008–09、2011、2016、2020、2022、2026年4月多次在该线附近获得支撑。季线采用SMA10为第一买点、SMA30为第三买点；季线SMA20历史上也有支撑，但用户未给出第二买点，本报告不自行发明。年线SMA5为第一买点（2000、2016、2020），SMA10为第二买点（2009、2020）。",
+      "sameLengthsAsBerkshireButIndependentlySupported": false,
+      "buyPoints": [
+        {
+          "timeframe": "weekly",
+          "timeframeZh": "周线",
+          "smaPeriod": 125,
+          "maName": "周线SMA125",
+          "depth": 1,
+          "depthLabel": "周线买点",
+          "value": 489.71,
+          "rising": true,
+          "distancePct": 18.2996,
+          "enoughHistory": true,
+          "sample": 1595,
+          "required": 125,
+          "historicalTouches": 36,
+          "historicalSuccesses": 36,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2020-03-27",
+              "trough": 159.5,
+              "min_dist_pct": -22.4727,
+              "bounce_pct": 58.7147
+            },
+            {
+              "trough_date": "2020-10-30",
+              "trough": 197.81,
+              "min_dist_pct": -3.5571,
+              "bounce_pct": 47.0755
+            },
+            {
+              "trough_date": "2022-10-14",
+              "trough": 259.85,
+              "min_dist_pct": -2.7003,
+              "bounce_pct": 26.4383
+            },
+            {
+              "trough_date": "2023-03-17",
+              "trough": 292.42,
+              "min_dist_pct": 2.4005,
+              "bounce_pct": 25.7985
+            },
+            {
+              "trough_date": "2026-03-27",
+              "trough": 467.21,
+              "min_dist_pct": 2.1487,
+              "bounce_pct": 11.6843
+            },
+            {
+              "trough_date": "2026-04-17",
+              "trough": 464.01,
+              "min_dist_pct": 0.2083,
+              "bounce_pct": 27.786
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 16.0585,
+          "periodLowDistPct": 16.0585,
+          "note": "收盘距该线 +18.30%，本周最低价距该线 +16.06%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "monthly",
+          "timeframeZh": "月线",
+          "smaPeriod": 30,
+          "maName": "月线SMA30",
+          "depth": 1,
+          "depthLabel": "月线第一买点",
+          "value": 490.89,
+          "rising": true,
+          "distancePct": 18.0131,
+          "enoughHistory": true,
+          "sample": 367,
+          "required": 30,
+          "historicalTouches": 19,
+          "historicalSuccesses": 19,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2019-06-28",
+              "trough": 196.89,
+              "min_dist_pct": 1.9078,
+              "bounce_pct": 15.0389
+            },
+            {
+              "trough_date": "2019-08-30",
+              "trough": 195.4,
+              "min_dist_pct": -0.1261,
+              "bounce_pct": 15.9161
+            },
+            {
+              "trough_date": "2020-03-31",
+              "trough": 159.5,
+              "min_dist_pct": -22.1243,
+              "bounce_pct": 81.4671
+            },
+            {
+              "trough_date": "2022-10-31",
+              "trough": 259.85,
+              "min_dist_pct": -2.0925,
+              "bounce_pct": 35.4474
+            },
+            {
+              "trough_date": "2026-04-30",
+              "trough": 464.01,
+              "min_dist_pct": -0.549,
+              "bounce_pct": 24.8508
+            },
+            {
+              "trough_date": "2026-10-30",
+              "trough": 495.96,
+              "min_dist_pct": 2.1761,
+              "bounce_pct": 16.8078
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 15.7795,
+          "periodLowDistPct": 10.9088,
+          "note": "收盘距该线 +18.01%，本周最低价距该线 +15.78%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "monthly",
+          "timeframeZh": "月线",
+          "smaPeriod": 60,
+          "maName": "月线SMA60",
+          "depth": 2,
+          "depthLabel": "月线第二买点",
+          "value": 412.62,
+          "rising": true,
+          "distancePct": 40.3992,
+          "enoughHistory": true,
+          "sample": 367,
+          "required": 60,
+          "historicalTouches": 7,
+          "historicalSuccesses": 7,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2003-02-28",
+              "trough": 40.3,
+              "min_dist_pct": -8.4798,
+              "bounce_pct": 47.9404
+            },
+            {
+              "trough_date": "2005-09-30",
+              "trough": 52.24,
+              "min_dist_pct": 2.1243,
+              "bounce_pct": 17.4962
+            },
+            {
+              "trough_date": "2009-02-27",
+              "trough": 44.82,
+              "min_dist_pct": -33.931,
+              "bounce_pct": 84.4712
+            },
+            {
+              "trough_date": "2010-05-28",
+              "trough": 68.48,
+              "min_dist_pct": -2.3755,
+              "bounce_pct": 27.4533
+            },
+            {
+              "trough_date": "2011-09-30",
+              "trough": 65.35,
+              "min_dist_pct": -13.5593,
+              "bounce_pct": 59.4491
+            },
+            {
+              "trough_date": "2020-03-31",
+              "trough": 159.5,
+              "min_dist_pct": -10.193,
+              "bounce_pct": 72.3825
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 37.7417,
+          "periodLowDistPct": 31.9471,
+          "note": "收盘距该线 +40.40%，本周最低价距该线 +37.74%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "monthly",
+          "timeframeZh": "月线",
+          "smaPeriod": 125,
+          "maName": "月线SMA125",
+          "depth": 3,
+          "depthLabel": "月线第三买点",
+          "value": 305.24,
+          "rising": true,
+          "distancePct": 89.7913,
+          "enoughHistory": true,
+          "sample": 367,
+          "required": 125,
+          "historicalTouches": 3,
+          "historicalSuccesses": 3,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2008-11-28",
+              "trough": 49.02,
+              "min_dist_pct": -12.0555,
+              "bounce_pct": 42.7581
+            },
+            {
+              "trough_date": "2009-02-27",
+              "trough": 44.82,
+              "min_dist_pct": -20.1461,
+              "bounce_pct": 81.3253
+            },
+            {
+              "trough_date": "2011-09-30",
+              "trough": 65.35,
+              "min_dist_pct": 1.9519,
+              "bounce_pct": 27.5134
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 86.1977,
+          "periodLowDistPct": 78.3646,
+          "note": "收盘距该线 +89.79%，本周最低价距该线 +86.20%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "quarterly",
+          "timeframeZh": "季线",
+          "smaPeriod": 10,
+          "maName": "季线SMA10",
+          "depth": 1,
+          "depthLabel": "季线第一买点",
+          "value": 499.41,
+          "rising": true,
+          "distancePct": 16.0,
+          "enoughHistory": true,
+          "sample": 123,
+          "required": 10,
+          "historicalTouches": 10,
+          "historicalSuccesses": 10,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2009-03-31",
+              "trough": 44.82,
+              "min_dist_pct": -41.8119,
+              "bounce_pct": 86.5908
+            },
+            {
+              "trough_date": "2011-09-30",
+              "trough": 65.35,
+              "min_dist_pct": -12.3889,
+              "bounce_pct": 93.6649
+            },
+            {
+              "trough_date": "2016-03-31",
+              "trough": 123.55,
+              "min_dist_pct": -8.0134,
+              "bounce_pct": 73.2983
+            },
+            {
+              "trough_date": "2020-03-31",
+              "trough": 159.5,
+              "min_dist_pct": -21.585,
+              "bounce_pct": 121.2602
+            },
+            {
+              "trough_date": "2022-12-30",
+              "trough": 259.85,
+              "min_dist_pct": -5.5774,
+              "bounce_pct": 77.1253
+            },
+            {
+              "trough_date": "2026-06-30",
+              "trough": 464.01,
+              "min_dist_pct": -2.1941,
+              "bounce_pct": 24.8508
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 13.8043,
+          "periodLowDistPct": -0.6908,
+          "note": "本期（季线）最低价距该线 -0.69%，曾接近或触及，但本周收盘已离开±2%带，不记为本周触发",
+          "priorTagInPeriod": true
+        },
+        {
+          "timeframe": "quarterly",
+          "timeframeZh": "季线",
+          "smaPeriod": 30,
+          "maName": "季线SMA30",
+          "depth": 3,
+          "depthLabel": "季线第三买点",
+          "value": 357.53,
+          "rising": true,
+          "distancePct": 62.0318,
+          "enoughHistory": true,
+          "sample": 123,
+          "required": 30,
+          "historicalTouches": 3,
+          "historicalSuccesses": 3,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2009-03-31",
+              "trough": 44.82,
+              "min_dist_pct": -27.5656,
+              "bounce_pct": 86.5908
+            },
+            {
+              "trough_date": "2011-09-30",
+              "trough": 65.35,
+              "min_dist_pct": -6.7366,
+              "bounce_pct": 73.6955
+            },
+            {
+              "trough_date": "2020-03-31",
+              "trough": 159.5,
+              "min_dist_pct": 0.354,
+              "bounce_pct": 87.4608
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 58.9657,
+          "periodLowDistPct": 38.7184,
+          "note": "收盘距该线 +62.03%，本周最低价距该线 +58.97%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "annual",
+          "timeframeZh": "年线",
+          "smaPeriod": 5,
+          "maName": "年线SMA5",
+          "depth": 1,
+          "depthLabel": "年线第一买点",
+          "value": 440.16,
+          "rising": true,
+          "distancePct": 31.6152,
+          "enoughHistory": true,
+          "sample": 31,
+          "required": 5,
+          "historicalTouches": 3,
+          "historicalSuccesses": 3,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2000-12-29",
+              "trough": 27.02,
+              "min_dist_pct": -37.1829,
+              "bounce_pct": 503.1828
+            },
+            {
+              "trough_date": "2016-12-30",
+              "trough": 123.55,
+              "min_dist_pct": -5.4604,
+              "bounce_pct": 87.673
+            },
+            {
+              "trough_date": "2020-12-31",
+              "trough": 159.5,
+              "min_dist_pct": -22.1001,
+              "bounce_pct": 263.21
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 29.1235,
+          "periodLowDistPct": 5.4185,
+          "note": "收盘距该线 +31.62%，本周最低价距该线 +29.12%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "annual",
+          "timeframeZh": "年线",
+          "smaPeriod": 10,
+          "maName": "年线SMA10",
+          "depth": 2,
+          "depthLabel": "年线第二买点",
+          "value": 336.06,
+          "rising": true,
+          "distancePct": 72.3869,
+          "enoughHistory": true,
+          "sample": 31,
+          "required": 10,
+          "historicalTouches": 2,
+          "historicalSuccesses": 2,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2009-12-31",
+              "trough": 44.82,
+              "min_dist_pct": -27.4534,
+              "bounce_pct": 235.0067
+            },
+            {
+              "trough_date": "2020-12-31",
+              "trough": 159.5,
+              "min_dist_pct": 0.2829,
+              "bounce_pct": 184.1881
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 69.1216,
+          "periodLowDistPct": 38.0736,
+          "note": "收盘距该线 +72.39%，本周最低价距该线 +69.12%，未进入触发带",
+          "priorTagInPeriod": false
+        }
+      ],
+      "thisWeekTriggers": [],
+      "triggeredThisWeek": false,
+      "nearestBuyPoint": {
+        "maName": "季线SMA10",
+        "depth": 1,
+        "depthLabel": "季线第一买点",
+        "distancePct": 16.0,
+        "rising": true
+      },
+      "rankTier": "none",
+      "proximityScore": 16.0,
+      "maxTriggeredDepth": 0,
+      "rankScore": 1016.0,
+      "rank": 4,
+      "summary": "本周没有买点。按校准后的分层，当前距离第一买点仍远：最近的是季线第一买点（SMA10）约+16.0%，月线第一买点约+18.0%，周线SMA125约+18.3%。2026年4月曾触及周线SMA125和30月线，之后已经离开买点带。",
+      "charts": [
+        "charts/BRK-B_composite.png",
+        "charts/BRK-B_selected.png",
+        "charts/BRK-B_monthly.png",
+        "charts/BRK-B_monthly_2008.png",
+        "charts/BRK-B_weekly.png",
+        "charts/BRK-B_weekly_2008.png",
+        "charts/BRK-B_quarterly.png",
+        "charts/BRK-B_annual.png"
+      ],
+      "history": {
+        "firstDateUsed": "1996-05-09",
+        "nDaily": 7687,
+        "nWeekly": 1595,
+        "nMonthly": 367,
+        "nQuarterly": 123,
+        "nYearly": 31
+      }
+    },
+    {
+      "name": "可口可乐",
+      "ticker": "KO",
+      "yahooSymbol": "KO",
+      "isPrivate": false,
+      "lastClose": 97.59,
+      "lastCloseDate": "2026-11-25",
+      "currency": "USD",
+      "weekLow": 94.6,
+      "monthLow": 93.0,
+      "quarterLow": 85.13,
+      "yearLow": 67.27,
+      "buyPointSelectionRationale": "可口可乐的月线图同样能看出三层：2016、2018、2020年主要在30月线一带获得支撑；2008–09年则明显下探到125月线一带，属于第三买点。周线SMA125、季线SMA10与年线SMA5在2020年及更早的熊市中也有可辨认的回踩。",
+      "sameLengthsAsBerkshireButIndependentlySupported": true,
+      "buyPoints": [
+        {
+          "timeframe": "weekly",
+          "timeframeZh": "周线",
+          "smaPeriod": 125,
+          "maName": "周线SMA125",
+          "depth": 1,
+          "depthLabel": "周线买点",
+          "value": 72.02,
+          "rising": true,
+          "distancePct": 35.5002,
+          "enoughHistory": true,
+          "sample": 2970,
+          "required": 125,
+          "historicalTouches": 47,
+          "historicalSuccesses": 42,
+          "successRate": 89.3617,
+          "historicalExamples": [
+            {
+              "trough_date": "2021-01-29",
+              "trough": 40.6,
+              "min_dist_pct": -0.1799,
+              "bounce_pct": 20.8505
+            },
+            {
+              "trough_date": "2021-02-26",
+              "trough": 41.33,
+              "min_dist_pct": 1.1385,
+              "bounce_pct": 18.7282
+            },
+            {
+              "trough_date": "2022-10-14",
+              "trough": 48.08,
+              "min_dist_pct": 0.8288,
+              "bounce_pct": 20.5119
+            },
+            {
+              "trough_date": "2023-10-06",
+              "trough": 47.29,
+              "min_dist_pct": -10.6009,
+              "bounce_pct": 43.9431
+            },
+            {
+              "trough_date": "2024-04-19",
+              "trough": 53.99,
+              "min_dist_pct": -0.7359,
+              "bounce_pct": 26.07
+            },
+            {
+              "trough_date": "2025-01-10",
+              "trough": 57.76,
+              "min_dist_pct": 1.8569,
+              "bounce_pct": 21.311
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 31.3524,
+          "periodLowDistPct": 31.3524,
+          "note": "收盘距该线 +35.50%，本周最低价距该线 +31.35%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "monthly",
+          "timeframeZh": "月线",
+          "smaPeriod": 30,
+          "maName": "月线SMA30",
+          "depth": 1,
+          "depthLabel": "月线第一买点",
+          "value": 72.23,
+          "rising": true,
+          "distancePct": 35.1114,
+          "enoughHistory": true,
+          "sample": 683,
+          "required": 30,
+          "historicalTouches": 26,
+          "historicalSuccesses": 25,
+          "successRate": 96.1538,
+          "historicalExamples": [
+            {
+              "trough_date": "2018-05-31",
+              "trough": 31.97,
+              "min_dist_pct": -2.1324,
+              "bounce_pct": 24.697
+            },
+            {
+              "trough_date": "2020-03-31",
+              "trough": 29.86,
+              "min_dist_pct": -22.2764,
+              "bounce_pct": 63.771
+            },
+            {
+              "trough_date": "2021-01-29",
+              "trough": 40.6,
+              "min_dist_pct": -0.0188,
+              "bounce_pct": 26.9521
+            },
+            {
+              "trough_date": "2022-10-31",
+              "trough": 48.08,
+              "min_dist_pct": 1.1561,
+              "bounce_pct": 20.5119
+            },
+            {
+              "trough_date": "2023-10-31",
+              "trough": 47.29,
+              "min_dist_pct": -10.4825,
+              "bounce_pct": 43.9431
+            },
+            {
+              "trough_date": "2025-01-31",
+              "trough": 57.76,
+              "min_dist_pct": 1.3357,
+              "bounce_pct": 20.5632
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 30.9705,
+          "periodLowDistPct": 28.7554,
+          "note": "收盘距该线 +35.11%，本周最低价距该线 +30.97%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "monthly",
+          "timeframeZh": "月线",
+          "smaPeriod": 60,
+          "maName": "月线SMA60",
+          "depth": 2,
+          "depthLabel": "月线第二买点",
+          "value": 63.56,
+          "rising": true,
+          "distancePct": 53.5424,
+          "enoughHistory": true,
+          "sample": 683,
+          "required": 60,
+          "historicalTouches": 14,
+          "historicalSuccesses": 13,
+          "successRate": 92.8571,
+          "historicalExamples": [
+            {
+              "trough_date": "1999-10-29",
+              "trough": 11.18,
+              "min_dist_pct": -9.9429,
+              "bounce_pct": 42.615
+            },
+            {
+              "trough_date": "2003-03-31",
+              "trough": 9.28,
+              "min_dist_pct": -30.5272,
+              "bounce_pct": 41.4638
+            },
+            {
+              "trough_date": "2004-10-29",
+              "trough": 9.9,
+              "min_dist_pct": -18.5181,
+              "bounce_pct": 47.9874
+            },
+            {
+              "trough_date": "2009-03-31",
+              "trough": 10.96,
+              "min_dist_pct": -15.8838,
+              "bounce_pct": 56.4457
+            },
+            {
+              "trough_date": "2020-03-31",
+              "trough": 29.86,
+              "min_dist_pct": -14.2256,
+              "bounce_pct": 55.014
+            },
+            {
+              "trough_date": "2023-10-31",
+              "trough": 47.29,
+              "min_dist_pct": 0.5467,
+              "bounce_pct": 32.5619
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 48.8357,
+          "periodLowDistPct": 46.3184,
+          "note": "收盘距该线 +53.54%，本周最低价距该线 +48.84%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "monthly",
+          "timeframeZh": "月线",
+          "smaPeriod": 125,
+          "maName": "月线SMA125",
+          "depth": 3,
+          "depthLabel": "月线第三买点",
+          "value": 50.53,
+          "rising": true,
+          "distancePct": 93.1296,
+          "enoughHistory": true,
+          "sample": 683,
+          "required": 125,
+          "historicalTouches": 5,
+          "historicalSuccesses": 5,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "1980-11-28",
+              "trough": 0.17,
+              "min_dist_pct": -20.6836,
+              "bounce_pct": 121.2564
+            },
+            {
+              "trough_date": "2003-03-31",
+              "trough": 9.28,
+              "min_dist_pct": -14.8949,
+              "bounce_pct": 39.1104
+            },
+            {
+              "trough_date": "2003-07-31",
+              "trough": 10.66,
+              "min_dist_pct": -4.1781,
+              "bounce_pct": 23.2464
+            },
+            {
+              "trough_date": "2004-10-29",
+              "trough": 9.9,
+              "min_dist_pct": -17.4762,
+              "bounce_pct": 76.6164
+            },
+            {
+              "trough_date": "2009-03-31",
+              "trough": 10.96,
+              "min_dist_pct": -14.6552,
+              "bounce_pct": 56.4457
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 87.2155,
+          "periodLowDistPct": 84.0491,
+          "note": "收盘距该线 +93.13%，本周最低价距该线 +87.22%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "quarterly",
+          "timeframeZh": "季线",
+          "smaPeriod": 10,
+          "maName": "季线SMA10",
+          "depth": 1,
+          "depthLabel": "季线第一买点",
+          "value": 73.72,
+          "rising": true,
+          "distancePct": 32.3846,
+          "enoughHistory": true,
+          "sample": 228,
+          "required": 10,
+          "historicalTouches": 18,
+          "historicalSuccesses": 18,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2016-12-30",
+              "trough": 29.5,
+              "min_dist_pct": -2.3643,
+              "bounce_pct": 26.9683
+            },
+            {
+              "trough_date": "2018-06-29",
+              "trough": 32.25,
+              "min_dist_pct": -2.3845,
+              "bounce_pct": 40.036
+            },
+            {
+              "trough_date": "2020-03-31",
+              "trough": 29.86,
+              "min_dist_pct": -21.5166,
+              "bounce_pct": 90.9596
+            },
+            {
+              "trough_date": "2022-12-30",
+              "trough": 48.42,
+              "min_dist_pct": -1.7054,
+              "bounce_pct": 40.3481
+            },
+            {
+              "trough_date": "2023-12-29",
+              "trough": 47.66,
+              "min_dist_pct": -10.1352,
+              "bounce_pct": 57.5941
+            },
+            {
+              "trough_date": "2025-03-31",
+              "trough": 58.19,
+              "min_dist_pct": -0.7903,
+              "bounce_pct": 67.7176
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 28.3234,
+          "periodLowDistPct": 15.4775,
+          "note": "收盘距该线 +32.38%，本周最低价距该线 +28.32%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "quarterly",
+          "timeframeZh": "季线",
+          "smaPeriod": 30,
+          "maName": "季线SMA30",
+          "depth": 3,
+          "depthLabel": "季线第三买点",
+          "value": 57.53,
+          "rising": true,
+          "distancePct": 69.6203,
+          "enoughHistory": true,
+          "sample": 228,
+          "required": 30,
+          "historicalTouches": 7,
+          "historicalSuccesses": 7,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "1981-09-30",
+              "trough": 0.19,
+              "min_dist_pct": -2.9983,
+              "bounce_pct": 93.2643
+            },
+            {
+              "trough_date": "1982-03-31",
+              "trough": 0.19,
+              "min_dist_pct": -3.1081,
+              "bounce_pct": 98.6721
+            },
+            {
+              "trough_date": "2000-03-31",
+              "trough": 10.2,
+              "min_dist_pct": -1.0362,
+              "bounce_pct": 43.4469
+            },
+            {
+              "trough_date": "2003-03-31",
+              "trough": 9.28,
+              "min_dist_pct": -28.5616,
+              "bounce_pct": 86.141
+            },
+            {
+              "trough_date": "2009-03-31",
+              "trough": 10.96,
+              "min_dist_pct": -13.6213,
+              "bounce_pct": 88.5159
+            },
+            {
+              "trough_date": "2020-03-31",
+              "trough": 29.86,
+              "min_dist_pct": -7.4092,
+              "bounce_pct": 72.6429
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 64.4359,
+          "periodLowDistPct": 47.975,
+          "note": "收盘距该线 +69.63%，本周最低价距该线 +64.44%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "annual",
+          "timeframeZh": "年线",
+          "smaPeriod": 5,
+          "maName": "年线SMA5",
+          "depth": 1,
+          "depthLabel": "年线第一买点",
+          "value": 67.4,
+          "rising": true,
+          "distancePct": 44.7954,
+          "enoughHistory": true,
+          "sample": 57,
+          "required": 5,
+          "historicalTouches": 6,
+          "historicalSuccesses": 6,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "1974-12-31",
+              "trough": 0.1,
+              "min_dist_pct": -56.5768,
+              "bounce_pct": 793.5971
+            },
+            {
+              "trough_date": "1989-12-29",
+              "trough": 1.12,
+              "min_dist_pct": -0.2004,
+              "bounce_pct": 339.1135
+            },
+            {
+              "trough_date": "1994-12-30",
+              "trough": 4.37,
+              "min_dist_pct": -0.9019,
+              "bounce_pct": 259.4414
+            },
+            {
+              "trough_date": "2003-12-31",
+              "trough": 9.42,
+              "min_dist_pct": -28.3106,
+              "bounce_pct": 210.7827
+            },
+            {
+              "trough_date": "2015-12-31",
+              "trough": 26.19,
+              "min_dist_pct": -2.1553,
+              "bounce_pct": 72.4531
+            },
+            {
+              "trough_date": "2020-12-31",
+              "trough": 30.61,
+              "min_dist_pct": -21.3688,
+              "bounce_pct": 218.8147
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 40.3561,
+          "periodLowDistPct": -0.1929,
+          "note": "本期（年线）最低价距该线 -0.19%，曾接近或触及，但本周收盘已离开±2%带，不记为本周触发",
+          "priorTagInPeriod": true
+        },
+        {
+          "timeframe": "annual",
+          "timeframeZh": "年线",
+          "smaPeriod": 10,
+          "maName": "年线SMA10",
+          "depth": 2,
+          "depthLabel": "年线第二买点",
+          "value": 55.25,
+          "rising": true,
+          "distancePct": 76.628,
+          "enoughHistory": true,
+          "sample": 57,
+          "required": 10,
+          "historicalTouches": 3,
+          "historicalSuccesses": 3,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "1980-12-31",
+              "trough": 0.17,
+              "min_dist_pct": -21.6745,
+              "bounce_pct": 431.8449
+            },
+            {
+              "trough_date": "2003-12-31",
+              "trough": 9.42,
+              "min_dist_pct": -22.4431,
+              "bounce_pct": 195.2354
+            },
+            {
+              "trough_date": "2020-12-31",
+              "trough": 30.61,
+              "min_dist_pct": -6.8136,
+              "bounce_pct": 93.8027
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 71.2217,
+          "periodLowDistPct": 21.7557,
+          "note": "收盘距该线 +76.63%，本周最低价距该线 +71.22%，未进入触发带",
+          "priorTagInPeriod": false
+        }
+      ],
+      "thisWeekTriggers": [],
+      "triggeredThisWeek": false,
+      "nearestBuyPoint": {
+        "maName": "季线SMA10",
+        "depth": 1,
+        "depthLabel": "季线第一买点",
+        "distancePct": 32.3846,
+        "rising": true
+      },
+      "rankTier": "none",
+      "proximityScore": 32.3846,
+      "maxTriggeredDepth": 0,
+      "rankScore": 1032.3846,
+      "rank": 5,
+      "summary": "本周没有买点。选定买点均线全部向上，但距离尚远：最近的月线第一买点（30月线）仍高出约35.1%。收盘接近52周高位。",
+      "charts": [
+        "charts/KO_selected.png",
+        "charts/KO_composite.png",
+        "charts/KO_monthly.png",
+        "charts/KO_weekly.png"
+      ],
+      "history": {
+        "firstDateUsed": "1970-01-02",
+        "nDaily": 14348,
+        "nWeekly": 2970,
+        "nMonthly": 683,
+        "nQuarterly": 228,
+        "nYearly": 57
+      }
+    },
+    {
+      "name": "苹果",
+      "ticker": "AAPL",
+      "yahooSymbol": "AAPL",
+      "isPrivate": false,
+      "lastClose": 355.58,
+      "lastCloseDate": "2026-11-25",
+      "currency": "USD",
+      "weekLow": 345.13,
+      "monthLow": 325.33,
+      "quarterLow": 325.33,
+      "yearLow": 243.42,
+      "buyPointSelectionRationale": "苹果自己的月线图支持与伯克希尔类似的分层，并非简单套用：2013、2016、2018–19、2022年多次在30月线一带止跌；2008–09年更深地回踩60月线附近。周线SMA125在上述同一批调整中也反复提供支撑。季线SMA10、年线SMA5分别是较常见的长周期第一买点，2008–09与2020年更接近年线SMA10。",
+      "sameLengthsAsBerkshireButIndependentlySupported": true,
+      "buyPoints": [
+        {
+          "timeframe": "weekly",
+          "timeframeZh": "周线",
+          "smaPeriod": 125,
+          "maName": "周线SMA125",
+          "depth": 1,
+          "depthLabel": "周线买点",
+          "value": 256.33,
+          "rising": true,
+          "distancePct": 38.7193,
+          "enoughHistory": true,
+          "sample": 2399,
+          "required": 125,
+          "historicalTouches": 45,
+          "historicalSuccesses": 45,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2023-03-03",
+              "trough": 141.48,
+              "min_dist_pct": -0.0101,
+              "bounce_pct": 36.2758
+            },
+            {
+              "trough_date": "2024-04-19",
+              "trough": 162.19,
+              "min_dist_pct": -0.5937,
+              "bounce_pct": 43.5831
+            },
+            {
+              "trough_date": "2025-04-11",
+              "trough": 168.05,
+              "min_dist_pct": -11.5184,
+              "bounce_pct": 60.1748
+            },
+            {
+              "trough_date": "2025-05-09",
+              "trough": 191.92,
+              "min_dist_pct": 0.0308,
+              "bounce_pct": 41.4445
+            },
+            {
+              "trough_date": "2025-05-23",
+              "trough": 192.38,
+              "min_dist_pct": -0.5813,
+              "bounce_pct": 44.4418
+            },
+            {
+              "trough_date": "2025-08-01",
+              "trough": 200.38,
+              "min_dist_pct": 0.9944,
+              "bounce_pct": 38.6785
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 34.6428,
+          "periodLowDistPct": 34.6428,
+          "note": "收盘距该线 +38.72%，本周最低价距该线 +34.64%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "monthly",
+          "timeframeZh": "月线",
+          "smaPeriod": 30,
+          "maName": "月线SMA30",
+          "depth": 1,
+          "depthLabel": "月线第一买点",
+          "value": 257.22,
+          "rising": true,
+          "distancePct": 38.2393,
+          "enoughHistory": true,
+          "sample": 552,
+          "required": 30,
+          "historicalTouches": 24,
+          "historicalSuccesses": 24,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2019-06-28",
+              "trough": 40.66,
+              "min_dist_pct": 0.4911,
+              "bounce_pct": 83.0144
+            },
+            {
+              "trough_date": "2022-06-30",
+              "trough": 126.3,
+              "min_dist_pct": 1.8987,
+              "bounce_pct": 28.3753
+            },
+            {
+              "trough_date": "2023-01-31",
+              "trough": 121.9,
+              "min_dist_pct": -12.7536,
+              "bounce_pct": 58.6712
+            },
+            {
+              "trough_date": "2024-04-30",
+              "trough": 162.19,
+              "min_dist_pct": -1.0167,
+              "bounce_pct": 53.1729
+            },
+            {
+              "trough_date": "2025-04-30",
+              "trough": 168.05,
+              "min_dist_pct": -12.1083,
+              "bounce_pct": 65.3588
+            },
+            {
+              "trough_date": "2025-08-29",
+              "trough": 200.61,
+              "min_dist_pct": 0.0066,
+              "bounce_pct": 55.3066
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 34.177,
+          "periodLowDistPct": 26.4793,
+          "note": "收盘距该线 +38.24%，本周最低价距该线 +34.18%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "monthly",
+          "timeframeZh": "月线",
+          "smaPeriod": 60,
+          "maName": "月线SMA60",
+          "depth": 2,
+          "depthLabel": "月线第二买点",
+          "value": 211.02,
+          "rising": true,
+          "distancePct": 68.5059,
+          "enoughHistory": true,
+          "sample": 552,
+          "required": 60,
+          "historicalTouches": 7,
+          "historicalSuccesses": 7,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "1990-10-31",
+              "trough": 0.17,
+              "min_dist_pct": -28.0023,
+              "bounce_pct": 181.9416
+            },
+            {
+              "trough_date": "1992-10-30",
+              "trough": 0.3,
+              "min_dist_pct": -5.6476,
+              "bounce_pct": 44.2822
+            },
+            {
+              "trough_date": "1997-12-31",
+              "trough": 0.1,
+              "min_dist_pct": -61.6485,
+              "bounce_pct": 260.785
+            },
+            {
+              "trough_date": "1998-10-30",
+              "trough": 0.21,
+              "min_dist_pct": -0.7256,
+              "bounce_pct": 95.395
+            },
+            {
+              "trough_date": "2003-04-30",
+              "trough": 0.19,
+              "min_dist_pct": -50.4742,
+              "bounce_pct": 605.3455
+            },
+            {
+              "trough_date": "2009-01-30",
+              "trough": 2.34,
+              "min_dist_pct": -6.3119,
+              "bounce_pct": 169.4757
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 63.5532,
+          "periodLowDistPct": 54.1702,
+          "note": "收盘距该线 +68.51%，本周最低价距该线 +63.55%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "monthly",
+          "timeframeZh": "月线",
+          "smaPeriod": 125,
+          "maName": "月线SMA125",
+          "depth": 3,
+          "depthLabel": "月线第三买点",
+          "value": 135.88,
+          "rising": true,
+          "distancePct": 161.6918,
+          "enoughHistory": true,
+          "sample": 552,
+          "required": 125,
+          "historicalTouches": 6,
+          "historicalSuccesses": 6,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "1993-10-29",
+              "trough": 0.16,
+              "min_dist_pct": -32.4973,
+              "bounce_pct": 116.01
+            },
+            {
+              "trough_date": "1994-12-30",
+              "trough": 0.26,
+              "min_dist_pct": 1.323,
+              "bounce_pct": 34.3721
+            },
+            {
+              "trough_date": "1995-04-28",
+              "trough": 0.25,
+              "min_dist_pct": -4.0806,
+              "bounce_pct": 38.4873
+            },
+            {
+              "trough_date": "1997-12-31",
+              "trough": 0.1,
+              "min_dist_pct": -66.1334,
+              "bounce_pct": 713.7273
+            },
+            {
+              "trough_date": "2000-12-29",
+              "trough": 0.2,
+              "min_dist_pct": -36.4978,
+              "bounce_pct": 87.0824
+            },
+            {
+              "trough_date": "2003-04-30",
+              "trough": 0.19,
+              "min_dist_pct": -37.2963,
+              "bounce_pct": 204.6379
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 153.9962,
+          "periodLowDistPct": 139.4245,
+          "note": "收盘距该线 +161.69%，本周最低价距该线 +154.00%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "quarterly",
+          "timeframeZh": "季线",
+          "smaPeriod": 10,
+          "maName": "季线SMA10",
+          "depth": 1,
+          "depthLabel": "季线第一买点",
+          "value": 265.88,
+          "rising": true,
+          "distancePct": 33.7395,
+          "enoughHistory": true,
+          "sample": 185,
+          "required": 10,
+          "historicalTouches": 12,
+          "historicalSuccesses": 12,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2015-09-30",
+              "trough": 20.58,
+              "min_dist_pct": -0.9887,
+              "bounce_pct": 62.0744
+            },
+            {
+              "trough_date": "2016-06-30",
+              "trough": 20.33,
+              "min_dist_pct": -13.0204,
+              "bounce_pct": 162.0529
+            },
+            {
+              "trough_date": "2019-03-29",
+              "trough": 33.78,
+              "min_dist_pct": -12.7403,
+              "bounce_pct": 281.033
+            },
+            {
+              "trough_date": "2023-03-31",
+              "trough": 122.09,
+              "min_dist_pct": -14.1145,
+              "bounce_pct": 103.4852
+            },
+            {
+              "trough_date": "2024-06-28",
+              "trough": 162.41,
+              "min_dist_pct": -2.0114,
+              "bounce_pct": 66.8128
+            },
+            {
+              "trough_date": "2025-06-30",
+              "trough": 168.27,
+              "min_dist_pct": -15.6085,
+              "bounce_pct": 111.3173
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 29.8067,
+          "periodLowDistPct": 22.3597,
+          "note": "收盘距该线 +33.74%，本周最低价距该线 +29.81%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "quarterly",
+          "timeframeZh": "季线",
+          "smaPeriod": 30,
+          "maName": "季线SMA30",
+          "depth": 3,
+          "depthLabel": "季线第三买点",
+          "value": 179.8,
+          "rising": true,
+          "distancePct": 97.7657,
+          "enoughHistory": true,
+          "sample": 185,
+          "required": 30,
+          "historicalTouches": 3,
+          "historicalSuccesses": 3,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "1990-12-31",
+              "trough": 0.17,
+              "min_dist_pct": -11.2382,
+              "bounce_pct": 181.0022
+            },
+            {
+              "trough_date": "1997-12-31",
+              "trough": 0.1,
+              "min_dist_pct": -64.5835,
+              "bounce_pct": 965.1995
+            },
+            {
+              "trough_date": "2003-06-30",
+              "trough": 0.19,
+              "min_dist_pct": -38.136,
+              "bounce_pct": 1030.3451
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 91.9522,
+          "periodLowDistPct": 80.9399,
+          "note": "收盘距该线 +97.76%，本周最低价距该线 +91.95%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "annual",
+          "timeframeZh": "年线",
+          "smaPeriod": 5,
+          "maName": "年线SMA5",
+          "depth": 1,
+          "depthLabel": "年线第一买点",
+          "value": 238.51,
+          "rising": true,
+          "distancePct": 49.0846,
+          "enoughHistory": true,
+          "sample": 47,
+          "required": 5,
+          "historicalTouches": 7,
+          "historicalSuccesses": 7,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "1997-12-31",
+              "trough": 0.1,
+              "min_dist_pct": -54.8976,
+              "bounce_pct": 6114.2919
+            },
+            {
+              "trough_date": "2009-12-31",
+              "trough": 2.34,
+              "min_dist_pct": -39.9284,
+              "bounce_pct": 641.9707
+            },
+            {
+              "trough_date": "2013-12-31",
+              "trough": 11.9,
+              "min_dist_pct": -3.1141,
+              "bounce_pct": 231.7944
+            },
+            {
+              "trough_date": "2016-12-30",
+              "trough": 20.55,
+              "min_dist_pct": -4.8836,
+              "bounce_pct": 743.3979
+            },
+            {
+              "trough_date": "2019-12-31",
+              "trough": 34.14,
+              "min_dist_pct": -14.8548,
+              "bounce_pct": 627.6134
+            },
+            {
+              "trough_date": "2023-12-29",
+              "trough": 122.58,
+              "min_dist_pct": -16.5468,
+              "bounce_pct": 190.077
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 44.7025,
+          "periodLowDistPct": 2.0586,
+          "note": "收盘距该线 +49.08%，本周最低价距该线 +44.70%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "annual",
+          "timeframeZh": "年线",
+          "smaPeriod": 10,
+          "maName": "年线SMA10",
+          "depth": 2,
+          "depthLabel": "年线第二买点",
+          "value": 164.2,
+          "rising": true,
+          "distancePct": 116.5467,
+          "enoughHistory": true,
+          "sample": 47,
+          "required": 10,
+          "historicalTouches": 2,
+          "historicalSuccesses": 2,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "1990-12-31",
+              "trough": 0.17,
+              "min_dist_pct": 1.4701,
+              "bounce_pct": 150.8673
+            },
+            {
+              "trough_date": "1997-12-31",
+              "trough": 0.1,
+              "min_dist_pct": -64.1024,
+              "bounce_pct": 6114.2919
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 110.1888,
+          "periodLowDistPct": 48.246,
+          "note": "收盘距该线 +116.55%，本周最低价距该线 +110.19%，未进入触发带",
+          "priorTagInPeriod": false
+        }
+      ],
+      "thisWeekTriggers": [],
+      "triggeredThisWeek": false,
+      "nearestBuyPoint": {
+        "maName": "季线SMA10",
+        "depth": 1,
+        "depthLabel": "季线第一买点",
+        "distancePct": 33.7395,
+        "rising": true
+      },
+      "rankTier": "none",
+      "proximityScore": 33.7395,
+      "maxTriggeredDepth": 0,
+      "rankScore": 1033.7395,
+      "rank": 6,
+      "summary": "本周没有买点。选定买点均线全部向上，但距离尚远：最近的是周线SMA125与月线SMA30，分别高出约38.7%和38.2%。",
+      "charts": [
+        "charts/AAPL_selected.png",
+        "charts/AAPL_composite.png",
+        "charts/AAPL_monthly.png",
+        "charts/AAPL_weekly.png"
+      ],
+      "history": {
+        "firstDateUsed": "1980-12-12",
+        "nDaily": 11582,
+        "nWeekly": 2399,
+        "nMonthly": 552,
+        "nQuarterly": 185,
+        "nYearly": 47
       }
     },
     {
@@ -811,110 +3136,27 @@ window.BUY_POINTS_REPORT = {
       "lastCloseDate": "2026-11-25",
       "currency": "USD",
       "weekLow": 112.93,
-      "weekHigh": 141.87,
-      "weekBars": 3,
-      "uptrend": false,
-      "uptrendDefinition": "fallback_close_above_sma5m_and_sma5m_rising",
-      "uptrendNote": "26周线历史不足，上升趋势改用：收盘在5月线之上且5月线向上",
-      "mas": {
-        "sma5w": {
-          "name": "5周线",
-          "value": 132.67,
-          "prevValue": 136.68,
-          "prevBasis": "1周前",
-          "rising": false,
-          "distancePct": -3.9392,
-          "sample": 25,
-          "required": 5,
-          "enoughHistory": true,
-          "note": null
-        },
-        "sma26w": {
-          "name": "26周线（半年线）",
-          "value": null,
-          "prevValue": null,
-          "prevBasis": "4周前",
-          "rising": null,
-          "distancePct": null,
-          "sample": 25,
-          "required": 26,
-          "enoughHistory": false,
-          "note": "周线样本仅25根，不足26根，暂不给出26周线"
-        },
-        "sma5m": {
-          "name": "5月线",
-          "value": 133.02,
-          "prevValue": 141.7,
-          "prevBasis": "1月前",
-          "rising": false,
-          "distancePct": -4.192,
-          "sample": 6,
-          "required": 5,
-          "enoughHistory": true,
-          "note": null
-        },
-        "sma5q": {
-          "name": "5季线",
-          "value": null,
-          "prevValue": null,
-          "prevBasis": "1季前",
-          "rising": null,
-          "distancePct": null,
-          "sample": 3,
-          "required": 5,
-          "enoughHistory": false,
-          "note": "季线样本仅3根，不足5根，暂不给出5季线"
-        },
-        "sma60m": {
-          "name": "5年线（月线SMA60）",
-          "value": null,
-          "prevValue": null,
-          "prevBasis": "3个月前",
-          "rising": null,
-          "distancePct": null,
-          "sample": 6,
-          "required": 60,
-          "enoughHistory": false,
-          "note": "月线样本仅6根，不足60根，暂不给出5年线"
-        },
-        "sma5y": {
-          "name": "年线SMA5（对照）",
-          "value": null,
-          "prevValue": null,
-          "prevBasis": "上一年末的年线SMA5",
-          "rising": null,
-          "distancePct": null,
-          "sample": 1,
-          "required": 5,
-          "enoughHistory": false,
-          "note": "年线样本仅1根，不足5根"
-        }
-      },
-      "distanceToMas": {
-        "sma5w": -3.9392,
-        "sma26w": null,
-        "sma5m": -4.192,
-        "sma5q": null,
-        "sma60m": null,
-        "sma5y": null
-      },
-      "midTerm": {
-        "triggered": false,
-        "type": null,
-        "types": [],
-        "note": "26周线历史不足，暂不判断半年线买点；未处于上升趋势，收盘距5周线 -3.94%"
-      },
-      "longTerm": {
-        "triggered": false,
-        "type": null,
-        "types": [],
-        "note": "5月线未向上，收盘距该线 -4.19%；5季线历史不足，暂不给出该长期买点；5年线（月线SMA60）历史不足，暂不给出该长期买点；年线SMA5历史不足，仅作对照，未用于买点判定"
-      },
-      "rankTier": "none",
-      "proximityScore": 203.9392,
-      "rankScore": 3203.9392,
+      "monthLow": 112.93,
+      "quarterLow": 112.93,
+      "yearLow": 104.83,
+      "buyPointSelectionRationale": "SpaceX于2026-06-12上市，本报告只使用该日之后的公开交易数据（116个交易日、25根周线、6根月线、3根季线）。周线SMA26及更长均线、月线SMA10及更长、季线与年线均历史不足，暂不给出买点，不以5周线替代，也不拼接旧SPCX代码或上市前数据。",
+      "sameLengthsAsBerkshireButIndependentlySupported": false,
+      "buyPoints": [],
+      "thisWeekTriggers": [],
+      "triggeredThisWeek": false,
+      "nearestBuyPoint": null,
+      "rankTier": "insufficient_history",
+      "proximityScore": 999.0,
+      "maxTriggeredDepth": 0,
+      "rankScore": 3999.0,
       "rank": 7,
-      "summary": "SpaceX（Space Exploration Technologies Corp.）已于2026-06-12在纳斯达克上市，A类普通股代码SPCX，发行价135美元。本报告只使用2026-06-12（含）之后的公开交易数据，共116个交易日、25根周线、6根月线、3根季线，不混用旧SPCX代码的历史行情。因此26周线、5季线和5年线历史不足，暂不给出这些买点，也不用旧数据硬算。可计算的5周线132.67美元、5月线133.02美元目前均向下；因26周线样本不够，上升趋势改用「收盘在5月线之上且5月线向上」的退化规则，当前亦不满足。收盘127.44美元分别低于5周线3.94%、低于5月线4.19%，本周没有中期或长期买点。已披露的2026年二季度营收78.1亿美元、净亏损5.41亿美元；三季度营收145.8亿美元、净利润44.0亿美元（每股收益0.35美元，高于预期0.16美元）。数据源中2026年一季度与2025年营收为0，视为披露不完整，不用作比较基数。最近十二个月利润率仍为负（-8.6%），自由现金流缺失。收盘低于发行价，本周波动很大（最低112.93美元、最高141.87美元），52周区间104.83–225.64美元。",
+      "summary": "本周没有买点。上市不足半年，周、月、季、年各层买点均历史不足，暂不给出，也不用5周线替代。收盘127.44美元，低于发行价135美元。",
+      "charts": [
+        "charts/SPCX_selected.png",
+        "charts/SPCX_composite.png",
+        "charts/SPCX_monthly.png",
+        "charts/SPCX_weekly.png"
+      ],
       "history": {
         "firstDateUsed": "2026-06-12",
         "nDaily": 116,
@@ -922,282 +3164,10 @@ window.BUY_POINTS_REPORT = {
         "nMonthly": 6,
         "nQuarterly": 3,
         "nYearly": 1
-      },
-      "listingNote": {
-        "listed": true,
-        "listingDate": "2026-06-12",
-        "ipoPriceUsd": 135,
-        "settlementDate": "2026-06-15",
-        "exchange": "Nasdaq Global Select Market / Nasdaq Texas",
-        "historyRule": "仅使用2026-06-12（含）之后的SpaceX公开交易数据，严禁与旧SPCX代码的历史行情混用",
-        "insufficientAverages": [
-          "sma26w",
-          "sma5q",
-          "sma60m",
-          "sma5y"
-        ]
       }
     }
   ],
   "recommendedList": [
-    {
-      "name": "微软",
-      "ticker": "MSFT",
-      "yahooSymbol": "MSFT",
-      "isPrivate": false,
-      "lastClose": 489.93,
-      "lastCloseDate": "2026-11-25",
-      "currency": "USD",
-      "weekLow": 477.39,
-      "weekHigh": 509.15,
-      "weekBars": 3,
-      "uptrend": true,
-      "uptrendDefinition": "close_above_sma26w_and_sma26w_rising_vs_4w",
-      "uptrendNote": null,
-      "mas": {
-        "sma5w": {
-          "name": "5周线",
-          "value": 509.56,
-          "prevValue": 516.28,
-          "prevBasis": "1周前",
-          "rising": false,
-          "distancePct": -3.8527,
-          "sample": 987,
-          "required": 5,
-          "enoughHistory": true,
-          "note": null
-        },
-        "sma26w": {
-          "name": "26周线（半年线）",
-          "value": 469.22,
-          "prevValue": 456.56,
-          "prevBasis": "4周前",
-          "rising": true,
-          "distancePct": 4.4131,
-          "sample": 987,
-          "required": 26,
-          "enoughHistory": true,
-          "note": null,
-          "prevValue1w": 467.63,
-          "risingVs1w": true
-        },
-        "sma5m": {
-          "name": "5月线",
-          "value": 498.4,
-          "prevValue": 474.74,
-          "prevBasis": "1月前",
-          "rising": true,
-          "distancePct": -1.6998,
-          "sample": 227,
-          "required": 5,
-          "enoughHistory": true,
-          "note": null
-        },
-        "sma5q": {
-          "name": "5季线",
-          "value": 444.21,
-          "prevValue": 448.77,
-          "prevBasis": "1季前",
-          "rising": false,
-          "distancePct": 10.2923,
-          "sample": 76,
-          "required": 5,
-          "enoughHistory": true,
-          "note": null
-        },
-        "sma60m": {
-          "name": "5年线（月线SMA60）",
-          "value": 375.07,
-          "prevValue": 364.77,
-          "prevBasis": "3个月前",
-          "rising": true,
-          "distancePct": 30.6233,
-          "sample": 227,
-          "required": 60,
-          "enoughHistory": true,
-          "note": null
-        },
-        "sma5y": {
-          "name": "年线SMA5（对照）",
-          "value": 396.86,
-          "prevValue": 363.43,
-          "prevBasis": "上一年末的年线SMA5",
-          "rising": true,
-          "distancePct": 23.4508,
-          "sample": 19,
-          "required": 5,
-          "enoughHistory": true,
-          "note": null
-        }
-      },
-      "distanceToMas": {
-        "sma5w": -3.8527,
-        "sma26w": 4.4131,
-        "sma5m": -1.6998,
-        "sma5q": 10.2923,
-        "sma60m": 30.6233,
-        "sma5y": 23.4508
-      },
-      "midTerm": {
-        "triggered": true,
-        "type": "pullback_to_sma26w",
-        "types": [
-          "pullback_to_sma26w"
-        ],
-        "note": "回调到26周线（半年线）并站稳（判定方式：week_tag_and_hold），且26周线向上；已处于上升趋势，但收盘距5周线 -3.85%，本周未踩线"
-      },
-      "longTerm": {
-        "triggered": true,
-        "type": "sma5m",
-        "types": [
-          "sma5m"
-        ],
-        "note": "触及5月线且该均线向上（判定方式：close_within_2pct）；5季线未向上，收盘距该线 10.29%；5年线（月线SMA60）向上，收盘距该线 30.62%，本周未踩线；对照用年线SMA5为 396.86，距该线 23.45%（向上），买点判定以月线SMA60为准"
-      },
-      "rankTier": "mid_and_long",
-      "proximityScore": -1.6998,
-      "rankScore": -1.6998,
-      "rank": 1,
-      "summary": "中期与长期均触发，是本周推荐名单里最完整的买点组合。中期：26周线向上，本周最低价477.39美元距26周线469.22美元约+1.74%，进入±2%接近带后收盘489.93美元站稳，记为回调到半年线的买点；收盘距26周线仍+4.41%，并非收盘踩线。长期：5月线498.40美元且向上，收盘低于该线1.70%，落在±2%以内，记为5月线买点。5周线已向下，价格低于5周线3.85%，不构成5周线买点。5季线未向上；5年线向上但距离仍远（+30.62%）。",
-      "history": {
-        "firstDateUsed": "2008-01-02",
-        "nDaily": 4756,
-        "nWeekly": 987,
-        "nMonthly": 227,
-        "nQuarterly": 76,
-        "nYearly": 19
-      },
-      "rationale": "Office、Azure与Windows构成软件和云计算的宽护城河，客户粘性高，适合按十年以上的视野持有。截至2026-09-30的当季营收922.8亿美元、环比+2.5%，净利润366.3亿美元、环比+2.4%；同比营收+18.8%、利润+32.3%，增长仍有连续性。毛利率67.7%，净利率41.2%。最近十二个月经营现金流约1959亿美元，但自由现金流仅约30亿美元，差额主要来自人工智能相关资本开支。判断质量时宜同时看经营现金流与利润率，而不是单独看被资本开支压低的自由现金流。"
-    },
-    {
-      "name": "强生",
-      "ticker": "JNJ",
-      "yahooSymbol": "JNJ",
-      "isPrivate": false,
-      "lastClose": 273.94,
-      "lastCloseDate": "2026-11-25",
-      "currency": "USD",
-      "weekLow": 267.36,
-      "weekHigh": 279.88,
-      "weekBars": 3,
-      "uptrend": true,
-      "uptrendDefinition": "close_above_sma26w_and_sma26w_rising_vs_4w",
-      "uptrendNote": null,
-      "mas": {
-        "sma5w": {
-          "name": "5周线",
-          "value": 274.82,
-          "prevValue": 272.53,
-          "prevBasis": "1周前",
-          "rising": true,
-          "distancePct": -0.3198,
-          "sample": 987,
-          "required": 5,
-          "enoughHistory": true,
-          "note": null
-        },
-        "sma26w": {
-          "name": "26周线（半年线）",
-          "value": 259.94,
-          "prevValue": 251.97,
-          "prevBasis": "4周前",
-          "rising": true,
-          "distancePct": 5.384,
-          "sample": 987,
-          "required": 26,
-          "enoughHistory": true,
-          "note": null,
-          "prevValue1w": 257.99,
-          "risingVs1w": true
-        },
-        "sma5m": {
-          "name": "5月线",
-          "value": 265.51,
-          "prevValue": 261.02,
-          "prevBasis": "1月前",
-          "rising": true,
-          "distancePct": 3.1736,
-          "sample": 227,
-          "required": 5,
-          "enoughHistory": true,
-          "note": null
-        },
-        "sma5q": {
-          "name": "5季线",
-          "value": 246.43,
-          "prevValue": 227.73,
-          "prevBasis": "1季前",
-          "rising": true,
-          "distancePct": 11.1635,
-          "sample": 76,
-          "required": 5,
-          "enoughHistory": true,
-          "note": null
-        },
-        "sma60m": {
-          "name": "5年线（月线SMA60）",
-          "value": 170.02,
-          "prevValue": 163.48,
-          "prevBasis": "3个月前",
-          "rising": true,
-          "distancePct": 61.1222,
-          "sample": 227,
-          "required": 60,
-          "enoughHistory": true,
-          "note": null
-        },
-        "sma5y": {
-          "name": "年线SMA5（对照）",
-          "value": 183.26,
-          "prevValue": 158.27,
-          "prevBasis": "上一年末的年线SMA5",
-          "rising": true,
-          "distancePct": 49.4824,
-          "sample": 19,
-          "required": 5,
-          "enoughHistory": true,
-          "note": null
-        }
-      },
-      "distanceToMas": {
-        "sma5w": -0.3198,
-        "sma26w": 5.384,
-        "sma5m": 3.1736,
-        "sma5q": 11.1635,
-        "sma60m": 61.1222,
-        "sma5y": 49.4824
-      },
-      "midTerm": {
-        "triggered": true,
-        "type": "sma5w_in_uptrend",
-        "types": [
-          "sma5w_in_uptrend"
-        ],
-        "note": "26周线向上，但收盘距26周线 5.38%，本周未踩线；处于上升趋势中的5周线买点（判定方式：close_within_2pct；上升趋势定义：close_above_sma26w_and_sma26w_rising_vs_4w）"
-      },
-      "longTerm": {
-        "triggered": true,
-        "type": "sma5m",
-        "types": [
-          "sma5m"
-        ],
-        "note": "触及5月线且该均线向上（判定方式：week_tag_and_hold）；5季线向上，收盘距该线 11.16%，本周未踩线；5年线（月线SMA60）向上，收盘距该线 61.12%，本周未踩线；对照用年线SMA5为 183.26，距该线 49.48%（向上），买点判定以月线SMA60为准"
-      },
-      "rankTier": "mid_and_long",
-      "proximityScore": -0.3198,
-      "rankScore": -0.3198,
-      "rank": 2,
-      "summary": "中期与长期均触发。中期：处于上升趋势，收盘273.94美元距向上的5周线274.82美元-0.32%，落在±2%以内。长期：5月线265.51美元且向上，本周最低价267.36美元距该线约+0.70%，进入±2%接近带后收盘站稳，记为5月线买点；收盘距5月线+3.17%，并非收盘踩线。5季线与5年线向上，但距离分别为+11.16%和+61.12%，尚未触及。",
-      "history": {
-        "firstDateUsed": "2008-01-02",
-        "nDaily": 4756,
-        "nWeekly": 987,
-        "nMonthly": 227,
-        "nQuarterly": 76,
-        "nYearly": 19
-      },
-      "rationale": "制药与医疗器械并重，产品与监管壁垒较深，需求相对不受短期经济周期左右。截至2026-09-30的当季营收254.0亿美元、环比+0.4%；GAAP净利润仅2.1亿美元，较上季55.3亿美元大幅下滑，属于一次性项目干扰——同期经营每股收益2.59美元，仍略高于预期2.52美元，经营质量并未随GAAP利润同步恶化。毛利率67.8%，同比营收+5.9%。最近十二个月自由现金流约185亿美元，经营现金流约262亿美元。"
-    },
     {
       "name": "标普全球",
       "ticker": "SPGI",
@@ -1207,631 +3177,520 @@ window.BUY_POINTS_REPORT = {
       "lastCloseDate": "2026-11-25",
       "currency": "USD",
       "weekLow": 445.64,
-      "weekHigh": 464.2,
-      "weekBars": 3,
-      "uptrend": true,
-      "uptrendDefinition": "close_above_sma26w_and_sma26w_rising_vs_4w",
-      "uptrendNote": null,
-      "mas": {
-        "sma5w": {
-          "name": "5周线",
-          "value": 460.86,
-          "prevValue": 458.58,
-          "prevBasis": "1周前",
+      "monthLow": 438.34,
+      "quarterLow": 382.21,
+      "yearLow": 361.03,
+      "buyPointSelectionRationale": "标普全球2022–23年长期围绕30月线整理；2026年更早的低点已下探60月线（第二买点）后回升，当前价格重新回到30月线与125周线一带。2008–09年曾击穿多层均线，属于更极端的第三买点环境。季线SMA10与年线SMA5也有多次历史回踩（含2008–09、2022）。",
+      "sameLengthsAsBerkshireButIndependentlySupported": true,
+      "buyPoints": [
+        {
+          "timeframe": "weekly",
+          "timeframeZh": "周线",
+          "smaPeriod": 125,
+          "maName": "周线SMA125",
+          "depth": 1,
+          "depthLabel": "周线买点",
+          "value": 454.1,
           "rising": true,
-          "distancePct": -0.0266,
-          "sample": 987,
-          "required": 5,
+          "distancePct": 1.4623,
           "enoughHistory": true,
-          "note": null
+          "sample": 2806,
+          "required": 125,
+          "historicalTouches": 44,
+          "historicalSuccesses": 43,
+          "successRate": 97.7273,
+          "historicalExamples": [
+            {
+              "trough_date": "2020-03-20",
+              "trough": 166.34,
+              "min_dist_pct": -12.3494,
+              "bounce_pct": 97.9497
+            },
+            {
+              "trough_date": "2022-10-14",
+              "trough": 254.87,
+              "min_dist_pct": -25.1377,
+              "bounce_pct": 59.6167
+            },
+            {
+              "trough_date": "2023-11-03",
+              "trough": 313.76,
+              "min_dist_pct": -10.2746,
+              "bounce_pct": 33.6417
+            },
+            {
+              "trough_date": "2025-04-11",
+              "trough": 398.25,
+              "min_dist_pct": 0.6605,
+              "bounce_pct": 30.6144
+            },
+            {
+              "trough_date": "2025-10-17",
+              "trough": 439.8,
+              "min_dist_pct": 2.0249,
+              "bounce_pct": 16.4732
+            },
+            {
+              "trough_date": "2026-02-13",
+              "trough": 357.79,
+              "min_dist_pct": -19.6022,
+              "bounce_pct": 32.0839
+            }
+          ],
+          "triggeredThisWeek": true,
+          "triggerType": "close_within_2pct",
+          "weekLowDistPct": -1.863,
+          "periodLowDistPct": -1.863,
+          "note": "收盘距该线 1.46%，落在±2%以内，且均线向上",
+          "priorTagInPeriod": false
         },
-        "sma26w": {
-          "name": "26周线（半年线）",
-          "value": 424.8,
-          "prevValue": 414.29,
-          "prevBasis": "4周前",
+        {
+          "timeframe": "monthly",
+          "timeframeZh": "月线",
+          "smaPeriod": 30,
+          "maName": "月线SMA30",
+          "depth": 1,
+          "depthLabel": "月线第一买点",
+          "value": 455.69,
           "rising": true,
-          "distancePct": 8.4599,
-          "sample": 987,
-          "required": 26,
+          "distancePct": 1.1093,
           "enoughHistory": true,
-          "note": null,
-          "prevValue1w": 422.44,
-          "risingVs1w": true
+          "sample": 646,
+          "required": 30,
+          "historicalTouches": 30,
+          "historicalSuccesses": 30,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2018-12-31",
+              "trough": 138.38,
+              "min_dist_pct": -0.349,
+              "bounce_pct": 67.3499
+            },
+            {
+              "trough_date": "2020-03-31",
+              "trough": 166.34,
+              "min_dist_pct": -11.8272,
+              "bounce_pct": 97.7285
+            },
+            {
+              "trough_date": "2022-10-31",
+              "trough": 254.87,
+              "min_dist_pct": -24.7185,
+              "bounce_pct": 87.0861
+            },
+            {
+              "trough_date": "2025-04-30",
+              "trough": 398.25,
+              "min_dist_pct": 0.0917,
+              "bounce_pct": 29.2611
+            },
+            {
+              "trough_date": "2025-10-31",
+              "trough": 439.8,
+              "min_dist_pct": 2.1668,
+              "bounce_pct": 12.5165
+            },
+            {
+              "trough_date": "2026-02-27",
+              "trough": 358.62,
+              "min_dist_pct": -19.4268,
+              "bounce_pct": 29.8187
+            }
+          ],
+          "triggeredThisWeek": true,
+          "triggerType": "close_within_2pct",
+          "weekLowDistPct": -2.2054,
+          "periodLowDistPct": -3.8074,
+          "note": "收盘距该线 1.11%，落在±2%以内，且均线向上",
+          "priorTagInPeriod": false
         },
-        "sma5m": {
-          "name": "5月线",
-          "value": 432.99,
-          "prevValue": 417.57,
-          "prevBasis": "1月前",
-          "rising": true,
-          "distancePct": 6.4081,
-          "sample": 227,
-          "required": 5,
-          "enoughHistory": true,
-          "note": null
-        },
-        "sma5q": {
-          "name": "5季线",
-          "value": 425.53,
-          "prevValue": 424.47,
-          "prevBasis": "1季前",
-          "rising": true,
-          "distancePct": 8.2735,
-          "sample": 76,
-          "required": 5,
-          "enoughHistory": true,
-          "note": null
-        },
-        "sma60m": {
-          "name": "5年线（月线SMA60）",
+        {
+          "timeframe": "monthly",
+          "timeframeZh": "月线",
+          "smaPeriod": 60,
+          "maName": "月线SMA60",
+          "depth": 2,
+          "depthLabel": "月线第二买点",
           "value": 403.16,
-          "prevValue": 401.6,
-          "prevBasis": "3个月前",
           "rising": true,
           "distancePct": 14.283,
-          "sample": 227,
-          "required": 60,
           "enoughHistory": true,
-          "note": null
+          "sample": 646,
+          "required": 60,
+          "historicalTouches": 13,
+          "historicalSuccesses": 13,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2003-03-31",
+              "trough": 16.36,
+              "min_dist_pct": -3.8809,
+              "bounce_pct": 46.8896
+            },
+            {
+              "trough_date": "2008-10-31",
+              "trough": 11.8,
+              "min_dist_pct": -63.0361,
+              "bounce_pct": 196.3103
+            },
+            {
+              "trough_date": "2011-06-30",
+              "trough": 29.31,
+              "min_dist_pct": 2.0305,
+              "bounce_pct": 26.3537
+            },
+            {
+              "trough_date": "2011-08-31",
+              "trough": 26.4,
+              "min_dist_pct": -7.4709,
+              "bounce_pct": 42.2898
+            },
+            {
+              "trough_date": "2022-10-31",
+              "trough": 254.87,
+              "min_dist_pct": -4.074,
+              "bounce_pct": 44.6052
+            },
+            {
+              "trough_date": "2026-02-27",
+              "trough": 358.62,
+              "min_dist_pct": -9.7268,
+              "bounce_pct": 29.8187
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 10.5368,
+          "periodLowDistPct": 8.7261,
+          "note": "收盘距该线 +14.28%，本周最低价距该线 +10.54%，未进入触发带",
+          "priorTagInPeriod": false
         },
-        "sma5y": {
-          "name": "年线SMA5（对照）",
+        {
+          "timeframe": "monthly",
+          "timeframeZh": "月线",
+          "smaPeriod": 125,
+          "maName": "月线SMA125",
+          "depth": 3,
+          "depthLabel": "月线第三买点",
+          "value": 306.15,
+          "rising": true,
+          "distancePct": 50.4935,
+          "enoughHistory": true,
+          "sample": 646,
+          "required": 125,
+          "historicalTouches": 5,
+          "historicalSuccesses": 5,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "1990-10-31",
+              "trough": 2.25,
+              "min_dist_pct": -5.2532,
+              "bounce_pct": 62.7902
+            },
+            {
+              "trough_date": "2008-03-31",
+              "trough": 23.07,
+              "min_dist_pct": -2.0796,
+              "bounce_pct": 27.6881
+            },
+            {
+              "trough_date": "2008-07-31",
+              "trough": 24.11,
+              "min_dist_pct": -0.0658,
+              "bounce_pct": 22.2088
+            },
+            {
+              "trough_date": "2008-10-31",
+              "trough": 11.8,
+              "min_dist_pct": -51.687,
+              "bounce_pct": 170.2487
+            },
+            {
+              "trough_date": "2011-08-31",
+              "trough": 26.4,
+              "min_dist_pct": -0.4765,
+              "bounce_pct": 42.2898
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 45.5626,
+          "periodLowDistPct": 43.1782,
+          "note": "收盘距该线 +50.49%，本周最低价距该线 +45.56%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "quarterly",
+          "timeframeZh": "季线",
+          "smaPeriod": 10,
+          "maName": "季线SMA10",
+          "depth": 1,
+          "depthLabel": "季线第一买点",
+          "value": 449.29,
+          "rising": true,
+          "distancePct": 2.5491,
+          "enoughHistory": true,
+          "sample": 216,
+          "required": 10,
+          "historicalTouches": 23,
+          "historicalSuccesses": 23,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2016-03-31",
+              "trough": 67.25,
+              "min_dist_pct": -11.299,
+              "bounce_pct": 120.1468
+            },
+            {
+              "trough_date": "2018-12-31",
+              "trough": 138.38,
+              "min_dist_pct": -1.3777,
+              "bounce_pct": 133.9051
+            },
+            {
+              "trough_date": "2020-03-31",
+              "trough": 166.34,
+              "min_dist_pct": -11.8137,
+              "bounce_pct": 157.1664
+            },
+            {
+              "trough_date": "2022-12-30",
+              "trough": 255.48,
+              "min_dist_pct": -24.5226,
+              "bounce_pct": 92.792
+            },
+            {
+              "trough_date": "2025-06-30",
+              "trough": 398.99,
+              "min_dist_pct": -3.7496,
+              "bounce_pct": 23.4466
+            },
+            {
+              "trough_date": "2026-03-31",
+              "trough": 358.62,
+              "min_dist_pct": -19.7547,
+              "bounce_pct": 28.4758
+            }
+          ],
+          "triggeredThisWeek": true,
+          "triggerType": "week_tag_and_hold",
+          "weekLowDistPct": -0.8124,
+          "periodLowDistPct": -14.9302,
+          "note": "本周最低价距该线 -0.81%，进入或吞破±2%带后收盘站稳（收盘距该线 2.55%），且均线向上",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "quarterly",
+          "timeframeZh": "季线",
+          "smaPeriod": 30,
+          "maName": "季线SMA30",
+          "depth": 3,
+          "depthLabel": "季线第三买点",
+          "value": 369.64,
+          "rising": true,
+          "distancePct": 24.6454,
+          "enoughHistory": true,
+          "sample": 216,
+          "required": 30,
+          "historicalTouches": 4,
+          "historicalSuccesses": 4,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "1990-03-30",
+              "trough": 2.69,
+              "min_dist_pct": -2.1529,
+              "bounce_pct": 28.5236
+            },
+            {
+              "trough_date": "1990-12-31",
+              "trough": 2.28,
+              "min_dist_pct": -19.3263,
+              "bounce_pct": 66.1514
+            },
+            {
+              "trough_date": "1991-12-31",
+              "trough": 2.98,
+              "min_dist_pct": -0.4153,
+              "bounce_pct": 44.2336
+            },
+            {
+              "trough_date": "2008-12-31",
+              "trough": 11.94,
+              "min_dist_pct": -56.3195,
+              "bounce_pct": 354.0602
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 20.5605,
+          "periodLowDistPct": 3.4006,
+          "note": "收盘距该线 +24.65%，本周最低价距该线 +20.56%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "annual",
+          "timeframeZh": "年线",
+          "smaPeriod": 5,
+          "maName": "年线SMA5",
+          "depth": 1,
+          "depthLabel": "年线第一买点",
           "value": 425.48,
-          "prevValue": 418.89,
-          "prevBasis": "上一年末的年线SMA5",
           "rising": true,
           "distancePct": 8.2873,
-          "sample": 19,
-          "required": 5,
           "enoughHistory": true,
-          "note": null
+          "sample": 54,
+          "required": 5,
+          "historicalTouches": 13,
+          "historicalSuccesses": 13,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2000-12-29",
+              "trough": 12.76,
+              "min_dist_pct": -14.2256,
+              "bounce_pct": 255.5201
+            },
+            {
+              "trough_date": "2008-12-31",
+              "trough": 11.94,
+              "min_dist_pct": -61.4842,
+              "bounce_pct": 604.2814
+            },
+            {
+              "trough_date": "2013-12-31",
+              "trough": 34.9,
+              "min_dist_pct": -10.3331,
+              "bounce_pct": 324.2944
+            },
+            {
+              "trough_date": "2016-12-30",
+              "trough": 67.88,
+              "min_dist_pct": -6.0368,
+              "bounce_pct": 530.1844
+            },
+            {
+              "trough_date": "2019-12-31",
+              "trough": 146.27,
+              "min_dist_pct": -10.0592,
+              "bounce_pct": 216.8811
+            },
+            {
+              "trough_date": "2022-12-30",
+              "trough": 255.48,
+              "min_dist_pct": -15.1472,
+              "bounce_pct": 91.7829
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 4.7382,
+          "periodLowDistPct": -15.1476,
+          "note": "本期（年线）最低价距该线 -15.15%，曾接近或触及，但本周收盘已离开±2%带，不记为本周触发",
+          "priorTagInPeriod": true
+        },
+        {
+          "timeframe": "annual",
+          "timeframeZh": "年线",
+          "smaPeriod": 10,
+          "maName": "年线SMA10",
+          "depth": 2,
+          "depthLabel": "年线第二买点",
+          "value": 339.25,
+          "rising": true,
+          "distancePct": 35.8097,
+          "enoughHistory": true,
+          "sample": 54,
+          "required": 10,
+          "historicalTouches": 3,
+          "historicalSuccesses": 3,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "1990-12-31",
+              "trough": 2.28,
+              "min_dist_pct": -5.5306,
+              "bounce_pct": 94.0794
+            },
+            {
+              "trough_date": "2008-12-31",
+              "trough": 11.94,
+              "min_dist_pct": -52.557,
+              "bounce_pct": 604.2814
+            },
+            {
+              "trough_date": "2013-12-31",
+              "trough": 34.9,
+              "min_dist_pct": -0.1666,
+              "bounce_pct": 324.2944
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 31.3604,
+          "periodLowDistPct": 6.42,
+          "note": "收盘距该线 +35.81%，本周最低价距该线 +31.36%，未进入触发带",
+          "priorTagInPeriod": false
         }
-      },
-      "distanceToMas": {
-        "sma5w": -0.0266,
-        "sma26w": 8.4599,
-        "sma5m": 6.4081,
-        "sma5q": 8.2735,
-        "sma60m": 14.283,
-        "sma5y": 8.2873
-      },
-      "midTerm": {
-        "triggered": true,
-        "type": "sma5w_in_uptrend",
-        "types": [
-          "sma5w_in_uptrend"
-        ],
-        "note": "26周线向上，但收盘距26周线 8.46%，本周未踩线；处于上升趋势中的5周线买点（判定方式：close_within_2pct；上升趋势定义：close_above_sma26w_and_sma26w_rising_vs_4w）"
-      },
-      "longTerm": {
-        "triggered": false,
-        "type": null,
-        "types": [],
-        "note": "5月线向上，收盘距该线 6.41%，本周未踩线；5季线向上，收盘距该线 8.27%，本周未踩线；5年线（月线SMA60）向上，收盘距该线 14.28%，本周未踩线；对照用年线SMA5为 425.48，距该线 8.29%（向上），买点判定以月线SMA60为准"
-      },
-      "rankTier": "mid_only",
-      "proximityScore": -0.0266,
-      "rankScore": 1999.9734,
-      "rank": 3,
-      "summary": "中期触发上升趋势中的5周线买点：收盘460.74美元，几乎踩在向上的5周线460.86美元上，距离约-0.03%。26周线向上，收盘仍高出8.46%，未到半年线买点。长期均线全部向上，最近的5月线高6.41%，本周没有长期买点。",
-      "history": {
-        "firstDateUsed": "2008-01-02",
-        "nDaily": 4756,
-        "nWeekly": 987,
-        "nMonthly": 227,
-        "nQuarterly": 76,
-        "nYearly": 19
-      },
-      "rationale": "信用评级、金融数据与指数业务处于寡头格局，客户转换成本高，属于金融基础设施而非典型周期股；评级收入仍会随发行窗口起伏。截至2026-09-30的当季营收36.8亿美元、环比-11.3%，净利润12.4亿美元、环比仍+1.9%；同比营收+6.8%、利润+10.1%。毛利率71.0%。最近十二个月自由现金流约60亿美元，与经营现金流大致相当。"
-    },
-    {
-      "name": "Visa",
-      "ticker": "V",
-      "yahooSymbol": "V",
-      "isPrivate": false,
-      "lastClose": 424.39,
-      "lastCloseDate": "2026-11-25",
-      "currency": "USD",
-      "weekLow": 404.01,
-      "weekHigh": 426.67,
-      "weekBars": 3,
-      "uptrend": true,
-      "uptrendDefinition": "close_above_sma26w_and_sma26w_rising_vs_4w",
-      "uptrendNote": null,
-      "mas": {
-        "sma5w": {
-          "name": "5周线",
-          "value": 417.34,
-          "prevValue": 413.9,
-          "prevBasis": "1周前",
-          "rising": true,
-          "distancePct": 1.6885,
-          "sample": 976,
-          "required": 5,
-          "enoughHistory": true,
-          "note": null
+      ],
+      "thisWeekTriggers": [
+        {
+          "maName": "周线SMA125",
+          "depth": 1,
+          "depthLabel": "周线买点",
+          "distancePct": 1.4623,
+          "triggerType": "close_within_2pct",
+          "note": "收盘距该线 1.46%，落在±2%以内，且均线向上"
         },
-        "sma26w": {
-          "name": "26周线（半年线）",
-          "value": 372.47,
-          "prevValue": 357.87,
-          "prevBasis": "4周前",
-          "rising": true,
-          "distancePct": 13.9383,
-          "sample": 976,
-          "required": 26,
-          "enoughHistory": true,
-          "note": null,
-          "prevValue1w": 368.66,
-          "risingVs1w": true
+        {
+          "maName": "月线SMA30",
+          "depth": 1,
+          "depthLabel": "月线第一买点",
+          "distancePct": 1.1093,
+          "triggerType": "close_within_2pct",
+          "note": "收盘距该线 1.11%，落在±2%以内，且均线向上"
         },
-        "sma5m": {
-          "name": "5月线",
-          "value": 387.87,
-          "prevValue": 371.35,
-          "prevBasis": "1月前",
-          "rising": true,
-          "distancePct": 9.4168,
-          "sample": 225,
-          "required": 5,
-          "enoughHistory": true,
-          "note": null
-        },
-        "sma5q": {
-          "name": "5季线",
-          "value": 354.67,
-          "prevValue": 337.4,
-          "prevBasis": "1季前",
-          "rising": true,
-          "distancePct": 19.6578,
-          "sample": 76,
-          "required": 5,
-          "enoughHistory": true,
-          "note": null
-        },
-        "sma60m": {
-          "name": "5年线（月线SMA60）",
-          "value": 278.61,
-          "prevValue": 268.75,
-          "prevBasis": "3个月前",
-          "rising": true,
-          "distancePct": 52.3249,
-          "sample": 225,
-          "required": 60,
-          "enoughHistory": true,
-          "note": null
-        },
-        "sma5y": {
-          "name": "年线SMA5（对照）",
-          "value": 307.96,
-          "prevValue": 264.81,
-          "prevBasis": "上一年末的年线SMA5",
-          "rising": true,
-          "distancePct": 37.8063,
-          "sample": 19,
-          "required": 5,
-          "enoughHistory": true,
-          "note": null
+        {
+          "maName": "季线SMA10",
+          "depth": 1,
+          "depthLabel": "季线第一买点",
+          "distancePct": 2.5491,
+          "triggerType": "week_tag_and_hold",
+          "note": "本周最低价距该线 -0.81%，进入或吞破±2%带后收盘站稳（收盘距该线 2.55%），且均线向上"
         }
+      ],
+      "triggeredThisWeek": true,
+      "nearestBuyPoint": {
+        "maName": "月线SMA30",
+        "depth": 1,
+        "depthLabel": "月线第一买点",
+        "distancePct": 1.1093,
+        "triggerType": "close_within_2pct",
+        "note": "收盘距该线 1.11%，落在±2%以内，且均线向上"
       },
-      "distanceToMas": {
-        "sma5w": 1.6885,
-        "sma26w": 13.9383,
-        "sma5m": 9.4168,
-        "sma5q": 19.6578,
-        "sma60m": 52.3249,
-        "sma5y": 37.8063
-      },
-      "midTerm": {
-        "triggered": true,
-        "type": "sma5w_in_uptrend",
-        "types": [
-          "sma5w_in_uptrend"
-        ],
-        "note": "26周线向上，但收盘距26周线 13.94%，本周未踩线；处于上升趋势中的5周线买点（判定方式：close_within_2pct；上升趋势定义：close_above_sma26w_and_sma26w_rising_vs_4w）"
-      },
-      "longTerm": {
-        "triggered": false,
-        "type": null,
-        "types": [],
-        "note": "5月线向上，收盘距该线 9.42%，本周未踩线；5季线向上，收盘距该线 19.66%，本周未踩线；5年线（月线SMA60）向上，收盘距该线 52.32%，本周未踩线；对照用年线SMA5为 307.96，距该线 37.81%（向上），买点判定以月线SMA60为准"
-      },
-      "rankTier": "mid_only",
-      "proximityScore": 1.6885,
-      "rankScore": 2001.6885,
-      "rank": 4,
-      "summary": "中期触发上升趋势中的5周线买点：收盘424.39美元，距向上的5周线417.34美元+1.69%。26周线向上，但收盘仍高出13.94%，未到半年线买点。长期均线全部向上，最近的5月线仍高9.42%，本周没有长期买点。",
+      "rankTier": "triggered",
+      "proximityScore": 1.1093,
+      "maxTriggeredDepth": 1,
+      "rankScore": -98.8907,
+      "rank": 1,
+      "summary": "本周触发：周线买点（周线SMA125，收盘距该线 +1.46%）；月线第一买点（月线SMA30，收盘距该线 +1.11%）；季线第一买点（季线SMA10，收盘距该线 +2.55%）。本周触发月线第一买点（30月线，收盘+1.11%）和周线SMA125（收盘+1.46%）；本周最低价还接近季线第一买点（SMA10）。2026年更早的低点已经下探过60月线第二买点，之后弹回第一买点一带。",
+      "charts": [
+        "charts/SPGI_selected.png",
+        "charts/SPGI_composite.png",
+        "charts/SPGI_monthly.png",
+        "charts/SPGI_weekly.png"
+      ],
       "history": {
-        "firstDateUsed": "2008-03-19",
-        "nDaily": 4703,
-        "nWeekly": 976,
-        "nMonthly": 225,
-        "nQuarterly": 76,
-        "nYearly": 19
-      },
-      "rationale": "全球银行卡网络是典型的双边市场，品牌、商户覆盖与合规门槛构成宽护城河，业务偏轻资产，受单一行业景气的影响小于典型周期股。截至2026-09-30的当季营收121.4亿美元、环比+4.3%，净利润60.0亿美元、环比+6.6%；同比营收+13.2%、利润+21.9%。毛利率约97.7%，净利率51.2%。最近十二个月自由现金流约210亿美元，与经营现金流约237亿美元接近，现金流质量高。"
-    },
-    {
-      "name": "废物管理（Waste Management）",
-      "ticker": "WM",
-      "yahooSymbol": "WM",
-      "isPrivate": false,
-      "lastClose": 247.29,
-      "lastCloseDate": "2026-11-25",
-      "currency": "USD",
-      "weekLow": 235.25,
-      "weekHigh": 249.92,
-      "weekBars": 3,
-      "uptrend": true,
-      "uptrendDefinition": "close_above_sma26w_and_sma26w_rising_vs_4w",
-      "uptrendNote": null,
-      "mas": {
-        "sma5w": {
-          "name": "5周线",
-          "value": 240.09,
-          "prevValue": 238.51,
-          "prevBasis": "1周前",
-          "rising": true,
-          "distancePct": 2.998,
-          "sample": 987,
-          "required": 5,
-          "enoughHistory": true,
-          "note": null
-        },
-        "sma26w": {
-          "name": "26周线（半年线）",
-          "value": 225.41,
-          "prevValue": 221.18,
-          "prevBasis": "4周前",
-          "rising": true,
-          "distancePct": 9.7058,
-          "sample": 987,
-          "required": 26,
-          "enoughHistory": true,
-          "note": null,
-          "prevValue1w": 223.96,
-          "risingVs1w": true
-        },
-        "sma5m": {
-          "name": "5月线",
-          "value": 225.63,
-          "prevValue": 220.56,
-          "prevBasis": "1月前",
-          "rising": true,
-          "distancePct": 9.5979,
-          "sample": 227,
-          "required": 5,
-          "enoughHistory": true,
-          "note": null
-        },
-        "sma5q": {
-          "name": "5季线",
-          "value": 223.57,
-          "prevValue": 217.55,
-          "prevBasis": "1季前",
-          "rising": true,
-          "distancePct": 10.6108,
-          "sample": 76,
-          "required": 5,
-          "enoughHistory": true,
-          "note": null
-        },
-        "sma60m": {
-          "name": "5年线（月线SMA60）",
-          "value": 188.92,
-          "prevValue": 184.76,
-          "prevBasis": "3个月前",
-          "rising": true,
-          "distancePct": 30.8944,
-          "sample": 227,
-          "required": 60,
-          "enoughHistory": true,
-          "note": null
-        },
-        "sma5y": {
-          "name": "年线SMA5（对照）",
-          "value": 196.03,
-          "prevValue": 177.53,
-          "prevBasis": "上一年末的年线SMA5",
-          "rising": true,
-          "distancePct": 26.1466,
-          "sample": 19,
-          "required": 5,
-          "enoughHistory": true,
-          "note": null
-        }
-      },
-      "distanceToMas": {
-        "sma5w": 2.998,
-        "sma26w": 9.7058,
-        "sma5m": 9.5979,
-        "sma5q": 10.6108,
-        "sma60m": 30.8944,
-        "sma5y": 26.1466
-      },
-      "midTerm": {
-        "triggered": true,
-        "type": "sma5w_in_uptrend",
-        "types": [
-          "sma5w_in_uptrend"
-        ],
-        "note": "26周线向上，但收盘距26周线 9.71%，本周未踩线；处于上升趋势中的5周线买点（判定方式：week_tag_and_hold；上升趋势定义：close_above_sma26w_and_sma26w_rising_vs_4w）"
-      },
-      "longTerm": {
-        "triggered": false,
-        "type": null,
-        "types": [],
-        "note": "5月线向上，收盘距该线 9.60%，本周未踩线；5季线向上，收盘距该线 10.61%，本周未踩线；5年线（月线SMA60）向上，收盘距该线 30.89%，本周未踩线；对照用年线SMA5为 196.03，距该线 26.15%（向上），买点判定以月线SMA60为准"
-      },
-      "rankTier": "mid_only",
-      "proximityScore": 2.998,
-      "rankScore": 2002.998,
-      "rank": 5,
-      "summary": "中期触发上升趋势中的5周线买点：本周最低价235.25美元一度低于5周线240.09美元，收盘247.29美元重新站上；收盘距5周线+3.00%，按周内触及后站稳判定。26周线向上，但收盘仍高出9.71%。长期均线全部向上，最近的5月线仍高9.60%，本周没有长期买点。",
-      "history": {
-        "firstDateUsed": "2008-01-02",
-        "nDaily": 4756,
-        "nWeekly": 987,
-        "nMonthly": 227,
-        "nQuarterly": 76,
-        "nYearly": 19
-      },
-      "rationale": "垃圾收集与处理依赖区域特许和路权，本地进入壁垒高，服务具有必需品属性，穿越经济周期的能力较强。截至2026-09-30的当季营收68.5亿美元、环比+2.4%，净利润8.20亿美元、环比+4.5%；同比营收+6.3%、利润+37.6%。毛利率40.4%。最近十二个月经营现金流约66亿美元，自由现金流约25亿美元。负债率高于本组其他公司（权益乘数口径的债务权益比约2.37），是该商业模式里比较常见的特征，需要一并考虑。"
-    },
-    {
-      "name": "宝洁",
-      "ticker": "PG",
-      "yahooSymbol": "PG",
-      "isPrivate": false,
-      "lastClose": 173.23,
-      "lastCloseDate": "2026-11-25",
-      "currency": "USD",
-      "weekLow": 167.49,
-      "weekHigh": 174.56,
-      "weekBars": 3,
-      "uptrend": true,
-      "uptrendDefinition": "close_above_sma26w_and_sma26w_rising_vs_4w",
-      "uptrendNote": null,
-      "mas": {
-        "sma5w": {
-          "name": "5周线",
-          "value": 167.87,
-          "prevValue": 165.43,
-          "prevBasis": "1周前",
-          "rising": true,
-          "distancePct": 3.1905,
-          "sample": 987,
-          "required": 5,
-          "enoughHistory": true,
-          "note": null
-        },
-        "sma26w": {
-          "name": "26周线（半年线）",
-          "value": 151.07,
-          "prevValue": 146.84,
-          "prevBasis": "4周前",
-          "rising": true,
-          "distancePct": 14.67,
-          "sample": 987,
-          "required": 26,
-          "enoughHistory": true,
-          "note": null,
-          "prevValue1w": 149.85,
-          "risingVs1w": true
-        },
-        "sma5m": {
-          "name": "5月线",
-          "value": 153.37,
-          "prevValue": 147.64,
-          "prevBasis": "1月前",
-          "rising": true,
-          "distancePct": 12.952,
-          "sample": 227,
-          "required": 5,
-          "enoughHistory": true,
-          "note": null
-        },
-        "sma5q": {
-          "name": "5季线",
-          "value": 148.56,
-          "prevValue": 143.57,
-          "prevBasis": "1季前",
-          "rising": true,
-          "distancePct": 16.6091,
-          "sample": 76,
-          "required": 5,
-          "enoughHistory": true,
-          "note": null
-        },
-        "sma60m": {
-          "name": "5年线（月线SMA60）",
-          "value": 144.96,
-          "prevValue": 143.22,
-          "prevBasis": "3个月前",
-          "rising": true,
-          "distancePct": 19.5055,
-          "sample": 227,
-          "required": 60,
-          "enoughHistory": true,
-          "note": null
-        },
-        "sma5y": {
-          "name": "年线SMA5（对照）",
-          "value": 148.63,
-          "prevValue": 142.74,
-          "prevBasis": "上一年末的年线SMA5",
-          "rising": true,
-          "distancePct": 16.553,
-          "sample": 19,
-          "required": 5,
-          "enoughHistory": true,
-          "note": null
-        }
-      },
-      "distanceToMas": {
-        "sma5w": 3.1905,
-        "sma26w": 14.67,
-        "sma5m": 12.952,
-        "sma5q": 16.6091,
-        "sma60m": 19.5055,
-        "sma5y": 16.553
-      },
-      "midTerm": {
-        "triggered": true,
-        "type": "sma5w_in_uptrend",
-        "types": [
-          "sma5w_in_uptrend"
-        ],
-        "note": "26周线向上，但收盘距26周线 14.67%，本周未踩线；处于上升趋势中的5周线买点（判定方式：week_tag_and_hold；上升趋势定义：close_above_sma26w_and_sma26w_rising_vs_4w）"
-      },
-      "longTerm": {
-        "triggered": false,
-        "type": null,
-        "types": [],
-        "note": "5月线向上，收盘距该线 12.95%，本周未踩线；5季线向上，收盘距该线 16.61%，本周未踩线；5年线（月线SMA60）向上，收盘距该线 19.51%，本周未踩线；对照用年线SMA5为 148.63，距该线 16.55%（向上），买点判定以月线SMA60为准"
-      },
-      "rankTier": "mid_only",
-      "proximityScore": 3.1905,
-      "rankScore": 2003.1905,
-      "rank": 6,
-      "summary": "中期触发上升趋势中的5周线买点：本周最低价167.49美元略低于5周线167.87美元，收盘173.23美元站稳；收盘距5周线+3.19%，按周内触及后站稳判定。26周线向上，但收盘仍高出14.67%。长期均线全部向上，最近的5月线仍高12.95%，本周没有长期买点。",
-      "history": {
-        "firstDateUsed": "2008-01-02",
-        "nDaily": 4756,
-        "nWeekly": 987,
-        "nMonthly": 227,
-        "nQuarterly": 76,
-        "nYearly": 19
-      },
-      "rationale": "全球日用消费品品牌组合，需求相对稳定，定价权较好，是比较典型的防御型长持标的。截至2026-09-30的当季营收232.8亿美元、环比+9.8%，净利润47.3亿美元、环比+55.4%；前一季利润基数偏低，环比不宜单独解读，同比营收+4.0%、利润+0.8%，增长平稳。毛利率50.6%。最近十二个月自由现金流约126亿美元，经营现金流约199亿美元。"
-    },
-    {
-      "name": "开市客（Costco）",
-      "ticker": "COST",
-      "yahooSymbol": "COST",
-      "isPrivate": false,
-      "lastClose": 1086.81,
-      "lastCloseDate": "2026-11-25",
-      "currency": "USD",
-      "weekLow": 1067.92,
-      "weekHigh": 1101.5,
-      "weekBars": 3,
-      "uptrend": true,
-      "uptrendDefinition": "close_above_sma26w_and_sma26w_rising_vs_4w",
-      "uptrendNote": null,
-      "mas": {
-        "sma5w": {
-          "name": "5周线",
-          "value": 1048.84,
-          "prevValue": 1026.37,
-          "prevBasis": "1周前",
-          "rising": true,
-          "distancePct": 3.6198,
-          "sample": 987,
-          "required": 5,
-          "enoughHistory": true,
-          "note": null
-        },
-        "sma26w": {
-          "name": "26周线（半年线）",
-          "value": 942.98,
-          "prevValue": 929.91,
-          "prevBasis": "4周前",
-          "rising": true,
-          "distancePct": 15.2523,
-          "sample": 987,
-          "required": 26,
-          "enoughHistory": true,
-          "note": null,
-          "prevValue1w": 936.85,
-          "risingVs1w": true
-        },
-        "sma5m": {
-          "name": "5月线",
-          "value": 959.37,
-          "prevValue": 923.43,
-          "prevBasis": "1月前",
-          "rising": true,
-          "distancePct": 13.2838,
-          "sample": 227,
-          "required": 5,
-          "enoughHistory": true,
-          "note": null
-        },
-        "sma5q": {
-          "name": "5季线",
-          "value": 935.36,
-          "prevValue": 896.75,
-          "prevBasis": "1季前",
-          "rising": true,
-          "distancePct": 16.1919,
-          "sample": 76,
-          "required": 5,
-          "enoughHistory": true,
-          "note": null
-        },
-        "sma60m": {
-          "name": "5年线（月线SMA60）",
-          "value": 722.49,
-          "prevValue": 695.96,
-          "prevBasis": "3个月前",
-          "rising": true,
-          "distancePct": 50.4257,
-          "sample": 227,
-          "required": 60,
-          "enoughHistory": true,
-          "note": null
-        },
-        "sma5y": {
-          "name": "年线SMA5（对照）",
-          "value": 771.4,
-          "prevValue": 658.72,
-          "prevBasis": "上一年末的年线SMA5",
-          "rising": true,
-          "distancePct": 40.8872,
-          "sample": 19,
-          "required": 5,
-          "enoughHistory": true,
-          "note": null
-        }
-      },
-      "distanceToMas": {
-        "sma5w": 3.6198,
-        "sma26w": 15.2523,
-        "sma5m": 13.2838,
-        "sma5q": 16.1919,
-        "sma60m": 50.4257,
-        "sma5y": 40.8872
-      },
-      "midTerm": {
-        "triggered": true,
-        "type": "sma5w_in_uptrend",
-        "types": [
-          "sma5w_in_uptrend"
-        ],
-        "note": "26周线向上，但收盘距26周线 15.25%，本周未踩线；处于上升趋势中的5周线买点（判定方式：week_tag_and_hold；上升趋势定义：close_above_sma26w_and_sma26w_rising_vs_4w）"
-      },
-      "longTerm": {
-        "triggered": false,
-        "type": null,
-        "types": [],
-        "note": "5月线向上，收盘距该线 13.28%，本周未踩线；5季线向上，收盘距该线 16.19%，本周未踩线；5年线（月线SMA60）向上，收盘距该线 50.43%，本周未踩线；对照用年线SMA5为 771.40，距该线 40.89%（向上），买点判定以月线SMA60为准"
-      },
-      "rankTier": "mid_only",
-      "proximityScore": 3.6198,
-      "rankScore": 2003.6198,
-      "rank": 7,
-      "summary": "中期触发上升趋势中的5周线买点：本周最低价1067.92美元距5周线1048.84美元约+1.82%，进入±2%接近带后收盘1086.81美元站稳；收盘距5周线+3.62%，属于周内接近而非收盘踩线。26周线向上，但收盘仍高出15.25%。长期均线全部向上且距离更远（5月线+13.28%），本周没有长期买点。",
-      "history": {
-        "firstDateUsed": "2008-01-02",
-        "nDaily": 4756,
-        "nWeekly": 987,
-        "nMonthly": 227,
-        "nQuarterly": 76,
-        "nYearly": 19
-      },
-      "rationale": "会员制仓储零售依靠价格纪律与高续费率形成护城河，盈利不依赖高加价，而依赖会员费与周转。截至2026-08-31前后的最近一季营收957.2亿美元、净利润30.0亿美元，环比增幅很大，主要因为开市客部分财季约为16周、其余约12周，不能把约36%的环比直接读成需求跳升；更有参考意义的是同比营收+11.1%、利润+15.0%。毛利率约12.8%、净利率约3.0%，符合其模式。最近十二个月经营现金流约158亿美元，自由现金流约68亿美元。"
+        "firstDateUsed": "1973-02-21",
+        "nDaily": 13556,
+        "nWeekly": 2806,
+        "nMonthly": 646,
+        "nQuarterly": 216,
+        "nYearly": 54
+      }
     },
     {
       "name": "Alphabet",
@@ -1842,290 +3701,3429 @@ window.BUY_POINTS_REPORT = {
       "lastCloseDate": "2026-11-25",
       "currency": "USD",
       "weekLow": 262.73,
-      "weekHigh": 285.14,
-      "weekBars": 3,
-      "uptrend": false,
-      "uptrendDefinition": "close_above_sma26w_and_sma26w_rising_vs_4w",
-      "uptrendNote": null,
-      "mas": {
-        "sma5w": {
-          "name": "5周线",
-          "value": 279.76,
-          "prevValue": 289.18,
-          "prevBasis": "1周前",
-          "rising": false,
-          "distancePct": -2.3792,
-          "sample": 987,
-          "required": 5,
-          "enoughHistory": true,
-          "note": null
-        },
-        "sma26w": {
-          "name": "26周线（半年线）",
-          "value": 334.11,
-          "prevValue": 351.04,
-          "prevBasis": "4周前",
-          "rising": false,
-          "distancePct": -18.2616,
-          "sample": 987,
-          "required": 26,
-          "enoughHistory": true,
-          "note": null,
-          "prevValue1w": 338.22,
-          "risingVs1w": false
-        },
-        "sma5m": {
-          "name": "5月线",
-          "value": 318.41,
-          "prevValue": 335.22,
-          "prevBasis": "1月前",
-          "rising": false,
-          "distancePct": -14.2303,
-          "sample": 227,
-          "required": 5,
-          "enoughHistory": true,
-          "note": null
-        },
-        "sma5q": {
-          "name": "5季线",
-          "value": 314.78,
-          "prevValue": 308.66,
-          "prevBasis": "1季前",
+      "monthLow": 262.73,
+      "quarterLow": 262.73,
+      "yearLow": 262.73,
+      "buyPointSelectionRationale": "Alphabet当前这轮回撤已经跌破52周线，停在100周线一带，而2022年的熊市主要在125周线与200周线、30月线与60月线、季线SMA10–20和年线SMA5完成探底。因此周线采用100/125/200三层，而不是伯克希尔的单一125周线；125月线和年线SMA10尚未有合格触及，暂不给出。",
+      "sameLengthsAsBerkshireButIndependentlySupported": false,
+      "buyPoints": [
+        {
+          "timeframe": "weekly",
+          "timeframeZh": "周线",
+          "smaPeriod": 100,
+          "maName": "周线SMA100",
+          "depth": 1,
+          "depthLabel": "周线第一买点",
+          "value": 268.78,
           "rising": true,
-          "distancePct": -13.2419,
-          "sample": 76,
-          "required": 5,
+          "distancePct": 1.6076,
           "enoughHistory": true,
-          "note": null
+          "sample": 1163,
+          "required": 100,
+          "historicalTouches": 22,
+          "historicalSuccesses": 21,
+          "successRate": 95.4545,
+          "historicalExamples": [
+            {
+              "trough_date": "2018-12-28",
+              "trough": 48.42,
+              "min_dist_pct": -5.9048,
+              "bounce_pct": 30.661
+            },
+            {
+              "trough_date": "2019-06-07",
+              "trough": 50.87,
+              "min_dist_pct": -6.344,
+              "bounce_pct": 44.0581
+            },
+            {
+              "trough_date": "2020-03-27",
+              "trough": 49.97,
+              "min_dist_pct": -15.5588,
+              "bounce_pct": 74.4259
+            },
+            {
+              "trough_date": "2022-11-04",
+              "trough": 82.55,
+              "min_dist_pct": -30.6666,
+              "bounce_pct": 82.6134
+            },
+            {
+              "trough_date": "2025-04-11",
+              "trough": 139.87,
+              "min_dist_pct": -8.87,
+              "bounce_pct": 113.6847
+            },
+            {
+              "trough_date": "2025-06-27",
+              "trough": 161.44,
+              "min_dist_pct": 2.0076,
+              "bounce_pct": 98.4922
+            }
+          ],
+          "triggeredThisWeek": true,
+          "triggerType": "close_within_2pct",
+          "weekLowDistPct": -2.2509,
+          "periodLowDistPct": -2.2509,
+          "note": "收盘距该线 1.61%，落在±2%以内，且均线向上",
+          "priorTagInPeriod": false
         },
-        "sma60m": {
-          "name": "5年线（月线SMA60）",
+        {
+          "timeframe": "weekly",
+          "timeframeZh": "周线",
+          "smaPeriod": 125,
+          "maName": "周线SMA125",
+          "depth": 2,
+          "depthLabel": "周线第二买点",
+          "value": 248.79,
+          "rising": true,
+          "distancePct": 9.7725,
+          "enoughHistory": true,
+          "sample": 1163,
+          "required": 125,
+          "historicalTouches": 25,
+          "historicalSuccesses": 25,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2022-11-04",
+              "trough": 82.55,
+              "min_dist_pct": -25.4775,
+              "bounce_pct": 65.0828
+            },
+            {
+              "trough_date": "2023-07-14",
+              "trough": 114.26,
+              "min_dist_pct": -2.3106,
+              "bounce_pct": 31.9376
+            },
+            {
+              "trough_date": "2023-10-27",
+              "trough": 119.08,
+              "min_dist_pct": -0.284,
+              "bounce_pct": 43.0414
+            },
+            {
+              "trough_date": "2025-04-11",
+              "trough": 139.87,
+              "min_dist_pct": -1.7295,
+              "bounce_pct": 81.6384
+            },
+            {
+              "trough_date": "2025-04-25",
+              "trough": 145.41,
+              "min_dist_pct": 1.5058,
+              "bounce_pct": 92.8694
+            },
+            {
+              "trough_date": "2025-05-09",
+              "trough": 147.15,
+              "min_dist_pct": 1.9522,
+              "bounce_pct": 90.5994
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 5.6031,
+          "periodLowDistPct": 5.6031,
+          "note": "收盘距该线 +9.77%，本周最低价距该线 +5.60%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "weekly",
+          "timeframeZh": "周线",
+          "smaPeriod": 200,
+          "maName": "周线SMA200",
+          "depth": 3,
+          "depthLabel": "周线第三买点",
+          "value": 205.46,
+          "rising": true,
+          "distancePct": 32.9191,
+          "enoughHistory": true,
+          "sample": 1163,
+          "required": 200,
+          "historicalTouches": 10,
+          "historicalSuccesses": 10,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2011-08-19",
+              "trough": 12.17,
+              "min_dist_pct": -2.7435,
+              "bounce_pct": 32.4247
+            },
+            {
+              "trough_date": "2011-09-09",
+              "trough": 12.65,
+              "min_dist_pct": 1.6244,
+              "bounce_pct": 27.3301
+            },
+            {
+              "trough_date": "2011-10-07",
+              "trough": 11.91,
+              "min_dist_pct": -3.7377,
+              "bounce_pct": 35.2518
+            },
+            {
+              "trough_date": "2020-03-27",
+              "trough": 49.97,
+              "min_dist_pct": -4.4209,
+              "bounce_pct": 62.5016
+            },
+            {
+              "trough_date": "2022-10-14",
+              "trough": 93.49,
+              "min_dist_pct": 1.9444,
+              "bounce_pct": 15.3528
+            },
+            {
+              "trough_date": "2022-11-04",
+              "trough": 82.55,
+              "min_dist_pct": -10.5994,
+              "bounce_pct": 64.8668
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 27.874,
+          "periodLowDistPct": 27.874,
+          "note": "收盘距该线 +32.92%，本周最低价距该线 +27.87%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "monthly",
+          "timeframeZh": "月线",
+          "smaPeriod": 30,
+          "maName": "月线SMA30",
+          "depth": 1,
+          "depthLabel": "月线第一买点",
+          "value": 248.04,
+          "rising": true,
+          "distancePct": 10.1039,
+          "enoughHistory": true,
+          "sample": 268,
+          "required": 30,
+          "historicalTouches": 12,
+          "historicalSuccesses": 12,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2018-12-31",
+              "trough": 48.42,
+              "min_dist_pct": -0.9031,
+              "bounce_pct": 28.7564
+            },
+            {
+              "trough_date": "2019-06-28",
+              "trough": 50.87,
+              "min_dist_pct": -2.6549,
+              "bounce_pct": 39.5071
+            },
+            {
+              "trough_date": "2020-03-31",
+              "trough": 49.97,
+              "min_dist_pct": -13.2495,
+              "bounce_pct": 81.1294
+            },
+            {
+              "trough_date": "2022-11-30",
+              "trough": 82.55,
+              "min_dist_pct": -24.6759,
+              "bounce_pct": 95.3204
+            },
+            {
+              "trough_date": "2023-10-31",
+              "trough": 119.08,
+              "min_dist_pct": 0.0533,
+              "bounce_pct": 51.7004
+            },
+            {
+              "trough_date": "2025-04-30",
+              "trough": 139.87,
+              "min_dist_pct": -1.441,
+              "bounce_pct": 141.1823
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 5.9224,
+          "periodLowDistPct": 5.9224,
+          "note": "收盘距该线 +10.10%，本周最低价距该线 +5.92%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "monthly",
+          "timeframeZh": "月线",
+          "smaPeriod": 60,
+          "maName": "月线SMA60",
+          "depth": 2,
+          "depthLabel": "月线第二买点",
           "value": 185.08,
-          "prevValue": 177.12,
-          "prevBasis": "3个月前",
           "rising": true,
           "distancePct": 47.5593,
-          "sample": 227,
-          "required": 60,
           "enoughHistory": true,
-          "note": null
+          "sample": 268,
+          "required": 60,
+          "historicalTouches": 4,
+          "historicalSuccesses": 4,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2009-07-31",
+              "trough": 9.82,
+              "min_dist_pct": -0.8631,
+              "bounce_pct": 56.5685
+            },
+            {
+              "trough_date": "2010-07-30",
+              "trough": 10.75,
+              "min_dist_pct": -6.3656,
+              "bounce_pct": 41.5262
+            },
+            {
+              "trough_date": "2011-06-30",
+              "trough": 11.73,
+              "min_dist_pct": -4.9131,
+              "bounce_pct": 36.5481
+            },
+            {
+              "trough_date": "2022-11-30",
+              "trough": 82.55,
+              "min_dist_pct": -1.9384,
+              "bounce_pct": 67.6146
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 41.9548,
+          "periodLowDistPct": 41.9548,
+          "note": "收盘距该线 +47.56%，本周最低价距该线 +41.95%，未进入触发带",
+          "priorTagInPeriod": false
         },
-        "sma5y": {
-          "name": "年线SMA5（对照）",
+        {
+          "timeframe": "quarterly",
+          "timeframeZh": "季线",
+          "smaPeriod": 10,
+          "maName": "季线SMA10",
+          "depth": 1,
+          "depthLabel": "季线第一买点",
+          "value": 249.88,
+          "rising": true,
+          "distancePct": 9.2922,
+          "enoughHistory": true,
+          "sample": 90,
+          "required": 10,
+          "historicalTouches": 8,
+          "historicalSuccesses": 8,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2011-06-30",
+              "trough": 11.73,
+              "min_dist_pct": -12.6458,
+              "bounce_pct": 146.9601
+            },
+            {
+              "trough_date": "2015-03-31",
+              "trough": 24.31,
+              "min_dist_pct": -1.9695,
+              "bounce_pct": 89.3789
+            },
+            {
+              "trough_date": "2018-12-31",
+              "trough": 48.42,
+              "min_dist_pct": -2.0258,
+              "bounce_pct": 149.7586
+            },
+            {
+              "trough_date": "2020-03-31",
+              "trough": 49.97,
+              "min_dist_pct": -11.9194,
+              "bounce_pct": 187.157
+            },
+            {
+              "trough_date": "2022-12-30",
+              "trough": 82.55,
+              "min_dist_pct": -24.7038,
+              "bounce_pct": 193.7086
+            },
+            {
+              "trough_date": "2025-06-30",
+              "trough": 140.04,
+              "min_dist_pct": -6.7574,
+              "bounce_pct": 155.027
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 5.1425,
+          "periodLowDistPct": 5.1425,
+          "note": "收盘距该线 +9.29%，本周最低价距该线 +5.14%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "quarterly",
+          "timeframeZh": "季线",
+          "smaPeriod": 20,
+          "maName": "季线SMA20",
+          "depth": 2,
+          "depthLabel": "季线第二买点",
+          "value": 187.31,
+          "rising": true,
+          "distancePct": 45.8044,
+          "enoughHistory": true,
+          "sample": 90,
+          "required": 20,
+          "historicalTouches": 4,
+          "historicalSuccesses": 4,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2009-06-30",
+              "trough": 8.44,
+              "min_dist_pct": -13.599,
+              "bounce_pct": 82.0205
+            },
+            {
+              "trough_date": "2010-09-30",
+              "trough": 10.75,
+              "min_dist_pct": -7.9789,
+              "bounce_pct": 48.9519
+            },
+            {
+              "trough_date": "2011-06-30",
+              "trough": 11.73,
+              "min_dist_pct": -5.6357,
+              "bounce_pct": 86.1168
+            },
+            {
+              "trough_date": "2022-12-30",
+              "trough": 82.55,
+              "min_dist_pct": -2.4243,
+              "bounce_pct": 127.9653
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 40.2648,
+          "periodLowDistPct": 40.2648,
+          "note": "收盘距该线 +45.80%，本周最低价距该线 +40.26%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "annual",
+          "timeframeZh": "年线",
+          "smaPeriod": 5,
+          "maName": "年线SMA5",
+          "depth": 1,
+          "depthLabel": "年线第一买点",
           "value": 199.89,
-          "prevValue": 173.97,
-          "prevBasis": "上一年末的年线SMA5",
           "rising": true,
           "distancePct": 36.6239,
-          "sample": 19,
-          "required": 5,
           "enoughHistory": true,
-          "note": null
+          "sample": 23,
+          "required": 5,
+          "historicalTouches": 4,
+          "historicalSuccesses": 4,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2008-12-31",
+              "trough": 6.13,
+              "min_dist_pct": -43.3242,
+              "bounce_pct": 751.0687
+            },
+            {
+              "trough_date": "2015-12-31",
+              "trough": 24.31,
+              "min_dist_pct": -3.6261,
+              "bounce_pct": 172.8381
+            },
+            {
+              "trough_date": "2020-12-31",
+              "trough": 49.97,
+              "min_dist_pct": -15.6864,
+              "bounce_pct": 276.6317
+            },
+            {
+              "trough_date": "2022-12-30",
+              "trough": 82.55,
+              "min_dist_pct": -19.5447,
+              "bounce_pct": 278.4077
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 31.4373,
+          "periodLowDistPct": 31.4373,
+          "note": "收盘距该线 +36.63%，本周最低价距该线 +31.44%，未进入触发带",
+          "priorTagInPeriod": false
         }
+      ],
+      "thisWeekTriggers": [
+        {
+          "maName": "周线SMA100",
+          "depth": 1,
+          "depthLabel": "周线第一买点",
+          "distancePct": 1.6076,
+          "triggerType": "close_within_2pct",
+          "note": "收盘距该线 1.61%，落在±2%以内，且均线向上"
+        }
+      ],
+      "triggeredThisWeek": true,
+      "nearestBuyPoint": {
+        "maName": "周线SMA100",
+        "depth": 1,
+        "depthLabel": "周线第一买点",
+        "distancePct": 1.6076,
+        "triggerType": "close_within_2pct",
+        "note": "收盘距该线 1.61%，落在±2%以内，且均线向上"
       },
-      "distanceToMas": {
-        "sma5w": -2.3792,
-        "sma26w": -18.2616,
-        "sma5m": -14.2303,
-        "sma5q": -13.2419,
-        "sma60m": 47.5593,
-        "sma5y": 36.6239
-      },
-      "midTerm": {
-        "triggered": false,
-        "type": null,
-        "types": [],
-        "note": "26周线向下，收盘距26周线 -18.26%，不记为半年线买点；未处于上升趋势，收盘距5周线 -2.38%"
-      },
-      "longTerm": {
-        "triggered": false,
-        "type": null,
-        "types": [],
-        "note": "5月线未向上，收盘距该线 -14.23%；5季线向上，收盘距该线 -13.24%，本周未踩线；5年线（月线SMA60）向上，收盘距该线 47.56%，本周未踩线；对照用年线SMA5为 199.89，距该线 36.62%（向上），买点判定以月线SMA60为准"
-      },
-      "rankTier": "none",
-      "proximityScore": 47.5593,
-      "rankScore": 3047.5593,
-      "rank": 8,
-      "summary": "本周没有中期或长期买点。26周线与5月线均向下，收盘273.10美元分别低于两者18.26%和14.23%，属于中期趋势尚未修复，而不是靠近买点。5季线仍向上，但收盘已低于该线13.24%，尚未进入±2%触发带。5年线向上，收盘仍高出47.56%。在推荐名单中，它是距离有效买点最远的一个。",
+      "rankTier": "triggered",
+      "proximityScore": 1.6076,
+      "maxTriggeredDepth": 1,
+      "rankScore": -98.3924,
+      "rank": 2,
+      "summary": "本周触发：周线第一买点（周线SMA100，收盘距该线 +1.61%）。本周收盘接近该股自己的周线第一买点（100周线，+1.61%），且该线向上；本周最低价曾略微跌破该线后收盘站稳。更深的125周线、30月线和季线SMA10尚未触及（分别约+9.8%、+10.1%、+9.3%）。52周线已向下，不作为买点。",
+      "charts": [
+        "charts/GOOGL_selected.png",
+        "charts/GOOGL_composite.png",
+        "charts/GOOGL_monthly.png",
+        "charts/GOOGL_weekly.png"
+      ],
       "history": {
-        "firstDateUsed": "2008-01-02",
-        "nDaily": 4756,
-        "nWeekly": 987,
-        "nMonthly": 227,
-        "nQuarterly": 76,
-        "nYearly": 19
-      },
-      "rationale": "搜索、YouTube与云是仍然很宽的现金流护城河，广告与云业务能穿越多年周期，但短期利润会受一次性项目和资本开支扰动。截至2026-09-30的当季营收1275.8亿美元、环比+6.5%，同比营收+24.7%，毛利率60.9%。GAAP净利润波动很大：2026年二季度为1121亿美元，三季度回落至262亿美元；三季度每股收益2.12美元，低于预期3.01美元。衡量质量时更宜看营收、经营利润率和经营现金流。最近十二个月经营现金流约1796亿美元，自由现金流为负约12亿美元，同样受到资本开支影响。"
-    }
-  ],
-  "midTermTriggers": [
-    {
-      "list": "userList",
-      "name": "麦当劳",
-      "ticker": "MCD",
-      "type": "sma5w_in_uptrend",
-      "types": [
-        "sma5w_in_uptrend"
-      ],
-      "lastClose": 283.5,
-      "note": "26周线向上，但收盘距26周线 7.69%，本周未踩线；处于上升趋势中的5周线买点（判定方式：week_tag_and_hold；上升趋势定义：close_above_sma26w_and_sma26w_rising_vs_4w）"
+        "firstDateUsed": "2004-08-19",
+        "nDaily": 5604,
+        "nWeekly": 1163,
+        "nMonthly": 268,
+        "nQuarterly": 90,
+        "nYearly": 23
+      }
     },
     {
-      "list": "userList",
-      "name": "可口可乐",
-      "ticker": "KO",
-      "type": "sma5w_in_uptrend",
-      "types": [
-        "sma5w_in_uptrend"
-      ],
-      "lastClose": 97.59,
-      "note": "26周线向上，但收盘距26周线 10.98%，本周未踩线；处于上升趋势中的5周线买点（判定方式：close_within_2pct；上升趋势定义：close_above_sma26w_and_sma26w_rising_vs_4w）"
-    },
-    {
-      "list": "userList",
-      "name": "伯克希尔哈撒韦B股",
-      "ticker": "BRK.B",
-      "type": "sma5w_in_uptrend",
-      "types": [
-        "sma5w_in_uptrend"
-      ],
-      "lastClose": 579.32,
-      "note": "26周线向上，但收盘距26周线 11.81%，本周未踩线；处于上升趋势中的5周线买点（判定方式：close_within_2pct；上升趋势定义：close_above_sma26w_and_sma26w_rising_vs_4w）"
-    },
-    {
-      "list": "userList",
-      "name": "苹果",
-      "ticker": "AAPL",
-      "type": "sma5w_in_uptrend",
-      "types": [
-        "sma5w_in_uptrend"
-      ],
-      "lastClose": 355.58,
-      "note": "26周线向上，但收盘距26周线 9.38%，本周未踩线；处于上升趋势中的5周线买点（判定方式：week_tag_and_hold；上升趋势定义：close_above_sma26w_and_sma26w_rising_vs_4w）"
-    },
-    {
-      "list": "recommendedList",
       "name": "微软",
       "ticker": "MSFT",
-      "type": "pullback_to_sma26w",
-      "types": [
-        "pullback_to_sma26w"
-      ],
+      "yahooSymbol": "MSFT",
+      "isPrivate": false,
       "lastClose": 489.93,
-      "note": "回调到26周线（半年线）并站稳（判定方式：week_tag_and_hold），且26周线向上；已处于上升趋势，但收盘距5周线 -3.85%，本周未踩线"
-    },
-    {
-      "list": "recommendedList",
-      "name": "强生",
-      "ticker": "JNJ",
-      "type": "sma5w_in_uptrend",
-      "types": [
-        "sma5w_in_uptrend"
+      "lastCloseDate": "2026-11-25",
+      "currency": "USD",
+      "weekLow": 477.39,
+      "monthLow": 477.39,
+      "quarterLow": 477.39,
+      "yearLow": 349.2,
+      "buyPointSelectionRationale": "微软自身月线图支持30/60/125分层：2022年和2026年较早时候的回撤明显在30月线一带止跌；2008–09年则下探到125月线附近。周线SMA125、季线SMA10、年线SMA5在2022年同样被回踩。2000–2013年的长平台期里这些长均线纠缠在一起，更适合作为历史对照，而不是单独的短线买点。",
+      "sameLengthsAsBerkshireButIndependentlySupported": true,
+      "buyPoints": [
+        {
+          "timeframe": "weekly",
+          "timeframeZh": "周线",
+          "smaPeriod": 125,
+          "maName": "周线SMA125",
+          "depth": 1,
+          "depthLabel": "周线买点",
+          "value": 444.29,
+          "rising": true,
+          "distancePct": 10.2723,
+          "enoughHistory": true,
+          "sample": 2125,
+          "required": 125,
+          "historicalTouches": 38,
+          "historicalSuccesses": 37,
+          "successRate": 97.3684,
+          "historicalExamples": [
+            {
+              "trough_date": "2022-05-20",
+              "trough": 237.53,
+              "min_dist_pct": 2.1935,
+              "bounce_pct": 18.4507
+            },
+            {
+              "trough_date": "2022-06-17",
+              "trough": 232.78,
+              "min_dist_pct": -1.1845,
+              "bounce_pct": 20.8687
+            },
+            {
+              "trough_date": "2022-07-15",
+              "trough": 237.05,
+              "min_dist_pct": -0.5105,
+              "bounce_pct": 18.6916
+            },
+            {
+              "trough_date": "2022-11-04",
+              "trough": 206.15,
+              "min_dist_pct": -17.2348,
+              "bounce_pct": 62.9756
+            },
+            {
+              "trough_date": "2025-04-11",
+              "trough": 340.13,
+              "min_dist_pct": -5.0766,
+              "bounce_pct": 52.3924
+            },
+            {
+              "trough_date": "2026-06-26",
+              "trough": 347.87,
+              "min_dist_pct": -19.465,
+              "bounce_pct": 53.5158
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 7.4501,
+          "periodLowDistPct": 7.4501,
+          "note": "收盘距该线 +10.27%，本周最低价距该线 +7.45%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "monthly",
+          "timeframeZh": "月线",
+          "smaPeriod": 30,
+          "maName": "月线SMA30",
+          "depth": 1,
+          "depthLabel": "月线第一买点",
+          "value": 444.8,
+          "rising": true,
+          "distancePct": 10.1468,
+          "enoughHistory": true,
+          "sample": 489,
+          "required": 30,
+          "historicalTouches": 20,
+          "historicalSuccesses": 20,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2012-12-31",
+              "trough": 20.97,
+              "min_dist_pct": -1.6578,
+              "bounce_pct": 49.5955
+            },
+            {
+              "trough_date": "2015-08-31",
+              "trough": 34.26,
+              "min_dist_pct": 1.5607,
+              "bounce_pct": 40.9906
+            },
+            {
+              "trough_date": "2022-06-30",
+              "trough": 232.78,
+              "min_dist_pct": -1.1753,
+              "bounce_pct": 28.1741
+            },
+            {
+              "trough_date": "2022-11-30",
+              "trough": 206.73,
+              "min_dist_pct": -17.0966,
+              "bounce_pct": 79.1078
+            },
+            {
+              "trough_date": "2025-04-30",
+              "trough": 340.13,
+              "min_dist_pct": -4.4533,
+              "bounce_pct": 55.0159
+            },
+            {
+              "trough_date": "2026-06-30",
+              "trough": 347.87,
+              "min_dist_pct": -18.7569,
+              "bounce_pct": 49.7401
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 7.3269,
+          "periodLowDistPct": 7.3269,
+          "note": "收盘距该线 +10.15%，本周最低价距该线 +7.33%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "monthly",
+          "timeframeZh": "月线",
+          "smaPeriod": 60,
+          "maName": "月线SMA60",
+          "depth": 2,
+          "depthLabel": "月线第二买点",
+          "value": 375.07,
+          "rising": true,
+          "distancePct": 30.6233,
+          "enoughHistory": true,
+          "sample": 489,
+          "required": 60,
+          "historicalTouches": 11,
+          "historicalSuccesses": 11,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2006-06-30",
+              "trough": 14.95,
+              "min_dist_pct": -11.5042,
+              "bounce_pct": 44.9952
+            },
+            {
+              "trough_date": "2009-03-31",
+              "trough": 10.84,
+              "min_dist_pct": -41.5526,
+              "bounce_pct": 109.7414
+            },
+            {
+              "trough_date": "2010-07-30",
+              "trough": 17.0,
+              "min_dist_pct": -11.0381,
+              "bounce_pct": 24.2028
+            },
+            {
+              "trough_date": "2011-06-30",
+              "trough": 18.12,
+              "min_dist_pct": -6.6956,
+              "bounce_pct": 39.211
+            },
+            {
+              "trough_date": "2026-03-31",
+              "trough": 354.16,
+              "min_dist_pct": 1.2289,
+              "bounce_pct": 47.0823
+            },
+            {
+              "trough_date": "2026-06-30",
+              "trough": 347.87,
+              "min_dist_pct": -2.8234,
+              "bounce_pct": 49.7401
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 27.2802,
+          "periodLowDistPct": 27.2802,
+          "note": "收盘距该线 +30.62%，本周最低价距该线 +27.28%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "monthly",
+          "timeframeZh": "月线",
+          "smaPeriod": 125,
+          "maName": "月线SMA125",
+          "depth": 3,
+          "depthLabel": "月线第三买点",
+          "value": 250.47,
+          "rising": true,
+          "distancePct": 95.6005,
+          "enoughHistory": true,
+          "sample": 489,
+          "required": 125,
+          "historicalTouches": 7,
+          "historicalSuccesses": 6,
+          "successRate": 85.7143,
+          "historicalExamples": [
+            {
+              "trough_date": "2006-06-30",
+              "trough": 14.95,
+              "min_dist_pct": -9.6495,
+              "bounce_pct": 44.9952
+            },
+            {
+              "trough_date": "2009-03-31",
+              "trough": 10.84,
+              "min_dist_pct": -43.525,
+              "bounce_pct": 109.7414
+            },
+            {
+              "trough_date": "2010-07-30",
+              "trough": 17.0,
+              "min_dist_pct": -7.107,
+              "bounce_pct": 24.2028
+            },
+            {
+              "trough_date": "2011-06-30",
+              "trough": 18.12,
+              "min_dist_pct": -0.523,
+              "bounce_pct": 39.211
+            },
+            {
+              "trough_date": "2011-08-31",
+              "trough": 18.34,
+              "min_dist_pct": 0.3862,
+              "bounce_pct": 37.5238
+            },
+            {
+              "trough_date": "2011-10-31",
+              "trough": 18.7,
+              "min_dist_pct": 2.4483,
+              "bounce_pct": 34.8595
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 90.5977,
+          "periodLowDistPct": 90.5977,
+          "note": "收盘距该线 +95.60%，本周最低价距该线 +90.60%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "quarterly",
+          "timeframeZh": "季线",
+          "smaPeriod": 10,
+          "maName": "季线SMA10",
+          "depth": 1,
+          "depthLabel": "季线第一买点",
+          "value": 443.35,
+          "rising": true,
+          "distancePct": 10.5073,
+          "enoughHistory": true,
+          "sample": 164,
+          "required": 10,
+          "historicalTouches": 12,
+          "historicalSuccesses": 12,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2010-09-30",
+              "trough": 17.09,
+              "min_dist_pct": -7.0437,
+              "bounce_pct": 80.0918
+            },
+            {
+              "trough_date": "2012-12-31",
+              "trough": 20.97,
+              "min_dist_pct": -2.4528,
+              "bounce_pct": 87.2275
+            },
+            {
+              "trough_date": "2015-09-30",
+              "trough": 34.26,
+              "min_dist_pct": -0.2889,
+              "bounce_pct": 81.6269
+            },
+            {
+              "trough_date": "2022-12-30",
+              "trough": 206.73,
+              "min_dist_pct": -17.1068,
+              "bounce_pct": 112.0422
+            },
+            {
+              "trough_date": "2025-06-30",
+              "trough": 340.76,
+              "min_dist_pct": -11.1846,
+              "bounce_pct": 50.4688
+            },
+            {
+              "trough_date": "2026-06-30",
+              "trough": 347.87,
+              "min_dist_pct": -18.7571,
+              "bounce_pct": 47.1551
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 7.6779,
+          "periodLowDistPct": 7.6779,
+          "note": "收盘距该线 +10.51%，本周最低价距该线 +7.68%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "quarterly",
+          "timeframeZh": "季线",
+          "smaPeriod": 30,
+          "maName": "季线SMA30",
+          "depth": 3,
+          "depthLabel": "季线第三买点",
+          "value": 322.68,
+          "rising": true,
+          "distancePct": 51.8329,
+          "enoughHistory": true,
+          "sample": 164,
+          "required": 30,
+          "historicalTouches": 3,
+          "historicalSuccesses": 3,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2002-09-30",
+              "trough": 12.54,
+              "min_dist_pct": -22.6092,
+              "bounce_pct": 101.8103
+            },
+            {
+              "trough_date": "2009-03-31",
+              "trough": 10.84,
+              "min_dist_pct": -39.0347,
+              "bounce_pct": 108.3551
+            },
+            {
+              "trough_date": "2010-09-30",
+              "trough": 17.09,
+              "min_dist_pct": -7.0144,
+              "bounce_pct": 63.8694
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 47.9453,
+          "periodLowDistPct": 47.9453,
+          "note": "收盘距该线 +51.83%，本周最低价距该线 +47.95%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "annual",
+          "timeframeZh": "年线",
+          "smaPeriod": 5,
+          "maName": "年线SMA5",
+          "depth": 1,
+          "depthLabel": "年线第一买点",
+          "value": 396.86,
+          "rising": true,
+          "distancePct": 23.4508,
+          "enoughHistory": true,
+          "sample": 41,
+          "required": 5,
+          "historicalTouches": 6,
+          "historicalSuccesses": 6,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "1994-12-30",
+              "trough": 1.48,
+              "min_dist_pct": -1.4806,
+              "bounce_pct": 1322.4364
+            },
+            {
+              "trough_date": "1996-12-31",
+              "trough": 3.02,
+              "min_dist_pct": 0.5666,
+              "bounce_pct": 1069.3263
+            },
+            {
+              "trough_date": "2009-12-31",
+              "trough": 11.02,
+              "min_dist_pct": -45.4473,
+              "bounce_pct": 337.1398
+            },
+            {
+              "trough_date": "2013-12-31",
+              "trough": 21.62,
+              "min_dist_pct": -6.7809,
+              "bounce_pct": 260.818
+            },
+            {
+              "trough_date": "2022-12-30",
+              "trough": 206.73,
+              "min_dist_pct": -16.4438,
+              "bounce_pct": 136.987
+            },
+            {
+              "trough_date": "2025-12-31",
+              "trough": 341.96,
+              "min_dist_pct": -12.0099,
+              "bounce_pct": 43.2729
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 20.2918,
+          "periodLowDistPct": -12.0093,
+          "note": "本期（年线）最低价距该线 -12.01%，曾接近或触及，但本周收盘已离开±2%带，不记为本周触发",
+          "priorTagInPeriod": true
+        },
+        {
+          "timeframe": "annual",
+          "timeframeZh": "年线",
+          "smaPeriod": 10,
+          "maName": "年线SMA10",
+          "depth": 2,
+          "depthLabel": "年线第二买点",
+          "value": 283.95,
+          "rising": true,
+          "distancePct": 72.5407,
+          "enoughHistory": true,
+          "sample": 41,
+          "required": 10,
+          "historicalTouches": 2,
+          "historicalSuccesses": 2,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2009-12-31",
+              "trough": 11.02,
+              "min_dist_pct": -40.3819,
+              "bounce_pct": 337.1398
+            },
+            {
+              "trough_date": "2013-12-31",
+              "trough": 21.62,
+              "min_dist_pct": 1.6826,
+              "bounce_pct": 260.818
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 68.1247,
+          "periodLowDistPct": 22.9794,
+          "note": "收盘距该线 +72.54%，本周最低价距该线 +68.12%，未进入触发带",
+          "priorTagInPeriod": false
+        }
       ],
-      "lastClose": 273.94,
-      "note": "26周线向上，但收盘距26周线 5.38%，本周未踩线；处于上升趋势中的5周线买点（判定方式：close_within_2pct；上升趋势定义：close_above_sma26w_and_sma26w_rising_vs_4w）"
-    },
-    {
-      "list": "recommendedList",
-      "name": "标普全球",
-      "ticker": "SPGI",
-      "type": "sma5w_in_uptrend",
-      "types": [
-        "sma5w_in_uptrend"
+      "thisWeekTriggers": [],
+      "triggeredThisWeek": false,
+      "nearestBuyPoint": {
+        "maName": "月线SMA30",
+        "depth": 1,
+        "depthLabel": "月线第一买点",
+        "distancePct": 10.1468,
+        "rising": true
+      },
+      "rankTier": "none",
+      "proximityScore": 10.1468,
+      "maxTriggeredDepth": 0,
+      "rankScore": 1010.1468,
+      "rank": 3,
+      "summary": "本周没有买点。选定买点均线全部向上，但本周没有踩线。最近的是周线SMA125约+10.3%、月线第一买点（30月线）约+10.1%。2022年和2026年较早时候都曾在30月线一带获得支撑。",
+      "charts": [
+        "charts/MSFT_selected.png",
+        "charts/MSFT_composite.png",
+        "charts/MSFT_monthly.png",
+        "charts/MSFT_weekly.png"
       ],
-      "lastClose": 460.74,
-      "note": "26周线向上，但收盘距26周线 8.46%，本周未踩线；处于上升趋势中的5周线买点（判定方式：close_within_2pct；上升趋势定义：close_above_sma26w_and_sma26w_rising_vs_4w）"
+      "history": {
+        "firstDateUsed": "1986-03-13",
+        "nDaily": 10256,
+        "nWeekly": 2125,
+        "nMonthly": 489,
+        "nQuarterly": 164,
+        "nYearly": 41
+      }
     },
     {
-      "list": "recommendedList",
-      "name": "Visa",
-      "ticker": "V",
-      "type": "sma5w_in_uptrend",
-      "types": [
-        "sma5w_in_uptrend"
-      ],
-      "lastClose": 424.39,
-      "note": "26周线向上，但收盘距26周线 13.94%，本周未踩线；处于上升趋势中的5周线买点（判定方式：close_within_2pct；上升趋势定义：close_above_sma26w_and_sma26w_rising_vs_4w）"
-    },
-    {
-      "list": "recommendedList",
-      "name": "废物管理（Waste Management）",
-      "ticker": "WM",
-      "type": "sma5w_in_uptrend",
-      "types": [
-        "sma5w_in_uptrend"
-      ],
-      "lastClose": 247.29,
-      "note": "26周线向上，但收盘距26周线 9.71%，本周未踩线；处于上升趋势中的5周线买点（判定方式：week_tag_and_hold；上升趋势定义：close_above_sma26w_and_sma26w_rising_vs_4w）"
-    },
-    {
-      "list": "recommendedList",
       "name": "宝洁",
       "ticker": "PG",
-      "type": "sma5w_in_uptrend",
-      "types": [
-        "sma5w_in_uptrend"
-      ],
+      "yahooSymbol": "PG",
+      "isPrivate": false,
       "lastClose": 173.23,
-      "note": "26周线向上，但收盘距26周线 14.67%，本周未踩线；处于上升趋势中的5周线买点（判定方式：week_tag_and_hold；上升趋势定义：close_above_sma26w_and_sma26w_rising_vs_4w）"
+      "lastCloseDate": "2026-11-25",
+      "currency": "USD",
+      "weekLow": 167.49,
+      "monthLow": 161.47,
+      "quarterLow": 143.4,
+      "yearLow": 137.62,
+      "buyPointSelectionRationale": "宝洁2008–09年回撤到125月线一带（第三买点）；2015–16、2018、2022–23年主要在30月线，部分更深的脚也接近60月线。2025–26年再次测试30月线并接近60月线后回升。周线SMA125与年线SMA5同样有多次历史买点。",
+      "sameLengthsAsBerkshireButIndependentlySupported": true,
+      "buyPoints": [
+        {
+          "timeframe": "weekly",
+          "timeframeZh": "周线",
+          "smaPeriod": 125,
+          "maName": "周线SMA125",
+          "depth": 1,
+          "depthLabel": "周线买点",
+          "value": 152.69,
+          "rising": true,
+          "distancePct": 13.4485,
+          "enoughHistory": true,
+          "sample": 2970,
+          "required": 125,
+          "historicalTouches": 52,
+          "historicalSuccesses": 50,
+          "successRate": 96.1538,
+          "historicalExamples": [
+            {
+              "trough_date": "2023-12-15",
+              "trough": 131.64,
+              "min_dist_pct": -0.7852,
+              "bounce_pct": 21.6107
+            },
+            {
+              "trough_date": "2025-04-11",
+              "trough": 149.26,
+              "min_dist_pct": 1.7578,
+              "bounce_pct": 9.1001
+            },
+            {
+              "trough_date": "2025-04-25",
+              "trough": 150.08,
+              "min_dist_pct": 2.0474,
+              "bounce_pct": 8.5005
+            },
+            {
+              "trough_date": "2025-05-16",
+              "trough": 150.19,
+              "min_dist_pct": 1.8284,
+              "bounce_pct": 8.4243
+            },
+            {
+              "trough_date": "2026-01-09",
+              "trough": 133.74,
+              "min_dist_pct": -11.4256,
+              "bounce_pct": 22.3566
+            },
+            {
+              "trough_date": "2026-06-05",
+              "trough": 136.92,
+              "min_dist_pct": -10.2283,
+              "bounce_pct": 26.5148
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 9.6928,
+          "periodLowDistPct": 9.6928,
+          "note": "收盘距该线 +13.45%，本周最低价距该线 +9.69%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "monthly",
+          "timeframeZh": "月线",
+          "smaPeriod": 30,
+          "maName": "月线SMA30",
+          "depth": 1,
+          "depthLabel": "月线第一买点",
+          "value": 153.28,
+          "rising": true,
+          "distancePct": 13.0173,
+          "enoughHistory": true,
+          "sample": 683,
+          "required": 30,
+          "historicalTouches": 33,
+          "historicalSuccesses": 32,
+          "successRate": 96.9697,
+          "historicalExamples": [
+            {
+              "trough_date": "2022-10-31",
+              "trough": 110.07,
+              "min_dist_pct": -9.6231,
+              "bounce_pct": 30.3509
+            },
+            {
+              "trough_date": "2023-02-28",
+              "trough": 123.14,
+              "min_dist_pct": -1.698,
+              "bounce_pct": 16.5203
+            },
+            {
+              "trough_date": "2023-05-31",
+              "trough": 129.45,
+              "min_dist_pct": 2.0393,
+              "bounce_pct": 16.519
+            },
+            {
+              "trough_date": "2023-10-31",
+              "trough": 130.67,
+              "min_dist_pct": -0.211,
+              "bounce_pct": 18.0864
+            },
+            {
+              "trough_date": "2023-12-29",
+              "trough": 131.64,
+              "min_dist_pct": -0.5578,
+              "bounce_pct": 23.8416
+            },
+            {
+              "trough_date": "2025-12-31",
+              "trough": 134.24,
+              "min_dist_pct": -11.1541,
+              "bounce_pct": 29.0416
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 9.2706,
+          "periodLowDistPct": 5.3432,
+          "note": "收盘距该线 +13.02%，本周最低价距该线 +9.27%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "monthly",
+          "timeframeZh": "月线",
+          "smaPeriod": 60,
+          "maName": "月线SMA60",
+          "depth": 2,
+          "depthLabel": "月线第二买点",
+          "value": 144.96,
+          "rising": true,
+          "distancePct": 19.5055,
+          "enoughHistory": true,
+          "sample": 683,
+          "required": 60,
+          "historicalTouches": 17,
+          "historicalSuccesses": 16,
+          "successRate": 94.1176,
+          "historicalExamples": [
+            {
+              "trough_date": "2011-08-31",
+              "trough": 37.11,
+              "min_dist_pct": -0.703,
+              "bounce_pct": 19.3811
+            },
+            {
+              "trough_date": "2012-06-29",
+              "trough": 39.03,
+              "min_dist_pct": 1.6681,
+              "bounce_pct": 33.7431
+            },
+            {
+              "trough_date": "2015-08-31",
+              "trough": 47.57,
+              "min_dist_pct": -4.2004,
+              "bounce_pct": 33.6228
+            },
+            {
+              "trough_date": "2018-05-31",
+              "trough": 56.55,
+              "min_dist_pct": -7.5321,
+              "bounce_pct": 55.5555
+            },
+            {
+              "trough_date": "2025-12-31",
+              "trough": 134.24,
+              "min_dist_pct": -3.6957,
+              "bounce_pct": 21.896
+            },
+            {
+              "trough_date": "2026-06-30",
+              "trough": 136.92,
+              "min_dist_pct": -3.9587,
+              "bounce_pct": 26.5148
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 15.5422,
+          "periodLowDistPct": 11.3893,
+          "note": "收盘距该线 +19.50%，本周最低价距该线 +15.54%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "monthly",
+          "timeframeZh": "月线",
+          "smaPeriod": 125,
+          "maName": "月线SMA125",
+          "depth": 3,
+          "depthLabel": "月线第三买点",
+          "value": 115.56,
+          "rising": true,
+          "distancePct": 49.9085,
+          "enoughHistory": true,
+          "sample": 683,
+          "required": 125,
+          "historicalTouches": 4,
+          "historicalSuccesses": 4,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "1980-05-30",
+              "trough": 0.61,
+              "min_dist_pct": 0.4854,
+              "bounce_pct": 14.0744
+            },
+            {
+              "trough_date": "1980-12-31",
+              "trough": 0.55,
+              "min_dist_pct": -11.5141,
+              "bounce_pct": 47.1356
+            },
+            {
+              "trough_date": "2009-03-31",
+              "trough": 26.19,
+              "min_dist_pct": -4.5274,
+              "bounce_pct": 45.4013
+            },
+            {
+              "trough_date": "2010-05-28",
+              "trough": 24.41,
+              "min_dist_pct": -15.2355,
+              "bounce_pct": 65.9432
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 44.9377,
+          "periodLowDistPct": 39.7283,
+          "note": "收盘距该线 +49.90%，本周最低价距该线 +44.94%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "quarterly",
+          "timeframeZh": "季线",
+          "smaPeriod": 10,
+          "maName": "季线SMA10",
+          "depth": 1,
+          "depthLabel": "季线第一买点",
+          "value": 152.79,
+          "rising": true,
+          "distancePct": 13.3814,
+          "enoughHistory": true,
+          "sample": 228,
+          "required": 10,
+          "historicalTouches": 21,
+          "historicalSuccesses": 21,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2015-09-30",
+              "trough": 47.57,
+              "min_dist_pct": -15.8669,
+              "bounce_pct": 51.8726
+            },
+            {
+              "trough_date": "2016-12-30",
+              "trough": 61.89,
+              "min_dist_pct": 1.7359,
+              "bounce_pct": 16.721
+            },
+            {
+              "trough_date": "2018-06-29",
+              "trough": 56.55,
+              "min_dist_pct": -14.5508,
+              "bounce_pct": 109.5854
+            },
+            {
+              "trough_date": "2020-03-31",
+              "trough": 79.42,
+              "min_dist_pct": -2.6674,
+              "bounce_pct": 81.0698
+            },
+            {
+              "trough_date": "2022-12-30",
+              "trough": 110.07,
+              "min_dist_pct": -11.9481,
+              "bounce_pct": 48.1047
+            },
+            {
+              "trough_date": "2025-12-31",
+              "trough": 134.24,
+              "min_dist_pct": -10.578,
+              "bounce_pct": 29.0416
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 9.621,
+          "periodLowDistPct": -6.1457,
+          "note": "本期（季线）最低价距该线 -6.15%，曾接近或触及，但本周收盘已离开±2%带，不记为本周触发",
+          "priorTagInPeriod": true
+        },
+        {
+          "timeframe": "quarterly",
+          "timeframeZh": "季线",
+          "smaPeriod": 30,
+          "maName": "季线SMA30",
+          "depth": 3,
+          "depthLabel": "季线第三买点",
+          "value": 134.25,
+          "rising": true,
+          "distancePct": 29.0371,
+          "enoughHistory": true,
+          "sample": 228,
+          "required": 30,
+          "historicalTouches": 7,
+          "historicalSuccesses": 7,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "1980-03-31",
+              "trough": 0.53,
+              "min_dist_pct": -19.378,
+              "bounce_pct": 123.8775
+            },
+            {
+              "trough_date": "2000-03-31",
+              "trough": 12.96,
+              "min_dist_pct": -1.061,
+              "bounce_pct": 78.6763
+            },
+            {
+              "trough_date": "2001-06-29",
+              "trough": 14.12,
+              "min_dist_pct": -4.2255,
+              "bounce_pct": 65.94
+            },
+            {
+              "trough_date": "2009-03-31",
+              "trough": 26.19,
+              "min_dist_pct": -14.6455,
+              "bounce_pct": 55.2126
+            },
+            {
+              "trough_date": "2010-06-30",
+              "trough": 24.41,
+              "min_dist_pct": -25.8431,
+              "bounce_pct": 80.426
+            },
+            {
+              "trough_date": "2018-06-29",
+              "trough": 56.55,
+              "min_dist_pct": 1.0967,
+              "bounce_pct": 84.8198
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 24.7598,
+          "periodLowDistPct": 6.8156,
+          "note": "收盘距该线 +29.04%，本周最低价距该线 +24.76%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "annual",
+          "timeframeZh": "年线",
+          "smaPeriod": 5,
+          "maName": "年线SMA5",
+          "depth": 1,
+          "depthLabel": "年线第一买点",
+          "value": 148.63,
+          "rising": true,
+          "distancePct": 16.553,
+          "enoughHistory": true,
+          "sample": 57,
+          "required": 5,
+          "historicalTouches": 10,
+          "historicalSuccesses": 10,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2000-12-29",
+              "trough": 13.16,
+              "min_dist_pct": -34.3316,
+              "bounce_pct": 222.6616
+            },
+            {
+              "trough_date": "2006-12-29",
+              "trough": 29.88,
+              "min_dist_pct": 1.2041,
+              "bounce_pct": 42.1161
+            },
+            {
+              "trough_date": "2010-12-31",
+              "trough": 24.79,
+              "min_dist_pct": -35.7893,
+              "bounce_pct": 162.6622
+            },
+            {
+              "trough_date": "2015-12-31",
+              "trough": 47.99,
+              "min_dist_pct": -10.8288,
+              "bounce_pct": 148.6044
+            },
+            {
+              "trough_date": "2018-12-31",
+              "trough": 57.57,
+              "min_dist_pct": -14.0431,
+              "bounce_pct": 175.7062
+            },
+            {
+              "trough_date": "2022-12-30",
+              "trough": 110.07,
+              "min_dist_pct": -7.4062,
+              "bounce_pct": 57.377
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 12.6892,
+          "periodLowDistPct": -7.4077,
+          "note": "本期（年线）最低价距该线 -7.41%，曾接近或触及，但本周收盘已离开±2%带，不记为本周触发",
+          "priorTagInPeriod": true
+        },
+        {
+          "timeframe": "annual",
+          "timeframeZh": "年线",
+          "smaPeriod": 10,
+          "maName": "年线SMA10",
+          "depth": 2,
+          "depthLabel": "年线第二买点",
+          "value": 125.78,
+          "rising": true,
+          "distancePct": 37.7206,
+          "enoughHistory": true,
+          "sample": 57,
+          "required": 10,
+          "historicalTouches": 3,
+          "historicalSuccesses": 3,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "1980-12-31",
+              "trough": 0.55,
+              "min_dist_pct": -15.1453,
+              "bounce_pct": 180.4918
+            },
+            {
+              "trough_date": "2000-12-29",
+              "trough": 13.16,
+              "min_dist_pct": -4.2548,
+              "bounce_pct": 143.9724
+            },
+            {
+              "trough_date": "2010-12-31",
+              "trough": 24.79,
+              "min_dist_pct": -23.5951,
+              "bounce_pct": 162.6622
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 33.1611,
+          "periodLowDistPct": 9.4133,
+          "note": "收盘距该线 +37.72%，本周最低价距该线 +33.16%，未进入触发带",
+          "priorTagInPeriod": false
+        }
+      ],
+      "thisWeekTriggers": [],
+      "triggeredThisWeek": false,
+      "nearestBuyPoint": {
+        "maName": "月线SMA30",
+        "depth": 1,
+        "depthLabel": "月线第一买点",
+        "distancePct": 13.0173,
+        "rising": true
+      },
+      "rankTier": "none",
+      "proximityScore": 13.0173,
+      "maxTriggeredDepth": 0,
+      "rankScore": 1013.0173,
+      "rank": 4,
+      "summary": "本周没有买点。本周没有买点。最近的月线第一买点（30月线）仍高出约13.0%。2025–26年已测试过30月线并接近60月线，随后回升。",
+      "charts": [
+        "charts/PG_selected.png",
+        "charts/PG_composite.png",
+        "charts/PG_monthly.png",
+        "charts/PG_weekly.png"
+      ],
+      "history": {
+        "firstDateUsed": "1970-01-02",
+        "nDaily": 14348,
+        "nWeekly": 2970,
+        "nMonthly": 683,
+        "nQuarterly": 228,
+        "nYearly": 57
+      }
     },
     {
-      "list": "recommendedList",
+      "name": "废物管理（Waste Management）",
+      "ticker": "WM",
+      "yahooSymbol": "WM",
+      "isPrivate": false,
+      "lastClose": 247.29,
+      "lastCloseDate": "2026-11-25",
+      "currency": "USD",
+      "weekLow": 235.25,
+      "monthLow": 231.85,
+      "quarterLow": 200.58,
+      "yearLow": 200.58,
+      "buyPointSelectionRationale": "废物管理在2020年明显回踩30月线；2008–09年和2011–12年分别触及125月线与30月线一带。周线SMA125、季线SMA10和年线SMA5也有反复的支撑记录，结构与伯克希尔相近，但是由该股自己的图支持。",
+      "sameLengthsAsBerkshireButIndependentlySupported": true,
+      "buyPoints": [
+        {
+          "timeframe": "weekly",
+          "timeframeZh": "周线",
+          "smaPeriod": 125,
+          "maName": "周线SMA125",
+          "depth": 1,
+          "depthLabel": "周线买点",
+          "value": 218.32,
+          "rising": true,
+          "distancePct": 13.2719,
+          "enoughHistory": true,
+          "sample": 2006,
+          "required": 125,
+          "historicalTouches": 34,
+          "historicalSuccesses": 34,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2020-07-10",
+              "trough": 91.27,
+              "min_dist_pct": 2.2915,
+              "bounce_pct": 21.3521
+            },
+            {
+              "trough_date": "2023-03-03",
+              "trough": 139.76,
+              "min_dist_pct": 2.2073,
+              "bounce_pct": 17.9894
+            },
+            {
+              "trough_date": "2023-10-06",
+              "trough": 143.0,
+              "min_dist_pct": -3.0182,
+              "bounce_pct": 43.4748
+            },
+            {
+              "trough_date": "2025-11-07",
+              "trough": 190.92,
+              "min_dist_pct": -3.3107,
+              "bounce_pct": 27.2481
+            },
+            {
+              "trough_date": "2026-06-05",
+              "trough": 209.2,
+              "min_dist_pct": -1.6063,
+              "bounce_pct": 18.21
+            },
+            {
+              "trough_date": "2026-10-02",
+              "trough": 200.58,
+              "min_dist_pct": -7.2146,
+              "bounce_pct": 23.2875
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 7.7547,
+          "periodLowDistPct": 7.7547,
+          "note": "收盘距该线 +13.27%，本周最低价距该线 +7.75%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "monthly",
+          "timeframeZh": "月线",
+          "smaPeriod": 30,
+          "maName": "月线SMA30",
+          "depth": 1,
+          "depthLabel": "月线第一买点",
+          "value": 218.53,
+          "rising": true,
+          "distancePct": 13.1628,
+          "enoughHistory": true,
+          "sample": 462,
+          "required": 30,
+          "historicalTouches": 25,
+          "historicalSuccesses": 25,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2020-03-31",
+              "trough": 76.77,
+              "min_dist_pct": -11.147,
+              "bounce_pct": 64.7957
+            },
+            {
+              "trough_date": "2023-03-31",
+              "trough": 140.42,
+              "min_dist_pct": 2.4732,
+              "bounce_pct": 22.3362
+            },
+            {
+              "trough_date": "2023-10-31",
+              "trough": 143.0,
+              "min_dist_pct": -3.2078,
+              "bounce_pct": 44.1366
+            },
+            {
+              "trough_date": "2025-11-28",
+              "trough": 190.92,
+              "min_dist_pct": -3.8215,
+              "bounce_pct": 24.5537
+            },
+            {
+              "trough_date": "2026-06-30",
+              "trough": 209.2,
+              "min_dist_pct": -2.1101,
+              "bounce_pct": 18.21
+            },
+            {
+              "trough_date": "2026-10-30",
+              "trough": 200.58,
+              "min_dist_pct": -7.5857,
+              "bounce_pct": 23.2875
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 7.6511,
+          "periodLowDistPct": 6.0953,
+          "note": "收盘距该线 +13.16%，本周最低价距该线 +7.65%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "monthly",
+          "timeframeZh": "月线",
+          "smaPeriod": 60,
+          "maName": "月线SMA60",
+          "depth": 2,
+          "depthLabel": "月线第二买点",
+          "value": 188.92,
+          "rising": true,
+          "distancePct": 30.8944,
+          "enoughHistory": true,
+          "sample": 462,
+          "required": 60,
+          "historicalTouches": 8,
+          "historicalSuccesses": 8,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2004-02-27",
+              "trough": 14.24,
+              "min_dist_pct": 0.3958,
+              "bounce_pct": 20.1792
+            },
+            {
+              "trough_date": "2008-01-31",
+              "trough": 16.89,
+              "min_dist_pct": -6.1872,
+              "bounce_pct": 39.6923
+            },
+            {
+              "trough_date": "2009-03-31",
+              "trough": 14.14,
+              "min_dist_pct": -27.3025,
+              "bounce_pct": 63.1109
+            },
+            {
+              "trough_date": "2010-05-28",
+              "trough": 20.9,
+              "min_dist_pct": 1.9028,
+              "bounce_pct": 30.3739
+            },
+            {
+              "trough_date": "2011-08-31",
+              "trough": 19.33,
+              "min_dist_pct": -11.3688,
+              "bounce_pct": 30.0863
+            },
+            {
+              "trough_date": "2012-07-31",
+              "trough": 22.59,
+              "min_dist_pct": 2.0427,
+              "bounce_pct": 36.0688
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 24.5236,
+          "periodLowDistPct": 22.7239,
+          "note": "收盘距该线 +30.90%，本周最低价距该线 +24.52%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "monthly",
+          "timeframeZh": "月线",
+          "smaPeriod": 125,
+          "maName": "月线SMA125",
+          "depth": 3,
+          "depthLabel": "月线第三买点",
+          "value": 137.17,
+          "rising": true,
+          "distancePct": 80.276,
+          "enoughHistory": true,
+          "sample": 462,
+          "required": 125,
+          "historicalTouches": 13,
+          "historicalSuccesses": 13,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2004-10-29",
+              "trough": 14.64,
+              "min_dist_pct": -4.9749,
+              "bounce_pct": 15.7492
+            },
+            {
+              "trough_date": "2005-04-29",
+              "trough": 15.48,
+              "min_dist_pct": -4.4794,
+              "bounce_pct": 41.6389
+            },
+            {
+              "trough_date": "2008-01-31",
+              "trough": 16.89,
+              "min_dist_pct": -3.5379,
+              "bounce_pct": 39.6923
+            },
+            {
+              "trough_date": "2008-10-31",
+              "trough": 15.36,
+              "min_dist_pct": -11.8874,
+              "bounce_pct": 36.441
+            },
+            {
+              "trough_date": "2009-03-31",
+              "trough": 14.14,
+              "min_dist_pct": -17.3441,
+              "bounce_pct": 57.502
+            },
+            {
+              "trough_date": "2009-07-31",
+              "trough": 17.01,
+              "min_dist_pct": 0.9535,
+              "bounce_pct": 35.5937
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 71.5025,
+          "periodLowDistPct": 69.0238,
+          "note": "收盘距该线 +80.28%，本周最低价距该线 +71.50%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "quarterly",
+          "timeframeZh": "季线",
+          "smaPeriod": 10,
+          "maName": "季线SMA10",
+          "depth": 1,
+          "depthLabel": "季线第一买点",
+          "value": 218.3,
+          "rising": true,
+          "distancePct": 13.2825,
+          "enoughHistory": true,
+          "sample": 155,
+          "required": 10,
+          "historicalTouches": 11,
+          "historicalSuccesses": 11,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2009-03-31",
+              "trough": 14.14,
+              "min_dist_pct": -32.7815,
+              "bounce_pct": 83.5604
+            },
+            {
+              "trough_date": "2011-09-30",
+              "trough": 19.53,
+              "min_dist_pct": -14.3394,
+              "bounce_pct": 109.131
+            },
+            {
+              "trough_date": "2020-03-31",
+              "trough": 76.77,
+              "min_dist_pct": -10.5883,
+              "bounce_pct": 101.6297
+            },
+            {
+              "trough_date": "2023-03-31",
+              "trough": 140.42,
+              "min_dist_pct": 0.9351,
+              "bounce_pct": 46.7877
+            },
+            {
+              "trough_date": "2023-12-29",
+              "trough": 143.59,
+              "min_dist_pct": -5.4392,
+              "bounce_pct": 57.4386
+            },
+            {
+              "trough_date": "2025-12-31",
+              "trough": 191.66,
+              "min_dist_pct": -8.1152,
+              "bounce_pct": 29.0254
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 7.7645,
+          "periodLowDistPct": -8.1173,
+          "note": "本期（季线）最低价距该线 -8.12%，曾接近或触及，但本周收盘已离开±2%带，不记为本周触发",
+          "priorTagInPeriod": true
+        },
+        {
+          "timeframe": "quarterly",
+          "timeframeZh": "季线",
+          "smaPeriod": 30,
+          "maName": "季线SMA30",
+          "depth": 3,
+          "depthLabel": "季线第三买点",
+          "value": 165.14,
+          "rising": true,
+          "distancePct": 49.7487,
+          "enoughHistory": true,
+          "sample": 155,
+          "required": 30,
+          "historicalTouches": 4,
+          "historicalSuccesses": 4,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2000-03-31",
+              "trough": 7.15,
+              "min_dist_pct": -50.5464,
+              "bounce_pct": 229.869
+            },
+            {
+              "trough_date": "2008-03-31",
+              "trough": 17.02,
+              "min_dist_pct": -0.8796,
+              "bounce_pct": 37.7743
+            },
+            {
+              "trough_date": "2009-03-31",
+              "trough": 14.14,
+              "min_dist_pct": -20.7087,
+              "bounce_pct": 83.5604
+            },
+            {
+              "trough_date": "2011-09-30",
+              "trough": 19.53,
+              "min_dist_pct": -5.2287,
+              "bounce_pct": 61.2643
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 42.4549,
+          "periodLowDistPct": 21.4606,
+          "note": "收盘距该线 +49.75%，本周最低价距该线 +42.45%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "annual",
+          "timeframeZh": "年线",
+          "smaPeriod": 5,
+          "maName": "年线SMA5",
+          "depth": 1,
+          "depthLabel": "年线第一买点",
+          "value": 196.03,
+          "rising": true,
+          "distancePct": 26.1466,
+          "enoughHistory": true,
+          "sample": 39,
+          "required": 5,
+          "historicalTouches": 5,
+          "historicalSuccesses": 5,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "1993-12-31",
+              "trough": 5.36,
+              "min_dist_pct": -32.0882,
+              "bounce_pct": 378.4108
+            },
+            {
+              "trough_date": "2000-12-29",
+              "trough": 7.16,
+              "min_dist_pct": -60.005,
+              "bounce_pct": 211.1895
+            },
+            {
+              "trough_date": "2009-12-31",
+              "trough": 14.56,
+              "min_dist_pct": -29.196,
+              "bounce_pct": 410.1286
+            },
+            {
+              "trough_date": "2020-12-31",
+              "trough": 77.89,
+              "min_dist_pct": -7.6905,
+              "bounce_pct": 178.5324
+            },
+            {
+              "trough_date": "2026-11-25",
+              "trough": 200.58,
+              "min_dist_pct": 2.3191,
+              "bounce_pct": 23.2875
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 20.0071,
+          "periodLowDistPct": 2.3211,
+          "note": "收盘距该线 +26.15%，本周最低价距该线 +20.01%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "annual",
+          "timeframeZh": "年线",
+          "smaPeriod": 10,
+          "maName": "年线SMA10",
+          "depth": 2,
+          "depthLabel": "年线第二买点",
+          "value": 149.72,
+          "rising": true,
+          "distancePct": 65.1731,
+          "enoughHistory": true,
+          "sample": 39,
+          "required": 10,
+          "historicalTouches": 3,
+          "historicalSuccesses": 3,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2000-12-29",
+              "trough": 7.16,
+              "min_dist_pct": -44.9232,
+              "bounce_pct": 252.4201
+            },
+            {
+              "trough_date": "2009-12-31",
+              "trough": 14.56,
+              "min_dist_pct": -19.8072,
+              "bounce_pct": 137.2475
+            },
+            {
+              "trough_date": "2011-12-30",
+              "trough": 19.75,
+              "min_dist_pct": 0.1531,
+              "bounce_pct": 121.5258
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 57.1266,
+          "periodLowDistPct": 33.9701,
+          "note": "收盘距该线 +65.17%，本周最低价距该线 +57.13%，未进入触发带",
+          "priorTagInPeriod": false
+        }
+      ],
+      "thisWeekTriggers": [],
+      "triggeredThisWeek": false,
+      "nearestBuyPoint": {
+        "maName": "月线SMA30",
+        "depth": 1,
+        "depthLabel": "月线第一买点",
+        "distancePct": 13.1628,
+        "rising": true
+      },
+      "rankTier": "none",
+      "proximityScore": 13.1628,
+      "maxTriggeredDepth": 0,
+      "rankScore": 1013.1628,
+      "rank": 5,
+      "summary": "本周没有买点。本周没有买点。最近的月线第一买点（30月线）和周线SMA125大约都还高出13%。",
+      "charts": [
+        "charts/WM_selected.png",
+        "charts/WM_composite.png",
+        "charts/WM_monthly.png",
+        "charts/WM_weekly.png"
+      ],
+      "history": {
+        "firstDateUsed": "1988-06-22",
+        "nDaily": 9680,
+        "nWeekly": 2006,
+        "nMonthly": 462,
+        "nQuarterly": 155,
+        "nYearly": 39
+      }
+    },
+    {
       "name": "开市客（Costco）",
       "ticker": "COST",
-      "type": "sma5w_in_uptrend",
-      "types": [
-        "sma5w_in_uptrend"
-      ],
+      "yahooSymbol": "COST",
+      "isPrivate": false,
       "lastClose": 1086.81,
-      "note": "26周线向上，但收盘距26周线 15.25%，本周未踩线；处于上升趋势中的5周线买点（判定方式：week_tag_and_hold；上升趋势定义：close_above_sma26w_and_sma26w_rising_vs_4w）"
+      "lastCloseDate": "2026-11-25",
+      "currency": "USD",
+      "weekLow": 1067.92,
+      "monthLow": 1014.34,
+      "quarterLow": 903.78,
+      "yearLow": 852.5,
+      "buyPointSelectionRationale": "开市客2016、2018、2020、2022–23年多次在30月线一带止跌；2008–09年更深，触及125月线附近。周线SMA125、季线SMA10、年线SMA5在同一批调整中也可辨认，因此采用与伯克希尔相同的分层，依据是该股自己的图。",
+      "sameLengthsAsBerkshireButIndependentlySupported": true,
+      "buyPoints": [
+        {
+          "timeframe": "weekly",
+          "timeframeZh": "周线",
+          "smaPeriod": 125,
+          "maName": "周线SMA125",
+          "depth": 1,
+          "depthLabel": "周线买点",
+          "value": 921.48,
+          "rising": true,
+          "distancePct": 17.9414,
+          "enoughHistory": true,
+          "sample": 2108,
+          "required": 125,
+          "historicalTouches": 39,
+          "historicalSuccesses": 39,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2017-08-25",
+              "trough": 129.62,
+              "min_dist_pct": 1.2494,
+              "bounce_pct": 32.947
+            },
+            {
+              "trough_date": "2023-01-06",
+              "trough": 415.68,
+              "min_dist_pct": 0.5689,
+              "bounce_pct": 22.526
+            },
+            {
+              "trough_date": "2023-03-03",
+              "trough": 432.61,
+              "min_dist_pct": 2.1923,
+              "bounce_pct": 21.3106
+            },
+            {
+              "trough_date": "2023-05-26",
+              "trough": 444.15,
+              "min_dist_pct": 2.175,
+              "bounce_pct": 25.5318
+            },
+            {
+              "trough_date": "2025-12-19",
+              "trough": 816.18,
+              "min_dist_pct": 1.8109,
+              "bounce_pct": 24.6247
+            },
+            {
+              "trough_date": "2026-09-25",
+              "trough": 857.7,
+              "min_dist_pct": -5.4356,
+              "bounce_pct": 26.7119
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 15.8918,
+          "periodLowDistPct": 15.8918,
+          "note": "收盘距该线 +17.94%，本周最低价距该线 +15.89%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "monthly",
+          "timeframeZh": "月线",
+          "smaPeriod": 30,
+          "maName": "月线SMA30",
+          "depth": 1,
+          "depthLabel": "月线第一买点",
+          "value": 917.52,
+          "rising": true,
+          "distancePct": 18.4503,
+          "enoughHistory": true,
+          "sample": 485,
+          "required": 30,
+          "historicalTouches": 19,
+          "historicalSuccesses": 19,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2017-07-31",
+              "trough": 129.16,
+              "min_dist_pct": 0.9966,
+              "bounce_pct": 33.7206
+            },
+            {
+              "trough_date": "2023-01-31",
+              "trough": 415.68,
+              "min_dist_pct": -0.0089,
+              "bounce_pct": 26.8577
+            },
+            {
+              "trough_date": "2023-03-31",
+              "trough": 432.61,
+              "min_dist_pct": 1.7238,
+              "bounce_pct": 45.9224
+            },
+            {
+              "trough_date": "2023-05-31",
+              "trough": 444.15,
+              "min_dist_pct": 2.224,
+              "bounce_pct": 60.4123
+            },
+            {
+              "trough_date": "2025-12-31",
+              "trough": 816.18,
+              "min_dist_pct": 2.0828,
+              "bounce_pct": 20.6372
+            },
+            {
+              "trough_date": "2026-09-30",
+              "trough": 857.7,
+              "min_dist_pct": -4.4333,
+              "bounce_pct": 26.7119
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 16.392,
+          "periodLowDistPct": 10.5524,
+          "note": "收盘距该线 +18.45%，本周最低价距该线 +16.39%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "monthly",
+          "timeframeZh": "月线",
+          "smaPeriod": 60,
+          "maName": "月线SMA60",
+          "depth": 2,
+          "depthLabel": "月线第二买点",
+          "value": 722.49,
+          "rising": true,
+          "distancePct": 50.4257,
+          "enoughHistory": true,
+          "sample": 485,
+          "required": 60,
+          "historicalTouches": 5,
+          "historicalSuccesses": 5,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "1995-03-31",
+              "trough": 3.88,
+              "min_dist_pct": -37.7768,
+              "bounce_pct": 121.8751
+            },
+            {
+              "trough_date": "2001-09-28",
+              "trough": 19.27,
+              "min_dist_pct": -5.7955,
+              "bounce_pct": 54.2072
+            },
+            {
+              "trough_date": "2003-03-31",
+              "trough": 17.44,
+              "min_dist_pct": -27.627,
+              "bounce_pct": 81.297
+            },
+            {
+              "trough_date": "2009-03-31",
+              "trough": 25.92,
+              "min_dist_pct": -26.2836,
+              "bounce_pct": 61.928
+            },
+            {
+              "trough_date": "2010-07-30",
+              "trough": 36.89,
+              "min_dist_pct": -2.0565,
+              "bounce_pct": 56.3741
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 47.811,
+          "periodLowDistPct": 40.395,
+          "note": "收盘距该线 +50.43%，本周最低价距该线 +47.81%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "monthly",
+          "timeframeZh": "月线",
+          "smaPeriod": 125,
+          "maName": "月线SMA125",
+          "depth": 3,
+          "depthLabel": "月线第三买点",
+          "value": 468.37,
+          "rising": true,
+          "distancePct": 132.0401,
+          "enoughHistory": true,
+          "sample": 485,
+          "required": 125,
+          "historicalTouches": 3,
+          "historicalSuccesses": 3,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "1996-11-29",
+              "trough": 6.3,
+              "min_dist_pct": 1.47,
+              "bounce_pct": 94.2307
+            },
+            {
+              "trough_date": "2008-11-28",
+              "trough": 29.69,
+              "min_dist_pct": 1.6521,
+              "bounce_pct": 19.6445
+            },
+            {
+              "trough_date": "2009-03-31",
+              "trough": 25.92,
+              "min_dist_pct": -12.6647,
+              "bounce_pct": 61.928
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 128.0078,
+          "periodLowDistPct": 116.5681,
+          "note": "收盘距该线 +132.04%，本周最低价距该线 +128.01%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "quarterly",
+          "timeframeZh": "季线",
+          "smaPeriod": 10,
+          "maName": "季线SMA10",
+          "depth": 1,
+          "depthLabel": "季线第一买点",
+          "value": 916.9,
+          "rising": true,
+          "distancePct": 18.5307,
+          "enoughHistory": true,
+          "sample": 162,
+          "required": 10,
+          "historicalTouches": 16,
+          "historicalSuccesses": 16,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2016-12-30",
+              "trough": 116.96,
+              "min_dist_pct": -2.713,
+              "bounce_pct": 75.4005
+            },
+            {
+              "trough_date": "2017-09-29",
+              "trough": 129.57,
+              "min_dist_pct": -0.5053,
+              "bounce_pct": 96.1505
+            },
+            {
+              "trough_date": "2022-06-30",
+              "trough": 375.94,
+              "min_dist_pct": -0.5699,
+              "bounce_pct": 86.6489
+            },
+            {
+              "trough_date": "2023-03-31",
+              "trough": 416.41,
+              "min_dist_pct": -2.3971,
+              "bounce_pct": 118.7278
+            },
+            {
+              "trough_date": "2025-12-31",
+              "trough": 816.18,
+              "min_dist_pct": -2.1874,
+              "bounce_pct": 33.1577
+            },
+            {
+              "trough_date": "2026-09-30",
+              "trough": 857.7,
+              "min_dist_pct": -3.6031,
+              "bounce_pct": 26.7119
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 16.4707,
+          "periodLowDistPct": -1.4309,
+          "note": "本期（季线）最低价距该线 -1.43%，曾接近或触及，但本周收盘已离开±2%带，不记为本周触发",
+          "priorTagInPeriod": true
+        },
+        {
+          "timeframe": "quarterly",
+          "timeframeZh": "季线",
+          "smaPeriod": 30,
+          "maName": "季线SMA30",
+          "depth": 3,
+          "depthLabel": "季线第三买点",
+          "value": 598.81,
+          "rising": true,
+          "distancePct": 81.4941,
+          "enoughHistory": true,
+          "sample": 162,
+          "required": 30,
+          "historicalTouches": 4,
+          "historicalSuccesses": 4,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "1995-03-31",
+              "trough": 3.88,
+              "min_dist_pct": -37.6961,
+              "bounce_pct": 425.5208
+            },
+            {
+              "trough_date": "2003-03-31",
+              "trough": 17.44,
+              "min_dist_pct": -9.7035,
+              "bounce_pct": 80.5883
+            },
+            {
+              "trough_date": "2004-06-30",
+              "trough": 22.7,
+              "min_dist_pct": 2.3361,
+              "bounce_pct": 57.1106
+            },
+            {
+              "trough_date": "2009-03-31",
+              "trough": 25.92,
+              "min_dist_pct": -17.2188,
+              "bounce_pct": 119.232
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 78.3404,
+          "periodLowDistPct": 50.9293,
+          "note": "收盘距该线 +81.50%，本周最低价距该线 +78.34%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "annual",
+          "timeframeZh": "年线",
+          "smaPeriod": 5,
+          "maName": "年线SMA5",
+          "depth": 1,
+          "depthLabel": "年线第一买点",
+          "value": 771.4,
+          "rising": true,
+          "distancePct": 40.8872,
+          "enoughHistory": true,
+          "sample": 41,
+          "required": 5,
+          "historicalTouches": 7,
+          "historicalSuccesses": 7,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2000-12-29",
+              "trough": 16.76,
+              "min_dist_pct": -30.834,
+              "bounce_pct": 178.8728
+            },
+            {
+              "trough_date": "2009-12-31",
+              "trough": 26.19,
+              "min_dist_pct": -31.2253,
+              "bounce_pct": 321.7635
+            },
+            {
+              "trough_date": "2015-12-31",
+              "trough": 95.22,
+              "min_dist_pct": 1.8427,
+              "bounce_pct": 172.883
+            },
+            {
+              "trough_date": "2019-12-31",
+              "trough": 176.68,
+              "min_dist_pct": 2.4103,
+              "bounce_pct": 257.3004
+            },
+            {
+              "trough_date": "2021-12-31",
+              "trough": 283.03,
+              "min_dist_pct": -3.5706,
+              "bounce_pct": 211.4239
+            },
+            {
+              "trough_date": "2023-12-29",
+              "trough": 428.36,
+              "min_dist_pct": -1.8827,
+              "bounce_pct": 153.7161
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 38.4392,
+          "periodLowDistPct": 10.5134,
+          "note": "收盘距该线 +40.89%，本周最低价距该线 +38.44%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "annual",
+          "timeframeZh": "年线",
+          "smaPeriod": 10,
+          "maName": "年线SMA10",
+          "depth": 2,
+          "depthLabel": "年线第二买点",
+          "value": 532.45,
+          "rising": true,
+          "distancePct": 104.1131,
+          "enoughHistory": true,
+          "sample": 41,
+          "required": 10,
+          "historicalTouches": 3,
+          "historicalSuccesses": 3,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "1995-12-29",
+              "trough": 3.88,
+              "min_dist_pct": -35.0913,
+              "bounce_pct": 660.4168
+            },
+            {
+              "trough_date": "2003-12-31",
+              "trough": 17.44,
+              "min_dist_pct": -3.645,
+              "bounce_pct": 167.8988
+            },
+            {
+              "trough_date": "2009-12-31",
+              "trough": 26.19,
+              "min_dist_pct": -17.7711,
+              "bounce_pct": 250.1263
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 100.5672,
+          "periodLowDistPct": 60.1089,
+          "note": "收盘距该线 +104.11%，本周最低价距该线 +100.57%，未进入触发带",
+          "priorTagInPeriod": false
+        }
+      ],
+      "thisWeekTriggers": [],
+      "triggeredThisWeek": false,
+      "nearestBuyPoint": {
+        "maName": "周线SMA125",
+        "depth": 1,
+        "depthLabel": "周线买点",
+        "distancePct": 17.9414,
+        "rising": true
+      },
+      "rankTier": "none",
+      "proximityScore": 17.9414,
+      "maxTriggeredDepth": 0,
+      "rankScore": 1017.9414,
+      "rank": 6,
+      "summary": "本周没有买点。本周没有买点。最近的月线第一买点（30月线）仍高出约18.5%。",
+      "charts": [
+        "charts/COST_selected.png",
+        "charts/COST_composite.png",
+        "charts/COST_monthly.png",
+        "charts/COST_weekly.png"
+      ],
+      "history": {
+        "firstDateUsed": "1986-07-09",
+        "nDaily": 10175,
+        "nWeekly": 2108,
+        "nMonthly": 485,
+        "nQuarterly": 162,
+        "nYearly": 41
+      }
+    },
+    {
+      "name": "Visa",
+      "ticker": "V",
+      "yahooSymbol": "V",
+      "isPrivate": false,
+      "lastClose": 424.39,
+      "lastCloseDate": "2026-11-25",
+      "currency": "USD",
+      "weekLow": 404.01,
+      "monthLow": 400.74,
+      "quarterLow": 356.75,
+      "yearLow": 293.89,
+      "buyPointSelectionRationale": "Visa只有2008年上市以来的行情。图上最清楚的月线买点是30月线（2022年回踩尤其标准）；60月线样本很少，仅作为第二买点谨慎保留；125月线从未触及，暂不给出。周线SMA125、季线SMA10、年线SMA5有多次回踩；年线SMA10尚无合格历史触碰，不列为买点。",
+      "sameLengthsAsBerkshireButIndependentlySupported": false,
+      "buyPoints": [
+        {
+          "timeframe": "weekly",
+          "timeframeZh": "周线",
+          "smaPeriod": 125,
+          "maName": "周线SMA125",
+          "depth": 1,
+          "depthLabel": "周线买点",
+          "value": 330.89,
+          "rising": true,
+          "distancePct": 28.2573,
+          "enoughHistory": true,
+          "sample": 976,
+          "required": 125,
+          "historicalTouches": 16,
+          "historicalSuccesses": 16,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2022-10-14",
+              "trough": 168.99,
+              "min_dist_pct": -16.98,
+              "bounce_pct": 40.1242
+            },
+            {
+              "trough_date": "2023-01-27",
+              "trough": 210.14,
+              "min_dist_pct": 2.2177,
+              "bounce_pct": 12.6858
+            },
+            {
+              "trough_date": "2023-03-17",
+              "trough": 202.9,
+              "min_dist_pct": -1.9491,
+              "bounce_pct": 19.305
+            },
+            {
+              "trough_date": "2023-06-02",
+              "trough": 210.48,
+              "min_dist_pct": 0.6464,
+              "bounce_pct": 20.0459
+            },
+            {
+              "trough_date": "2026-04-02",
+              "trough": 292.2,
+              "min_dist_pct": -4.265,
+              "bounce_pct": 45.7098
+            },
+            {
+              "trough_date": "2026-06-05",
+              "trough": 307.86,
+              "min_dist_pct": -0.704,
+              "bounce_pct": 38.2979
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 22.098,
+          "periodLowDistPct": 22.098,
+          "note": "收盘距该线 +28.26%，本周最低价距该线 +22.10%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "monthly",
+          "timeframeZh": "月线",
+          "smaPeriod": 30,
+          "maName": "月线SMA30",
+          "depth": 1,
+          "depthLabel": "月线第一买点",
+          "value": 332.6,
+          "rising": true,
+          "distancePct": 27.5962,
+          "enoughHistory": true,
+          "sample": 225,
+          "required": 30,
+          "historicalTouches": 8,
+          "historicalSuccesses": 8,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2011-06-30",
+              "trough": 16.34,
+              "min_dist_pct": 0.6443,
+              "bounce_pct": 62.366
+            },
+            {
+              "trough_date": "2011-08-31",
+              "trough": 17.04,
+              "min_dist_pct": 1.7269,
+              "bounce_pct": 62.2643
+            },
+            {
+              "trough_date": "2020-03-31",
+              "trough": 127.55,
+              "min_dist_pct": -10.1196,
+              "bounce_pct": 64.0844
+            },
+            {
+              "trough_date": "2022-10-31",
+              "trough": 168.99,
+              "min_dist_pct": -16.4468,
+              "bounce_pct": 50.6323
+            },
+            {
+              "trough_date": "2023-05-31",
+              "trough": 210.48,
+              "min_dist_pct": 0.9246,
+              "bounce_pct": 31.5368
+            },
+            {
+              "trough_date": "2026-04-30",
+              "trough": 292.2,
+              "min_dist_pct": -4.9788,
+              "bounce_pct": 45.2409
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 21.4702,
+          "periodLowDistPct": 20.4871,
+          "note": "收盘距该线 +27.60%，本周最低价距该线 +21.47%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "monthly",
+          "timeframeZh": "月线",
+          "smaPeriod": 60,
+          "maName": "月线SMA60",
+          "depth": 2,
+          "depthLabel": "月线第二买点",
+          "value": 278.61,
+          "rising": true,
+          "distancePct": 52.3249,
+          "enoughHistory": true,
+          "sample": 225,
+          "required": 60,
+          "historicalTouches": 1,
+          "historicalSuccesses": 1,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2022-10-31",
+              "trough": 168.99,
+              "min_dist_pct": -2.4331,
+              "bounce_pct": 36.9951
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 45.0092,
+          "periodLowDistPct": 43.8355,
+          "note": "收盘距该线 +52.32%，本周最低价距该线 +45.01%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "quarterly",
+          "timeframeZh": "季线",
+          "smaPeriod": 10,
+          "maName": "季线SMA10",
+          "depth": 1,
+          "depthLabel": "季线第一买点",
+          "value": 338.99,
+          "rising": true,
+          "distancePct": 25.191,
+          "enoughHistory": true,
+          "sample": 76,
+          "required": 10,
+          "historicalTouches": 5,
+          "historicalSuccesses": 5,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2010-09-30",
+              "trough": 14.42,
+              "min_dist_pct": -7.3921,
+              "bounce_pct": 201.4625
+            },
+            {
+              "trough_date": "2014-12-31",
+              "trough": 44.83,
+              "min_dist_pct": 0.6396,
+              "bounce_pct": 71.6028
+            },
+            {
+              "trough_date": "2020-03-31",
+              "trough": 127.55,
+              "min_dist_pct": -10.0689,
+              "bounce_pct": 75.9319
+            },
+            {
+              "trough_date": "2022-09-30",
+              "trough": 169.21,
+              "min_dist_pct": -16.4832,
+              "bounce_pct": 104.3922
+            },
+            {
+              "trough_date": "2026-03-31",
+              "trough": 292.62,
+              "min_dist_pct": -6.6862,
+              "bounce_pct": 45.0287
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 19.1805,
+          "periodLowDistPct": 5.2391,
+          "note": "收盘距该线 +25.19%，本周最低价距该线 +19.18%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "annual",
+          "timeframeZh": "年线",
+          "smaPeriod": 5,
+          "maName": "年线SMA5",
+          "depth": 1,
+          "depthLabel": "年线第一买点",
+          "value": 307.96,
+          "rising": true,
+          "distancePct": 37.8063,
+          "enoughHistory": true,
+          "sample": 19,
+          "required": 5,
+          "historicalTouches": 4,
+          "historicalSuccesses": 4,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2017-12-29",
+              "trough": 73.68,
+              "min_dist_pct": 1.6358,
+              "bounce_pct": 184.0672
+            },
+            {
+              "trough_date": "2020-12-31",
+              "trough": 128.15,
+              "min_dist_pct": -7.4599,
+              "bounce_pct": 142.9622
+            },
+            {
+              "trough_date": "2022-12-30",
+              "trough": 169.37,
+              "min_dist_pct": -8.2358,
+              "bounce_pct": 150.5763
+            },
+            {
+              "trough_date": "2026-11-25",
+              "trough": 293.89,
+              "min_dist_pct": -4.5691,
+              "bounce_pct": 44.4044
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 31.1891,
+          "periodLowDistPct": -4.5688,
+          "note": "本期（年线）最低价距该线 -4.57%，曾接近或触及，但本周收盘已离开±2%带，不记为本周触发",
+          "priorTagInPeriod": true
+        }
+      ],
+      "thisWeekTriggers": [],
+      "triggeredThisWeek": false,
+      "nearestBuyPoint": {
+        "maName": "季线SMA10",
+        "depth": 1,
+        "depthLabel": "季线第一买点",
+        "distancePct": 25.191,
+        "rising": true
+      },
+      "rankTier": "none",
+      "proximityScore": 25.191,
+      "maxTriggeredDepth": 0,
+      "rankScore": 1025.191,
+      "rank": 7,
+      "summary": "本周没有买点。本周没有买点。最近的月线第一买点（30月线）仍高出约27.6%。125月线和年线SMA10历史不足或从未触及，未列入该股买点。",
+      "charts": [
+        "charts/V_selected.png",
+        "charts/V_composite.png",
+        "charts/V_monthly.png",
+        "charts/V_weekly.png"
+      ],
+      "history": {
+        "firstDateUsed": "2008-03-19",
+        "nDaily": 4703,
+        "nWeekly": 976,
+        "nMonthly": 225,
+        "nQuarterly": 76,
+        "nYearly": 19
+      }
+    },
+    {
+      "name": "强生",
+      "ticker": "JNJ",
+      "yahooSymbol": "JNJ",
+      "isPrivate": false,
+      "lastClose": 273.94,
+      "lastCloseDate": "2026-11-25",
+      "currency": "USD",
+      "weekLow": 267.36,
+      "monthLow": 264.68,
+      "quarterLow": 245.17,
+      "yearLow": 200.91,
+      "buyPointSelectionRationale": "强生在2016、2018、2020年和2023–25年的横盘中多次以30月线为支撑；2025年的更深回撤已经接近60月线，随后在2026年出现一波大涨。2008–09年则下探60–125月线一带。周线SMA125与年线SMA5也有多次可辨认回踩。",
+      "sameLengthsAsBerkshireButIndependentlySupported": true,
+      "buyPoints": [
+        {
+          "timeframe": "weekly",
+          "timeframeZh": "周线",
+          "smaPeriod": 125,
+          "maName": "周线SMA125",
+          "depth": 1,
+          "depthLabel": "周线买点",
+          "value": 192.04,
+          "rising": true,
+          "distancePct": 42.6455,
+          "enoughHistory": true,
+          "sample": 2970,
+          "required": 125,
+          "historicalTouches": 64,
+          "historicalSuccesses": 63,
+          "successRate": 98.4375,
+          "historicalExamples": [
+            {
+              "trough_date": "2022-09-16",
+              "trough": 142.83,
+              "min_dist_pct": 2.0357,
+              "bounce_pct": 12.8123
+            },
+            {
+              "trough_date": "2022-10-07",
+              "trough": 141.37,
+              "min_dist_pct": 0.4956,
+              "bounce_pct": 13.9746
+            },
+            {
+              "trough_date": "2023-03-24",
+              "trough": 135.15,
+              "min_dist_pct": -7.2341,
+              "bounce_pct": 17.1117
+            },
+            {
+              "trough_date": "2023-10-27",
+              "trough": 132.44,
+              "min_dist_pct": -10.7411,
+              "bounce_pct": 19.3387
+            },
+            {
+              "trough_date": "2025-01-10",
+              "trough": 133.67,
+              "min_dist_pct": -8.6283,
+              "bounce_pct": 29.5667
+            },
+            {
+              "trough_date": "2025-04-11",
+              "trough": 135.53,
+              "min_dist_pct": -7.4617,
+              "bounce_pct": 59.065
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 39.221,
+          "periodLowDistPct": 39.221,
+          "note": "收盘距该线 +42.65%，本周最低价距该线 +39.22%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "monthly",
+          "timeframeZh": "月线",
+          "smaPeriod": 30,
+          "maName": "月线SMA30",
+          "depth": 1,
+          "depthLabel": "月线第一买点",
+          "value": 192.5,
+          "rising": true,
+          "distancePct": 42.3095,
+          "enoughHistory": true,
+          "sample": 683,
+          "required": 30,
+          "historicalTouches": 37,
+          "historicalSuccesses": 37,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2019-10-31",
+              "trough": 103.58,
+              "min_dist_pct": -2.5099,
+              "bounce_pct": 24.9622
+            },
+            {
+              "trough_date": "2020-03-31",
+              "trough": 90.87,
+              "min_dist_pct": -16.3218,
+              "bounce_pct": 52.5312
+            },
+            {
+              "trough_date": "2020-10-30",
+              "trough": 112.77,
+              "min_dist_pct": 0.1005,
+              "bounce_pct": 32.8571
+            },
+            {
+              "trough_date": "2022-10-31",
+              "trough": 141.37,
+              "min_dist_pct": 0.5877,
+              "bounce_pct": 12.5519
+            },
+            {
+              "trough_date": "2023-10-31",
+              "trough": 132.44,
+              "min_dist_pct": -10.2475,
+              "bounce_pct": 52.9957
+            },
+            {
+              "trough_date": "2025-04-30",
+              "trough": 135.53,
+              "min_dist_pct": -7.5441,
+              "bounce_pct": 80.4606
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 38.8883,
+          "periodLowDistPct": 37.4961,
+          "note": "收盘距该线 +42.31%，本周最低价距该线 +38.89%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "monthly",
+          "timeframeZh": "月线",
+          "smaPeriod": 60,
+          "maName": "月线SMA60",
+          "depth": 2,
+          "depthLabel": "月线第二买点",
+          "value": 170.02,
+          "rising": true,
+          "distancePct": 61.1222,
+          "enoughHistory": true,
+          "sample": 683,
+          "required": 60,
+          "historicalTouches": 16,
+          "historicalSuccesses": 16,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2011-03-31",
+              "trough": 36.76,
+              "min_dist_pct": 0.2708,
+              "bounce_pct": 18.0411
+            },
+            {
+              "trough_date": "2020-03-31",
+              "trough": 90.87,
+              "min_dist_pct": -6.3754,
+              "bounce_pct": 47.1548
+            },
+            {
+              "trough_date": "2023-10-31",
+              "trough": 132.44,
+              "min_dist_pct": -0.547,
+              "bounce_pct": 18.0464
+            },
+            {
+              "trough_date": "2024-04-30",
+              "trough": 132.83,
+              "min_dist_pct": -2.6539,
+              "bounce_pct": 19.5838
+            },
+            {
+              "trough_date": "2025-01-31",
+              "trough": 133.67,
+              "min_dist_pct": -5.5685,
+              "bounce_pct": 51.588
+            },
+            {
+              "trough_date": "2025-04-30",
+              "trough": 135.53,
+              "min_dist_pct": -5.5985,
+              "bounce_pct": 80.4606
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 57.2521,
+          "periodLowDistPct": 55.6758,
+          "note": "收盘距该线 +61.12%，本周最低价距该线 +57.25%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "monthly",
+          "timeframeZh": "月线",
+          "smaPeriod": 125,
+          "maName": "月线SMA125",
+          "depth": 3,
+          "depthLabel": "月线第三买点",
+          "value": 140.37,
+          "rising": true,
+          "distancePct": 95.1589,
+          "enoughHistory": true,
+          "sample": 683,
+          "required": 125,
+          "historicalTouches": 3,
+          "historicalSuccesses": 3,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "1980-05-30",
+              "trough": 0.52,
+              "min_dist_pct": -5.1733,
+              "bounce_pct": 56.7298
+            },
+            {
+              "trough_date": "1984-07-31",
+              "trough": 0.64,
+              "min_dist_pct": -0.1125,
+              "bounce_pct": 60.7422
+            },
+            {
+              "trough_date": "2009-03-31",
+              "trough": 27.61,
+              "min_dist_pct": -8.4984,
+              "bounce_pct": 42.7562
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 90.468,
+          "periodLowDistPct": 88.5588,
+          "note": "收盘距该线 +95.16%，本周最低价距该线 +90.47%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "quarterly",
+          "timeframeZh": "季线",
+          "smaPeriod": 10,
+          "maName": "季线SMA10",
+          "depth": 1,
+          "depthLabel": "季线第一买点",
+          "value": 200.92,
+          "rising": true,
+          "distancePct": 36.3451,
+          "enoughHistory": true,
+          "sample": 228,
+          "required": 10,
+          "historicalTouches": 20,
+          "historicalSuccesses": 20,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "2012-06-29",
+              "trough": 41.27,
+              "min_dist_pct": 0.8657,
+              "bounce_pct": 68.1699
+            },
+            {
+              "trough_date": "2015-09-30",
+              "trough": 60.28,
+              "min_dist_pct": -12.9904,
+              "bounce_pct": 81.5483
+            },
+            {
+              "trough_date": "2020-03-31",
+              "trough": 90.87,
+              "min_dist_pct": -16.1682,
+              "bounce_pct": 70.982
+            },
+            {
+              "trough_date": "2020-12-31",
+              "trough": 113.55,
+              "min_dist_pct": -1.6285,
+              "bounce_pct": 37.919
+            },
+            {
+              "trough_date": "2022-03-31",
+              "trough": 136.51,
+              "min_dist_pct": 2.3785,
+              "bounce_pct": 15.6787
+            },
+            {
+              "trough_date": "2023-12-29",
+              "trough": 133.5,
+              "min_dist_pct": -9.8012,
+              "bounce_pct": 105.1909
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 33.0679,
+          "periodLowDistPct": 22.0237,
+          "note": "收盘距该线 +36.34%，本周最低价距该线 +33.07%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "quarterly",
+          "timeframeZh": "季线",
+          "smaPeriod": 30,
+          "maName": "季线SMA30",
+          "depth": 3,
+          "depthLabel": "季线第三买点",
+          "value": 158.94,
+          "rising": true,
+          "distancePct": 72.3493,
+          "enoughHistory": true,
+          "sample": 228,
+          "required": 30,
+          "historicalTouches": 4,
+          "historicalSuccesses": 4,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "1977-06-30",
+              "trough": 0.4,
+              "min_dist_pct": -29.4713,
+              "bounce_pct": 137.4671
+            },
+            {
+              "trough_date": "1984-09-28",
+              "trough": 0.64,
+              "min_dist_pct": -6.0632,
+              "bounce_pct": 172.3494
+            },
+            {
+              "trough_date": "2009-03-31",
+              "trough": 27.61,
+              "min_dist_pct": -15.733,
+              "bounce_pct": 55.35
+            },
+            {
+              "trough_date": "2025-03-31",
+              "trough": 134.74,
+              "min_dist_pct": 2.1817,
+              "bounce_pct": 103.3038
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 68.2144,
+          "periodLowDistPct": 54.2532,
+          "note": "收盘距该线 +72.35%，本周最低价距该线 +68.21%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "annual",
+          "timeframeZh": "年线",
+          "smaPeriod": 5,
+          "maName": "年线SMA5",
+          "depth": 1,
+          "depthLabel": "年线第一买点",
+          "value": 183.26,
+          "rising": true,
+          "distancePct": 49.4823,
+          "enoughHistory": true,
+          "sample": 57,
+          "required": 5,
+          "historicalTouches": 8,
+          "historicalSuccesses": 8,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "1993-12-31",
+              "trough": 4.02,
+              "min_dist_pct": -22.8029,
+              "bounce_pct": 476.7211
+            },
+            {
+              "trough_date": "2000-12-29",
+              "trough": 16.67,
+              "min_dist_pct": -16.4387,
+              "bounce_pct": 130.2498
+            },
+            {
+              "trough_date": "2009-12-31",
+              "trough": 28.3,
+              "min_dist_pct": -22.7649,
+              "bounce_pct": 210.7405
+            },
+            {
+              "trough_date": "2015-12-31",
+              "trough": 60.72,
+              "min_dist_pct": -1.0113,
+              "bounce_pct": 120.2106
+            },
+            {
+              "trough_date": "2020-12-31",
+              "trough": 92.74,
+              "min_dist_pct": -16.5309,
+              "bounce_pct": 70.264
+            },
+            {
+              "trough_date": "2023-12-29",
+              "trough": 133.5,
+              "min_dist_pct": -12.9564,
+              "bounce_pct": 105.1909
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 45.8911,
+          "periodLowDistPct": 9.6311,
+          "note": "收盘距该线 +49.48%，本周最低价距该线 +45.89%，未进入触发带",
+          "priorTagInPeriod": false
+        },
+        {
+          "timeframe": "annual",
+          "timeframeZh": "年线",
+          "smaPeriod": 10,
+          "maName": "年线SMA10",
+          "depth": 2,
+          "depthLabel": "年线第二买点",
+          "value": 153.29,
+          "rising": true,
+          "distancePct": 78.7053,
+          "enoughHistory": true,
+          "sample": 57,
+          "required": 10,
+          "historicalTouches": 4,
+          "historicalSuccesses": 4,
+          "successRate": 100.0,
+          "historicalExamples": [
+            {
+              "trough_date": "1979-12-31",
+              "trough": 0.44,
+              "min_dist_pct": -21.4257,
+              "bounce_pct": 186.9423
+            },
+            {
+              "trough_date": "1984-12-31",
+              "trough": 0.65,
+              "min_dist_pct": -5.7442,
+              "bounce_pct": 233.7068
+            },
+            {
+              "trough_date": "2009-12-31",
+              "trough": 28.3,
+              "min_dist_pct": -13.9907,
+              "bounce_pct": 127.0336
+            },
+            {
+              "trough_date": "2025-12-31",
+              "trough": 137.77,
+              "min_dist_pct": 2.282,
+              "bounce_pct": 98.8443
+            }
+          ],
+          "triggeredThisWeek": false,
+          "triggerType": null,
+          "weekLowDistPct": 74.4145,
+          "periodLowDistPct": 31.0653,
+          "note": "收盘距该线 +78.71%，本周最低价距该线 +74.41%，未进入触发带",
+          "priorTagInPeriod": false
+        }
+      ],
+      "thisWeekTriggers": [],
+      "triggeredThisWeek": false,
+      "nearestBuyPoint": {
+        "maName": "季线SMA10",
+        "depth": 1,
+        "depthLabel": "季线第一买点",
+        "distancePct": 36.3451,
+        "rising": true
+      },
+      "rankTier": "none",
+      "proximityScore": 36.3451,
+      "maxTriggeredDepth": 0,
+      "rankScore": 1036.3451,
+      "rank": 8,
+      "summary": "本周没有买点。本周没有买点。30月线仍低于收盘约42.3%。2025年的回撤已经接近60月线（第二买点），随后在2026年出现一波大涨，当前距离买点带较远。",
+      "charts": [
+        "charts/JNJ_selected.png",
+        "charts/JNJ_composite.png",
+        "charts/JNJ_monthly.png",
+        "charts/JNJ_weekly.png"
+      ],
+      "history": {
+        "firstDateUsed": "1970-01-02",
+        "nDaily": 14348,
+        "nWeekly": 2970,
+        "nMonthly": 683,
+        "nQuarterly": 228,
+        "nYearly": 57
+      }
     }
   ],
-  "longTermTriggers": [
+  "thisWeekTriggers": [
     {
       "list": "userList",
       "name": "麦当劳",
       "ticker": "MCD",
-      "type": "sma60m",
-      "types": [
-        "sma60m"
-      ],
-      "lastClose": 283.5,
-      "note": "5月线向上，收盘距该线 8.79%，本周未踩线；价格已接近5季线（week_tag_and_hold），但该均线未向上，不记为长期买点；触及5年线（月线SMA60）且该均线向上（判定方式：week_tag_and_hold）；对照用年线SMA5为 275.94，距该线 2.74%（向上），买点判定以月线SMA60为准"
+      "maName": "周线SMA125",
+      "depth": 1,
+      "depthLabel": "周线第一买点",
+      "distancePct": -0.7603,
+      "triggerType": "close_within_2pct",
+      "note": "收盘距该线 -0.76%，落在±2%以内，且均线向上"
+    },
+    {
+      "list": "userList",
+      "name": "麦当劳",
+      "ticker": "MCD",
+      "maName": "周线SMA200",
+      "depth": 2,
+      "depthLabel": "周线第二买点",
+      "distancePct": 2.7622,
+      "triggerType": "week_tag_and_hold",
+      "note": "本周最低价距该线 -1.77%，进入或吞破±2%带后收盘站稳（收盘距该线 2.76%），且均线向上"
+    },
+    {
+      "list": "userList",
+      "name": "麦当劳",
+      "ticker": "MCD",
+      "maName": "月线SMA30",
+      "depth": 1,
+      "depthLabel": "月线第一买点",
+      "distancePct": -0.3362,
+      "triggerType": "close_within_2pct",
+      "note": "收盘距该线 -0.34%，落在±2%以内，且均线向上"
+    },
+    {
+      "list": "userList",
+      "name": "麦当劳",
+      "ticker": "MCD",
+      "maName": "月线SMA60",
+      "depth": 2,
+      "depthLabel": "月线第二买点",
+      "distancePct": 6.4905,
+      "triggerType": "week_tag_and_hold",
+      "note": "本周最低价距该线 1.80%，进入或吞破±2%带后收盘站稳（收盘距该线 6.49%），且均线向上"
+    },
+    {
+      "list": "userList",
+      "name": "麦当劳",
+      "ticker": "MCD",
+      "maName": "季线SMA10",
+      "depth": 1,
+      "depthLabel": "季线第一买点",
+      "distancePct": -0.0941,
+      "triggerType": "close_within_2pct",
+      "note": "收盘距该线 -0.10%，落在±2%以内，且均线向上"
+    },
+    {
+      "list": "userList",
+      "name": "麦当劳",
+      "ticker": "MCD",
+      "maName": "年线SMA5",
+      "depth": 1,
+      "depthLabel": "年线第一买点",
+      "distancePct": 2.7409,
+      "triggerType": "week_tag_and_hold",
+      "note": "本周最低价距该线 -1.79%，进入或吞破±2%带后收盘站稳（收盘距该线 2.74%），且均线向上"
     },
     {
       "list": "userList",
       "name": "VOO（标普500 ETF）",
       "ticker": "VOO",
-      "type": "sma5q",
-      "types": [
-        "sma5q"
-      ],
-      "lastClose": 658.87,
-      "note": "5月线未向上，收盘距该线 -4.30%；触及5季线且该均线向上（判定方式：close_within_2pct）；5年线（月线SMA60）向上，收盘距该线 35.57%，本周未踩线；对照用年线SMA5为 512.96，距该线 28.45%（向上），买点判定以月线SMA60为准"
+      "maName": "周线SMA52",
+      "depth": 1,
+      "depthLabel": "周线第一买点",
+      "distancePct": -0.3711,
+      "triggerType": "close_within_2pct",
+      "note": "收盘距该线 -0.37%，落在±2%以内，且均线向上"
+    },
+    {
+      "list": "userList",
+      "name": "VOO（标普500 ETF）",
+      "ticker": "VOO",
+      "maName": "月线SMA20",
+      "depth": 1,
+      "depthLabel": "月线第一买点",
+      "distancePct": 5.0332,
+      "triggerType": "week_tag_and_hold",
+      "note": "本周最低价距该线 1.91%，进入或吞破±2%带后收盘站稳（收盘距该线 5.03%），且均线向上"
+    },
+    {
+      "list": "userList",
+      "name": "特斯拉",
+      "ticker": "TSLA",
+      "maName": "周线SMA125",
+      "depth": 1,
+      "depthLabel": "周线第一买点",
+      "distancePct": 7.9912,
+      "triggerType": "week_tag_and_hold",
+      "note": "本周最低价距该线 1.60%，进入或吞破±2%带后收盘站稳（收盘距该线 7.99%），且均线向上"
+    },
+    {
+      "list": "userList",
+      "name": "特斯拉",
+      "ticker": "TSLA",
+      "maName": "季线SMA10",
+      "depth": 1,
+      "depthLabel": "季线第一买点",
+      "distancePct": 3.7492,
+      "triggerType": "week_tag_and_hold",
+      "note": "本周最低价距该线 -2.39%，进入或吞破±2%带后收盘站稳（收盘距该线 3.75%），且均线向上"
     },
     {
       "list": "recommendedList",
-      "name": "微软",
-      "ticker": "MSFT",
-      "type": "sma5m",
-      "types": [
-        "sma5m"
-      ],
-      "lastClose": 489.93,
-      "note": "触及5月线且该均线向上（判定方式：close_within_2pct）；5季线未向上，收盘距该线 10.29%；5年线（月线SMA60）向上，收盘距该线 30.62%，本周未踩线；对照用年线SMA5为 396.86，距该线 23.45%（向上），买点判定以月线SMA60为准"
+      "name": "标普全球",
+      "ticker": "SPGI",
+      "maName": "周线SMA125",
+      "depth": 1,
+      "depthLabel": "周线买点",
+      "distancePct": 1.4623,
+      "triggerType": "close_within_2pct",
+      "note": "收盘距该线 1.46%，落在±2%以内，且均线向上"
     },
     {
       "list": "recommendedList",
-      "name": "强生",
-      "ticker": "JNJ",
-      "type": "sma5m",
-      "types": [
-        "sma5m"
-      ],
-      "lastClose": 273.94,
-      "note": "触及5月线且该均线向上（判定方式：week_tag_and_hold）；5季线向上，收盘距该线 11.16%，本周未踩线；5年线（月线SMA60）向上，收盘距该线 61.12%，本周未踩线；对照用年线SMA5为 183.26，距该线 49.48%（向上），买点判定以月线SMA60为准"
+      "name": "标普全球",
+      "ticker": "SPGI",
+      "maName": "月线SMA30",
+      "depth": 1,
+      "depthLabel": "月线第一买点",
+      "distancePct": 1.1093,
+      "triggerType": "close_within_2pct",
+      "note": "收盘距该线 1.11%，落在±2%以内，且均线向上"
+    },
+    {
+      "list": "recommendedList",
+      "name": "标普全球",
+      "ticker": "SPGI",
+      "maName": "季线SMA10",
+      "depth": 1,
+      "depthLabel": "季线第一买点",
+      "distancePct": 2.5491,
+      "triggerType": "week_tag_and_hold",
+      "note": "本周最低价距该线 -0.81%，进入或吞破±2%带后收盘站稳（收盘距该线 2.55%），且均线向上"
+    },
+    {
+      "list": "recommendedList",
+      "name": "Alphabet",
+      "ticker": "GOOGL",
+      "maName": "周线SMA100",
+      "depth": 1,
+      "depthLabel": "周线第一买点",
+      "distancePct": 1.6076,
+      "triggerType": "close_within_2pct",
+      "note": "收盘距该线 1.61%，落在±2%以内，且均线向上"
     }
   ],
   "noBuyPointThisWeek": {

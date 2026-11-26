@@ -12,16 +12,19 @@
 h1{font-size:22px;margin:4px 0}h2{font-size:16px;margin:0 0 10px}h3{font-size:16px;margin:0;font-weight:600}
 .sub{color:var(--mute);font-size:12.5px}.badge{display:inline-block;background:#f59e0b;color:#fff;border-radius:6px;padding:1px 8px;font-size:12px;margin-left:6px;vertical-align:middle}
 .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin:12px 0}
-.card.callout{border-color:#f59e0b}.hit{border-color:var(--acc)}
+.card.callout{border-color:#f59e0b}.hit{border-color:var(--acc)}.card.insuff{border-color:#f59e0b}
 .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
 .kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px}.kpi .l{color:var(--mute);font-size:12px}.kpi .v{font-size:19px;font-weight:600;font-variant-numeric:tabular-nums}.kpi .s{font-size:12px;color:var(--mute)}
 .up{color:var(--up)}.dn{color:var(--dn)}
 .tw{overflow-x:auto;-webkit-overflow-scrolling:touch}
 table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums;font-size:13px}
 th,td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}th{color:var(--mute);font-weight:500;background:var(--card)}
-th:first-child,td:first-child{text-align:left}
+th:first-child,td:first-child,th:nth-child(2),td:nth-child(2),th:nth-child(8),td:nth-child(8){text-align:left}
 td.wrap{white-space:normal;text-align:left;min-width:160px}
+table.sum th:nth-child(-n+4),table.sum td:nth-child(-n+4){text-align:left}
 tr.hitrow td{background:var(--chip)}
+tr.grp td{text-align:left;color:var(--mute);font-weight:600;background:transparent}
+.tw a{color:var(--acc)}
 .chip{display:inline-block;background:var(--chip);border-radius:5px;padding:0 6px;font-size:12px}
 ul{margin:4px 0;padding-left:20px}li{margin:3px 0}
 .top{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}
@@ -30,15 +33,22 @@ ul{margin:4px 0;padding-left:20px}li{margin:3px 0}
 .sum{margin:8px 0}
 .tag{display:inline-block;border-radius:6px;padding:1px 8px;font-size:12px;margin:0 6px 6px 0;border:1px solid transparent;vertical-align:middle}
 .tag.on{background:var(--acc);color:#fff}.tag.off{background:var(--chip);color:var(--fg);border-color:var(--line)}.tag.miss{background:#f59e0b;color:#fff}
-td .tag{margin:0 0 0 6px}
+.tag.close{background:var(--up);color:#fff}.tag.wick{background:#0f766e;color:#fff}
+td .tag{margin:0}
+.nearest{margin:8px 0 0;padding:8px 10px;border-radius:8px;background:var(--chip);font-size:13.5px}
 .pills{display:flex;flex-wrap:wrap;gap:8px}
 .pill{display:inline-block;padding:4px 10px;border-radius:999px;background:var(--acc);color:#fff;text-decoration:none;font-size:13px;line-height:1.45}
 .pill.off{background:var(--chip);color:var(--fg);border:1px solid var(--line)}
-a.pill:visited{color:#fff}a.pill.off:visited{color:var(--fg)}
+.pill.insuff{background:#f59e0b;color:#fff;border-color:#f59e0b}
+a.pill:visited{color:#fff}a.pill.off:visited{color:var(--fg)}a.pill.insuff:visited{color:#fff}
 article.card{scroll-margin-top:12px}
 details{border-top:1px solid var(--line);padding:6px 0;margin-top:8px}summary{cursor:pointer}
+figure.chart{margin:12px 0 0;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+figure.chart img{display:block;width:100%;height:auto;background:#fff}
+figure.chart figcaption{color:#374151;background:#fff;font-size:12px;padding:6px 10px 8px;line-height:1.45}
 .foot{color:var(--mute);font-size:12px;text-align:center;margin:20px 0}
 .foot a{color:var(--acc)}
+.legend{margin:8px 0 0}.legend .tag{margin-bottom:0}
 </style>
 </head>
 <body><div class="wrap">
@@ -51,15 +61,12 @@ details{border-top:1px solid var(--line);padding:6px 0;margin-top:8px}summary{cu
 </div>
 <script>
 const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const MA_ORDER=["sma5w","sma26w","sma5m","sma5q","sma60m","sma5y"];
-const TYPE_MA={sma5w_in_uptrend:"sma5w",pullback_to_sma26w:"sma26w",sma5m:"sma5m",sma5q:"sma5q",sma60m:"sma60m",sma5y:"sma5y"};
-const TYPE_LABEL={sma5w_in_uptrend:"上升趋势中的 5 周线",pullback_to_sma26w:"回调到 26 周线",sma5m:"5 月线",sma5q:"5 季线",sma60m:"5 年线",sma5y:"年线 SMA5（对照）"};
-const LABELS={
-  priceSeries:"价格序列",sma5w:"5 周线",sma26w:"26 周线（半年线）",sma5m:"5 月线",sma5q:"5 季线（约 15 个月）",sma60m:"5 年线（月线 SMA60）",sma5y:"年线 SMA5（对照，不单独作为买点）",
-  sma5wRising:"5 周线向上",sma26wRising:"26 周线向上",sma5mRising:"5 月线向上",sma5qRising:"5 季线向上",sma60mRising:"5 年线向上",
-  uptrendForSma5wBuy:"5 周线买点要求的上升趋势",bandPct:"接近阈值（%）",closeWithinBand:"收盘落在阈值内",weekTagAndHold:"周内接近后站稳",
-  midTermA:"中期：26 周线",midTermB:"中期：上升趋势中的 5 周线",longTerm:"长期",ranking:"排序",spacexRule:"上市时间较短的代码（SPCX）"
+const TRIG={
+  close_within_2pct:{label:"收盘踩线",cls:"close"},
+  week_tag_and_hold:{label:"周内接近后站稳",cls:"wick"}
 };
+const TF_ORDER=["weekly","monthly","quarterly","annual"];
+const RULE_LABEL={monthly:"月线",weekly:"周线",quarterly:"季线",annual:"年线"};
 
 function money(x){
   if(x==null||x==="")return null;
@@ -80,38 +87,13 @@ function sorted(list){
     return ra-rb||a.i-b.i;
   }).map(t=>t.x);
 }
-function sideTypes(side){
-  if(!side)return [];
-  if(side.types&&side.types.length)return side.types.slice();
-  return side.type?[side.type]:[];
+function insuff(it){
+  return it.rankTier==="insufficient_history"||!(it.buyPoints&&it.buyPoints.length);
 }
-function typeText(side){
-  return sideTypes(side).map(t=>TYPE_LABEL[t]||t).join("、");
-}
-function hitKeys(it){
-  const keys=[];
-  [["midTerm"],["longTerm"]].forEach(pair=>{
-    const side=it[pair[0]];
-    if(!side||!side.triggered)return;
-    sideTypes(side).forEach(t=>{if(TYPE_MA[t])keys.push(TYPE_MA[t])});
-  });
-  return keys;
-}
-function triggered(it){return !!((it.midTerm&&it.midTerm.triggered)||(it.longTerm&&it.longTerm.triggered))}
-function hitLabel(it){
-  const parts=[];
-  if(it.midTerm&&it.midTerm.triggered)parts.push("中期 "+typeText(it.midTerm));
-  if(it.longTerm&&it.longTerm.triggered)parts.push("长期 "+typeText(it.longTerm));
-  return parts.join(" · ");
-}
-function maName(it,key){
-  const m=it.mas&&it.mas[key];
-  if(m&&m.name)return m.name;
-  return LABELS[key]||key;
-}
-function distCell(pct){
-  if(pct==null||pct==="")return "—";
-  const n=Number(pct);
+function triggered(it){return !!(it.triggeredThisWeek||(it.thisWeekTriggers&&it.thisWeekTriggers.length))}
+function pct(x){
+  if(x==null||x==="")return "—";
+  const n=Number(x);
   if(!isFinite(n))return "—";
   const cls=n>0?"up":n<0?"dn":"";
   const text=(n>0?"+":"")+n.toFixed(2)+"%";
@@ -121,116 +103,192 @@ function dirCell(rising){
   if(rising==null)return "—";
   return rising?'<span class="up">向上</span>':'<span class="dn">向下</span>';
 }
-function dl(obj){
-  if(obj==null)return "";
-  if(typeof obj!=="object")return `<p>${esc(obj)}</p>`;
-  return "<ul>"+Object.keys(obj).map(k=>{
-    let v=obj[k];
-    if(v&&typeof v==="object")v=JSON.stringify(v);
-    return `<li><b>${esc(LABELS[k]||k)}。</b> ${esc(v)}</li>`;
-  }).join("")+"</ul>";
+function trigInfo(type){return TRIG[type]||null}
+function selectedPoints(it){
+  return (it.buyPoints||[]).filter(b=>b&&b.value!=null&&b.enoughHistory!==false&&b.distancePct!=null&&isFinite(Number(b.distancePct)));
 }
+function nearestPoint(it){
+  const pts=selectedPoints(it).filter(b=>b.rising!==false);
+  if(!pts.length)return null;
+  return pts.slice().sort((a,b)=>Math.abs(Number(a.distancePct))-Math.abs(Number(b.distancePct)))[0];
+}
+function deepestTrigger(it){
+  const pts=(it.buyPoints||[]).filter(b=>b.triggeredThisWeek);
+  if(!pts.length)return null;
+  return pts.slice().sort((a,b)=>(Number(b.depth)||0)-(Number(a.depth)||0)||Math.abs(Number(a.distancePct))-Math.abs(Number(b.distancePct)))[0];
+}
+function triggerKinds(it){
+  const seen=[];
+  (it.buyPoints||[]).forEach(b=>{
+    if(b.triggeredThisWeek&&TRIG[b.triggerType]&&seen.indexOf(b.triggerType)<0)seen.push(b.triggerType);
+  });
+  return seen;
+}
+function statusCell(b){
+  const info=b.triggeredThisWeek?trigInfo(b.triggerType):null;
+  if(info)return `<span class="tag ${info.cls}" title="${esc(b.note||"")}">${info.label}</span>`;
+  if(b.priorTagInPeriod)return `<span class="sub" title="${esc(b.note||"")}">期内曾接近，本周不计</span>`;
+  if(b.rising===false)return `<span class="sub" title="${esc(b.note||"")}">均线向下，不计</span>`;
+  return `<span class="sub" title="${esc(b.note||"")}">未触发</span>`;
+}
+function listPrefix(listName){return listName==="recommendedList"?"rec":"user"}
 function pill(it,prefix){
   const id=domId(prefix,it.ticker);
-  const on=triggered(it);
-  const text=esc((it.rank==null?"":it.rank+" ")+it.name+" "+it.ticker)+" · "+esc(on?hitLabel(it):"本周没有买点");
-  return `<a class="pill${on?"":" off"}" href="#${id}">${text}</a>`;
+  let cls="", text;
+  if(insuff(it)){cls=" insuff";text="历史不足"}
+  else if(triggered(it)){
+    text=triggerKinds(it).map(k=>TRIG[k].label).join(" · ")||"本周已触发";
+  }else{cls=" off";text="本周没有买点"}
+  const label=esc((it.rank==null?"":it.rank+" ")+it.name+" "+it.ticker)+" · "+esc(text);
+  return `<a class="pill${cls}" href="#${id}">${label}</a>`;
 }
-function listingBlock(it){
-  const n=it.listingNote;
-  if(!n)return "";
-  const insuff=(n.insufficientAverages||[]).map(k=>maName(it,k));
-  const bits=[];
-  bits.push(`<b>${esc(it.name)}（代码 ${esc(it.ticker)}）按上市公司处理。</b>`);
-  if(n.listingDate)bits.push(`${esc(n.listingDate)} 上市`);
-  if(n.exchange)bits.push(`（${esc(n.exchange)}）`);
-  if(n.ipoPriceUsd!=null)bits.push(`，发行价 ${esc(money(n.ipoPriceUsd))} 美元`);
-  if(n.settlementDate)bits.push(`，${esc(n.settlementDate)} 完成交割`);
-  bits.push("。价格用公开交易的收盘价，不用未上市估值。");
-  if(insuff.length)bits.push(`历史不足、暂不给出的均线：${esc(insuff.join("、"))}。均线只能从上市日起的行情计算，不拼接、不编造。`);
-  if(n.historyRule)bits.push(esc(n.historyRule)+"。");
-  bits.push("本页不绘制价格走势图，不会把同代码旧证券的历史 K 线画进来。");
-  return `<div class="card callout" style="margin:10px 0">${bits.join("")}</div>`;
+function nearestBlock(it){
+  if(insuff(it))return `<div class="nearest">距最近选定买点：暂无。上市时间不够，周线、月线、季线和年线买点都历史不足。</div>`;
+  const n=nearestPoint(it);
+  if(!n)return `<div class="nearest">距最近选定买点：报告没有给出可用的向上均线。</div>`;
+  const info=n.triggeredThisWeek?trigInfo(n.triggerType):null;
+  let html=`距最近选定买点 <b>${esc(n.depthLabel)}（${esc(n.maName)}）</b> ${pct(n.distancePct)}`;
+  if(info)html+=`，${esc(info.label)}`;
+  const deep=deepestTrigger(it);
+  if(deep&&deep.maName!==n.maName){
+    const dinfo=trigInfo(deep.triggerType);
+    html+=`。本周更深的一档是 <b>${esc(deep.depthLabel)}（${esc(deep.maName)}）</b>，收盘距离 ${pct(deep.distancePct)}`;
+    if(dinfo)html+=`，${esc(dinfo.label)}`;
+  }
+  return `<div class="nearest">${html}。</div>`;
+}
+function layerNote(it){
+  if(insuff(it))return "";
+  const yahoo=it.yahooSymbol||it.ticker;
+  if(it.ticker==="BRK.B"||yahoo==="BRK-B")return `<p class="sub">分层校准标的。月线 30 / 60 / 125，周线 125，季线 SMA10 为第一买点、SMA30 为第三买点，年线 SMA5 / SMA10。季线第二买点没有采用。</p>`;
+  if(it.sameLengthsAsBerkshireButIndependentlySupported)return `<p class="sub">均线长度与伯克希尔校准分层相同，依据是该股自己的历史回踩。</p>`;
+  return `<p class="sub">分层按该股自己的图选定，不套用伯克希尔的全部均线。</p>`;
 }
 function maTable(it){
-  const mas=it.mas||{};
-  const hits={};
-  hitKeys(it).forEach(k=>{hits[k]=1});
-  const keys=MA_ORDER.filter(k=>mas[k]).concat(Object.keys(mas).filter(k=>MA_ORDER.indexOf(k)<0));
-  const rows=keys.map(key=>{
-    const m=mas[key]||{};
-    const note=m.note?`<div class="sub">${esc(m.note)}</div>`:"";
-    const enough=m.enoughHistory!==false&&m.value!=null;
-    const value=enough?esc(money(m.value))+note:"历史不足"+note;
-    let name=esc(m.name||LABELS[key]||key);
-    if(hits[key])name+=` <span class="tag on">触发</span>`;
-    if(key==="sma5y")name+=` <span class="tag off">对照</span>`;
-    return `<tr class="${hits[key]?"hitrow":""}"><td>${name}</td><td class="${note?"wrap":""}">${value}</td><td>${enough?dirCell(m.rising):"—"}</td><td>${enough?distCell(m.distancePct):"—"}</td></tr>`;
+  const pts=it.buyPoints||[];
+  if(!pts.length)return `<p class="sub">没有选定的买点均线。</p>`;
+  const unit=ccy(it.currency);
+  let rows="", lastTf="";
+  pts.forEach(b=>{
+    const tf=b.timeframe||"";
+    if(tf!==lastTf){
+      lastTf=tf;
+      const label=b.timeframeZh||tf;
+      rows+=`<tr class="grp"><td colspan="8">${esc(label)}</td></tr>`;
+    }
+    let name=esc(b.maName||"");
+    if(b.timeframe==="quarterly"&&Number(b.depth)===2)name+=` <span class="tag off">看图得出</span>`;
+    const touches=b.historicalTouches==null?"—":esc(b.historicalTouches)+" 次";
+    rows+=`<tr class="${b.triggeredThisWeek?"hitrow":""}"><td>${esc(b.depthLabel||"")}</td><td>${name}</td><td>${esc(money(b.value))}</td><td>${dirCell(b.rising)}</td><td>${pct(b.distancePct)}</td><td>${pct(b.weekLowDistPct)}</td><td>${touches}</td><td>${statusCell(b)}</td></tr>`;
+  });
+  const chartNote=pts.some(b=>b.timeframe==="quarterly"&&Number(b.depth)===2)
+    ?"季线上的「看图得出」表示第二买点来自该股自己的图，不是伯克希尔分层里的一档。"
+    :"";
+  return `<div class="tw"><table><tr><th>深度</th><th>均线</th><th>数值（${esc(unit)}）</th><th>方向</th><th>收盘距离</th><th>本周最低距离</th><th>历史回踩</th><th>本周</th></tr>${rows}</table></div><p class="sub">距离 = 收盘或本周最低价相对该均线的百分比，正数表示价格在均线之上。标成触发的是本周买点。${chartNote}</p>`;
+}
+function historyDetails(it){
+  const pts=(it.buyPoints||[]).filter(b=>(b.historicalExamples||[]).length);
+  if(!pts.length)return "";
+  const blocks=pts.map(b=>{
+    const dates=(b.historicalExamples||[]).slice(0,6).map(ex=>{
+      const d=ex.trough_date||ex.date||"";
+      const dist=ex.min_dist_pct;
+      const extra=dist==null?"":`（距该线 ${Number(dist)>0?"+":""}${Number(dist).toFixed(1)}%）`;
+      return esc(d)+extra;
+    }).join("、");
+    return `<li><b>${esc(b.depthLabel)} · ${esc(b.maName)}。</b> ${dates}</li>`;
   }).join("");
-  return `<div class="tw"><table><tr><th>均线</th><th>数值（${esc(ccy(it.currency))}）</th><th>方向</th><th>收盘距离</th></tr>${rows}</table></div><p class="sub">距离 = 收盘相对该均线的百分比，正数表示收盘在均线之上。标成「触发」的是本周买点用到的那条线。</p>`;
+  return `<details><summary>历史回踩日期</summary><ul>${blocks}</ul><p class="sub">日期是该均线附近曾经出现过的低点，用来说明这条线为什么被选进该股的买点，不表示未来会在同一位置获得支撑。</p></details>`;
+}
+function chartBlock(it){
+  const charts=(it.charts||[]).filter(p=>/_selected\.png$/i.test(String(p)));
+  if(!charts.length)return "";
+  const src=String(charts[0]).replace(/^\//,"");
+  const alt=esc(it.name)+"（"+esc(it.ticker)+"）选定买点均线，含周线、月线、季线和年线";
+  return `<figure class="chart"><img src="${esc(src)}" width="2080" height="1300" alt="${alt}" loading="lazy" decoding="async"><figcaption>${esc(it.name)}（${esc(it.ticker)}）选定买点均线。四张小图依次是周线、月线、季线、年线，曲线为复权收益和该股自己采用的均线。</figcaption></figure>`;
 }
 function sampleLine(it){
   const h=it.history;
   if(!h)return "";
   const start=h.firstDateUsed?`自 ${esc(h.firstDateUsed)} 起`:"";
-  return `<p class="sub">行情样本${start}：${esc(h.nDaily??"—")} 个交易日，${esc(h.nWeekly??"—")} 根周线，${esc(h.nMonthly??"—")} 根月线，${esc(h.nQuarterly??"—")} 根季线。均线只使用这段样本。</p>`;
+  const yearly=h.nYearly==null?"":`，${esc(h.nYearly)} 根年线`;
+  return `<p class="sub">行情样本${start}：${esc(h.nDaily??"—")} 个交易日，${esc(h.nWeekly??"—")} 根周线，${esc(h.nMonthly??"—")} 根月线，${esc(h.nQuarterly??"—")} 根季线${yearly}。均线只使用这段样本。</p>`;
 }
-function card(it,prefix,withReason){
+function insuffCallout(it){
+  if(!insuff(it))return "";
+  const start=it.history&&it.history.firstDateUsed?esc(it.history.firstDateUsed):"上市日";
+  return `<div class="card callout" style="margin:10px 0"><b>历史不足，暂不给出买点。</b> ${esc(it.name)}（代码 ${esc(it.ticker)}）只使用 ${start} 及之后的公开行情，不混用旧代码或上市前数据。周线、月线、季线和年线的长周期均线样本都不够，不用 5 周线代替。</div>`;
+}
+function card(it,prefix){
   const id=domId(prefix,it.ticker);
   const on=triggered(it);
   const unit=ccy(it.currency);
   const px=money(it.lastClose);
   const tags=[];
-  tags.push(it.midTerm&&it.midTerm.triggered
-    ?`<span class="tag on">中期 · 已触发 · ${esc(typeText(it.midTerm))}</span>`
-    :`<span class="tag off">中期 · 未触发</span>`);
-  tags.push(it.longTerm&&it.longTerm.triggered
-    ?`<span class="tag on">长期 · 已触发 · ${esc(typeText(it.longTerm))}</span>`
-    :`<span class="tag off">长期 · 未触发</span>`);
-  if(!on)tags.push(`<span class="tag miss">本周没有买点</span>`);
+  if(insuff(it))tags.push(`<div><span class="tag miss">历史不足</span></div>`);
+  else if(!on)tags.push(`<div><span class="tag off">本周没有买点</span></div>`);
+  triggerKinds(it).forEach(k=>{
+    const names=(it.buyPoints||[]).filter(b=>b.triggeredThisWeek&&b.triggerType===k).map(b=>b.depthLabel+" · "+b.maName).join("、");
+    tags.push(`<div><span class="tag ${TRIG[k].cls}">${TRIG[k].label}</span><span class="sub">${esc(names)}</span></div>`);
+  });
   if(it.isPrivate)tags.push(`<span class="tag miss">未上市</span>`);
-  const yahoo=it.yahooSymbol&&it.yahooSymbol!==it.ticker?` title="行情代码 ${esc(it.ticker)} / ${esc(it.yahooSymbol)}"`:"";
-  const code=it.yahooSymbol&&it.yahooSymbol!==it.ticker?`${esc(it.ticker)}`:`${esc(it.ticker)}`;
-  const lo=money(it.weekLow), hi=money(it.weekHigh);
-  let week=`本周已交易 ${esc(it.weekBars==null?"—":it.weekBars)} 日`;
-  if(lo&&hi)week+=`，区间 ${lo}–${hi} ${esc(unit)}`;
+  const code=esc(it.ticker);
+  const yahooTitle=it.yahooSymbol&&it.yahooSymbol!==it.ticker?` title="行情代码 ${esc(it.yahooSymbol)}"`:"";
+  const lo=money(it.weekLow);
+  let week=`本周已交易区间`;
+  if(lo)week=`本周最低 ${lo} ${esc(unit)}`;
   if(it.lastCloseDate)week+=` · 收盘日 ${esc(it.lastCloseDate)}`;
-  const trend=it.uptrend?"处于上升趋势":"未处于上升趋势";
-  const trendNote=it.uptrendNote?`。${esc(it.uptrendNote)}`:"";
   const yahooNote=it.yahooSymbol&&it.yahooSymbol!==it.ticker?` · 行情代码 ${esc(it.yahooSymbol)}`:"";
-  const reason=withReason?`<p class="sum"><b>推荐理由。</b> ${it.rationale?esc(it.rationale):"报告未写推荐理由。"}</p>`:"";
-  return `<article class="card ${on?"hit":""}" id="${id}">
-    <div class="top"><h3><span class="rank">${esc(it.rank==null?"":it.rank)}</span> ${esc(it.name)} <span class="chip"${yahoo}>${code}</span></h3>
+  const cls=insuff(it)?"insuff":(on?"hit":"");
+  return `<article class="card ${cls}" id="${id}">
+    <div class="top"><h3><span class="rank">${esc(it.rank==null?"":it.rank)}</span> ${esc(it.name)} <span class="chip"${yahooTitle}>${code}</span></h3>
     <div class="px">${px==null?"—":px} <span class="sub">${esc(unit)}</span></div></div>
     <div class="sub">${week}${yahooNote}</div>
     <div style="margin-top:8px">${tags.join("")}</div>
-    <p class="sub" style="margin:2px 0 0">${trend}${trendNote}</p>
-    ${listingBlock(it)}
-    <p class="sum"><b>结论。</b> ${it.summary?esc(it.summary):"报告未写结论。"}</p>
-    ${reason}
+    ${insuffCallout(it)}
+    ${nearestBlock(it)}
+    ${layerNote(it)}
+    <p class="sum"><b>本周结论。</b> ${it.summary?esc(it.summary):"报告未写结论。"}</p>
+    <p class="sum"><b>看图依据。</b> ${it.buyPointSelectionRationale?esc(it.buyPointSelectionRationale):"报告未写看图依据。"}</p>
     ${maTable(it)}
+    ${chartBlock(it)}
     ${sampleLine(it)}
+    ${historyDetails(it)}
   </article>`;
 }
-function specialsParagraph(items){
-  const rows=items.filter(it=>it.listingNote);
-  if(!rows.length)return "";
-  const text=rows.map(it=>{
-    const n=it.listingNote;
-    const insuff=(n.insufficientAverages||[]).map(k=>maName(it,k));
-    return `${it.name}（代码 ${it.ticker}${n.listingDate?"，"+n.listingDate+" 上市":""}${insuff.length?"；"+insuff.join("、")+"历史不足":""}）`;
-  }).join("、");
-  return `<p>上市时间较短的标的仍按上市公司计入名单并排序。均线只用上市日（含）之后的行情；样本不够的均线写明历史不足，不拼接旧代码的历史，也不编造。本页不画价格走势图。本周适用：${esc(text)}。</p>`;
+function ruleList(rule){
+  if(!rule||typeof rule!=="object")return "";
+  return "<ul>"+Object.keys(RULE_LABEL).filter(k=>rule[k]).map(k=>`<li><b>${RULE_LABEL[k]}。</b> ${esc(rule[k])}</li>`).join("")+"</ul>";
+}
+function triggerTable(rows){
+  if(!rows||!rows.length)return `<p class="sub">无</p>`;
+  const body=rows.map(t=>{
+    const id=domId(listPrefix(t.list),t.ticker);
+    const info=trigInfo(t.triggerType)||{label:t.triggerType||"—",cls:"off"};
+    const listName=t.list==="recommendedList"?"推荐名单":"用户名单";
+    return `<tr class="hitrow"><td>${listName}</td><td><a href="#${id}">${esc(t.name)} ${esc(t.ticker)}</a></td><td class="wrap">${esc(t.depthLabel)} · ${esc(t.maName)}</td><td><span class="tag ${info.cls}">${esc(info.label)}</span></td><td>${pct(t.distancePct)}</td></tr>`;
+  }).join("");
+  return `<div class="tw"><table class="sum"><tr><th>名单</th><th>标的</th><th>买点</th><th>触发方式</th><th>收盘距离</th></tr>${body}</table></div>`;
+}
+function countCloseNames(items){
+  let close=0, wickOnly=0;
+  items.forEach(it=>{
+    const kinds=triggerKinds(it);
+    if(kinds.indexOf("close_within_2pct")>=0)close++;
+    else if(kinds.indexOf("week_tag_and_hold")>=0)wickOnly++;
+  });
+  return {close,wickOnly};
 }
 function render(data){
   const meta=data.meta||{};
   const user=sorted(data.userList);
   const rec=sorted(data.recommendedList);
   const note=meta.dataAsOfNote||"";
+  const genNote=meta.generatedAtNote||"";
   const edition=meta.edition||"";
-  const blob=edition+"\n"+note;
+  const blob=[edition,note,genNote].join("\n");
   const thanksgiving=/感恩节/.test(blob);
-  const earlyClose=/提前收盘|提前于/.test(note);
+  const earlyClose=/提前收盘|提前于/.test(blob);
   const notFinal=/非周五|非终稿|不是周五|最终周报/.test(blob);
   const asof=meta.dataAsOfTradingDate||"—";
   document.title="投资买点 · 截止 "+asof;
@@ -240,57 +298,63 @@ function render(data){
   if(thanksgiving)bits.push("感恩节周");
   if(earlyClose)bits.push("周五提前收盘");
   if(notFinal)bits.push("非终稿");
-  $("meta").innerHTML=`数据截止日 <b>${esc(asof)}</b> 收盘（北京时间）${edition?` · ${esc(edition)}`:""}`;
+  $("meta").innerHTML=`数据截止日 <b>${esc(asof)}</b> 收盘（北京时间） · 按各股自身均线看图`;
 
   const userHit=user.filter(triggered), recHit=rec.filter(triggered);
   const userMiss=user.filter(it=>!triggered(it)), recMiss=rec.filter(it=>!triggered(it));
-  const userTick=new Set(user.map(it=>it.ticker));
-  const overlap=rec.filter(it=>userTick.has(it.ticker));
-  const th=(meta.methodology||{}).triggerThresholds||{};
-  const band=esc(bandText(th.bandPct==null?2:th.bandPct));
-  const noBuy=data.noBuyPointThisWeek||{};
-  let hitIntro="本周触发的买点如下。";
-  if(noBuy.overall===false&&(userHit.length||recHit.length))hitIntro="本周不是「没有买点」。触发的标的如下，点进去可以看均线和结论。";
-  else if(!userHit.length&&!recHit.length)hitIntro="按本周 JSON，没有标的触发买点。";
-
+  const counts=countCloseNames(user.concat(rec));
   const meth=meta.methodology||{};
-  const specials=[].concat(user,rec);
+  const cal=meta.berkshireCalibration||{};
+  const th=meth.triggerThresholds||{};
+  const band=esc(bandText(th.bandPct==null?2:th.bandPct));
+  const title=meta.title?`<p><b>${esc(meta.title)}。</b></p>`:"";
+
   const app=[
     `<div class="kpis">
       <div class="kpi"><div class="l">数据截止</div><div class="v">${esc(asof)}</div><div class="s">${esc(bits.join(" · "))}</div></div>
-      <div class="kpi"><div class="l">用户名单有买点</div><div class="v">${userHit.length} / ${user.length}</div><div class="s">${userMiss.length} 个本周没有买点</div></div>
-      <div class="kpi"><div class="l">推荐名单有买点</div><div class="v">${recHit.length} / ${rec.length}</div><div class="s">${recMiss.length} 个本周没有买点</div></div>
+      <div class="kpi"><div class="l">用户名单有买点</div><div class="v">${userHit.length} / ${user.length}</div><div class="s">${esc(userHit.map(it=>it.ticker).join("、")||"无")}</div></div>
+      <div class="kpi"><div class="l">推荐名单有买点</div><div class="v">${recHit.length} / ${rec.length}</div><div class="s">${esc(recHit.map(it=>it.ticker).join("、")||"无")}</div></div>
+      <div class="kpi"><div class="l">收盘踩线</div><div class="v">${counts.close}</div><div class="s">另有 ${counts.wickOnly} 只是周内接近后站稳</div></div>
     </div>`,
-    `<div class="card callout"><h2>数据截止与本周说明</h2><p>${esc(note||"报告未写截止说明。")}</p>${meta.generatedAtNote?`<p class="sub">${esc(meta.generatedAtNote)}</p>`:""}</div>`,
+    `<div class="card callout"><h2>数据截止与本周说明</h2>
+      ${title}
+      ${edition?`<p>${esc(edition)}</p>`:""}
+      <p>${esc(note||"报告未写截止说明。")}</p>
+      ${genNote?`<p class="sub">${esc(genNote)}</p>`:""}
+    </div>`,
     `<div class="card"><h2>方法论</h2>
-      <ul>
-        <li><b>中期。</b>回调到向上的 26 周线；或处于上升趋势（收盘在 26 周线之上，且 26 周线向上）并接近 5 周线。</li>
-        <li><b>长期。</b>向上的 5 月线、5 季线（约 15 个月）或 5 年线（月线 SMA60）。年线 SMA5 只作对照，不单独当作买点。</li>
-        <li><b>阈值。</b>收盘距目标均线在 ±${band}% 以内，或本周最低价进入该均线上方 ${band}% 以内（含跌破）后收盘站稳。均线向下，或样本不足时，不记为买点。</li>
-      </ul>
-      <p class="sub">排序：中期与长期同时触发的在前，其次仅长期，再次仅中期，没有买点的标的排在后面，并且仍然显示。</p>
-      <p>26 周线历史不够时，上升趋势改为：收盘在 5 月线之上且 5 月线向上，并在该标的下注明。</p>
-      ${specialsParagraph(specials)}
-      <details><summary>本周 JSON 里的完整口径</summary>
-        ${meth.priceSeries?`<h3>价格</h3>${dl(meth.priceSeries)}`:""}
-        ${meth.averages?`<h3>均线</h3>${dl(meth.averages)}`:""}
-        ${meth.trendDefinitions?`<h3>趋势</h3>${dl(meth.trendDefinitions)}`:""}
-        ${meth.triggerThresholds?`<h3>触发</h3>${dl(meth.triggerThresholds)}`:""}
-        ${meth.ranking?`<h3>排序</h3>${dl(meth.ranking)}`:""}
-        ${meth.spacexRule?`<h3>SPCX</h3>${dl(meth.spacexRule)}`:""}
+      <p>买点从各公司自己的周线、月线、季线、年线图上选定。先用伯克希尔校准分层，再看其余公司：只有该股自己的历史上，价格至少一次在这条均线附近获得支撑，才采用它。深度表示更深、更长周期的买点。第一买点是较常见的回踩，第二、第三买点要到更深的调整才出现。</p>
+      <p><b>伯克希尔校准。</b> ${esc(cal.current||"")}</p>
+      ${ruleList(cal.userRule)}
+      <p><b>本周怎样算触发。</b> 均线要向上。收盘距该股自己的买点均线在 ±${band}% 以内，记为收盘踩线；本周最低价进入或吞破该带，且收盘不低于均线下方 ${band}%，记为周内接近后站稳。本月、本季或本年更早触过、但本周收盘已经离开该带的，只作背景，不算本周买点。</p>
+      <p class="legend"><span class="tag close">收盘踩线</span><span class="tag wick">周内接近后站稳</span></p>
+      ${meth.fiveWeekRule?`<p><b>${esc(meth.fiveWeekRule)}</b></p>`:""}
+      ${meth.ranking?`<p class="sub">排序。${esc(meth.ranking)}</p>`:""}
+      ${meth.spacexRule?`<p class="sub">SpaceX。${esc(meth.spacexRule)}</p>`:""}
+      <details><summary>看图核对与计算口径</summary>
+        ${meth.perStockSelection?`<p>${esc(meth.perStockSelection)}</p>`:""}
+        ${cal.operationalDefinition?`<p>${esc(cal.operationalDefinition)}</p>`:""}
+        ${cal.chartConfirmation?`<p>${esc(cal.chartConfirmation)}</p>`:""}
+        ${meth.priceSeries?`<p>${esc(meth.priceSeries)}</p>`:""}
+        ${th.thisWeek?`<p>${esc(th.thisWeek)}</p>`:""}
+        ${th.notCounted?`<p>${esc(th.notCounted)}</p>`:""}
+        ${(meta.sources&&meta.sources.length)?`<ul>${meta.sources.map(s=>`<li>${esc(s)}</li>`).join("")}</ul>`:""}
       </details>
-      ${(meta.sources&&meta.sources.length)?`<details><summary>数据来源</summary><ul>${meta.sources.map(s=>`<li>${esc(s)}</li>`).join("")}</ul></details>`:""}
     </div>`,
-    `<div class="card hit"><h2>本周触发的买点</h2><p>${hitIntro}</p>
-      <div class="pills">${userHit.map(it=>pill(it,"user")).concat(recHit.map(it=>pill(it,"rec"))).join("")||'<span class="sub">无</span>'}</div>
+    `<div class="card hit"><h2>本周触发的买点</h2>
+      <p>用户名单里本周触发的是 ${esc(userHit.map(it=>it.name).join("、")||"无")}；推荐名单里是 ${esc(recHit.map(it=>it.name).join("、")||"无")}。下表把收盘踩线和周内接近后站稳分开。</p>
+      ${triggerTable(data.thisWeekTriggers)}
+      <p class="sub">收盘距离是相对该线的百分比，正数表示收盘在均线之上。周内接近后站稳的标的，收盘可能已经离开 ±${band}% 带。</p>
       <h2 style="margin-top:14px">本周没有买点</h2>
-      <p class="sub">这些标的本周没有触发，仍按各自名单的排序留在下面，不会被拿掉。</p>
+      <p class="sub">这些标的本周没有触发，仍按各自名单的排序留在下面。历史不足的标的单独标出，不硬算长周期均线。</p>
       <div class="pills">${userMiss.map(it=>pill(it,"user")).concat(recMiss.map(it=>pill(it,"rec"))).join("")||'<span class="sub">无</span>'}</div>
     </div>`,
-    `<h2 style="margin:18px 0 0">用户名单</h2><p class="sub">共 ${user.length} 个，按报告排序。${overlap.length?"":"与推荐名单没有重复的代码。"}</p>`,
-    user.map(it=>card(it,"user",false)).join("")||'<div class="card">用户名单为空。</div>',
-    `<h2 style="margin:18px 0 0">推荐名单</h2><p class="sub">共 ${rec.length} 个，排序规则与用户名单相同，每条另有推荐理由。</p>`,
-    rec.map(it=>card(it,"rec",true)).join("")||'<div class="card">推荐名单为空。</div>'
+    `<h2 style="margin:18px 0 0">用户名单</h2><p class="sub">共 ${user.length} 个，按报告排序。本周触发的在前，更深的买点更靠前；没有买点的按距离最近选定买点排序；历史不足的在最后。</p>
+      <div class="pills" style="margin:8px 0">${user.map(it=>pill(it,"user")).join("")}</div>`,
+    user.map(it=>card(it,"user")).join("")||'<div class="card">用户名单为空。</div>',
+    `<h2 style="margin:18px 0 0">推荐名单</h2><p class="sub">共 ${rec.length} 个，排序规则与用户名单相同。每条都写了该股自己的看图依据。</p>
+      <div class="pills" style="margin:8px 0">${rec.map(it=>pill(it,"rec")).join("")}</div>`,
+    rec.map(it=>card(it,"rec")).join("")||'<div class="card">推荐名单为空。</div>'
   ];
   $("app").innerHTML=app.join("");
   const tz=meta.generatedAtTimeZone==="Asia/Shanghai"||!meta.generatedAtTimeZone?"北京时间":meta.generatedAtTimeZone;
