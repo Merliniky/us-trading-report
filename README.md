@@ -27,12 +27,15 @@ Alpaca 模拟交易账户（paper trading，非真实资金）的每日盘后复
 
 页面在 GitHub Pages 上读取 `buy-points/report.json`。用浏览器直接打开本地文件（`file://`）时，同目录的 `buy-points/report.js` 是同一份数据的镜像，用来避开本地文件请求被拦截；两边要一起换。
 
-1. 用新一周的 JSON（字段结构保持不变）覆盖 `buy-points/report.json`。
+买点按各公司自己的周线、月线、季线、年线图选定，写在每条记录的 `buyPoints` 里，包括深度、本周是否触发，以及触发类型 `close_within_2pct`（收盘踩线）或 `week_tag_and_hold`（周内接近后站稳）。5 周线不是买点。选定均线合成图放在 `buy-points/charts/`，文件名与 JSON 里的 `*_selected.png` 一致。
+
+1. 用新一周的 JSON 覆盖 `buy-points/report.json`。字段仍是各股自己的 `buyPoints` 时，不用改 `buy-points/index.html`。
 2. 把同一份文件存档为 `buy-points/reports/report-YYYY-MM-DD.json`。
-3. 重新生成本地镜像：
+3. 若有新的选定均线图，放进 `buy-points/charts/`。
+4. 重新生成本地镜像：
 
 ```bash
 python3 -c 'from pathlib import Path; raw=Path("buy-points/report.json").read_text(encoding="utf-8").rstrip(); Path("buy-points/report.js").write_text("window.BUY_POINTS_REPORT = "+raw+";\n", encoding="utf-8")'
 ```
 
-结构不变就不用改 `buy-points/index.html`。首份已发布的是 2026-11-26 那期，价格截止 2026-11-25 收盘（北京时间），存档在 `buy-points/reports/report-2026-11-26.json`。
+当前页面是 2026-11-26 这一期的看图版本，价格截止 2026-11-25 收盘（北京时间），存档在 `buy-points/reports/report-2026-11-26.json`。
