@@ -289,11 +289,15 @@ function render(data){
   const blob=[edition,note,genNote].join("\n");
   const thanksgiving=/感恩节/.test(blob);
   const earlyClose=/提前收盘|提前于/.test(blob);
-  const notFinal=/非周五|非终稿|不是周五|最终周报/.test(blob);
+  const notFinal=/非终稿|非周五收盘|不是周五收盘后/.test(blob);
   const asof=meta.dataAsOfTradingDate||"—";
   document.title="投资买点 · 截止 "+asof;
   const badge=$("badge");
-  badge.textContent=thanksgiving?"感恩节周 · 非终稿":(notFinal?"非终稿":(edition||"周报"));
+  const badgeBits=[];
+  if(thanksgiving)badgeBits.push("感恩节周");
+  if(earlyClose)badgeBits.push("周五提前收盘");
+  if(notFinal)badgeBits.push("非终稿");
+  badge.textContent=badgeBits.join(" · ")||(edition||"周报");
   const bits=["收盘","北京时间"];
   if(thanksgiving)bits.push("感恩节周");
   if(earlyClose)bits.push("周五提前收盘");
